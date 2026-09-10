@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tekkali Digital & Web Solutions Hub - Official Portal</title>
     <meta name="description" content="Tekkali Digital & Web Solutions Hub offers professional web development, software programming, digital marketing, and 1000+ flexible employment opportunities in Tekkali, AP.">
-    <meta name="keywords" content="Tekkali Digital & Web Solutions Hub, Web Development Tekkali, Digital Marketing AP, Software Services Srikakulam">
-    <meta name="author" content="Tekkali Digital & Web Solutions Hub">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -15,6 +13,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
         body {
             background-color: #f8fafc;
@@ -43,6 +42,21 @@
             color: #0f172a;
         }
         .logo span {
+            color: #2563eb;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
             color: #2563eb;
         }
         .cta-btn {
@@ -145,7 +159,7 @@
             border-radius: 16px;
             padding: 3rem 2rem;
             box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.1);
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
         .hiring-header {
             text-align: center;
@@ -173,7 +187,6 @@
             margin: 0 auto;
         }
 
-        /* Perks Grid */
         .perks-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -218,6 +231,36 @@
         }
         .apply-btn:hover {
             background-color: #15803d;
+        }
+
+        /* Help / FAQ Section */
+        .help-section {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin-bottom: 4rem;
+        }
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .help-card {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .help-card h4 {
+            color: #0f172a;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .help-card p {
+            color: #64748b;
+            font-size: 0.9rem;
         }
 
         /* Terms & Conditions Section Box */
@@ -291,7 +334,12 @@
     <header>
         <div class="nav-container">
             <div class="logo">Tekkali Digital & Web <span>Solutions Hub</span></div>
-            <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="cta-btn">Join Our Team</a>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#hiring">Careers</a>
+                <a href="#help">Help</a>
+                <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="cta-btn">Join Our Team</a>
+            </div>
         </div>
     </header>
 
@@ -306,7 +354,7 @@
     <div class="container">
         
         <!-- Services Section -->
-        <h2 class="section-title">What We Do</h2>
+        <h2 class="section-title" id="services">What We Do</h2>
         <div class="services-grid">
             <div class="service-card">
                 <h3>Web Design & Development</h3>
@@ -346,7 +394,7 @@
         </div>
 
         <!-- Hiring & Career Section -->
-        <div class="hiring-banner">
+        <div class="hiring-banner" id="hiring">
             <div class="hiring-header">
                 <span class="hiring-badge">We Are Hiring • 1000+ Openings</span>
                 <h2>Build Your Career With Ultimate Flexibility</h2>
@@ -379,6 +427,27 @@
             </div>
         </div>
 
+        <!-- Help / FAQ Section -->
+        <div class="help-section" id="help">
+            <h2 class="section-title" style="margin-bottom: 1rem;">Help & Support (FAQ)</h2>
+            <p style="text-align: center; color: #64748b; max-width: 700px; margin: 0 auto;">Have questions regarding our services or career applications? Find quick answers below or reach out to our team.</p>
+            
+            <div class="help-grid">
+                <div class="help-card">
+                    <h4>How to apply for positions?</h4>
+                    <p>Click on the "Join Our Team" or "Apply Now" buttons to fill out our official Google Form before the deadline.</p>
+                </div>
+                <div class="help-card">
+                    <h4>Are there any fixed work timings?</h4>
+                    <p>No, our roles offer complete schedule flexibility with zero work pressure or rigid micro-management.</p>
+                </div>
+                <div class="help-card">
+                    <h4>How to contact support directly?</h4>
+                    <p>You can reach us instantly via WhatsApp or email during our active support hours for any assistance.</p>
+                </div>
+            </div>
+        </div>
+
         <!-- Terms & Conditions Section -->
         <div class="terms-box" id="terms">
             <h3>Terms & Conditions / Guidelines</h3>
@@ -396,12 +465,13 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p><strong>Contact Support:</strong> <a href="mailto:tekkalidigitalwebsolutionhub@gmail.com" style="color: #60a5fa; text-decoration: none;">tekkalidigitalwebsollutionhub@gmail.com</a></p>
-            <!-- WhatsApp Contact Integration -->
-            <p><strong>WhatsApp Support:</strong> <a href="https://wa.me/91YOUR_APP_NUMBER" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 600;">+91 YOUR_WHATSAPP_NUMBER</a></p>
+            <p><strong>Contact Support:</strong> <a href="mailto:tekkalidigitalwebsollutionhub@gmail.com" style="color: #60a5fa; text-decoration: none;">tekkalidigitalwebsollutionhub@gmail.com</a></p>
+            <!-- WhatsApp Support (Replace YOUR_WHATSAPP_NUMBER with your actual number) -->
+            <p><strong>WhatsApp Support:</strong> <a href="https://wa.me/91YOUR_WHATSAPP_NUMBER" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 600;">+91 YOUR_WHATSAPP_NUMBER</a></p>
             <div class="footer-legal-links">
                 <a href="#terms">Terms & Conditions</a>
                 <a href="#terms">Privacy Policy</a>
+                <a href="#help">Help Desk</a>
             </div>
             <p class="footer-links">Support Hours: Monday – Saturday (9:00 AM to 6:00 PM)</p>
             <p>&copy; 2026 Tekkali Digital & Web Solutions Hub. All Rights Reserved. | Tekkali, Srikakulam District, Andhra Pradesh.</p>
