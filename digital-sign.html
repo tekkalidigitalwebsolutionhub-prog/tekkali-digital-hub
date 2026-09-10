@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tekkali Digital & Web Solutions Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body { 
+            background: linear-gradient(135deg, #1e1b4b, #312e81, #0f172a); 
+            color: #1e293b; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            padding: 20px; 
+        }
+
+        .portal-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 950px;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .portal-header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #6366f1;
+            padding-bottom: 15px;
+        }
+
+        .portal-header h1 { color: #312e81; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .portal-header p { color: #64748b; font-size: 0.85rem; margin-top: 6px; font-weight: 600; }
+
+        .screen { display: none; }
+        .screen.active { display: block; }
+
+        .top-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .nav-btn {
+            background: #e2e8f0;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .nav-btn.active-tab { background: #4f46e5; color: white; }
+
+        .box-container {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+            max-width: 420px;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label { font-size: 0.85rem; font-weight: 700; color: #475569; }
+        .form-group input { padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.9rem; outline: none; transition: border 0.3s; }
+        .form-group input:focus { border-color: #4f46e5; box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); }
+
+        .btn {
+            background: linear-gradient(135deg, #4f46e5, #4338ca);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .btn:hover { opacity: 0.9; }
+
+        .agreement-scroll-box {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 15px;
+            height: 120px;
+            overflow-y: auto;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #334155;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .input-box { display: flex; flex-direction: column; gap: 5px; }
+        .input-box.full-width { grid-column: span 2; }
+        .input-box label { font-size: 0.8rem; font-weight: 700; color: #475569; }
+        .input-box input { padding: 9px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.9rem; outline: none; }
+
+        .payment-summary-card {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 1px solid #bbf7d0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .canvas-container {
+            border: 2px dashed #94a3b8;
+            border-radius: 8px;
+            background: #fff;
+            position: relative;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .canvas-container input {
+            width: 90%;
+            border: none;
+            text-align: center;
+            font-family: 'Brush Script MT', cursive, sans-serif;
+            font-size: 1.8rem;
+            color: #0369a1;
+            background: transparent;
+            outline: none;
+        }
+
+        .clear-btn {
+            position: absolute;
+            right: 10px;
+            bottom: 8px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            cursor: pointer;
+        }
+
+        .records-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
+        .records-table th, .records-table td {
+            border: 1px solid #cbd5e1;
+            padding: 10px;
+            text-align: left;
+        }
+        .records-table th { background: #e0e7ff; color: #312e81; }
+        .pdf-download-link {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .pdf-download-link:hover { text-decoration: underline; }
+
+        #successPopup {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center; align-items: center;
+            z-index: 999;
+        }
+        .popup-box {
+            background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 380px;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portal-card">
+        
+        <div class="top-nav">
+            <button class="nav-btn active-tab" id="loginTabBtn" onclick="switchScreen('loginScreen')">Login Portal</button>
+            <button class="nav-btn" id="adminTabBtn" style="display:none;" onclick="switchScreen('adminDashboard')">Dashboard Panel</button>
+        </div>
+
+        <!-- ================= 1. LOGIN SCREEN ================= -->
+        <div id="loginScreen" class="screen active">
+            <div class="portal-header">
+                <h1><i class="fa-solid fa-file-shield" style="color: #4f46e5;"></i> Tekkali Digital & Web Solutions Hub</h1>
+                <p>Employee & Management Login Portal</p>
+            </div>
+            
+            <div class="box-container">
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>User ID / Employee ID</label>
+                        <input type="text" id="loginId" placeholder="Enter ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password / Passcode</label>
+                        <input type="password" id="loginPass" placeholder="Enter password" required>
+                    </div>
+                    <button type="submit" class="btn"><i class="fa-solid fa-right-to-bracket"></i> Secure Login</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- ================= 2. ADMIN DASHBOARD ================= -->
+        <div id="adminDashboard" class="screen">
+            <div class="portal-header">
+                <h1><i class="fa-solid fa-gauge-high" style="color: #059669;"></i> Management Dashboard</h1>
+                <p>Staff Credentials Management & Signed Client Agreements Archive</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #cbd5e1;">
+                    <h3 style="font-size: 0.95rem; margin-bottom: 12px; color: #4f46e5;"><i class="fa-solid fa-user-plus"></i> Create Employee ID & Password</h3>
+                    <form onsubmit="createEmployee(event)">
+                        <div class="form-group">
+                            <label>New Employee ID</label>
+                            <input type="text" id="newEmpId" placeholder="e.g. MKT02" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Assign Password</label>
+                            <input type="text" id="newEmpPass" placeholder="Enter password to share" required>
+                        </div>
+                        <button type="submit" class="btn" style="background: linear-gradient(135deg, #059669, #047857);">Save & Register Employee</button>
+                    </form>
+                </div>
+
+                <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #cbd5e1;">
+                    <h3 style="font-size: 0.95rem; margin-bottom: 12px; color: #1e293b;"><i class="fa-solid fa-users-gear"></i> Authorized Staff Passwords (Visible)</h3>
+                    <div id="staffListContainer" style="font-size: 0.85rem; max-height: 150px; overflow-y: auto; background: #fff; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px;">
+                        <p><i class="fa-solid fa-shield-halved" style="color:#4f46e5;"></i> <b>ADMIN</b> - Pass: <span style="color:#4f46e5; font-family:monospace; font-weight:bold;">tekkarikumar2026</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 25px;">
+                <h3 style="font-size: 1rem; margin-bottom: 12px; color: #1e293b;"><i class="fa-solid fa-file-pdf" style="color: #dc2626;"></i> Submitted Client Agreement Forms (PDF Archive)</h3>
+                <div style="overflow-x: auto;">
+                    <table class="records-table">
+                        <thead>
+                            <tr>
+                                <th>Project Reference ID</th>
+                                <th>Client Name</th>
+                                <th>Registered Employee</th>
+                                <th>Budget & Advance</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="agreementRecordsBody">
+                            <tr>
+                                <td colspan="5" style="text-align:center; color: #64748b;">No client agreements submitted yet.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <button class="btn" style="margin-top: 20px; background: #64748b; width: 200px;" onclick="logoutAdmin()">Logout Panel</button>
+        </div>
+
+        <!-- ================= 3. EMPLOYEE AGREEMENT FORM ================= -->
+        <div id="agreementScreen" class="screen">
+            <div class="portal-header">
+                <h1><i class="fa-solid fa-file-contract" style="color: #4f46e5;"></i> Tekkali Digital & Web Solutions Hub</h1>
+                <p>Official Client Service Agreement Form</p>
+            </div>
+
+            <div class="agreement-scroll-box">
+                <strong>Terms & Conditions & NOC Policy:</strong><br>
+                1. <strong>Advance & Non-Refundable Policy:</strong> A mutually agreed advance is collected towards resource setup, strictly non-refundable.<br>
+                2. <strong>Milestone Payments:</strong> Payouts cannot be withheld mid-way.<br>
+                3. <strong>Project Transfer & NOC:</strong> Clearing pending dues is mandatory before getting a mutual <strong>No Objection Certificate (NOC)</strong>.
+            </div>
+
+            <form id="clientAgreementForm" onsubmit="submitAgreement(event)">
+                <div class="input-grid">
+                    <div class="input-box">
+                        <label>Client Full Name</label>
+                        <input type="text" id="clientName" placeholder="Enter client full name" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Aadhaar Number (Verification)</label>
+                        <input type="text" id="clientAadhaar" placeholder="Enter 12-digit Aadhaar number" maxlength="12" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Phone Number</label>
+                        <input type="tel" id="clientPhone" placeholder="Enter 10-digit mobile number" maxlength="10" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Registered By (Employee ID)</label>
+                        <input type="text" id="displayEmpId" readonly style="background: #f0fdf4; font-weight: bold; color: #166534;">
+                    </div>
+                    <div class="input-box">
+                        <label>Project Reference ID</label>
+                        <input type="text" id="displayProjectId" readonly style="background: #f1f5f9; color: #1e293b; font-weight: bold;">
+                    </div>
+                    <div class="input-box">
+                        <label>Date of Agreement</label>
+                        <input type="text" id="displayDate" readonly style="background: #f1f5f9; color: #1e293b; font-weight: bold;">
+                    </div>
+                    <div class="input-box full-width">
+                        <label>Residential / Business Address</label>
+                        <input type="text" id="clientAddress" placeholder="Enter full address (e.g., Tekkali, Srikakulam)" required>
+                    </div>
+                </div>
+
+                <div class="payment-summary-card">
+                    <h4 style="color: #166534; font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-solid fa-file-invoice-dollar"></i> Project Financial Breakdown</h4>
+                    <div class="input-grid" style="margin-bottom: 0;">
+                        <div class="input-box">
+                            <label>Total Project Budget (₹)</label>
+                            <input type="number" id="projBudget" placeholder="e.g. 15000" required>
+                        </div>
+                        <div class="input-box">
+                            <label>Advance Paid / Token Amount (₹)</label>
+                            <input type="number" id="projAdvance" placeholder="Enter advance amount" required style="background: #ffffff; color: #059669; font-weight: bold;">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="font-size: 0.8rem; font-weight: 700; color: #475569; display: block; margin-bottom: 5px;">Client Digital Signature</label>
+                    <div class="canvas-container">
+                        <input type="text" id="sign-input" placeholder="Sign here (Type full name)" required>
+                        <button type="button" class="clear-btn" onclick="document.getElementById('sign-input').value='';">Clear</button>
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; margin-bottom: 20px; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <input type="checkbox" id="legal-check" required style="width: 18px; height: 18px;">
+                    <label for="legal-check" style="cursor: pointer; font-weight: 600; color: #1e293b;">I accept Terms, NOC rules, and financial terms.</label>
+                </div>
+
+                <div style="display: flex; gap: 15px;">
+                    <button type="submit" class="btn" style="background: linear-gradient(135deg, #059669, #047857);"><i class="fa-solid fa-file-pdf"></i> Submit & Save Agreement PDF</button>
+                    <button type="button" class="btn" style="background: #64748b; width: 160px;" onclick="switchScreen('loginScreen')">Logout</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Success Pop-up Modal -->
+    <div id="successPopup">
+        <div class="popup-box">
+            <i class="fa-solid fa-circle-check" style="font-size: 3.5rem; color: #059669; margin-bottom: 12px;"></i>
+            <h3 style="color: #1e293b; margin-bottom: 8px;">Agreement Submitted Successfully!</h3>
+            <p style="font-size: 0.85rem; color: #64748b;">PDF record saved to Dashboard panel.<br>Redirecting to login in 5 seconds...</p>
+        </div>
+    </div>
+
+    <script>
+        let employeesDB = {
+            "ADMIN": "tekkarikumar2026"
+        };
+        
+        let agreementsList = [];
+        let currentLoggedInEmp = "";
+
+        function switchScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const id = document.getElementById('loginId').value.trim().toUpperCase();
+            const pass = document.getElementById('loginPass').value.trim();
+
+            if (employeesDB[id] && employeesDB[id] === pass) {
+                if (id === "ADMIN") {
+                    document.getElementById('adminTabBtn').style.display = 'block';
+                    document.getElementById('loginTabBtn').style.display = 'none';
+                    switchScreen('adminDashboard');
+                    renderStaffList();
+                    renderAgreementsTable();
+                } else {
+                    currentLoggedInEmp = id;
+                    document.getElementById('adminTabBtn').style.display = 'none';
+                    document.getElementById('loginTabBtn').style.display = 'block';
+                    
+                    // Reset form first
+                    document.getElementById('clientAgreementForm').reset();
+                    
+                    // Assign values AFTER form reset so Project ID and Date appear properly
+                    document.getElementById('displayEmpId').value = id;
+                    document.getElementById('displayProjectId').value = `TEKKALI-HUB-2026-${Math.floor(100000 + Math.random() * 900000)}`;
+                    document.getElementById('displayDate').value = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+                    switchScreen('agreementScreen');
+                }
+                document.getElementById('loginId').value = '';
+                document.getElementById('loginPass').value = '';
+            } else {
+                alert("Invalid User ID or Password! Please check credentials.");
+            }
+        }
+
+        function createEmployee(event) {
+            event.preventDefault();
+            const newId = document.getElementById('newEmpId').value.trim().toUpperCase();
+            const newPass = document.getElementById('newEmpPass').value.trim();
+
+            if(employeesDB[newId]) {
+                alert("This Employee ID already exists!");
+                return;
+            }
+
+            employeesDB[newId] = newPass;
+            alert(`Employee ID (${newId}) successfully created! Password is now visible in the staff list.`);
+            document.getElementById('newEmpId').value = '';
+            document.getElementById('newEmpPass').value = '';
+            renderStaffList();
+        }
+
+        function renderStaffList() {
+            const container = document.getElementById('staffListContainer');
+            container.innerHTML = '<p><i class="fa-solid fa-shield-halved" style="color:#4f46e5;"></i> <b>ADMIN</b> - Pass: <span style="color:#4f46e5; font-family:monospace; font-weight:bold;">tekkarikumar2026</span></p>';
+            for (let emp in employeesDB) {
+                if(emp !== "ADMIN") {
+                    container.innerHTML += `<p style="margin-top:8px;"><i class="fa-solid fa-user" style="color:#059669;"></i> <b>${emp}</b> - Pass: <span style="color:#059669; font-family:monospace; font-weight:bold;">${employeesDB[emp]}</span></p>`;
+                }
+            }
+        }
+
+        function submitAgreement(event) {
+            event.preventDefault();
+            
+            const newAgreement = {
+                projectId: document.getElementById('displayProjectId').value,
+                clientName: document.getElementById('clientName').value,
+                empId: currentLoggedInEmp,
+                budget: document.getElementById('projBudget').value,
+                advance: document.getElementById('projAdvance').value,
+                date: document.getElementById('displayDate').value,
+                signature: document.getElementById('sign-input').value
+            };
+
+            agreementsList.push(newAgreement);
+            
+            document.getElementById('successPopup').style.display = 'flex';
+            
+            setTimeout(() => {
+                document.getElementById('successPopup').style.display = 'none';
+                document.getElementById('clientAgreementForm').reset();
+                switchScreen('loginScreen');
+            }, 5000);
+        }
+
+        function renderAgreementsTable() {
+            const tbody = document.getElementById('agreementRecordsBody');
+            if (agreementsList.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color: #64748b;">No client agreements submitted yet.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = '';
+            agreementsList.forEach((item, index) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><b>${item.projectId}</b></td>
+                        <td>${item.clientName}</td>
+                        <td><span style="background: #f0fdf4; color: #166534; padding: 3px 8px; border-radius: 4px; font-weight: bold;">${item.empId}</span></td>
+                        <td>Budget: ₹${item.budget} <br><span style="color:#059669; font-weight:600;">Advance: ₹${item.advance}</span></td>
+                        <td><a href="#" class="pdf-download-link" onclick="downloadAgreementPDF(${index})"><i class="fa-solid fa-download"></i> Download PDF</a></td>
+                    </tr>
+                `;
+            });
+        }
+
+        function logoutAdmin() {
+            document.getElementById('adminTabBtn').style.display = 'none';
+            document.getElementById('loginTabBtn').style.display = 'block';
+            switchScreen('loginScreen');
+        }
+
+        function downloadAgreementPDF(index) {
+            const data = agreementsList[index];
+            const pdfContent = `
+========================================
+TEKKALI DIGITAL & WEB SOLUTIONS HUB
+OFFICIAL CLIENT SERVICE AGREEMENT (PDF)
+========================================
+Project Reference ID : ${data.projectId}
+Date of Agreement    : ${data.date}
+Registered Employee  : ${data.empId}
+----------------------------------------
+Client Full Name     : ${data.clientName}
+----------------------------------------
+FINANCIAL BREAKDOWN:
+Total Project Budget : ₹${data.budget}
+Advance Paid (Token) : ₹${data.advance} (Non-Refundable)
+----------------------------------------
+TERMS & CONDITIONS ACCEPTED:
+- Non-refundable advance allocation verified.
+- Milestone execution agreed.
+- NOC policy applicable upon full clearance.
+----------------------------------------
+Client Digital Signature: [ ${data.signature} ]
+Status: Legally Verified & Archived in Dashboard
+========================================
+            `;
+
+            const blob = new Blob([pdfContent], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `${data.projectId}_Agreement.txt`;
+            link.click();
+            alert(`PDF Agreement for ${data.clientName} downloaded successfully!`);
+        }
+    </script>
+</body>
+</html>
