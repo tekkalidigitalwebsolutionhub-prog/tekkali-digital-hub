@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tekkali Digital & Web Solutions Hub - Official Portal</title>
+    <meta name="description" content="Tekkali Digital & Web Solutions Hub offers professional web development, software programming, digital marketing, and 1000+ flexible employment opportunities in Tekkali, AP.">
+    <meta name="keywords" content="Tekkali Digital & Web Solutions Hub, Web Development Tekkali, Digital Marketing AP, Software Services Srikakulam">
+    <meta name="author" content="Tekkali Digital & Web Solutions Hub">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        /* Header / Navbar */
+        header {
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .logo span {
+            color: #2563eb;
+        }
+        .cta-btn {
+            background-color: #2563eb;
+            color: white;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .cta-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            max-width: 650px;
+            margin: 0 auto 2rem auto;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Services Section */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #0f172a;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: #0f172a;
+        }
+        .service-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* Why Choose Us Section */
+        .features-section {
+            background: #ffffff;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 4rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .feature-item h4 {
+            color: #0f172a;
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+        .feature-item p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* Hiring Banner Section */
+        .hiring-banner {
+            background: #ffffff;
+            border: 2px solid #2563eb;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.1);
+            margin-bottom: 3rem;
+        }
+        .hiring-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .hiring-badge {
+            background: #eff6ff;
+            color: #2563eb;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+        .hiring-header h2 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+        }
+        .hiring-header p {
+            color: #475569;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Perks Grid */
+        .perks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .perk-card {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        .perk-card h4 {
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .perk-card p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .hiring-footer {
+            text-align: center;
+        }
+        .deadline {
+            color: #dc2626;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+        .apply-btn {
+            background-color: #16a34a;
+            color: white;
+            padding: 0.85rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+        .apply-btn:hover {
+            background-color: #15803d;
+        }
+
+        /* Terms & Conditions Section Box */
+        .terms-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        .terms-box h3 {
+            color: #0f172a;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .terms-box p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .terms-box ul {
+            padding-left: 1.5rem;
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+        .terms-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        .footer-content {
+            max-width: 1150px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1rem;
+        }
+        .footer-content p {
+            font-size: 0.95rem;
+        }
+        .footer-legal-links {
+            display: flex;
+            gap: 1.5rem;
+            margin: 0.5rem 0;
+        }
+        .footer-legal-links a {
+            color: #60a5fa;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .footer-legal-links a:hover {
+            text-decoration: underline;
+        }
+        .footer-links {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">Tekkali Digital & Web <span>Solutions Hub</span></div>
+            <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="cta-btn">Join Our Team</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Empowering Businesses & Creating 1000+ Employment Opportunities</h1>
+        <p>Your trusted partner for professional Web Development, Custom Software Programming, Digital Marketing, and flexible career opportunities based in Tekkali, AP.</p>
+        <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="cta-btn" style="padding: 0.8rem 2rem; font-size: 1rem;">Explore Opportunities</a>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- Services Section -->
+        <h2 class="section-title">What We Do</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Web Design & Development</h3>
+                <p>Creating responsive, high-performing websites and digital portals tailored to scale local and global businesses.</p>
+            </div>
+            <div class="service-card">
+                <h3>Software Programming</h3>
+                <p>Developing custom software applications using modern tech stacks like Python, Java, and robust web tools.</p>
+            </div>
+            <div class="service-card">
+                <h3>Digital Marketing & Branding</h3>
+                <p>Strategic local and digital marketing solutions to boost your brand visibility, reach clients, and scale business growth.</p>
+            </div>
+            <div class="service-card">
+                <h3>Digital Solutions & Hosting</h3>
+                <p>End-to-end digital infrastructure setup, consultation, and web solutions designed for absolute efficiency.</p>
+            </div>
+        </div>
+
+        <!-- Why Choose Us Section -->
+        <div class="features-section">
+            <h2 class="section-title" style="margin-bottom: 2rem;">Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h4>🚀 Professional Excellence</h4>
+                    <p>Committed to delivering high-quality digital solutions with precise execution and industry-standard practices.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>💡 Transparent & Flexible</h4>
+                    <p>Clear communication, flexible collaboration models, and result-oriented approaches for all our clients and partners.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🤝 Community Growth</h4>
+                    <p>Empowering local talent by building career pathways, part-time earning opportunities, and skill-based growth.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hiring & Career Section -->
+        <div class="hiring-banner">
+            <div class="hiring-header">
+                <span class="hiring-badge">We Are Hiring • 1000+ Openings</span>
+                <h2>Build Your Career With Ultimate Flexibility</h2>
+                <p>Looking for part-time work or career growth with absolute freedom? Join our mission-driven initiative with zero work pressure and high-earning potential.</p>
+            </div>
+
+            <!-- Perks Grid -->
+            <div class="perks-grid">
+                <div class="perk-card">
+                    <h4>Part-Time / Full-Time</h4>
+                    <p>Work according to your convenient schedule with complete time freedom.</p>
+                </div>
+                <div class="perk-card">
+                    <h4>No Work Pressure</h4>
+                    <p>A peaceful, stress-free environment focused purely on smart execution and growth.</p>
+                </div>
+                <div class="perk-card">
+                    <h4>No Rigid Targets</h4>
+                    <p>Work flexibly without the burden of strict targets or micro-management.</p>
+                </div>
+                <div class="perk-card">
+                    <h4>Commission Based Earning</h4>
+                    <p>Lucrative commission structures where your earnings scale directly with your efforts.</p>
+                </div>
+            </div>
+
+            <div class="hiring-footer">
+                <div class="deadline">Submission Deadline: 9 October 2026</div>
+                <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="apply-btn">Apply Now via Google Form</a>
+            </div>
+        </div>
+
+        <!-- Terms & Conditions Section -->
+        <div class="terms-box" id="terms">
+            <h3>Terms & Conditions / Guidelines</h3>
+            <p>Welcome to <strong>Tekkali Digital & Web Solutions Hub</strong>. By accessing our services, submitting applications, or collaborating with us, you agree to abide by the following professional terms:</p>
+            <ul>
+                <li><strong>Work Flexibility & Earning:</strong> All part-time and commission-based roles operate with complete schedule freedom and zero forced work pressure. Earnings depend on task execution and commission structures.</li>
+                <li><strong>Professional Conduct:</strong> Candidates and clients are expected to maintain professional standards, ethical behavior, and clear communication during associations.</li>
+                <li><strong>Application Submission:</strong> All recruitment submissions must be completed through our official channels (Google Form) before the specified deadlines.</li>
+                <li><strong>Privacy & Data Protection:</strong> User details and submitted information are handled securely and utilized strictly for business operations, communication, and recruitment evaluations.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p><strong>Contact Support:</strong> <a href="mailto:tekkalidigitalwebsollutionhub@gmail.com" style="color: #60a5fa; text-decoration: none;">tekkalidigitalwebsollutionhub@gmail.com</a></p>
+            <div class="footer-legal-links">
+                <a href="#terms">Terms & Conditions</a>
+                <a href="#terms">Privacy Policy</a>
+            </div>
+            <p class="footer-links">Support Hours: Monday – Saturday (9:00 AM to 6:00 PM)</p>
+            <p>&copy; 2026 Tekkali Digital & Web Solutions Hub. All Rights Reserved. | Tekkali, Srikakulam District, Andhra Pradesh.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
