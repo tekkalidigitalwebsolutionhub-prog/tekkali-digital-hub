@@ -254,7 +254,7 @@
                 <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #cbd5e1;">
                     <h3 style="font-size: 0.95rem; margin-bottom: 12px; color: #1e293b;"><i class="fa-solid fa-users-gear"></i> Authorized Staff Passwords (Visible)</h3>
                     <div id="staffListContainer" style="font-size: 0.85rem; max-height: 150px; overflow-y: auto; background: #fff; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px;">
-                        <p><i class="fa-solid fa-shield-halved" style="color:#4f46e5;"></i> <b>ADMIN</b> - Pass: <span style="color:#4f46e5; font-family:monospace; font-weight:bold;">tekkarikumar2026</span></p>
+                        <!-- Dynamically loaded -->
                     </div>
                 </div>
             </div>
@@ -273,9 +273,7 @@
                             </tr>
                         </thead>
                         <tbody id="agreementRecordsBody">
-                            <tr>
-                                <td colspan="5" style="text-align:center; color: #64748b;">No client agreements submitted yet.</td>
-                            </tr>
+                            <!-- Dynamically loaded -->
                         </tbody>
                     </table>
                 </div>
@@ -376,11 +374,13 @@
     </div>
 
     <script>
-        let employeesDB = {
+        // Initialize or load Employees DB from localStorage
+        let employeesDB = JSON.parse(localStorage.getItem('tekkali_employees')) || {
             "ADMIN": "tekkarikumar2026"
         };
         
-        let agreementsList = [];
+        // Initialize or load Agreements List from localStorage
+        let agreementsList = JSON.parse(localStorage.getItem('tekkali_agreements')) || [];
         let currentLoggedInEmp = "";
 
         function switchScreen(screenId) {
@@ -405,10 +405,8 @@
                     document.getElementById('adminTabBtn').style.display = 'none';
                     document.getElementById('loginTabBtn').style.display = 'block';
                     
-                    // Reset form first
                     document.getElementById('clientAgreementForm').reset();
                     
-                    // Assign values AFTER form reset so Project ID and Date appear properly
                     document.getElementById('displayEmpId').value = id;
                     document.getElementById('displayProjectId').value = `TEKKALI-HUB-2026-${Math.floor(100000 + Math.random() * 900000)}`;
                     document.getElementById('displayDate').value = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
@@ -433,7 +431,9 @@
             }
 
             employeesDB[newId] = newPass;
-            alert(`Employee ID (${newId}) successfully created! Password is now visible in the staff list.`);
+            localStorage.setItem('tekkali_employees', JSON.stringify(employeesDB)); // Save permanently
+            
+            alert(`Employee ID (${newId}) successfully created!`);
             document.getElementById('newEmpId').value = '';
             document.getElementById('newEmpPass').value = '';
             renderStaffList();
@@ -441,9 +441,11 @@
 
         function renderStaffList() {
             const container = document.getElementById('staffListContainer');
-            container.innerHTML = '<p><i class="fa-solid fa-shield-halved" style="color:#4f46e5;"></i> <b>ADMIN</b> - Pass: <span style="color:#4f46e5; font-family:monospace; font-weight:bold;">tekkarikumar2026</span></p>';
+            container.innerHTML = '';
             for (let emp in employeesDB) {
-                if(emp !== "ADMIN") {
+                if(emp === "ADMIN") {
+                    container.innerHTML += `<p><i class="fa-solid fa-shield-halved" style="color:#4f46e5;"></i> <b>ADMIN</b> - Pass: <span style="color:#4f46e5; font-family:monospace; font-weight:bold;">${employeesDB[emp]}</span></p>`;
+                } else {
                     container.innerHTML += `<p style="margin-top:8px;"><i class="fa-solid fa-user" style="color:#059669;"></i> <b>${emp}</b> - Pass: <span style="color:#059669; font-family:monospace; font-weight:bold;">${employeesDB[emp]}</span></p>`;
                 }
             }
@@ -463,6 +465,7 @@
             };
 
             agreementsList.push(newAgreement);
+            localStorage.setItem('tekkali_agreements', JSON.stringify(agreementsList)); // Save permanently
             
             document.getElementById('successPopup').style.display = 'flex';
             
