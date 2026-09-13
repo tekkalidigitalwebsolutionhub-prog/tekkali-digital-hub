@@ -44,7 +44,7 @@
         .nav-container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 1rem 2.5rem;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -53,11 +53,10 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
         }
 
         .logo-text {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 800;
             letter-spacing: -0.5px;
             color: #ffffff;
@@ -67,6 +66,7 @@
             color: #60a5fa;
         }
 
+        /* Desktop Nav Links */
         .nav-links {
             display: flex;
             list-style: none;
@@ -94,13 +94,52 @@
             font-weight: 600;
         }
 
+        /* Mobile Hamburger Toggle Button */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            background: none;
+            border: none;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        /* Mobile Dropdown Menu */
+        .mobile-menu {
+            display: none;
+            background: var(--tcs-navy);
+            border-top: 1px solid #1e293b;
+            padding: 1.5rem 2rem;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #cbd5e1;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .mobile-menu a:hover {
+            color: white;
+        }
+
         /* Enterprise Hero Section */
         .hero {
             background: linear-gradient(rgba(11, 31, 54, 0.85), rgba(11, 31, 54, 0.92)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 7rem 2rem;
+            padding: 6rem 1.5rem;
             text-align: left;
             border-bottom: 4px solid var(--tcs-blue);
         }
@@ -111,7 +150,7 @@
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
             line-height: 1.2;
@@ -119,7 +158,7 @@
         }
 
         .hero p {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             color: #94a3b8;
             max-width: 650px;
             margin-bottom: 2rem;
@@ -129,14 +168,14 @@
         .container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 5rem 2.5rem;
+            padding: 4rem 1.5rem;
         }
 
         .section-title {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
             color: var(--tcs-navy);
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             text-align: center;
             letter-spacing: -0.5px;
         }
@@ -144,15 +183,15 @@
         /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 2rem;
-            margin-bottom: 5rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
         }
 
         .service-card {
             background: white;
             border-top: 4px solid var(--tcs-blue);
-            padding: 2.5rem 2rem;
+            padding: 2rem 1.5rem;
             border-radius: 6px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             transition: transform 0.2s;
@@ -163,14 +202,14 @@
         }
 
         .service-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--tcs-navy);
             margin-bottom: 0.75rem;
         }
 
         .service-card p {
             color: var(--text-gray);
-            font-size: 0.92rem;
+            font-size: 0.9rem;
         }
 
         /* Enterprise Inquiry Form Box */
@@ -180,43 +219,43 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.06);
             border: 1px solid var(--border-color);
             max-width: 900px;
-            margin: 0 auto 5rem auto;
+            margin: 0 auto 4rem auto;
             overflow: hidden;
         }
 
         .inquiry-header {
             background: var(--tcs-navy);
             color: white;
-            padding: 2.5rem;
+            padding: 2rem;
             text-align: center;
         }
 
         .inquiry-header h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .inquiry-header p {
             color: #94a3b8;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .inquiry-body {
-            padding: 3rem;
+            padding: 2rem;
         }
 
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .form-group.full {
@@ -224,10 +263,10 @@
         }
 
         .form-group label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             color: var(--tcs-navy);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -235,10 +274,10 @@
         .form-group input, 
         .form-group select, 
         .form-group textarea {
-            padding: 0.9rem 1rem;
+            padding: 0.85rem 1rem;
             border: 1px solid var(--border-color);
             border-radius: 4px;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             background: #fafafa;
             color: var(--text-dark);
             transition: border-color 0.2s;
@@ -257,8 +296,8 @@
             color: white;
             border: none;
             width: 100%;
-            padding: 1rem;
-            font-size: 1rem;
+            padding: 0.95rem;
+            font-size: 0.95rem;
             font-weight: 700;
             border-radius: 4px;
             cursor: pointer;
@@ -277,49 +316,49 @@
             border: 1px solid #bbf7d0;
             border-left: 6px solid var(--tcs-success);
             border-radius: 8px;
-            padding: 3rem;
+            padding: 2.5rem 2rem;
             max-width: 900px;
             margin: 0 auto;
             text-align: center;
         }
 
         .hiring-box h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--tcs-navy);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem;
         }
 
         .hiring-box p {
             color: #334155;
             max-width: 650px;
-            margin: 0 auto 1.5rem auto;
-            font-size: 0.95rem;
+            margin: 0 auto 1.2rem auto;
+            font-size: 0.92rem;
         }
 
         .btn-apply {
             background: var(--tcs-success);
             color: white;
-            padding: 0.85rem 2.5rem;
+            padding: 0.8rem 2.2rem;
             border-radius: 4px;
             text-decoration: none;
             font-weight: 700;
             display: inline-block;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         /* Footer */
         footer {
             background: #050d18;
             color: #94a3b8;
-            padding: 4rem 2.5rem;
+            padding: 3rem 2rem;
             text-align: center;
             border-top: 1px solid #1e293b;
         }
 
         footer p {
-            margin-bottom: 0.6rem;
-            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.88rem;
         }
 
         footer a {
@@ -327,11 +366,29 @@
             text-decoration: none;
         }
 
+        /* Media Queries for Mobile Responsiveness */
         @media(max-width: 768px) {
-            .form-grid { grid-template-columns: 1fr; }
-            .form-group.full { grid-column: span 1; }
-            .hero h1 { font-size: 2.2rem; }
-            .nav-links { display: none; }
+            .nav-links {
+                display: none;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full {
+                grid-column: span 1;
+            }
+            .inquiry-body {
+                padding: 1.5rem;
+            }
+            .hero {
+                padding: 4rem 1rem;
+            }
         }
     </style>
 </head>
@@ -343,12 +400,26 @@
             <div class="logo-area">
                 <div class="logo-text">Tekkali Digital Web <span>Solutions Hub</span></div>
             </div>
+            <!-- Desktop Menu -->
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portal">Project Portal</a></li>
                 <li><a href="#careers">Careers</a></li>
                 <li><a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="nav-btn">Join Team</a></li>
             </ul>
+            <!-- Mobile Menu Toggle Button (Hamburger) -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <!-- Mobile Dropdown Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#services" class="mob-link">Services</a>
+            <a href="#portal" class="mob-link">Project Portal</a>
+            <a href="#careers" class="mob-link">Careers</a>
+            <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" style="background: var(--tcs-blue); color: white; padding: 0.6rem; text-align: center; border-radius: 4px; font-weight: 600;">Join Team</a>
         </div>
     </header>
 
@@ -450,8 +521,28 @@
         <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #64748b;">&copy; 2026 Tekkali Digital Web Solutions Hub. All Rights Reserved. Tekkali, Srikakulam District, AP.</p>
     </footer>
 
-    <!-- Form Handler Script -->
+    <!-- JavaScript for Mobile Menu Toggle & WhatsApp Routing -->
     <script>
+        // Toggle Mobile Menu
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', function() {
+            if (mobileMenu.style.display === 'flex') {
+                mobileMenu.style.display = 'none';
+            } else {
+                mobileMenu.style.display = 'flex';
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.mob-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.style.display = 'none';
+            });
+        });
+
+        // Form Submission & WhatsApp Routing
         document.getElementById('projectInquiryForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -461,10 +552,9 @@
             const budget = document.getElementById('clientBudget').value;
             const details = document.getElementById('projectDetails').value;
 
-            // Enterprise confirmation alert popup as requested
+            // Success popup message
             alert("Your details are submitted successfully! Our custom team will contact you soon.");
 
-            // Formatted message directed strictly to 9493583804
             const msg = `*New Enterprise Project Inquiry*%0A----------------------------------%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Project Type:* ${type}%0A*Budget:* ${budget}%0A*Details:* ${details}`;
             
             const whatsappUrl = `https://wa.me/919493583804?text=${msg}`;
