@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tekkali Digital & Web Solutions Hub - Official Portal</title>
+    <title>Tekkali Digital Web Solutions Hub - Official Portal</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -31,7 +31,7 @@
             line-height: 1.6;
         }
 
-        /* Enterprise Header (TCS Style) */
+        /* Enterprise Header */
         header {
             background: var(--tcs-navy);
             color: white;
@@ -94,7 +94,7 @@
             font-weight: 600;
         }
 
-        /* Enterprise Hero Section (Like TCS Careers portal) */
+        /* Enterprise Hero Section */
         .hero {
             background: linear-gradient(rgba(11, 31, 54, 0.85), rgba(11, 31, 54, 0.92)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
@@ -341,7 +341,7 @@
     <header>
         <div class="nav-container">
             <div class="logo-area">
-                <div class="logo-text">Tekkali Digital & Web <span>Solutions Hub</span></div>
+                <div class="logo-text">Tekkali Digital Web <span>Solutions Hub</span></div>
             </div>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
@@ -352,7 +352,7 @@
         </div>
     </header>
 
-    <!-- Hero Section (TCS Enterprise Banner Style) -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Engineering Digital Transformation for Enterprises</h1>
@@ -384,7 +384,7 @@
             </div>
         </div>
 
-        <!-- Project Requirement Portal (With Direct 9493583804 WhatsApp Integration & Alert Popup) -->
+        <!-- Project Requirement Portal -->
         <div class="inquiry-wrapper" id="portal">
             <div class="inquiry-header">
                 <h2>Project Requirement Portal</h2>
@@ -395,7 +395,7 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="clientName">Your Name / Business Name *</label>
-                            <input type="text" id="clientName" required placeholder="e.g., MS Digital Studio">
+                            <input type="text" id="clientName" required placeholder="e.g., Sri Venkateswara Granites / Tekkali Super Bazaar">
                         </div>
                         <div class="form-group">
                             <label for="clientPhone">WhatsApp / Mobile Number *</label>
@@ -447,10 +447,10 @@
     <footer>
         <p><strong>Corporate Support:</strong> <a href="mailto:tekkalidigitalwebsolutionhub@gmail.com">tekkalidigitalwebsolutionhub@gmail.com</a></p>
         <p><strong>Direct Helpline:</strong> <a href="https://wa.me/919493583804" target="_blank">+91 9493583804</a></p>
-        <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #64748b;">&copy; 2026 Tekkali Digital & Web Solutions Hub. All Rights Reserved. Tekkali, Srikakulam District, AP.</p>
+        <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #64748b;">&copy; 2026 Tekkali Digital Web Solutions Hub. All Rights Reserved. Tekkali, Srikakulam District, AP.</p>
     </footer>
 
-    <!-- Form Handler Script with Popup & Direct WhatsApp Number Integration -->
+    <!-- Form Handler Script -->
     <script>
         document.getElementById('projectInquiryForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -461,19 +461,16 @@
             const budget = document.getElementById('clientBudget').value;
             const details = document.getElementById('projectDetails').value;
 
-            // Display requested professional confirmation popup
+            // Enterprise confirmation alert popup as requested
             alert("Your details are submitted successfully! Our custom team will contact you soon.");
 
-            // Construct message for target WhatsApp number 9493583804
+            // Formatted message directed strictly to 9493583804
             const msg = `*New Enterprise Project Inquiry*%0A----------------------------------%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Project Type:* ${type}%0A*Budget:* ${budget}%0A*Details:* ${details}`;
             
-            // Target official business WhatsApp number configured
             const whatsappUrl = `https://wa.me/919493583804?text=${msg}`;
             
-            // Redirect to WhatsApp instantly after alert
             window.open(whatsappUrl, '_blank');
             
-            // Reset form fields
             document.getElementById('projectInquiryForm').reset();
         });
     </script>
