@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tekkali Digital & Web Solutions Hub - Official Portal</title>
-    <meta name="description" content="Tekkali Digital & Web Solutions Hub offers professional web development, software programming, digital marketing, and 1000+ flexible employment opportunities in Tekkali, AP.">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --tcs-navy: #0b1f36;
+            --tcs-blue: #1d4ed8;
+            --tcs-accent: #2563eb;
+            --tcs-success: #16a34a;
+            --bg-body: #f4f6f9;
+            --text-dark: #0f172a;
+            --text-gray: #64748b;
+            --border-color: #cbd5e1;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,316 +24,314 @@
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
+
         body {
-            background-color: #f8fafc;
-            color: #1e293b;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
             line-height: 1.6;
         }
-        /* Header / Navbar */
+
+        /* Enterprise Header (TCS Style) */
         header {
-            background: #ffffff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background: var(--tcs-navy);
+            color: white;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
+
         .nav-container {
-            max-width: 1150px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1rem 2.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #0f172a;
-        }
-        .logo span {
-            color: #2563eb;
-        }
-        .nav-links {
+
+        .logo-area {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: #475569;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover {
-            color: #2563eb;
-        }
-        .cta-btn {
-            background-color: #2563eb;
-            color: white;
-            padding: 0.6rem 1.25rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background 0.2s;
-        }
-        .cta-btn:hover {
-            background-color: #1d4ed8;
+            gap: 12px;
         }
 
-        /* Hero Section */
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+        }
+
+        .logo-text span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-btn {
+            background: var(--tcs-blue);
+            color: white !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* Enterprise Hero Section (Like TCS Careers portal) */
         .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            background: linear-gradient(rgba(11, 31, 54, 0.85), rgba(11, 31, 54, 0.92)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
             color: white;
-            padding: 5rem 2rem;
-            text-align: center;
+            padding: 7rem 2rem;
+            text-align: left;
+            border-bottom: 4px solid var(--tcs-blue);
         }
+
+        .hero-content {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
         .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3rem;
+            font-weight: 800;
             margin-bottom: 1rem;
+            line-height: 1.2;
+            max-width: 800px;
         }
+
         .hero p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: #94a3b8;
             max-width: 650px;
-            margin: 0 auto 2rem auto;
+            margin-bottom: 2rem;
         }
 
         /* Main Container */
         .container {
-            max-width: 1150px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 5rem 2.5rem;
         }
 
-        /* Services Section */
         .section-title {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--tcs-navy);
             margin-bottom: 3rem;
-            color: #0f172a;
+            text-align: center;
+            letter-spacing: -0.5px;
         }
+
+        /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
             gap: 2rem;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
         }
+
         .service-card {
             background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
+            border-top: 4px solid var(--tcs-blue);
+            padding: 2.5rem 2rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
         }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
         .service-card h3 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
+            color: var(--tcs-navy);
             margin-bottom: 0.75rem;
-            color: #0f172a;
         }
+
         .service-card p {
-            color: #64748b;
-            font-size: 0.95rem;
+            color: var(--text-gray);
+            font-size: 0.92rem;
         }
 
-        /* Why Choose Us Section */
-        .features-section {
-            background: #ffffff;
-            padding: 3rem 2rem;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
-            margin-bottom: 4rem;
+        /* Enterprise Inquiry Form Box */
+        .inquiry-wrapper {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border: 1px solid var(--border-color);
+            max-width: 900px;
+            margin: 0 auto 5rem auto;
+            overflow: hidden;
         }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+
+        .inquiry-header {
+            background: var(--tcs-navy);
+            color: white;
+            padding: 2.5rem;
+            text-align: center;
         }
-        .feature-item h4 {
-            color: #0f172a;
-            font-size: 1.15rem;
+
+        .inquiry-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
         }
-        .feature-item p {
-            color: #64748b;
+
+        .inquiry-header p {
+            color: #94a3b8;
             font-size: 0.95rem;
         }
 
-        /* Hiring Banner Section */
-        .hiring-banner {
-            background: #ffffff;
-            border: 2px solid #2563eb;
-            border-radius: 16px;
-            padding: 3rem 2rem;
-            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.1);
-            margin-bottom: 4rem;
+        .inquiry-body {
+            padding: 3rem;
         }
-        .hiring-header {
-            text-align: center;
-            margin-bottom: 2rem;
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
-        .hiring-badge {
-            background: #eff6ff;
-            color: #2563eb;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        .form-group label {
             font-size: 0.85rem;
-            margin-bottom: 1rem;
-            display: inline-block;
+            font-weight: 700;
+            color: var(--tcs-navy);
+            margin-bottom: 0.5rem;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .hiring-header h2 {
-            font-size: 2rem;
-            color: #0f172a;
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 0.95rem;
+            background: #fafafa;
+            color: var(--text-dark);
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--tcs-blue);
+            background: #fff;
+        }
+
+        .btn-submit {
+            background: var(--tcs-success);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-submit:hover {
+            background: #15803d;
+        }
+
+        /* Hiring Section */
+        .hiring-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid var(--tcs-success);
+            border-radius: 8px;
+            padding: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hiring-box h2 {
+            font-size: 1.8rem;
+            color: var(--tcs-navy);
             margin-bottom: 0.75rem;
         }
-        .hiring-header p {
-            color: #475569;
-            max-width: 700px;
-            margin: 0 auto;
+
+        .hiring-box p {
+            color: #334155;
+            max-width: 650px;
+            margin: 0 auto 1.5rem auto;
+            font-size: 0.95rem;
         }
 
-        .perks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-        .perk-card {
-            background: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-            text-align: center;
-        }
-        .perk-card h4 {
-            color: #1e3a8a;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-        .perk-card p {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-
-        .hiring-footer {
-            text-align: center;
-        }
-        .deadline {
-            color: #dc2626;
-            font-weight: 600;
-            margin-bottom: 1.25rem;
-        }
-        .apply-btn {
-            background-color: #16a34a;
+        .btn-apply {
+            background: var(--tcs-success);
             color: white;
             padding: 0.85rem 2.5rem;
-            border-radius: 8px;
+            border-radius: 4px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
+            font-weight: 700;
             display: inline-block;
-            transition: background 0.2s;
-        }
-        .apply-btn:hover {
-            background-color: #15803d;
-        }
-
-        /* Help / FAQ Section */
-        .help-section {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 3rem 2rem;
-            margin-bottom: 4rem;
-        }
-        .help-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .help-card {
-            background: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-        }
-        .help-card h4 {
-            color: #0f172a;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        .help-card p {
-            color: #64748b;
+            text-transform: uppercase;
             font-size: 0.9rem;
-        }
-
-        /* Terms & Conditions Section Box */
-        .terms-box {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-        }
-        .terms-box h3 {
-            color: #0f172a;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        .terms-box p {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-        .terms-box ul {
-            padding-left: 1.5rem;
-            color: #64748b;
-            font-size: 0.95rem;
-        }
-        .terms-box li {
-            margin-bottom: 0.5rem;
         }
 
         /* Footer */
         footer {
-            background: #0f172a;
+            background: #050d18;
             color: #94a3b8;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-        }
-        .footer-content {
-            max-width: 1150px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 4rem 2.5rem;
             text-align: center;
-            gap: 1rem;
+            border-top: 1px solid #1e293b;
         }
-        .footer-content p {
-            font-size: 0.95rem;
+
+        footer p {
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
         }
-        .footer-legal-links {
-            display: flex;
-            gap: 1.5rem;
-            margin: 0.5rem 0;
-        }
-        .footer-legal-links a {
+
+        footer a {
             color: #60a5fa;
             text-decoration: none;
-            font-size: 0.9rem;
         }
-        .footer-legal-links a:hover {
-            text-decoration: underline;
-        }
-        .footer-links {
-            color: #cbd5e1;
-            font-size: 0.9rem;
+
+        @media(max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full { grid-column: span 1; }
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
@@ -333,150 +340,143 @@
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <div class="logo">Tekkali Digital & Web <span>Solutions Hub</span></div>
-            <div class="nav-links">
-                <a href="#services">Services</a>
-                <a href="#hiring">Careers</a>
-                <a href="#help">Help</a>
-                <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="cta-btn">Join Our Team</a>
+            <div class="logo-area">
+                <div class="logo-text">Tekkali Digital & Web <span>Solutions Hub</span></div>
             </div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portal">Project Portal</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="nav-btn">Join Team</a></li>
+            </ul>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (TCS Enterprise Banner Style) -->
     <section class="hero">
-        <h1>Empowering Businesses & Creating 1000+ Employment Opportunities</h1>
-        <p>Your trusted partner for professional Web Development, Custom Software Programming, Digital Marketing, and flexible career opportunities based in Tekkali, AP.</p>
-        <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="cta-btn" style="padding: 0.8rem 2rem; font-size: 1rem;">Explore Opportunities</a>
+        <div class="hero-content">
+            <h1>Engineering Digital Transformation for Enterprises</h1>
+            <p>Enterprise-grade Web Development, Custom Software Solutions, and Scalable Infrastructure based in Tekkali, AP.</p>
+            <a href="#portal" class="nav-btn" style="padding: 0.85rem 2rem; display: inline-block; font-size: 1rem;">Start Project Consultation</a>
+        </div>
     </section>
 
-    <!-- Main Content -->
+    <!-- Main Container -->
     <div class="container">
         
-        <!-- Services Section -->
-        <h2 class="section-title" id="services">What We Do</h2>
+        <h2 id="services" class="section-title">Core Capabilities</h2>
         <div class="services-grid">
             <div class="service-card">
-                <h3>Web Design & Development</h3>
-                <p>Creating responsive, high-performing websites and digital portals tailored to scale local and global businesses.</p>
+                <h3>Enterprise Web Systems</h3>
+                <p>High-performance, secure digital storefronts and dynamic multi-page corporate portals.</p>
             </div>
             <div class="service-card">
-                <h3>Software Programming</h3>
-                <p>Developing custom software applications using modern tech stacks like Python, Java, and robust web tools.</p>
+                <h3>Custom Software Solutions</h3>
+                <p>Tailored utility scripts and workflow automations designed to solve specific operational needs.</p>
             </div>
             <div class="service-card">
-                <h3>Digital Marketing & Branding</h3>
-                <p>Strategic local and digital marketing solutions to boost your brand visibility, reach clients, and scale business growth.</p>
+                <h3>Digital Branding & Growth</h3>
+                <p>Strategic local visibility, SEO positioning, and automated lead generation funnel building.</p>
             </div>
             <div class="service-card">
-                <h3>Digital Solutions & Hosting</h3>
-                <p>End-to-end digital infrastructure setup, consultation, and web solutions designed for absolute efficiency.</p>
+                <h3>Hosting & Maintenance</h3>
+                <p>Robust cloud infrastructure deployment, yearly domain configuration, and continuous maintenance.</p>
             </div>
         </div>
 
-        <!-- Why Choose Us Section -->
-        <div class="features-section">
-            <h2 class="section-title" style="margin-bottom: 2rem;">Why Choose Us</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <h4>🚀 Professional Excellence</h4>
-                    <p>Committed to delivering high-quality digital solutions with precise execution and industry-standard practices.</p>
-                </div>
-                <div class="feature-item">
-                    <h4>💡 Transparent & Flexible</h4>
-                    <p>Clear communication, flexible collaboration models, and result-oriented approaches for all our clients and partners.</p>
-                </div>
-                <div class="feature-item">
-                    <h4>🤝 Community Growth</h4>
-                    <p>Empowering local talent by building career pathways, part-time earning opportunities, and skill-based growth.</p>
-                </div>
+        <!-- Project Requirement Portal (With Direct 9493583804 WhatsApp Integration & Alert Popup) -->
+        <div class="inquiry-wrapper" id="portal">
+            <div class="inquiry-header">
+                <h2>Project Requirement Portal</h2>
+                <p>Submit your project specifics to establish direct communication with our enterprise engineering team.</p>
+            </div>
+            <div class="inquiry-body">
+                <form id="projectInquiryForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="clientName">Your Name / Business Name *</label>
+                            <input type="text" id="clientName" required placeholder="e.g., MS Digital Studio">
+                        </div>
+                        <div class="form-group">
+                            <label for="clientPhone">WhatsApp / Mobile Number *</label>
+                            <input type="tel" id="clientPhone" required placeholder="e.g., +91 9876543210">
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="projectType">Project Classification</label>
+                            <select id="projectType">
+                                <option value="Business Website / Landing Page">Business Website / Landing Page</option>
+                                <option value="Studio Portfolio & Booking">Studio Portfolio & Booking</option>
+                                <option value="E-Commerce Store">E-Commerce Store</option>
+                                <option value="Custom Software Solution">Custom Software Solution</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientBudget">Expected Budget Range</label>
+                            <select id="clientBudget">
+                                <option value="₹5,000 - ₹10,000">₹5,000 - ₹10,000</option>
+                                <option value="₹10,000 - ₹25,000">₹10,000 - ₹25,000</option>
+                                <option value="₹25,000+">₹25,000+</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="projectDetails">Scope & Detailed Requirements</label>
+                        <textarea id="projectDetails" rows="4" placeholder="Briefly specify functional expectations or requirements..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Submit Project Requirements</button>
+                </form>
             </div>
         </div>
 
-        <!-- Hiring & Career Section -->
-        <div class="hiring-banner" id="hiring">
-            <div class="hiring-header">
-                <span class="hiring-badge">We Are Hiring • 1000+ Openings</span>
-                <h2>Build Your Career With Ultimate Flexibility</h2>
-                <p>Looking for part-time work or career growth with absolute freedom? Join our mission-driven initiative with zero work pressure and high-earning potential.</p>
-            </div>
-
-            <!-- Perks Grid -->
-            <div class="perks-grid">
-                <div class="perk-card">
-                    <h4>Part-Time / Full-Time</h4>
-                    <p>Work according to your convenient schedule with complete time freedom.</p>
-                </div>
-                <div class="perk-card">
-                    <h4>No Work Pressure</h4>
-                    <p>A peaceful, stress-free environment focused purely on smart execution and growth.</p>
-                </div>
-                <div class="perk-card">
-                    <h4>No Rigid Targets</h4>
-                    <p>Work flexibly without the burden of strict targets or micro-management.</p>
-                </div>
-                <div class="perk-card">
-                    <h4>Commission Based Earning</h4>
-                    <p>Lucrative commission structures where your earnings scale directly with your efforts.</p>
-                </div>
-            </div>
-
-            <div class="hiring-footer">
-                <div class="deadline">Submission Deadline: 9 October 2026</div>
-                <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="apply-btn">Apply Now via Google Form</a>
-            </div>
-        </div>
-
-        <!-- Help / FAQ Section -->
-        <div class="help-section" id="help">
-            <h2 class="section-title" style="margin-bottom: 1rem;">Help & Support (FAQ)</h2>
-            <p style="text-align: center; color: #64748b; max-width: 700px; margin: 0 auto;">Have questions regarding our services or career applications? Find quick answers below or reach out to our team.</p>
-            
-            <div class="help-grid">
-                <div class="help-card">
-                    <h4>How to apply for positions?</h4>
-                    <p>Click on the "Join Our Team" or "Apply Now" buttons to fill out our official Google Form before the deadline.</p>
-                </div>
-                <div class="help-card">
-                    <h4>Are there any fixed work timings?</h4>
-                    <p>No, our roles offer complete schedule flexibility with zero work pressure or rigid micro-management.</p>
-                </div>
-                <div class="help-card">
-                    <h4>How to contact support directly?</h4>
-                    <p>You can reach us instantly via WhatsApp or email during our active support hours for any assistance.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Terms & Conditions Section -->
-        <div class="terms-box" id="terms">
-            <h3>Terms & Conditions / Guidelines</h3>
-            <p>Welcome to <strong>Tekkali Digital & Web Solutions Hub</strong>. By accessing our services, submitting applications, or collaborating with us, you agree to abide by the following professional terms:</p>
-            <ul>
-                <li><strong>Work Flexibility & Earning:</strong> All part-time and commission-based roles operate with complete schedule freedom and zero forced work pressure. Earnings depend on task execution and commission structures.</li>
-                <li><strong>Professional Conduct:</strong> Candidates and clients are expected to maintain professional standards, ethical behavior, and clear communication during associations.</li>
-                <li><strong>Application Submission:</strong> All recruitment submissions must be completed through our official channels (Google Form) before the specified deadlines.</li>
-                <li><strong>Privacy & Data Protection:</strong> User details and submitted information are handled securely and utilized strictly for business operations, communication, and recruitment evaluations.</li>
-            </ul>
+        <!-- Hiring & Careers Section -->
+        <div class="hiring-box" id="careers">
+            <h2>Build Your Career With Ultimate Flexibility</h2>
+            <p>Looking for career growth with complete schedule freedom? Join our initiative with zero work pressure and high-earning potential.</p>
+            <div style="color: #dc2626; font-weight: 700; font-size: 0.85rem; margin-bottom: 1.25rem;">Submission Deadline: 9 October 2026</div>
+            <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="btn-apply">Apply Now via Google Form</a>
         </div>
 
     </div>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <p><strong>Contact Support:</strong> <a href="mailto:tekkalidigitalwebsolutionhub@gmail.com" style="color: #60a5fa; text-decoration: none;">tekkalidigitalwebsolutionhub@gmail.com</a></p>
-            <!-- WhatsApp Support (Replace YOUR_WHATSAPP_NUMBER with your actual number) -->
-            <p><strong>WhatsApp Support:</strong> <a href="https://wa.me/91YOUR_WHATSAPP_NUMBER" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 600;">+91 YOUR_WHATSAPP_NUMBER</a></p>
-            <div class="footer-legal-links">
-                <a href="#terms">Terms & Conditions</a>
-                <a href="#terms">Privacy Policy</a>
-                <a href="#help">Help Desk</a>
-            </div>
-            <p class="footer-links">Support Hours: Monday – Saturday (9:00 AM to 6:00 PM)</p>
-            <p>&copy; 2026 Tekkali Digital & Web Solutions Hub. All Rights Reserved. | Tekkali, Srikakulam District, Andhra Pradesh.</p>
-        </div>
+        <p><strong>Corporate Support:</strong> <a href="mailto:tekkalidigitalwebsolutionhub@gmail.com">tekkalidigitalwebsolutionhub@gmail.com</a></p>
+        <p><strong>Direct Helpline:</strong> <a href="https://wa.me/919493583804" target="_blank">+91 9493583804</a></p>
+        <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #64748b;">&copy; 2026 Tekkali Digital & Web Solutions Hub. All Rights Reserved. Tekkali, Srikakulam District, AP.</p>
     </footer>
+
+    <!-- Form Handler Script with Popup & Direct WhatsApp Number Integration -->
+    <script>
+        document.getElementById('projectInquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const type = document.getElementById('projectType').value;
+            const budget = document.getElementById('clientBudget').value;
+            const details = document.getElementById('projectDetails').value;
+
+            // Display requested professional confirmation popup
+            alert("Your details are submitted successfully! Our custom team will contact you soon.");
+
+            // Construct message for target WhatsApp number 9493583804
+            const msg = `*New Enterprise Project Inquiry*%0A----------------------------------%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Project Type:* ${type}%0A*Budget:* ${budget}%0A*Details:* ${details}`;
+            
+            // Target official business WhatsApp number configured
+            const whatsappUrl = `https://wa.me/919493583804?text=${msg}`;
+            
+            // Redirect to WhatsApp instantly after alert
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form fields
+            document.getElementById('projectInquiryForm').reset();
+        });
+    </script>
 
 </body>
 </html>
