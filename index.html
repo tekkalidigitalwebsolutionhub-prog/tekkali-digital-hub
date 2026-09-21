@@ -9,7 +9,6 @@
         :root {
             --tcs-navy: #0b1f36;
             --tcs-blue: #1d4ed8;
-            --tcs-accent: #2563eb;
             --tcs-success: #16a34a;
             --bg-body: #f4f6f9;
             --text-dark: #0f172a;
@@ -31,7 +30,24 @@
             line-height: 1.6;
         }
 
-        /* Enterprise Header */
+        .top-contact-bar {
+            background: #050d18;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .top-contact-bar a {
+            color: #60a5fa;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+        }
+
         header {
             background: var(--tcs-navy);
             color: white;
@@ -50,11 +66,6 @@
             align-items: center;
         }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-        }
-
         .logo-text {
             font-size: 1.15rem;
             font-weight: 800;
@@ -66,7 +77,6 @@
             color: #60a5fa;
         }
 
-        /* Desktop Nav Links */
         .nav-links {
             display: flex;
             list-style: none;
@@ -94,7 +104,6 @@
             font-weight: 600;
         }
 
-        /* Mobile Hamburger Toggle Button */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -109,10 +118,8 @@
             height: 3px;
             background: white;
             border-radius: 3px;
-            transition: 0.3s;
         }
 
-        /* Mobile Dropdown Menu */
         .mobile-menu {
             display: none;
             background: var(--tcs-navy);
@@ -129,11 +136,6 @@
             font-weight: 500;
         }
 
-        .mobile-menu a:hover {
-            color: white;
-        }
-
-        /* Enterprise Hero Section */
         .hero {
             background: linear-gradient(rgba(11, 31, 54, 0.85), rgba(11, 31, 54, 0.92)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
@@ -164,7 +166,6 @@
             margin-bottom: 2rem;
         }
 
-        /* Main Container */
         .container {
             max-width: 1280px;
             margin: 0 auto;
@@ -180,31 +181,35 @@
             letter-spacing: -0.5px;
         }
 
-        /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
             margin-bottom: 4rem;
         }
 
         .service-card {
             background: white;
-            border-top: 4px solid var(--tcs-blue);
-            padding: 2rem 1.5rem;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            transition: transform 0.2s;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
+        .service-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .service-body {
+            padding: 1.5rem;
         }
 
         .service-card h3 {
             font-size: 1.15rem;
             color: var(--tcs-navy);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
 
         .service-card p {
@@ -212,7 +217,88 @@
             font-size: 0.9rem;
         }
 
-        /* Enterprise Inquiry Form Box */
+        .insights-section {
+            margin-bottom: 4rem;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .insight-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .insight-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .insight-body {
+            padding: 1.5rem;
+        }
+
+        .insight-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--tcs-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .insight-card h3 {
+            font-size: 1.1rem;
+            color: var(--tcs-navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .insight-card p {
+            color: var(--text-gray);
+            font-size: 0.88rem;
+        }
+
+        .contact-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-info-card h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .contact-info-card p, .contact-info-card a {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--tcs-navy);
+            text-decoration: none;
+        }
+
+        .contact-info-card a:hover {
+            color: var(--tcs-blue);
+        }
+
         .inquiry-wrapper {
             background: white;
             border-radius: 8px;
@@ -280,7 +366,6 @@
             font-size: 0.92rem;
             background: #fafafa;
             color: var(--text-dark);
-            transition: border-color 0.2s;
         }
 
         .form-group input:focus, 
@@ -301,16 +386,13 @@
             font-weight: 700;
             border-radius: 4px;
             cursor: pointer;
-            transition: background 0.2s;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .btn-submit:hover {
             background: #15803d;
         }
 
-        /* Hiring Section */
         .hiring-box {
             background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
             border: 1px solid #bbf7d0;
@@ -347,115 +429,198 @@
             font-size: 0.88rem;
         }
 
-        /* Footer */
         footer {
             background: #050d18;
             color: #94a3b8;
-            padding: 3rem 2rem;
-            text-align: center;
+            padding: 4rem 2rem 2rem 2rem;
+            margin-top: 4rem;
             border-top: 1px solid #1e293b;
         }
 
-        footer p {
-            margin-bottom: 0.5rem;
-            font-size: 0.88rem;
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
-        footer a {
-            color: #60a5fa;
+        .footer-col h3 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            color: #94a3b8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
             text-decoration: none;
+            font-size: 0.9rem;
         }
 
-        /* Media Queries for Mobile Responsiveness */
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #1e293b;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
         @media(max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .menu-toggle {
-                display: flex;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            .form-group.full {
-                grid-column: span 1;
-            }
-            .inquiry-body {
-                padding: 1.5rem;
-            }
-            .hero {
-                padding: 4rem 1rem;
-            }
+            .top-contact-bar { flex-direction: column; gap: 0.3rem; text-align: center; }
+            .top-contact-bar a { margin-left: 0; }
+            .nav-links { display: none; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 2rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full { grid-column: span 1; }
+            .footer-container { grid-template-columns: 1fr; gap: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <div class="top-contact-bar">
+        <div>Tekkali, Andhra Pradesh, India</div>
+        <div>
+            <span>Email: <a href="mailto:tekkalidigitalwebsolutionhub@gmail.com">tekkalidigitalwebsolutionhub@gmail.com</a></span>
+            <span>Phone: <a href="https://wa.me/919493583804" target="_blank">+91 9493583804</a></span>
+        </div>
+    </div>
+
     <header>
         <div class="nav-container">
             <div class="logo-area">
                 <div class="logo-text">Tekkali Digital Web <span>Solutions Hub</span></div>
             </div>
-            <!-- Desktop Menu -->
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
+                <li><a href="#insights">Insights</a></li>
+                <li><a href="#contact">Contact</a></li>
                 <li><a href="#portal">Project Portal</a></li>
                 <li><a href="#careers">Careers</a></li>
                 <li><a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="nav-btn">Join Team</a></li>
             </ul>
-            <!-- Mobile Menu Toggle Button (Hamburger) -->
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
         </div>
-        <!-- Mobile Dropdown Menu -->
         <div class="mobile-menu" id="mobileMenu">
             <a href="#services" class="mob-link">Services</a>
+            <a href="#insights" class="mob-link">Insights</a>
+            <a href="#contact" class="mob-link">Contact</a>
             <a href="#portal" class="mob-link">Project Portal</a>
             <a href="#careers" class="mob-link">Careers</a>
             <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" style="background: var(--tcs-blue); color: white; padding: 0.6rem; text-align: center; border-radius: 4px; font-weight: 600;">Join Team</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Engineering Digital Transformation for Enterprises</h1>
-            <p>Enterprise-grade Web Development, Custom Software Solutions, and Scalable Infrastructure based in Tekkali, AP.</p>
+            <h1>Let's build what's next.</h1>
+            <p>Tell us where your business is headed — we will reply within one working day with an honest read on scope, timeline, and cost.</p>
             <a href="#portal" class="nav-btn" style="padding: 0.85rem 2rem; display: inline-block; font-size: 1rem;">Start Project Consultation</a>
         </div>
     </section>
 
-    <!-- Main Container -->
     <div class="container">
         
-        <h2 id="services" class="section-title">Core Capabilities</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Enterprise Web Systems</h3>
-                <p>High-performance, secure digital storefronts and dynamic multi-page corporate portals.</p>
+        <div class="contact-cards-grid" id="contact">
+            <div class="contact-info-card">
+                <h3>Email</h3>
+                <p><a href="mailto:tekkalidigitalwebsolutionhub@gmail.com">tekkalidigitalwebsolutionhub@gmail.com</a></p>
             </div>
-            <div class="service-card">
-                <h3>Custom Software Solutions</h3>
-                <p>Tailored utility scripts and workflow automations designed to solve specific operational needs.</p>
+            <div class="contact-info-card">
+                <h3>Phone / WhatsApp</h3>
+                <p><a href="https://wa.me/919493583804" target="_blank">+91 9493583804</a></p>
             </div>
-            <div class="service-card">
-                <h3>Digital Branding & Growth</h3>
-                <p>Strategic local visibility, SEO positioning, and automated lead generation funnel building.</p>
-            </div>
-            <div class="service-card">
-                <h3>Hosting & Maintenance</h3>
-                <p>Robust cloud infrastructure deployment, yearly domain configuration, and continuous maintenance.</p>
+            <div class="contact-info-card">
+                <h3>Studio</h3>
+                <p>Tekkali, Andhra Pradesh</p>
             </div>
         </div>
 
-        <!-- Project Requirement Portal -->
+        <h2 id="services" class="section-title">Core Capabilities</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Web Development" class="service-img">
+                <div class="service-body">
+                    <h3>Web Development</h3>
+                    <p>Custom websites and web applications engineered for speed, security, and scale.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="UI/UX Design" class="service-img">
+                <div class="service-body">
+                    <h3>UI/UX Design</h3>
+                    <p>Research-led interfaces that feel inevitable. We prototype, test, and refine until every screen earns its place.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="E-Commerce Solutions" class="service-img">
+                <div class="service-body">
+                    <h3>E-Commerce Solutions</h3>
+                    <p>Storefronts built to convert: fast catalogues, frictionless checkout, payments, and inventory wired into tools.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Cloud & DevOps" class="service-img">
+                <div class="service-body">
+                    <h3>Cloud & DevOps</h3>
+                    <p>Infrastructure that stays out of the way — automated deployments, observability, and cost discipline from day one.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="insights-section" id="insights">
+            <h2 class="section-title">Notes from the build floor.</h2>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Engineering" class="insight-img">
+                    <div class="insight-body">
+                        <div class="insight-tag">Engineering • September 12, 2026</div>
+                        <h3>Why Core Web Vitals Decide Your Search Ranking in 2026</h3>
+                        <p>Google now weights real-user experience metrics heavier than ever. Here is how we get client sites into the green.</p>
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=600&q=80" alt="Design" class="insight-img">
+                    <div class="insight-body">
+                        <div class="insight-tag">Design • August 28, 2026</div>
+                        <h3>Designing Trust: The Interface Patterns That Convert</h3>
+                        <p>Visitors decide whether to trust your site in under a second. Here are the patterns that tip the decision in your favour.</p>
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Cloud" class="insight-img">
+                    <div class="insight-body">
+                        <div class="insight-tag">Cloud • August 7, 2026</div>
+                        <h3>From Monolith to Edge: A Pragmatic Migration Playbook</h3>
+                        <p>You do not need a rewrite to escape the monolith. A staged migration gets you edge performance without betting the business.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Requirement Portal with Direct WhatsApp Integration -->
         <div class="inquiry-wrapper" id="portal">
             <div class="inquiry-header">
                 <h2>Project Requirement Portal</h2>
@@ -499,12 +664,11 @@
                         <textarea id="projectDetails" rows="4" placeholder="Briefly specify functional expectations or requirements..."></textarea>
                     </div>
 
-                    <button type="submit" class="btn-submit">Submit Project Requirements</button>
+                    <button type="submit" class="btn-submit">Submit Project Requirements to WhatsApp</button>
                 </form>
             </div>
         </div>
 
-        <!-- Hiring & Careers Section -->
         <div class="hiring-box" id="careers">
             <h2>Build Your Career With Ultimate Flexibility</h2>
             <p>Looking for career growth with complete schedule freedom? Join our initiative with zero work pressure and high-earning potential.</p>
@@ -514,16 +678,36 @@
 
     </div>
 
-    <!-- Footer -->
     <footer>
-        <p><strong>Corporate Support:</strong> <a href="mailto:tekkalidigitalwebsolutionhub@gmail.com">tekkalidigitalwebsolutionhub@gmail.com</a></p>
-        <p><strong>Direct Helpline:</strong> <a href="https://wa.me/919493583804" target="_blank">+91 9493583804</a></p>
-        <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #64748b;">&copy; 2026 Tekkali Digital Web Solutions Hub. All Rights Reserved. Tekkali, Srikakulam District, AP.</p>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Tekkali Digital Web Solutions Hub</h3>
+                <p>A full-service web studio in Tekkali, Andhra Pradesh — building fast, secure, search-ready digital products for ambitious businesses everywhere.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Explore</h3>
+                <ul class="footer-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#insights">Insights</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#portal">Project Portal</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:tekkalidigitalwebsolutionhub@gmail.com">tekkalidigitalwebsolutionhub@gmail.com</a></li>
+                    <li><a href="https://wa.me/919493583804" target="_blank">+91 9493583804</a></li>
+                    <li>Main Road, Tekkali, Srikakulam dist., AP 532201</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Tekkali Digital Web Solutions Hub. All Rights Reserved. Tekkali, Andhra Pradesh, India.
+        </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu Toggle & WhatsApp Routing -->
     <script>
-        // Toggle Mobile Menu
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
 
@@ -535,14 +719,13 @@
             }
         });
 
-        // Close mobile menu when a link is clicked
         document.querySelectorAll('.mob-link').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.style.display = 'none';
             });
         });
 
-        // Form Submission & WhatsApp Routing
+        // Direct WhatsApp message routing on form submission
         document.getElementById('projectInquiryForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -552,18 +735,16 @@
             const budget = document.getElementById('clientBudget').value;
             const details = document.getElementById('projectDetails').value;
 
-            // Success popup message
-            alert("Your details are submitted successfully! Our custom team will contact you soon.");
-
-            const msg = `*New Enterprise Project Inquiry*%0A----------------------------------%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Project Type:* ${type}%0A*Budget:* ${budget}%0A*Details:* ${details}`;
+            // Form data formatting for WhatsApp
+            const msg = `*New Enterprise Project Inquiry*%0A----------------------------------%0A*Name/Business:* ${name}%0A*Client Phone:* ${phone}%0A*Project Type:* ${type}%0A*Budget Range:* ${budget}%0A*Details:* ${details}`;
             
             const whatsappUrl = `https://wa.me/919493583804?text=${msg}`;
             
+            alert("Redirecting to WhatsApp with your project details...");
             window.open(whatsappUrl, '_blank');
             
             document.getElementById('projectInquiryForm').reset();
         });
     </script>
-
 </body>
 </html>
