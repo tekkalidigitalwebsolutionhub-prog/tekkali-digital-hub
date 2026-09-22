@@ -115,7 +115,6 @@
         }
         .btn:hover { opacity: 0.93; }
 
-        /* Professional Terms Scrollbox */
         .agreement-scroll-box {
             background: #f8fafc;
             border: 1px solid #cbd5e1;
@@ -334,7 +333,6 @@
                 <p>Tekkali Digital & Web Solutions Hub • Contract & Statement of Work</p>
             </div>
 
-            <!-- Professional Legal Agreement Clauses -->
             <div class="agreement-scroll-box">
                 <h5>Standard Legal Terms & Conditions:</h5>
                 <ol>
@@ -394,7 +392,6 @@
                     </div>
                 </div>
 
-                <!-- Financial Breakdown -->
                 <div class="payment-summary-card">
                     <h4 style="color: #166534; font-size: 0.85rem; margin-bottom: 10px;">
                         <i class="fa-solid fa-file-invoice-dollar"></i> Commercial Terms & Milestone Remittance
@@ -415,7 +412,6 @@
                     </div>
                 </div>
 
-                <!-- Digital Signature Block -->
                 <div style="margin-bottom: 15px;">
                     <label style="font-size: 0.82rem; font-weight: 600; color: #475569; display: block; margin-bottom: 5px;">
                         Authorized Client E-Signature (Type Signatory Full Name)
@@ -456,16 +452,26 @@
     </div>
 
     <script>
-        // Initialize or load staff credentials
+        // SHA-256 Hash of 'tekkarikumar2026' for Admin Password Protection
+        const ADMIN_HASH = "8f06e40b39be821a811c75c2e1762e8a1a3618641951f28e21f1d115d78a873c";
+
+        // Initialize or load staff credentials (excluding Admin password from open view)
         let employeesDB = JSON.parse(localStorage.getItem('tekkali_employees')) || {
-            "ADMIN": "tekkarikumar2026",
             "ENG01": "tekkaliTech#1"
         };
         
-        // Initialize or load Master Service Agreements repository
         let agreementsList = JSON.parse(localStorage.getItem('tekkali_agreements')) || [];
         let currentLoggedInEmp = "";
         let showPasswords = false;
+
+        // Convert raw string password to SHA-256 Hash
+        async function hashPassword(password) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
 
         function switchScreen(screenId) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -473,30 +479,36 @@
             if(target) target.classList.add('active');
         }
 
-        function handleLogin(event) {
+        async function handleLogin(event) {
             event.preventDefault();
             const id = document.getElementById('loginId').value.trim().toUpperCase();
             const pass = document.getElementById('loginPass').value.trim();
 
-            if (employeesDB[id] && employeesDB[id] === pass) {
-                if (id === "ADMIN") {
-                    document.getElementById('adminTabBtn').style.display = 'block';
-                    document.getElementById('loginTabBtn').style.display = 'none';
-                    switchScreen('adminDashboard');
-                    renderStaffList();
-                    renderAgreementsTable();
-                } else {
-                    currentLoggedInEmp = id;
-                    document.getElementById('adminTabBtn').style.display = 'none';
-                    document.getElementById('loginTabBtn').style.display = 'block';
-                    
-                    document.getElementById('clientAgreementForm').reset();
-                    document.getElementById('displayEmpId').value = id;
-                    document.getElementById('displayProjectId').value = `TDW-MSA-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
-                    document.getElementById('projBalance').value = '₹0';
-                    
-                    switchScreen('agreementScreen');
-                }
+            const inputHash = await hashPassword(pass);
+
+            // Secure Admin Login Verification
+            if (id === "ADMIN" && inputHash === ADMIN_HASH) {
+                document.getElementById('adminTabBtn').style.display = 'block';
+                document.getElementById('loginTabBtn').style.display = 'none';
+                switchScreen('adminDashboard');
+                renderStaffList();
+                renderAgreementsTable();
+                
+                document.getElementById('loginId').value = '';
+                document.getElementById('loginPass').value = '';
+            } 
+            // Employee Login Verification
+            else if (employeesDB[id] && employeesDB[id] === pass) {
+                currentLoggedInEmp = id;
+                document.getElementById('adminTabBtn').style.display = 'none';
+                document.getElementById('loginTabBtn').style.display = 'block';
+                
+                document.getElementById('clientAgreementForm').reset();
+                document.getElementById('displayEmpId').value = id;
+                document.getElementById('displayProjectId').value = `TDW-MSA-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
+                document.getElementById('projBalance').value = '₹0';
+                
+                switchScreen('agreementScreen');
                 document.getElementById('loginId').value = '';
                 document.getElementById('loginPass').value = '';
             } else {
@@ -514,8 +526,8 @@
             const newId = document.getElementById('newEmpId').value.trim().toUpperCase();
             const newPass = document.getElementById('newEmpPass').value.trim();
 
-            if(employeesDB[newId]) {
-                alert("An employee with this ID already exists.");
+            if (newId === "ADMIN" || employeesDB[newId]) {
+                alert("Cannot use this Employee ID as it already exists or is reserved.");
                 return;
             }
 
@@ -530,13 +542,17 @@
 
         function renderStaffList() {
             const container = document.getElementById('staffListContainer');
-            container.innerHTML = '';
+            container.innerHTML = `
+                <div style="display:flex; justify-content:space-between; margin-bottom: 6px; border-bottom: 1px dashed #f1f5f9; padding-bottom: 4px;">
+                    <span><i class="fa-solid fa-shield-halved" style="color:#4338ca;"></i> <b>ADMIN</b></span>
+                    <span style="font-family:monospace; color:#475569;">[SECURED HASH]</span>
+                </div>
+            `;
             for (let emp in employeesDB) {
                 const passDisplay = showPasswords ? employeesDB[emp] : '••••••••';
-                const isSuperAdmin = emp === "ADMIN";
                 container.innerHTML += `
                     <div style="display:flex; justify-content:space-between; margin-bottom: 6px; border-bottom: 1px dashed #f1f5f9; padding-bottom: 4px;">
-                        <span><i class="fa-solid ${isSuperAdmin ? 'fa-shield-halved' : 'fa-user'}" style="color:${isSuperAdmin ? '#4338ca' : '#059669'};"></i> <b>${emp}</b></span>
+                        <span><i class="fa-solid fa-user" style="color:#059669;"></i> <b>${emp}</b></span>
                         <span style="font-family:monospace; color:#475569;">${passDisplay}</span>
                     </div>`;
             }
@@ -626,7 +642,6 @@
             switchScreen('loginScreen');
         }
 
-        // Generates an enterprise-formatted printable contract ready for "Save as PDF"
         function printAgreementDocument(index) {
             const data = agreementsList[index];
             const printWindow = window.open('', '_blank');
@@ -641,7 +656,7 @@
                     .header { border-bottom: 2px solid #1e3a8a; padding-bottom: 12px; display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; }
                     .header h2 { margin: 0; color: #1e3a8a; font-size: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
                     .header p { margin: 4px 0 0; color: #64748b; font-size: 11px; }
-                    .meta-table, .clause-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+                    .meta-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
                     .meta-table td { padding: 6px 8px; border: 1px solid #e2e8f0; font-size: 12px; }
                     .meta-table td.label { background: #f8fafc; font-weight: 600; width: 25%; color: #334155; }
                     .clause-title { font-weight: bold; color: #0f172a; margin-top: 14px; margin-bottom: 4px; font-size: 12px; }
