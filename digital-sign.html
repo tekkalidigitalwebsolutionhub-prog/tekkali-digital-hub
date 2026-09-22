@@ -562,36 +562,35 @@
         }
 
         function handleLogin(event) {
-            event.preventDefault();
-            const id = document.getElementById('loginId').value.trim().toUpperCase();
-            const pass = document.getElementById('loginPass').value.trim();
+    event.preventDefault();
+    const id = document.getElementById('loginId').value.trim().toUpperCase();
+    const pass = document.getElementById('loginPass').value.trim();
 
-            const inputHash = sha256(pass);
-
-            if (id === "ADMIN" && inputHash === ADMIN_HASH) {
-                document.getElementById('topNavBlock').style.display = 'flex';
-                switchScreen('adminDashboard');
-                renderStaffList();
-                renderAgreementsTable();
-                
-                document.getElementById('loginId').value = '';
-                document.getElementById('loginPass').value = '';
-            } else if (employeesDB[id] && employeesDB[id] === pass) {
-                currentLoggedInEmp = id;
-                document.getElementById('topNavBlock').style.display = 'none';
-                
-                document.getElementById('clientAgreementForm').reset();
-                document.getElementById('displayEmpId').value = id;
-                document.getElementById('displayProjectId').value = `TDW-MSA-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
-                document.getElementById('projBalance').value = '₹0';
-                
-                switchScreen('agreementScreen');
-                document.getElementById('loginId').value = '';
-                document.getElementById('loginPass').value = '';
-            } else {
-                alert("Authentication failed. Invalid Credentials.");
-            }
-        }
+    // Direct Exact Password Match
+    if (id === "ADMIN" && pass === "Archu@2012tekkali") {
+        document.getElementById('topNavBlock').style.display = 'flex';
+        switchScreen('adminDashboard');
+        renderStaffList();
+        renderAgreementsTable();
+        
+        document.getElementById('loginId').value = '';
+        document.getElementById('loginPass').value = '';
+    } else if (employeesDB[id] && employeesDB[id] === pass) {
+        currentLoggedInEmp = id;
+        document.getElementById('topNavBlock').style.display = 'none';
+        
+        document.getElementById('clientAgreementForm').reset();
+        document.getElementById('displayEmpId').value = id;
+        document.getElementById('displayProjectId').value = `TDW-MSA-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
+        document.getElementById('projBalance').value = '₹0';
+        
+        switchScreen('agreementScreen');
+        document.getElementById('loginId').value = '';
+        document.getElementById('loginPass').value = '';
+    } else {
+        alert("Authentication failed. Invalid Credentials.");
+    }
+}
 
         function togglePasswordVisibility() {
             showPasswords = !showPasswords;
