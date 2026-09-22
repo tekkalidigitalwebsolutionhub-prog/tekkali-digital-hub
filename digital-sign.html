@@ -6,10 +6,15 @@
     <title>Tekkali Digital & Web Solutions Hub - Client Service Portal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+        }
         
         body { 
-            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(30, 27, 75, 0.85)), 
+            background: linear-gradient(rgba(15, 23, 42, 0.82), rgba(30, 27, 75, 0.88)), 
                         url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
             background-size: cover;
             color: #1e293b; 
@@ -21,15 +26,15 @@
         }
 
         .portal-card {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             width: 100%;
             max-width: 1020px;
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
         .portal-header {
@@ -41,7 +46,7 @@
 
         .portal-header h1 { 
             color: #0f172a; 
-            font-size: 1.55rem; 
+            font-size: 1.6rem; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
@@ -70,7 +75,7 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        .nav-btn.active-tab { background: #3b82f6; color: white; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
+        .nav-btn.active-tab { background: #2563eb; color: white; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
 
         .box-container {
             background: #ffffff;
@@ -461,8 +466,8 @@
     </div>
 
     <script>
-        // SHA-256 Hash of Admin Password ('tekkarikumar2026')
-        const ADMIN_HASH = "8f06e40b39be821a811c75c2e1762e8a1a3618641951f28e21f1d115d78a873c";
+        // SHA-256 Hash of Password 'Archu@2012tekkali'
+        const ADMIN_HASH = "8a24be51c6c518ad8330752a129d3faeb5dd251a31dca238a221f7ebf7fbbf91";
 
         let employeesDB = JSON.parse(localStorage.getItem('tekkali_employees')) || {
             "ENG01": "tekkaliTech#1"
@@ -472,12 +477,13 @@
         let currentLoggedInEmp = "";
         let showPasswords = false;
 
-        async function hashPassword(password) {
-            const encoder = new TextEncoder();
-            const data = encoder.encode(password);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        function generateSHA256(str) {
+            var buffer = new TextEncoder().encode(str);
+            return crypto.subtle.digest('SHA-256', buffer).then(function (hash) {
+                return Array.from(new Uint8Array(hash))
+                    .map(b => b.toString(16).padStart(2, '0'))
+                    .join('');
+            });
         }
 
         function switchScreen(screenId) {
@@ -491,30 +497,35 @@
             const id = document.getElementById('loginId').value.trim().toUpperCase();
             const pass = document.getElementById('loginPass').value.trim();
 
-            const inputHash = await hashPassword(pass);
+            try {
+                const inputHash = await generateSHA256(pass);
 
-            if (id === "ADMIN" && inputHash === ADMIN_HASH) {
-                document.getElementById('topNavBlock').style.display = 'flex';
-                switchScreen('adminDashboard');
-                renderStaffList();
-                renderAgreementsTable();
-                
-                document.getElementById('loginId').value = '';
-                document.getElementById('loginPass').value = '';
-            } else if (employeesDB[id] && employeesDB[id] === pass) {
-                currentLoggedInEmp = id;
-                document.getElementById('topNavBlock').style.display = 'none';
-                
-                document.getElementById('clientAgreementForm').reset();
-                document.getElementById('displayEmpId').value = id;
-                document.getElementById('displayProjectId').value = `TDW-MSA-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
-                document.getElementById('projBalance').value = '₹0';
-                
-                switchScreen('agreementScreen');
-                document.getElementById('loginId').value = '';
-                document.getElementById('loginPass').value = '';
-            } else {
-                alert("Authentication failed. Invalid Credentials.");
+                if (id === "ADMIN" && inputHash === ADMIN_HASH) {
+                    document.getElementById('topNavBlock').style.display = 'flex';
+                    switchScreen('adminDashboard');
+                    renderStaffList();
+                    renderAgreementsTable();
+                    
+                    document.getElementById('loginId').value = '';
+                    document.getElementById('loginPass').value = '';
+                } else if (employeesDB[id] && employeesDB[id] === pass) {
+                    currentLoggedInEmp = id;
+                    document.getElementById('topNavBlock').style.display = 'none';
+                    
+                    document.getElementById('clientAgreementForm').reset();
+                    document.getElementById('displayEmpId').value = id;
+                    document.getElementById('displayProjectId').value = `TDW-MSA-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
+                    document.getElementById('projBalance').value = '₹0';
+                    
+                    switchScreen('agreementScreen');
+                    document.getElementById('loginId').value = '';
+                    document.getElementById('loginPass').value = '';
+                } else {
+                    alert("Authentication failed. Invalid Credentials.");
+                }
+            } catch (err) {
+                console.error("Authentication error:", err);
+                alert("Security verification failed. Please refresh and try again.");
             }
         }
 
