@@ -9,7 +9,9 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif; }
         
         body { 
-            background: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81); 
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(30, 27, 75, 0.85)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
             color: #1e293b; 
             display: flex; 
             justify-content: center; 
@@ -19,31 +21,35 @@
         }
 
         .portal-card {
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             width: 100%;
-            max-width: 1000px;
-            padding: 35px;
-            border-radius: 16px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            max-width: 1020px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         .portal-header {
             text-align: center;
             margin-bottom: 25px;
             border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 16px;
+            padding-bottom: 18px;
         }
 
         .portal-header h1 { 
-            color: #1e1b4b; 
-            font-size: 1.45rem; 
+            color: #0f172a; 
+            font-size: 1.55rem; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            gap: 10px; 
+            gap: 12px; 
+            font-weight: 700;
+            letter-spacing: -0.3px;
         }
-        .portal-header p { color: #64748b; font-size: 0.85rem; margin-top: 5px; font-weight: 500; }
+        .portal-header p { color: #64748b; font-size: 0.88rem; margin-top: 6px; font-weight: 500; }
 
         .screen { display: none; }
         .screen.active { display: block; }
@@ -62,72 +68,75 @@
             font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s, color 0.2s;
+            transition: all 0.2s;
         }
-        .nav-btn.active-tab { background: #4338ca; color: white; }
+        .nav-btn.active-tab { background: #3b82f6; color: white; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
 
         .box-container {
-            background: #f8fafc;
-            padding: 28px;
-            border-radius: 12px;
-            border: 1px solid #cbd5e1;
-            max-width: 440px;
-            margin: 0 auto;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            background: #ffffff;
+            padding: 32px;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            max-width: 420px;
+            margin: 10px auto;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             display: flex;
             flex-direction: column;
             gap: 6px;
         }
 
-        .form-group label { font-size: 0.82rem; font-weight: 600; color: #334155; }
+        .form-group label { font-size: 0.82rem; font-weight: 600; color: #475569; }
         .form-group input, .form-group select { 
-            padding: 10px 12px; 
+            padding: 11px 14px; 
             border: 1px solid #cbd5e1; 
             border-radius: 8px; 
             font-size: 0.9rem; 
             outline: none; 
-            transition: border-color 0.2s; 
+            transition: all 0.2s; 
+            background: #f8fafc;
         }
         .form-group input:focus, .form-group select:focus { 
-            border-color: #4338ca; 
-            box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.12); 
+            border-color: #2563eb; 
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); 
         }
 
         .btn {
-            background: linear-gradient(135deg, #4338ca, #3730a3);
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
             color: white;
             border: none;
             padding: 12px 18px;
             border-radius: 8px;
             width: 100%;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             font-weight: 600;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            transition: opacity 0.2s;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
         }
-        .btn:hover { opacity: 0.93; }
+        .btn:hover { opacity: 0.95; transform: translateY(-1px); }
 
         .agreement-scroll-box {
             background: #f8fafc;
             border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 16px;
+            border-radius: 10px;
+            padding: 18px;
             height: 160px;
             overflow-y: auto;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             line-height: 1.6;
             margin-bottom: 20px;
             color: #334155;
         }
-        .agreement-scroll-box h5 { color: #1e1b4b; font-size: 0.85rem; margin-bottom: 8px; }
+        .agreement-scroll-box h5 { color: #0f172a; font-size: 0.88rem; margin-bottom: 8px; }
         .agreement-scroll-box ol { padding-left: 18px; }
         .agreement-scroll-box li { margin-bottom: 6px; }
 
@@ -146,11 +155,12 @@
         .input-box.full-width { grid-column: span 2; }
         .input-box label { font-size: 0.8rem; font-weight: 600; color: #475569; }
         .input-box input, .input-box select { 
-            padding: 9px 12px; 
+            padding: 10px 12px; 
             border: 1px solid #cbd5e1; 
             border-radius: 8px; 
             font-size: 0.88rem; 
             outline: none; 
+            background: #fff;
         }
 
         .payment-summary-card {
@@ -208,9 +218,9 @@
             padding: 10px 12px;
             text-align: left;
         }
-        .records-table th { background: #e0e7ff; color: #312e81; font-weight: 600; }
+        .records-table th { background: #eff6ff; color: #1e3a8a; font-weight: 600; }
         .action-link {
-            color: #4338ca;
+            color: #2563eb;
             text-decoration: none;
             font-weight: 600;
             display: inline-flex;
@@ -242,34 +252,33 @@
 
     <div class="portal-card">
         
-        <div class="top-nav">
-            <button class="nav-btn active-tab" id="loginTabBtn" onclick="switchScreen('loginScreen')">Login Portal</button>
-            <button class="nav-btn" id="adminTabBtn" style="display:none;" onclick="switchScreen('adminDashboard')">Dashboard Panel</button>
+        <div class="top-nav" id="topNavBlock" style="display: none;">
+            <button class="nav-btn active-tab" id="adminTabBtn" onclick="switchScreen('adminDashboard')">Dashboard Panel</button>
         </div>
 
         <!-- ================= 1. LOGIN SCREEN ================= -->
         <div id="loginScreen" class="screen active">
             <div class="portal-header">
-                <h1><i class="fa-solid fa-shield-halved" style="color: #4338ca;"></i> Tekkali Digital & Web Solutions Hub</h1>
-                <p>Enterprise Management & Executive Agreement Portal</p>
+                <h1><i class="fa-solid fa-globe" style="color: #2563eb;"></i> Tekkali Digital & Web Solutions Hub</h1>
+                <p>Authorized Staff Access & Digital Agreement Portal</p>
             </div>
             
             <div class="box-container">
                 <form onsubmit="handleLogin(event)">
                     <div class="form-group">
-                        <label>User ID / Staff ID</label>
-                        <input type="text" id="loginId" placeholder="e.g. ADMIN or EMP01" required autocomplete="username">
+                        <label>User ID / Employee Code</label>
+                        <input type="text" id="loginId" placeholder="Enter assigned ID" required autocomplete="username">
                     </div>
                     <div class="form-group">
-                        <label>Password / Access Passcode</label>
-                        <input type="password" id="loginPass" placeholder="Enter security passcode" required autocomplete="current-password">
+                        <label>Access Security Code</label>
+                        <input type="password" id="loginPass" placeholder="Enter security password" required autocomplete="current-password">
                     </div>
-                    <button type="submit" class="btn"><i class="fa-solid fa-arrow-right-to-bracket"></i> Secure Login</button>
+                    <button type="submit" class="btn"><i class="fa-solid fa-lock"></i> Authorize & Login</button>
                 </form>
             </div>
         </div>
 
-        <!-- ================= 2. ADMIN DASHBOARD ================= -->
+        <!-- ================= 2. HIDDEN ADMIN DASHBOARD ================= -->
         <div id="adminDashboard" class="screen">
             <div class="portal-header">
                 <h1><i class="fa-solid fa-chart-line" style="color: #059669;"></i> Corporate Management Dashboard</h1>
@@ -277,8 +286,8 @@
             </div>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #cbd5e1;">
-                    <h3 style="font-size: 0.95rem; margin-bottom: 12px; color: #4338ca;"><i class="fa-solid fa-user-plus"></i> Register Employee Credentials</h3>
+                <div style="background: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #cbd5e1;">
+                    <h3 style="font-size: 0.95rem; margin-bottom: 12px; color: #1e3a8a;"><i class="fa-solid fa-user-plus"></i> Register Employee Credentials</h3>
                     <form onsubmit="createEmployee(event)">
                         <div class="form-group">
                             <label>Employee ID</label>
@@ -292,19 +301,19 @@
                     </form>
                 </div>
 
-                <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #cbd5e1;">
+                <div style="background: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #cbd5e1;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                         <h3 style="font-size: 0.95rem; color: #1e293b;"><i class="fa-solid fa-users-gear"></i> Registered Staff Records</h3>
                         <button type="button" class="nav-btn" style="padding: 4px 8px; font-size: 0.75rem;" onclick="togglePasswordVisibility()">Toggle Passwords</button>
                     </div>
-                    <div id="staffListContainer" style="font-size: 0.85rem; max-height: 150px; overflow-y: auto; background: #fff; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px;">
+                    <div id="staffListContainer" style="font-size: 0.85rem; max-height: 150px; overflow-y: auto; background: #f8fafc; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px;">
                         <!-- Dynamically populated -->
                     </div>
                 </div>
             </div>
 
             <div style="margin-top: 25px;">
-                <h3 style="font-size: 1rem; margin-bottom: 12px; color: #1e293b;"><i class="fa-solid fa-file-contract" style="color: #4338ca;"></i> Client Service Agreements Repository</h3>
+                <h3 style="font-size: 1rem; margin-bottom: 12px; color: #1e293b;"><i class="fa-solid fa-file-contract" style="color: #2563eb;"></i> Client Service Agreements Repository</h3>
                 <div style="overflow-x: auto;">
                     <table class="records-table">
                         <thead>
@@ -329,7 +338,7 @@
         <!-- ================= 3. PROFESSIONAL AGREEMENT FORM ================= -->
         <div id="agreementScreen" class="screen">
             <div class="portal-header">
-                <h1><i class="fa-solid fa-handshake" style="color: #4338ca;"></i> Master Client Service Agreement (MSA)</h1>
+                <h1><i class="fa-solid fa-handshake" style="color: #2563eb;"></i> Master Client Service Agreement (MSA)</h1>
                 <p>Tekkali Digital & Web Solutions Hub • Contract & Statement of Work</p>
             </div>
 
@@ -452,10 +461,9 @@
     </div>
 
     <script>
-        // SHA-256 Hash of 'tekkarikumar2026' for Admin Password Protection
+        // SHA-256 Hash of Admin Password ('tekkarikumar2026')
         const ADMIN_HASH = "8f06e40b39be821a811c75c2e1762e8a1a3618641951f28e21f1d115d78a873c";
 
-        // Initialize or load staff credentials (excluding Admin password from open view)
         let employeesDB = JSON.parse(localStorage.getItem('tekkali_employees')) || {
             "ENG01": "tekkaliTech#1"
         };
@@ -464,7 +472,6 @@
         let currentLoggedInEmp = "";
         let showPasswords = false;
 
-        // Convert raw string password to SHA-256 Hash
         async function hashPassword(password) {
             const encoder = new TextEncoder();
             const data = encoder.encode(password);
@@ -486,22 +493,17 @@
 
             const inputHash = await hashPassword(pass);
 
-            // Secure Admin Login Verification
             if (id === "ADMIN" && inputHash === ADMIN_HASH) {
-                document.getElementById('adminTabBtn').style.display = 'block';
-                document.getElementById('loginTabBtn').style.display = 'none';
+                document.getElementById('topNavBlock').style.display = 'flex';
                 switchScreen('adminDashboard');
                 renderStaffList();
                 renderAgreementsTable();
                 
                 document.getElementById('loginId').value = '';
                 document.getElementById('loginPass').value = '';
-            } 
-            // Employee Login Verification
-            else if (employeesDB[id] && employeesDB[id] === pass) {
+            } else if (employeesDB[id] && employeesDB[id] === pass) {
                 currentLoggedInEmp = id;
-                document.getElementById('adminTabBtn').style.display = 'none';
-                document.getElementById('loginTabBtn').style.display = 'block';
+                document.getElementById('topNavBlock').style.display = 'none';
                 
                 document.getElementById('clientAgreementForm').reset();
                 document.getElementById('displayEmpId').value = id;
@@ -512,7 +514,7 @@
                 document.getElementById('loginId').value = '';
                 document.getElementById('loginPass').value = '';
             } else {
-                alert("Authentication failed. Please verify User ID and Passcode.");
+                alert("Authentication failed. Invalid Credentials.");
             }
         }
 
@@ -542,16 +544,11 @@
 
         function renderStaffList() {
             const container = document.getElementById('staffListContainer');
-            container.innerHTML = `
-                <div style="display:flex; justify-content:space-between; margin-bottom: 6px; border-bottom: 1px dashed #f1f5f9; padding-bottom: 4px;">
-                    <span><i class="fa-solid fa-shield-halved" style="color:#4338ca;"></i> <b>ADMIN</b></span>
-                    <span style="font-family:monospace; color:#475569;">[SECURED HASH]</span>
-                </div>
-            `;
+            container.innerHTML = '';
             for (let emp in employeesDB) {
                 const passDisplay = showPasswords ? employeesDB[emp] : '••••••••';
                 container.innerHTML += `
-                    <div style="display:flex; justify-content:space-between; margin-bottom: 6px; border-bottom: 1px dashed #f1f5f9; padding-bottom: 4px;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom: 6px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 4px;">
                         <span><i class="fa-solid fa-user" style="color:#059669;"></i> <b>${emp}</b></span>
                         <span style="font-family:monospace; color:#475569;">${passDisplay}</span>
                     </div>`;
@@ -637,8 +634,7 @@
         }
 
         function logoutAdmin() {
-            document.getElementById('adminTabBtn').style.display = 'none';
-            document.getElementById('loginTabBtn').style.display = 'block';
+            document.getElementById('topNavBlock').style.display = 'none';
             switchScreen('loginScreen');
         }
 
