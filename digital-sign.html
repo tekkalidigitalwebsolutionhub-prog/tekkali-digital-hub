@@ -555,10 +555,8 @@
             const id = document.getElementById('loginId').value.trim().toUpperCase();
             const pass = document.getElementById('loginPass').value.trim();
 
-            const hashedPass = await sha256(pass);
-
-            // Secure SHA-256 Check for ADMIN
-            if (id === "ADMIN" && hashedPass === ADMIN_HASH) {
+            // డైరెక్ట్ టెక్స్ట్ మ్యాచ్ (Direct Password Check)
+            if (id === "ADMIN" && pass === "Archu@2012tekkali") {
                 document.getElementById('topNavBlock').style.display = 'flex';
                 switchScreen('adminDashboard');
                 renderStaffList();
