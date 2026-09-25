@@ -231,7 +231,7 @@
                     <button type="submit" class="btn" style="flex: 1; min-width: 240px; background: linear-gradient(135deg, #059669, #047857);">
                         <i class="fa-solid fa-file-shield"></i> Save & Generate Agreement Document
                     </button>
-                    <button type="button" class="btn" style="background: #64748b; width: 140px;" onclick="switchScreen('loginScreen')">Logout</button>
+                    <button type="button" class="btn" style="background: #64748b; width: 140px;" onclick="logoutAdmin()">Logout</button>
                 </div>
             </form>
         </div>
@@ -322,60 +322,101 @@
             if(screenId === 'agreementScreen') setTimeout(initCanvas, 150);
         }
 
-        async function handleLogin(event) {
-    event.preventDefault();
-    const id = document.getElementById('loginId').value.trim().toUpperCase();
-    const pass = document.getElementById('loginPass').value.trim();
-
-    // 1. First check if it's Admin login via Backend API
-    try {
-        const response = await fetch('http://localhost:5000/api/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id, pass })
-        });
-
-        const data = await response.json();
-
-        if (data.success && data.role === "ADMIN") {
-            document.getElementById('topNavBlock').style.display = 'flex';
-            switchScreen('adminDashboard');
-            if (typeof renderStaffList === 'function') renderStaffList();
-            if (typeof renderAgreementsTable === 'function') renderAgreementsTable();
-            return;
+        function generateProjectId() {
+            const date = new Date();
+            const yearStr = date.getFullYear().toString().substr(-2);
+            const monthStr = String(date.getMonth() + 1).padStart(2, '0');
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            return `TWS-${yearStr}${monthStr}-${randomNum}`;
         }
-    } catch (error) {
-        console.log("Backend offline or checking local staff credentials...");
-    }
 
-    // 2. Check Staff Credentials saved by Admin in LocalStorage
-    let staffList = JSON.parse(localStorage.getItem('staffList') || '[]');
-    let staffUser = staffList.find(s => s.code.toUpperCase() === id && s.pass === pass);
+        async function handleLogin(event) {
+            event.preventDefault();
+            const id = document.getElementById('loginId').value.trim().toUpperCase();
+            const pass = document.getElementById('loginPass').value.trim();
 
-    if (staffUser) {
-        currentStaffCode = staffUser.code;
-        document.getElementById('topNavBlock').style.display = 'flex';
-        switchScreen('agreementsList');
-        if (typeof renderAgreementsTable === 'function') renderAgreementsTable();
-    } else {
-        alert("Invalid Username or Password");
-    }
-}
+            // 1. Backend Server call logic
+            try {
+                const response = await fetch('http://localhost:5000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id, pass })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    if (data.role === "ADMIN") {
+                        document.getElementById('topNavBlock').style.display = 'flex';
+                        switchScreen('adminDashboard');
+                        renderStaffList();
+                        renderAgreementsTable();
+                        return;
+                    } else if (data.role === "STAFF") {
+                        currentLoggedInEmp = data.code || id;
+                        document.getElementById('topNavBlock').style.display = 'none';
+                        document.getElementById('displayEmpId').value = currentLoggedInEmp;
+                        document.getElementById('displayProjectId').value = generateProjectId();
+                        switchScreen('agreementScreen');
+                        return;
+                    }
+                }
+            } catch (error) {
+                console.log("Backend offline or local verification fallback...");
+            }
+
+            // 2. Local fallback login logic (Local Storage)
+            employeesDB = loadEmployees();
+
+            if (id === "ADMIN" && pass === "ADMIN123") {
+                document.getElementById('topNavBlock').style.display = 'flex';
+                switchScreen('adminDashboard');
+                renderStaffList();
+                renderAgreementsTable();
+            } else if (employeesDB[id] && employeesDB[id] === pass) {
+                currentLoggedInEmp = id;
+                document.getElementById('topNavBlock').style.display = 'none';
+                document.getElementById('displayEmpId').value = currentLoggedInEmp;
+                document.getElementById('displayProjectId').value = generateProjectId();
+                switchScreen('agreementScreen');
+            } else {
+                alert("Invalid Username or Password");
+            }
+        }
+
         function togglePasswordVisibility() { showPasswords = !showPasswords; renderStaffList(); }
 
-        function createEmployee(event) {
+        async function createEmployee(event) {
             event.preventDefault();
             const newId = document.getElementById('newEmpId').value.trim().toUpperCase();
             const newPass = document.getElementById('newEmpPass').value.trim();
-            employeesDB = loadEmployees();
 
-            if (newId === "ADMIN" || employeesDB[newId]) {
-                alert("Employee ID exists or is reserved.");
+            if (newId === "ADMIN") {
+                alert("Employee ID cannot be ADMIN.");
                 return;
             }
+
+            // Backend Server API Save logic
+            try {
+                const response = await fetch('http://localhost:5000/api/staff/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code: newId, pass: newPass })
+                });
+                const data = await response.json();
+                if (data.success) {
+                    console.log("Saved to backend successfully!");
+                }
+            } catch (e) {
+                console.log("Backend offline, updating local storage...");
+            }
+
+            // Sync Local Storage
+            employeesDB = loadEmployees();
             employeesDB[newId] = newPass;
             localStorage.setItem('tekkali_employees', JSON.stringify(employeesDB));
-            alert(`Staff ID [${newId}] registered.`);
+
+            alert(`Staff ID [${newId}] saved successfully!`);
             document.getElementById('newEmpId').value = '';
             document.getElementById('newEmpPass').value = '';
             renderStaffList();
@@ -436,7 +477,7 @@
                 advance: advance,
                 balance: budget - advance,
                 date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
-                signatureImage: canvas.toDataURL('image/png', 0.5) // Optimized quality
+                signatureImage: canvas.toDataURL('image/png', 0.5)
             };
 
             try {
