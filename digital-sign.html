@@ -327,8 +327,8 @@
     const id = document.getElementById('loginId').value.trim().toUpperCase();
     const pass = document.getElementById('loginPass').value.trim();
 
+    // 1. First check if it's Admin login via Backend API
     try {
-        // Localhost backend server ki request pampadam
         const response = await fetch('http://localhost:5000/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -342,15 +342,25 @@
             switchScreen('adminDashboard');
             if (typeof renderStaffList === 'function') renderStaffList();
             if (typeof renderAgreementsTable === 'function') renderAgreementsTable();
-        } else {
-            alert(data.message || "Invalid Credentials");
+            return;
         }
     } catch (error) {
-        console.error("Error connecting to server:", error);
-        alert("Server network issue. Make sure backend is running!");
+        console.log("Backend offline or checking local staff credentials...");
+    }
+
+    // 2. Check Staff Credentials saved by Admin in LocalStorage
+    let staffList = JSON.parse(localStorage.getItem('staffList') || '[]');
+    let staffUser = staffList.find(s => s.code.toUpperCase() === id && s.pass === pass);
+
+    if (staffUser) {
+        currentStaffCode = staffUser.code;
+        document.getElementById('topNavBlock').style.display = 'flex';
+        switchScreen('agreementsList');
+        if (typeof renderAgreementsTable === 'function') renderAgreementsTable();
+    } else {
+        alert("Invalid Username or Password");
     }
 }
-
         function togglePasswordVisibility() { showPasswords = !showPasswords; renderStaffList(); }
 
         function createEmployee(event) {
