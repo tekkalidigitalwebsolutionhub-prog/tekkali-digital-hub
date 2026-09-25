@@ -3,278 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tekkali Digital & Web Solutions Hub - Client Service Portal</title>
+    <title>Tekkali Digital & Web Solutions Hub - Enterprise Service Agreement Portal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
         body { 
-            background: linear-gradient(rgba(15, 23, 42, 0.82), rgba(30, 27, 75, 0.88)), 
+            background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(30, 27, 75, 0.92)), 
                         url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
-            background-size: cover;
-            color: #1e293b; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            padding: 20px; 
+            background-size: cover; color: #1e293b; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; 
         }
-
         .portal-card {
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            width: 100%;
-            max-width: 1020px;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(20px);
+            width: 100%; max-width: 1080px; padding: 35px; border-radius: 20px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.5);
         }
-
-        .portal-header {
-            text-align: center;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 18px;
-        }
-
-        .portal-header h1 { 
-            color: #0f172a; 
-            font-size: 1.6rem; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 12px; 
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
+        .portal-header { text-align: center; margin-bottom: 25px; border-bottom: 2px solid #e2e8f0; padding-bottom: 18px; }
+        .portal-header h1 { color: #0f172a; font-size: 1.6rem; display: flex; align-items: center; justify-content: center; gap: 12px; font-weight: 700; }
         .portal-header p { color: #64748b; font-size: 0.88rem; margin-top: 6px; font-weight: 500; }
-
         .screen { display: none; }
         .screen.active { display: block; }
-
-        .top-nav {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        .nav-btn {
-            background: #e2e8f0;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .nav-btn.active-tab { background: #2563eb; color: white; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
-
-        .box-container {
-            background: #ffffff;
-            padding: 32px;
-            border-radius: 14px;
-            border: 1px solid #e2e8f0;
-            max-width: 420px;
-            margin: 10px auto;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
+        .top-nav { display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 15px; }
+        .nav-btn { background: #e2e8f0; border: none; padding: 8px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+        .box-container { background: #ffffff; padding: 30px; border-radius: 14px; border: 1px solid #e2e8f0; max-width: 420px; margin: 10px auto; }
+        .form-group { margin-bottom: 18px; display: flex; flex-direction: column; gap: 6px; }
         .form-group label { font-size: 0.82rem; font-weight: 600; color: #475569; }
-        .form-group input, .form-group select { 
-            padding: 11px 14px; 
-            border: 1px solid #cbd5e1; 
-            border-radius: 8px; 
-            font-size: 0.9rem; 
-            outline: none; 
-            transition: all 0.2s; 
-            background: #f8fafc;
-        }
-        .form-group input:focus, .form-group select:focus { 
-            border-color: #2563eb; 
-            background: #ffffff;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); 
-        }
-
+        .form-group input, .form-group select { padding: 11px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.9rem; outline: none; background: #f8fafc; }
         .btn {
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
-            color: white;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 8px;
-            width: 100%;
-            font-size: 0.92rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+            background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; border: none; padding: 12px 18px; border-radius: 8px;
+            width: 100%; font-size: 0.92rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
         }
         .btn:hover { opacity: 0.95; transform: translateY(-1px); }
-
-        .agreement-scroll-box {
-            background: #f8fafc;
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            padding: 18px;
-            height: 160px;
-            overflow-y: auto;
-            font-size: 0.82rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            color: #334155;
-        }
-        .agreement-scroll-box h5 { color: #0f172a; font-size: 0.88rem; margin-bottom: 8px; }
-        .agreement-scroll-box ol { padding-left: 18px; }
-        .agreement-scroll-box li { margin-bottom: 6px; }
-
-        .input-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        @media (max-width: 640px) {
-            .input-grid { grid-template-columns: 1fr; }
-            .input-box.full-width { grid-column: span 1 !important; }
-        }
-
+        .input-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px; }
+        @media (max-width: 640px) { .input-grid { grid-template-columns: 1fr; } .input-box.full-width { grid-column: span 1 !important; } }
         .input-box { display: flex; flex-direction: column; gap: 5px; }
         .input-box.full-width { grid-column: span 2; }
         .input-box label { font-size: 0.8rem; font-weight: 600; color: #475569; }
-        .input-box input, .input-box select { 
-            padding: 10px 12px; 
-            border: 1px solid #cbd5e1; 
-            border-radius: 8px; 
-            font-size: 0.88rem; 
-            outline: none; 
-            background: #fff;
-        }
-
-        .payment-summary-card {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            border-radius: 10px;
-            padding: 16px;
-            margin-bottom: 20px;
-        }
-
-        .canvas-container {
-            border: 2px dashed #94a3b8;
-            border-radius: 8px;
-            background: #fff;
-            position: relative;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        .canvas-container canvas {
-            width: 100%;
-            height: 100%;
-            cursor: crosshair;
-            touch-action: none;
-        }
-
-        .clear-btn {
-            position: absolute;
-            right: 10px;
-            bottom: 8px;
-            background: #ef4444;
-            color: white;
-            border: none;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        .records-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            font-size: 0.83rem;
-        }
-        .records-table th, .records-table td {
-            border: 1px solid #cbd5e1;
-            padding: 10px 12px;
-            text-align: left;
-        }
+        .input-box input, .input-box select { padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.88rem; outline: none; background: #fff; }
+        .payment-summary-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 16px; margin-bottom: 20px; }
+        .canvas-container { border: 2px dashed #94a3b8; border-radius: 8px; background: #fff; position: relative; height: 120px; margin-bottom: 20px; }
+        .canvas-container canvas { width: 100%; height: 100%; cursor: crosshair; }
+        .clear-btn { position: absolute; right: 10px; bottom: 8px; background: #ef4444; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; cursor: pointer; }
+        .records-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.83rem; }
+        .records-table th, .records-table td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: left; }
         .records-table th { background: #eff6ff; color: #1e3a8a; font-weight: 600; }
-        .action-link {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            cursor: pointer;
-        }
+        .action-link { color: #2563eb; text-decoration: none; font-weight: 600; cursor: pointer; }
         .action-link:hover { text-decoration: underline; }
-
-        #successPopup {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.65);
-            justify-content: center; align-items: center;
-            z-index: 999;
-        }
-        .popup-box {
-            background: white; 
-            padding: 30px; 
-            border-radius: 14px; 
-            text-align: center; 
-            max-width: 400px;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
-        }
+        .delete-btn { color: #ef4444; cursor: pointer; margin-left: 8px; border: none; background: none; }
+        #successPopup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.65); justify-content: center; align-items: center; z-index: 999; }
+        .popup-box { background: white; padding: 30px; border-radius: 14px; text-align: center; max-width: 400px; }
     </style>
 </head>
 <body>
 
     <div class="portal-card">
-        
         <div class="top-nav" id="topNavBlock" style="display: none;">
-            <button class="nav-btn active-tab" id="adminTabBtn" onclick="switchScreen('adminDashboard')">Dashboard Panel</button>
+            <button class="nav-btn" id="adminTabBtn" onclick="switchScreen('adminDashboard')">Dashboard Panel</button>
         </div>
 
         <!-- LOGIN SCREEN -->
         <div id="loginScreen" class="screen active">
             <div class="portal-header">
                 <h1><i class="fa-solid fa-globe" style="color: #2563eb;"></i> Tekkali Digital & Web Solutions Hub</h1>
-                <p>Authorized Staff Access & Digital Agreement Portal</p>
+                <p>Enterprise Service Agreements & Client Governance Management Portal</p>
             </div>
             
             <div class="box-container">
                 <form onsubmit="handleLogin(event)">
                     <div class="form-group">
-                        <label>User ID / Employee Code</label>
-                        <input type="text" id="loginId" placeholder="Enter assigned ID" required autocomplete="username">
+                        <label>User ID / Staff Code</label>
+                        <input type="text" id="loginId" placeholder="Enter assigned ID" required>
                     </div>
                     <div class="form-group">
-                        <label>Access Security Code</label>
-                        <input type="password" id="loginPass" placeholder="Enter security password" required autocomplete="current-password">
+                        <label>Access Security Password</label>
+                        <input type="password" id="loginPass" placeholder="Enter password" required>
                     </div>
                     <button type="submit" class="btn"><i class="fa-solid fa-lock"></i> Authorize & Login</button>
                 </form>
@@ -285,167 +85,153 @@
         <div id="adminDashboard" class="screen">
             <div class="portal-header">
                 <h1><i class="fa-solid fa-chart-line" style="color: #059669;"></i> Corporate Management Dashboard</h1>
-                <p>Staff Access Governance & Signed Master Service Agreements (MSA) Archive</p>
+                <p>Staff Governance & Client Master Service Agreements (MSA) Archive</p>
             </div>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
                 <div style="background: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #cbd5e1;">
-                    <h3 style="font-size: 0.95rem; margin-bottom: 12px; color: #1e3a8a;"><i class="fa-solid fa-user-plus"></i> Register Employee Credentials</h3>
+                    <h3 style="font-size: 0.95rem; margin-bottom: 12px; color: #1e3a8a;"><i class="fa-solid fa-user-plus"></i> Register Executive Credentials</h3>
                     <form onsubmit="createEmployee(event)">
                         <div class="form-group">
-                            <label>Employee ID</label>
+                            <label>Employee Code</label>
                             <input type="text" id="newEmpId" placeholder="e.g. ENG01 / MKT02" required>
                         </div>
                         <div class="form-group">
                             <label>Assigned Password</label>
-                            <input type="text" id="newEmpPass" placeholder="Assign secure password" required>
+                            <input type="text" id="newEmpPass" placeholder="Assign password" required>
                         </div>
-                        <button type="submit" class="btn" style="background: linear-gradient(135deg, #059669, #047857);">Save & Register Staff</button>
+                        <button type="submit" class="btn" style="background: linear-gradient(135deg, #059669, #047857);">Save Executive</button>
                     </form>
                 </div>
 
                 <div style="background: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #cbd5e1;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <h3 style="font-size: 0.95rem; color: #1e293b;"><i class="fa-solid fa-users-gear"></i> Registered Staff Records</h3>
-                        <button type="button" class="nav-btn" style="padding: 4px 8px; font-size: 0.75rem;" onclick="togglePasswordVisibility()">Toggle Passwords</button>
+                        <h3 style="font-size: 0.95rem; color: #1e293b;"><i class="fa-solid fa-users-gear"></i> Active Executive Roster</h3>
+                        <button type="button" class="nav-btn" style="padding: 4px 8px; font-size: 0.75rem;" onclick="togglePasswordVisibility()">Toggle Visibility</button>
                     </div>
-                    <div id="staffListContainer" style="font-size: 0.85rem; max-height: 150px; overflow-y: auto; background: #f8fafc; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px;">
-                    </div>
+                    <div id="staffListContainer" style="font-size: 0.85rem; max-height: 180px; overflow-y: auto; background: #f8fafc; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px;"></div>
                 </div>
             </div>
 
             <div style="margin-top: 25px;">
-                <h3 style="font-size: 1rem; margin-bottom: 12px; color: #1e293b;"><i class="fa-solid fa-file-contract" style="color: #2563eb;"></i> Client Service Agreements Repository</h3>
+                <h3 style="font-size: 1rem; margin-bottom: 12px; color: #1e293b;"><i class="fa-solid fa-file-contract" style="color: #2563eb;"></i> Master Agreement Legal Repository</h3>
                 <div style="overflow-x: auto;">
                     <table class="records-table">
                         <thead>
                             <tr>
                                 <th>Project Reference</th>
-                                <th>Client / Organization</th>
-                                <th>Executive In-charge</th>
-                                <th>Financial Breakdown</th>
-                                <th>Status & Documentation</th>
+                                <th>Client Entity</th>
+                                <th>Executive Code</th>
+                                <th>Financial Terms</th>
+                                <th>Contract Options</th>
                             </tr>
                         </thead>
-                        <tbody id="agreementRecordsBody">
-                        </tbody>
+                        <tbody id="agreementRecordsBody"></tbody>
                     </table>
                 </div>
             </div>
             
-            <button class="btn" style="margin-top: 20px; background: #64748b; width: 180px;" onclick="logoutAdmin()"><i class="fa-solid fa-power-off"></i> Exit Panel</button>
+            <button class="btn" style="margin-top: 20px; background: #64748b; width: 180px;" onclick="logoutAdmin()"><i class="fa-solid fa-power-off"></i> Exit Dashboard</button>
         </div>
 
         <!-- AGREEMENT FORM -->
         <div id="agreementScreen" class="screen">
             <div class="portal-header">
-                <h1><i class="fa-solid fa-handshake" style="color: #2563eb;"></i> Master Client Service Agreement (MSA)</h1>
-                <p>Tekkali Digital & Web Solutions Hub • Contract & Statement of Work</p>
-            </div>
-
-            <div class="agreement-scroll-box">
-                <h5>Standard Legal Terms & Conditions:</h5>
-                <ol>
-                    <li><strong>Scope & Specification:</strong> The agency agrees to furnish digital services including architecture, development, and hosting configuration strictly as defined in the associated Scope of Work (SOW). Any additions will incur supplemental change requests.</li>
-                    <li><strong>Mobilization Deposit:</strong> A minimum agreed advance payment is strictly non-refundable once architectural setup, domain acquisition, or developer hours commence.</li>
-                    <li><strong>Milestone Compliance:</strong> Client approvals on design frameworks or sprint demos must be rendered within 5 business days. Invoices must be cleared before subsequent phases commence.</li>
-                    <li><strong>Intellectual Property Transfer:</strong> Full source code, graphic assets, and production deployment credentials shall remain the exclusive proprietary property of the agency until 100% of final project dues are settled.</li>
-                    <li><strong>Confidentiality (NDA):</strong> Both parties mutually agree to hold proprietary data, customer records, and trade credentials in strict confidence for 24 months post-agreement.</li>
-                    <li><strong>Warranty & Support:</strong> The agency provides a 30-calendar-day warranty post-handover to resolve reproducible bugs directly originating from the agreed specification.</li>
-                    <li><strong>No Objection Certificate (NOC):</strong> A mutual NOC for domain migration, code transfer, and complete intellectual ownership release is issued solely upon zero outstanding balance.</li>
-                    <li><strong>Jurisdiction:</strong> This agreement is governed by the laws of India, under the exclusive legal jurisdiction of courts in Srikakulam District, Andhra Pradesh.</li>
-                </ol>
+                <h1><i class="fa-solid fa-handshake" style="color: #2563eb;"></i> Dynamic Service Level Agreement</h1>
+                <p>Tekkali Digital & Web Solutions Hub • Client Governance Portal</p>
             </div>
 
             <form id="clientAgreementForm" onsubmit="submitAgreement(event)">
                 <div class="input-grid">
                     <div class="input-box">
-                        <label>Client Full Name / Authorized Signatory</label>
-                        <input type="text" id="clientName" placeholder="Enter legal full name" required>
-                    </div>
-                    <div class="input-box">
-                        <label>Organization / Business Name</label>
-                        <input type="text" id="clientCompany" placeholder="e.g. Acme Enterprises / Studio" required>
-                    </div>
-                    <div class="input-box">
-                        <label>Client Email Address</label>
-                        <input type="email" id="clientEmail" placeholder="client@example.com" required>
-                    </div>
-                    <div class="input-box">
-                        <label>Contact Phone Number</label>
-                        <input type="tel" id="clientPhone" placeholder="10-digit primary mobile" pattern="[0-9]{10}" maxlength="10" required>
-                    </div>
-                    <div class="input-box">
-                        <label>Business ID / Tax ID / Verification Ref</label>
-                        <input type="text" id="clientGovtId" placeholder="GSTIN / PAN / Registration Ref" required>
-                    </div>
-                    <div class="input-box">
-                        <label>Service Scope Category</label>
-                        <select id="projectCategory" required>
-                            <option value="Custom Web Application">Custom Web Application & CMS</option>
-                            <option value="Mobile Application Development">Mobile Application (Android/iOS)</option>
-                            <option value="E-Commerce & Payment Setup">E-Commerce & Payment Integration</option>
-                            <option value="Full Stack Digital Solutions">Full Stack Digital Solutions & Cloud</option>
+                        <label>Business Vertical / Industry Category</label>
+                        <select id="businessCategory" required>
+                            <option value="Photo Studio & Digital Photography Hub">📷 Photo Studio & Digital Photography Hub</option>
+                            <option value="Mobile Shop & Retail Electronics Portal">📱 Mobile Shop & Retail Electronics</option>
+                            <option value="Cloth Store, Fashion & Textile Boutique">👗 Cloth Store, Fashion & Boutique</option>
+                            <option value="Medical Store, Pharmacy & Diagnostics">💊 Medical Store & Pharmacy</option>
+                            <option value="Hospital, Clinic & Healthcare Portal">🏥 Hospital, Clinic & Healthcare</option>
+                            <option value="Travels, Cab Booking & Tour Agency">🛺 Travels, Cab Booking & Tours</option>
+                            <option value="Supermarket, Grocery & General Retail Store">🛒 Supermarket & Grocery Retail</option>
+                            <option value="School, College & Coaching Academy">🎓 School, College & Academy</option>
                         </select>
                     </div>
                     <div class="input-box">
-                        <label>Executive In-Charge (Staff ID)</label>
+                        <label>Client Full Name / Authorized Signatory</label>
+                        <input type="text" id="clientName" placeholder="Enter legal name" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Enterprise / Firm / Business Name</label>
+                        <input type="text" id="clientCompany" placeholder="e.g. Royal Studio / City Electronics" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Client Official Email</label>
+                        <input type="email" id="clientEmail" placeholder="client@domain.com" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Contact Phone Number</label>
+                        <input type="tel" id="clientPhone" placeholder="10-digit mobile number" pattern="[0-9]{10}" maxlength="10" required>
+                    </div>
+                    <div class="input-box">
+                        <label>PAN Card / Business Govt ID Number <span style="color:#ef4444;">*</span></label>
+                        <input type="text" id="clientPanId" placeholder="e.g. ABCDE1234F / GSTIN" required style="text-transform: uppercase;">
+                    </div>
+                    <div class="input-box">
+                        <label>Assigned Executive ID</label>
                         <input type="text" id="displayEmpId" readonly style="background: #f1f5f9; font-weight: 600; color: #1e293b;">
                     </div>
                     <div class="input-box">
-                        <label>Project Reference Code</label>
+                        <label>Project Tracking Code</label>
                         <input type="text" id="displayProjectId" readonly style="background: #f1f5f9; color: #1e293b; font-weight: 600;">
                     </div>
                     <div class="input-box full-width">
-                        <label>Registered Office / Billing Address</label>
-                        <input type="text" id="clientAddress" placeholder="Full legal billing address (Street, Town/City, State, PIN)" required>
+                        <label>Registered Office Address / Shop Location</label>
+                        <input type="text" id="clientAddress" placeholder="Door No, Street, Town, District, PIN Code" required>
                     </div>
                 </div>
 
                 <div class="payment-summary-card">
                     <h4 style="color: #166534; font-size: 0.85rem; margin-bottom: 10px;">
-                        <i class="fa-solid fa-file-invoice-dollar"></i> Commercial Terms & Milestone Remittance
+                        <i class="fa-solid fa-file-invoice-dollar"></i> Commercial Structure (Budget Auto-adjusts Agreement Type)
                     </h4>
                     <div class="input-grid" style="margin-bottom: 0;">
                         <div class="input-box">
-                            <label>Total Contract Value (₹)</label>
-                            <input type="number" id="projBudget" placeholder="Total project cost" min="1000" oninput="calculateBalance()" required>
+                            <label>Total Package Value (₹)</label>
+                            <input type="number" id="projBudget" value="15000" min="1000" oninput="calculateBalance()" required style="font-weight: bold;">
                         </div>
                         <div class="input-box">
-                            <label>Mobilization Advance / Token (₹)</label>
-                            <input type="number" id="projAdvance" placeholder="Advance amount" min="0" oninput="calculateBalance()" required style="font-weight: 600; color: #059669;">
+                            <label>Advance Payment Paid (₹) [Min 40%]</label>
+                            <input type="number" id="projAdvance" value="6000" min="0" oninput="calculateBalance()" required style="font-weight: 600; color: #059669;">
                         </div>
                         <div class="input-box full-width">
-                            <label>Remaining Balance (Payable Upon Milestones / NOC) (₹)</label>
-                            <input type="text" id="projBalance" readonly style="background: #e2e8f0; font-weight: bold; color: #334155;">
+                            <label>Balance Amount Due Post-Delivery (₹)</label>
+                            <input type="text" id="projBalance" value="₹9,000" readonly style="background: #e2e8f0; font-weight: bold; color: #334155;">
                         </div>
                     </div>
                 </div>
 
                 <div style="margin-bottom: 15px;">
                     <label style="font-size: 0.82rem; font-weight: 600; color: #475569; display: block; margin-bottom: 5px;">
-                        Authorized Client E-Signature (Draw signature below)
+                        Authorized Digital Signature (Sign inside canvas frame)
                     </label>
                     <div class="canvas-container">
                         <canvas id="sig-canvas"></canvas>
-                        <button type="button" class="clear-btn" onclick="clearCanvas()">Clear</button>
+                        <button type="button" class="clear-btn" onclick="clearCanvas()">Clear Signature</button>
                     </div>
                 </div>
 
                 <div style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.82rem; margin-bottom: 20px; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
                     <input type="checkbox" id="legal-check" required style="width: 18px; height: 18px; margin-top: 2px;">
                     <label for="legal-check" style="cursor: pointer; color: #334155; line-height: 1.4;">
-                        I confirm that I am an authorized representative, and I agree to the Master Service Agreement clauses, Non-Refundable Mobilization Advance terms, and post-settlement NOC protocol.
+                        I agree to the terms, 40% advance payment, 7km complimentary local visit limit, 30-day technical warranty, and maintenance schedule.
                     </label>
                 </div>
 
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <button type="submit" class="btn" style="flex: 1; min-width: 240px; background: linear-gradient(135deg, #059669, #047857);">
-                        <i class="fa-solid fa-file-shield"></i> Validate & Execute Agreement
+                        <i class="fa-solid fa-file-shield"></i> Save & Generate Agreement Document
                     </button>
-                    <button type="button" class="btn" style="background: #64748b; width: 140px;" onclick="switchScreen('loginScreen')">
-                        Logout
-                    </button>
+                    <button type="button" class="btn" style="background: #64748b; width: 140px;" onclick="switchScreen('loginScreen')">Logout</button>
                 </div>
             </form>
         </div>
@@ -456,164 +242,157 @@
     <div id="successPopup">
         <div class="popup-box">
             <i class="fa-solid fa-circle-check" style="font-size: 3rem; color: #059669; margin-bottom: 12px;"></i>
-            <h3 style="color: #1e293b; margin-bottom: 8px; font-size: 1.15rem;">Agreement Executed</h3>
-            <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5;">The agreement has been registered and archived in the corporate repository.<br>Returning to portal in 4 seconds...</p>
+            <h3 style="color: #1e293b; margin-bottom: 8px;">Agreement Created</h3>
+            <p style="font-size: 0.85rem; color: #64748b;">The Service Agreement has been generated.<br>Redirecting...</p>
         </div>
     </div>
 
     <script>
-        // Standard Web Crypto API for SHA-256 (Modern & Secure)
-        async function sha256(message) {
-            const msgBuffer = new TextEncoder().encode(message);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        function sanitizeHTML(str) {
+            return String(str).replace(/[&<>"']/g, function (m) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
+            });
         }
 
-        // SHA-256 Hash of Password 'Archu@2012tekkali'
-        const ADMIN_HASH = "8a24be51c6c518ad8330752a129d3faeb5dd251a31dca238a221f7ebf7fbbf91";
+        function loadEmployees() {
+            try {
+                const saved = localStorage.getItem('tekkali_employees');
+                return saved ? JSON.parse(saved) : { "ENG01": "tekkaliTech#1" };
+            } catch (e) {
+                return { "ENG01": "tekkaliTech#1" };
+            }
+        }
 
-        let employeesDB = JSON.parse(localStorage.getItem('tekkali_employees')) || {
-            "ENG01": "tekkaliTech#1"
-        };
-        
-        let agreementsList = JSON.parse(localStorage.getItem('tekkali_agreements')) || [];
+        function loadAgreements() {
+            try {
+                const saved = localStorage.getItem('tekkali_agreements');
+                return saved ? JSON.parse(saved) : [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        let employeesDB = loadEmployees();
+        let agreementsList = loadAgreements();
         let currentLoggedInEmp = "";
         let showPasswords = false;
 
-        // Canvas Drawing Setup
         let canvas, ctx, isDrawing = false, isCanvasBlank = true;
 
         function initCanvas() {
             canvas = document.getElementById('sig-canvas');
             if(!canvas) return;
             ctx = canvas.getContext('2d');
+            const rect = canvas.getBoundingClientRect();
             
-            // Resize canvas to parent
-            canvas.width = canvas.parentElement.clientWidth;
-            canvas.height = canvas.parentElement.clientHeight;
-
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+            
             ctx.lineWidth = 2;
             ctx.lineCap = 'round';
             ctx.strokeStyle = '#1e3a8a';
 
-            // Mouse Events
             canvas.onmousedown = (e) => startDrawing(e.offsetX, e.offsetY);
             canvas.onmousemove = (e) => draw(e.offsetX, e.offsetY);
             canvas.onmouseup = stopDrawing;
             canvas.onmouseleave = stopDrawing;
 
-            // Touch Events (Mobile support)
             canvas.addEventListener('touchstart', (e) => {
                 e.preventDefault();
-                const rect = canvas.getBoundingClientRect();
-                startDrawing(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
-            });
+                const r = canvas.getBoundingClientRect();
+                startDrawing(e.touches[0].clientX - r.left, e.touches[0].clientY - r.top);
+            }, {passive: false});
             canvas.addEventListener('touchmove', (e) => {
                 e.preventDefault();
-                const rect = canvas.getBoundingClientRect();
-                draw(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
-            });
+                const r = canvas.getBoundingClientRect();
+                draw(e.touches[0].clientX - r.left, e.touches[0].clientY - r.top);
+            }, {passive: false});
             canvas.addEventListener('touchend', stopDrawing);
         }
 
-        function startDrawing(x, y) {
-            isDrawing = true;
-            isCanvasBlank = false;
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-        }
-
-        function draw(x, y) {
-            if (!isDrawing) return;
-            ctx.lineTo(x, y);
-            ctx.stroke();
-        }
-
-        function stopDrawing() {
-            isDrawing = false;
-        }
-
-        function clearCanvas() {
-            if(!ctx) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            isCanvasBlank = true;
-        }
+        function startDrawing(x, y) { isDrawing = true; isCanvasBlank = false; ctx.beginPath(); ctx.moveTo(x, y); }
+        function draw(x, y) { if (!isDrawing) return; ctx.lineTo(x, y); ctx.stroke(); }
+        function stopDrawing() { isDrawing = false; }
+        function clearCanvas() { if(!ctx) return; ctx.clearRect(0, 0, canvas.width, canvas.height); isCanvasBlank = true; }
 
         function switchScreen(screenId) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             const target = document.getElementById(screenId);
             if(target) target.classList.add('active');
-
-            if(screenId === 'agreementScreen') {
-                setTimeout(initCanvas, 100);
-            }
+            if(screenId === 'agreementScreen') setTimeout(initCanvas, 150);
         }
 
         async function handleLogin(event) {
-            event.preventDefault();
-            const id = document.getElementById('loginId').value.trim().toUpperCase();
-            const pass = document.getElementById('loginPass').value.trim();
+    event.preventDefault();
+    const id = document.getElementById('loginId').value.trim().toUpperCase();
+    const pass = document.getElementById('loginPass').value.trim();
 
-            // డైరెక్ట్ టెక్స్ట్ మ్యాచ్ (Direct Password Check)
-            if (id === "ADMIN" && pass === "Archu@2012tekkali") {
-                document.getElementById('topNavBlock').style.display = 'flex';
-                switchScreen('adminDashboard');
-                renderStaffList();
-                renderAgreementsTable();
-                
-                document.getElementById('loginId').value = '';
-                document.getElementById('loginPass').value = '';
-            } else if (employeesDB[id] && employeesDB[id] === pass) {
-                currentLoggedInEmp = id;
-                document.getElementById('topNavBlock').style.display = 'none';
-                
-                document.getElementById('clientAgreementForm').reset();
-                document.getElementById('displayEmpId').value = id;
-                document.getElementById('displayProjectId').value = `TDW-MSA-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
-                document.getElementById('projBalance').value = '₹0';
-                
-                switchScreen('agreementScreen');
-                document.getElementById('loginId').value = '';
-                document.getElementById('loginPass').value = '';
-            } else {
-                alert("Authentication failed. Invalid Credentials.");
-            }
-        }
+    try {
+        // Localhost backend server ki request pampadam
+        const response = await fetch('http://localhost:5000/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id, pass })
+        });
 
-        function togglePasswordVisibility() {
-            showPasswords = !showPasswords;
-            renderStaffList();
+        const data = await response.json();
+
+        if (data.success && data.role === "ADMIN") {
+            document.getElementById('topNavBlock').style.display = 'flex';
+            switchScreen('adminDashboard');
+            if (typeof renderStaffList === 'function') renderStaffList();
+            if (typeof renderAgreementsTable === 'function') renderAgreementsTable();
+        } else {
+            alert(data.message || "Invalid Credentials");
         }
+    } catch (error) {
+        console.error("Error connecting to server:", error);
+        alert("Server network issue. Make sure backend is running!");
+    }
+}
+
+        function togglePasswordVisibility() { showPasswords = !showPasswords; renderStaffList(); }
 
         function createEmployee(event) {
             event.preventDefault();
             const newId = document.getElementById('newEmpId').value.trim().toUpperCase();
             const newPass = document.getElementById('newEmpPass').value.trim();
+            employeesDB = loadEmployees();
 
             if (newId === "ADMIN" || employeesDB[newId]) {
-                alert("Cannot use this Employee ID as it already exists or is reserved.");
+                alert("Employee ID exists or is reserved.");
                 return;
             }
-
             employeesDB[newId] = newPass;
             localStorage.setItem('tekkali_employees', JSON.stringify(employeesDB));
-            
-            alert(`Staff ID [${newId}] registered successfully.`);
+            alert(`Staff ID [${newId}] registered.`);
             document.getElementById('newEmpId').value = '';
             document.getElementById('newEmpPass').value = '';
             renderStaffList();
         }
 
+        function deleteEmployee(empId) {
+            if (confirm(`Remove staff [${empId}]?`)) {
+                employeesDB = loadEmployees();
+                delete employeesDB[empId];
+                localStorage.setItem('tekkali_employees', JSON.stringify(employeesDB));
+                renderStaffList();
+            }
+        }
+
         function renderStaffList() {
+            employeesDB = loadEmployees();
             const container = document.getElementById('staffListContainer');
             container.innerHTML = '';
             for (let emp in employeesDB) {
-                const passDisplay = showPasswords ? employeesDB[emp] : '••••••••';
+                const passDisplay = showPasswords ? sanitizeHTML(employeesDB[emp]) : '••••••••';
                 container.innerHTML += `
-                    <div style="display:flex; justify-content:space-between; margin-bottom: 6px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 4px;">
-                        <span><i class="fa-solid fa-user" style="color:#059669;"></i> <b>${emp}</b></span>
-                        <span style="font-family:monospace; color:#475569;">${passDisplay}</span>
+                    <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 6px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 4px;">
+                        <span><i class="fa-solid fa-user" style="color:#059669;"></i> <b>${sanitizeHTML(emp)}</b></span>
+                        <div>
+                            <span style="font-family:monospace; color:#475569; margin-right: 10px;">${passDisplay}</span>
+                            <button class="delete-btn" onclick="deleteEmployee('${sanitizeHTML(emp)}')"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
                     </div>`;
             }
         }
@@ -621,84 +400,85 @@
         function calculateBalance() {
             const budget = parseFloat(document.getElementById('projBudget').value) || 0;
             const advance = parseFloat(document.getElementById('projAdvance').value) || 0;
-            const balance = Math.max(0, budget - advance);
-            document.getElementById('projBalance').value = `₹${balance.toLocaleString('en-IN')}`;
+            document.getElementById('projBalance').value = `₹${Math.max(0, budget - advance).toLocaleString('en-IN')}`;
         }
 
         function submitAgreement(event) {
             event.preventDefault();
-            
-            if (isCanvasBlank) {
-                alert("Please provide a digital signature before submitting.");
-                return;
-            }
+            if (isCanvasBlank) { alert("Please provide digital signature."); return; }
 
             const budget = parseFloat(document.getElementById('projBudget').value) || 0;
             const advance = parseFloat(document.getElementById('projAdvance').value) || 0;
+            if (advance > budget) { alert("Advance cannot exceed budget."); return; }
 
-            if (advance > budget) {
-                alert("Validation error: Advance paid cannot be greater than the total contract budget.");
-                return;
-            }
-
+            agreementsList = loadAgreements();
             const newAgreement = {
                 projectId: document.getElementById('displayProjectId').value,
+                category: document.getElementById('businessCategory').value,
                 clientName: document.getElementById('clientName').value.trim(),
                 companyName: document.getElementById('clientCompany').value.trim(),
                 email: document.getElementById('clientEmail').value.trim(),
                 phone: document.getElementById('clientPhone').value.trim(),
-                govtId: document.getElementById('clientGovtId').value.trim(),
-                category: document.getElementById('projectCategory').value,
+                panId: document.getElementById('clientPanId').value.trim().toUpperCase(),
                 address: document.getElementById('clientAddress').value.trim(),
                 empId: currentLoggedInEmp,
                 budget: budget,
                 advance: advance,
                 balance: budget - advance,
                 date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
-                signatureImage: canvas.toDataURL() // Save Signature Image URL
+                signatureImage: canvas.toDataURL('image/png', 0.5) // Optimized quality
             };
 
-            agreementsList.push(newAgreement);
-            localStorage.setItem('tekkali_agreements', JSON.stringify(agreementsList));
-            
+            try {
+                agreementsList.push(newAgreement);
+                localStorage.setItem('tekkali_agreements', JSON.stringify(agreementsList));
+            } catch (e) {
+                alert("Storage limit reached! Clear old agreements to continue.");
+                return;
+            }
+
             document.getElementById('successPopup').style.display = 'flex';
-            
             setTimeout(() => {
                 document.getElementById('successPopup').style.display = 'none';
                 document.getElementById('clientAgreementForm').reset();
                 clearCanvas();
                 switchScreen('loginScreen');
-            }, 3800);
+            }, 2000);
+        }
+
+        function deleteAgreement(index) {
+            if (confirm("Delete this agreement?")) {
+                agreementsList = loadAgreements();
+                agreementsList.splice(index, 1);
+                localStorage.setItem('tekkali_agreements', JSON.stringify(agreementsList));
+                renderAgreementsTable();
+            }
         }
 
         function renderAgreementsTable() {
+            agreementsList = loadAgreements();
             const tbody = document.getElementById('agreementRecordsBody');
             if (agreementsList.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color: #64748b; padding: 20px;">No registered agreements in the repository yet.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color: #64748b; padding: 20px;">No registered agreements found.</td></tr>`;
                 return;
             }
-
             tbody.innerHTML = '';
             agreementsList.forEach((item, index) => {
+                let tierLabel = item.budget < 12000 ? "Basic Portfolio" : (item.budget <= 20000 ? "Standard Portal" : "Custom App");
                 tbody.innerHTML += `
                     <tr>
-                        <td><b>${item.projectId}</b><br><small style="color:#64748b;">${item.date}</small></td>
+                        <td><b>${sanitizeHTML(item.projectId)}</b><br><small style="color:#64748b;">${sanitizeHTML(item.date)}</small></td>
                         <td>
-                            <b>${item.clientName}</b><br>
-                            <small style="color:#475569;">${item.companyName || 'Independent Entity'}</small>
+                            <b>${sanitizeHTML(item.clientName)}</b> <span style="font-size:0.75rem; background:#dbeafe; color:#1e40af; padding:2px 6px; border-radius:4px;">${tierLabel}</span><br>
+                            <small style="color:#475569;">${sanitizeHTML(item.companyName)} (PAN: ${sanitizeHTML(item.panId)})</small>
                         </td>
-                        <td><span style="background: #e0e7ff; color: #3730a3; padding: 2px 6px; border-radius: 4px; font-weight: 600;">${item.empId}</span></td>
+                        <td><span style="background: #e0e7ff; color: #3730a3; padding: 2px 6px; border-radius: 4px; font-weight: 600;">${sanitizeHTML(item.empId)}</span></td>
+                        <td>Total: ₹${Number(item.budget).toLocaleString('en-IN')}<br><small style="color:#059669; font-weight:600;">Advance: ₹${Number(item.advance).toLocaleString('en-IN')}</small></td>
                         <td>
-                            Total: ₹${Number(item.budget).toLocaleString('en-IN')}<br>
-                            <small style="color:#059669; font-weight:600;">Advance: ₹${Number(item.advance).toLocaleString('en-IN')}</small>
+                            <a class="action-link" onclick="printAgreementDocument(${index})"><i class="fa-solid fa-print"></i> Generate PDF Agreement</a>
+                            <button class="delete-btn" onclick="deleteAgreement(${index})"><i class="fa-solid fa-trash-can"></i></button>
                         </td>
-                        <td>
-                            <a class="action-link" onclick="printAgreementDocument(${index})">
-                                <i class="fa-solid fa-print"></i> View & Print Contract PDF
-                            </a>
-                        </td>
-                    </tr>
-                `;
+                    </tr>`;
             });
         }
 
@@ -707,113 +487,406 @@
             switchScreen('loginScreen');
         }
 
+        function getScopeByBudget(budget, category) {
+            if (budget < 12000) {
+                return {
+                    title: "BASIC PORTFOLIO WEBSITE SERVICE AGREEMENT",
+                    tierName: "Basic Budget Tier",
+                    maintFee: "₹299 / month",
+                    features: `
+                        <li><strong>Studio Overview & About Us:</strong> Business details, operating hours, and studio history display.</li>
+                        <li><strong>High-Resolution Photo Gallery:</strong> Clean showcase gallery displaying up to 25 sample portfolio photos.</li>
+                        <li><strong>Physical Location & Google Map:</strong> Physical address display with direct Google Maps direction link.</li>
+                        <li><strong>Basic Contact & Lead Form:</strong> Inquiry form collecting visitor Name, Phone, and Event requirements.</li>
+                        <li><strong>Direct WhatsApp Chat Button:</strong> Instant click-to-chat WhatsApp button for quick customer inquiries.</li>`,
+                    exclusion: "This basic package excludes private client login panels, watermarked photo proofing, cloud vaults, and online booking engines."
+                };
+            } else if (budget <= 20000) {
+                return {
+                    title: "STANDARD BUSINESS & BOOKING PORTAL AGREEMENT",
+                    tierName: "Standard Commercial Tier (₹12k - ₹20k)",
+                    maintFee: "₹399 / month",
+                    features: `
+                        <li><strong>Multi-Page Business Website Architecture:</strong> Customized Home, About, Packages & Pricing, Gallery, and Contact pages.</li>
+                        <li><strong>Interactive Package & Service Selector:</strong> Detailed pricing tables showcasing Photography/Event packages with feature breakdowns.</li>
+                        <li><strong>Dynamic Booking Inquiry Engine:</strong> Direct online date reservation form with automated booking request dispatch.</li>
+                        <li><strong>Categorized Photo & Video Showcase:</strong> Organized galleries (Weddings, Portraits, Outdoor, Teasers) with modal popups.</li>
+                        <li><strong>Direct WhatsApp Order Routing:</strong> Direct integration delivering booking choices and client details directly to management WhatsApp.</li>
+                        <li><strong>Google Business & Search Engine Indexing:</strong> On-page SEO setup, meta tag optimization, and Google Search submission.</li>`,
+                    exclusion: "This Standard tier includes complete booking and service showcases, but excludes client-side cloud photo download portals and automated payment gateway keys."
+                };
+            } else {
+                return {
+                    title: "FULL-PLEDGED ENTERPRISE APPLICATION AGREEMENT",
+                    tierName: "Custom Enterprise Stack (Above ₹20,000)",
+                    maintFee: "₹789 / month",
+                    features: `
+                        <li><strong>Full-Pledged Web Application Architecture:</strong> Enterprise multi-tier system with custom database backend and SSL deployment.</li>
+                        <li><strong>Client Private Login & Proofing Portal:</strong> Password-protected client accounts for remote photo selection and watermark proofing.</li>
+                        <li><strong>Cloud Asset Vault & Download Delivery:</strong> Secure cloud storage pipeline for full-resolution album deliveries.</li>
+                        <li><strong>Integrated Online Payment Gateway:</strong> Support for UPI, Credit/Debit cards, NetBanking, and automated digital receipts.</li>
+                        <li><strong>Advanced Booking & Calendar Management:</strong> Real-time studio slot availability, automated booking confirmation, and SMS/WhatsApp notifications.</li>
+                        <li><strong>Merchant Administrative Dashboard:</strong> Complete management panel for editing packages, client orders, and website content.</li>`,
+                    exclusion: "Includes all advanced web application modules, cloud storage infrastructure, and priority support SLAs."
+                };
+            }
+        }
+
         function printAgreementDocument(index) {
+            agreementsList = loadAgreements();
             const data = agreementsList[index];
+            if(!data) return;
+
             const printWindow = window.open('', '_blank');
-            
+            const scope = getScopeByBudget(data.budget, data.category);
+
             const printableHtml = `
             <!DOCTYPE html>
             <html>
             <head>
-                <title>${data.projectId} - Service Agreement</title>
+                <title>${sanitizeHTML(data.projectId)} - Enterprise Master Service Agreement</title>
                 <style>
-                    body { font-family: 'Segoe UI', Arial, sans-serif; color: #1e293b; padding: 40px; line-height: 1.5; font-size: 13px; }
-                    .header { border-bottom: 2px solid #1e3a8a; padding-bottom: 12px; display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; }
-                    .header h2 { margin: 0; color: #1e3a8a; font-size: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
-                    .header p { margin: 4px 0 0; color: #64748b; font-size: 11px; }
-                    .meta-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-                    .meta-table td { padding: 6px 8px; border: 1px solid #e2e8f0; font-size: 12px; }
-                    .meta-table td.label { background: #f8fafc; font-weight: 600; width: 25%; color: #334155; }
-                    .clause-title { font-weight: bold; color: #0f172a; margin-top: 14px; margin-bottom: 4px; font-size: 12px; }
-                    .signature-row { margin-top: 40px; display: flex; justify-content: space-between; page-break-inside: avoid; }
-                    .sig-box { width: 45%; border-top: 1px solid #475569; padding-top: 8px; font-size: 11px; }
-                    .sig-img { max-height: 50px; display: block; margin-bottom: 5px; }
-                    @media print {
-                        body { padding: 20px; }
-                        .no-print { display: none; }
+                    @page { size: A4; margin: 12mm 15mm 12mm 15mm; }
+                    html, body { background: #fff; font-family: 'Times New Roman', Times, serif; color: #0f172a; line-height: 1.45; font-size: 10.5pt; margin: 0; padding: 0; }
+                    
+                    .pdf-page { 
+                        page-break-after: always; 
+                        position: relative; 
+                        box-sizing: border-box;
+                        padding: 10px 0;
+                        min-height: 98%;
                     }
+
+                    .pdf-page:last-child { page-break-after: avoid; }
+                    
+                    .header-bar { border-bottom: 2px solid #0f172a; padding-bottom: 4px; display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px; }
+                    .header-bar h3 { margin: 0; color: #0f172a; font-size: 10pt; text-transform: uppercase; font-weight: 700; font-family: sans-serif; }
+                    .header-bar span { font-size: 8.5pt; color: #475569; font-weight: 600; font-family: sans-serif; }
+                    
+                    .footer-bar { border-top: 1px solid #cbd5e1; padding-top: 4px; display: flex; justify-content: space-between; font-size: 8pt; color: #64748b; font-family: sans-serif; margin-top: 15px; }
+                    
+                    .title-box { text-align: center; border: 2px solid #0f172a; padding: 10px; margin-bottom: 15px; background: #f8fafc; }
+                    .title-box h1 { font-size: 14pt; color: #0f172a; margin: 0 0 4px 0; text-transform: uppercase; font-weight: bold; }
+                    .title-box p { font-size: 8.5pt; color: #334155; margin: 0; font-weight: 600; font-family: sans-serif; }
+
+                    .section-title { font-size: 11pt; font-weight: bold; color: #0f172a; border-bottom: 1px solid #0f172a; padding-bottom: 2px; margin-top: 14px; margin-bottom: 8px; text-transform: uppercase; }
+                    .subsection-title { font-size: 10pt; font-weight: bold; color: #1e293b; margin-top: 10px; margin-bottom: 4px; }
+                    
+                    p { text-align: justify; margin-bottom: 8px; text-indent: 12px; margin-top: 0; }
+                    ul { margin-bottom: 8px; padding-left: 20px; margin-top: 0; }
+                    li { text-align: justify; margin-bottom: 4px; }
+
+                    .meta-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-family: sans-serif; font-size: 9.5pt; }
+                    .meta-table td, .meta-table th { padding: 6px 10px; border: 1px solid #0f172a; }
+                    .meta-table td.label { background: #f1f5f9; font-weight: bold; width: 35%; color: #0f172a; }
+
+                    .sig-container { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 25px; width: 100%; font-family: sans-serif; }
+                    .sig-box { width: 45%; }
+                    .sig-line { border-top: 1px solid #0f172a; padding-top: 4px; margin-top: 8px; font-size: 9pt; }
+
+                    @media print { .no-print { display: none; } }
                 </style>
             </head>
             <body>
-                <div class="no-print" style="margin-bottom: 20px; text-align: right;">
-                    <button onclick="window.print()" style="padding: 8px 16px; background: #1e3a8a; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">Print / Save as PDF</button>
-                </div>
-                <div class="header">
-                    <div>
-                        <h2>Tekkali Digital & Web Solutions Hub</h2>
-                        <p>Tekkali, Srikakulam District, Andhra Pradesh • Enterprise Technology Services</p>
-                    </div>
-                    <div style="text-align: right;">
-                        <strong>REF: ${data.projectId}</strong><br>
-                        <small>Execution Date: ${data.date}</small>
-                    </div>
+                <div class="no-print" style="position: fixed; top: 15px; right: 15px; z-index: 1000;">
+                    <button onclick="window.print()" style="padding: 12px 24px; background: #059669; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-family: sans-serif; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);">
+                        🖨 Print / Save Enterprise Agreement
+                    </button>
                 </div>
 
-                <h3 style="text-align: center; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 18px; font-size: 14px; color: #1e3a8a;">
-                    Master Client Service Agreement & Statement of Work
-                </h3>
-
-                <table class="meta-table">
-                    <tr>
-                        <td class="label">Client / Entity Name</td>
-                        <td>${data.clientName} (${data.companyName || 'Individual'})</td>
-                        <td class="label">Project Domain</td>
-                        <td>${data.category}</td>
-                    </tr>
-                    <tr>
-                        <td class="label">Business / Verification Ref</td>
-                        <td>${data.govtId}</td>
-                        <td class="label">Executive Lead</td>
-                        <td>Staff ID: ${data.empId}</td>
-                    </tr>
-                    <tr>
-                        <td class="label">Contact Email & Tel</td>
-                        <td>${data.email} | +91 ${data.phone}</td>
-                        <td class="label">Billing Address</td>
-                        <td>${data.address}</td>
-                    </tr>
-                    <tr>
-                        <td class="label">Total Project Value</td>
-                        <td><strong>₹${Number(data.budget).toLocaleString('en-IN')}</strong></td>
-                        <td class="label">Mobilization Advance</td>
-                        <td><strong>₹${Number(data.advance).toLocaleString('en-IN')} (Non-Refundable)</strong></td>
-                    </tr>
-                    <tr>
-                        <td class="label">Outstanding Balance</td>
-                        <td colspan="3">₹${Number(data.balance).toLocaleString('en-IN')} (Payable as per agreed milestone delivery / pre-handover)</td>
-                    </tr>
-                </table>
-
-                <div class="clause-title">1. Deliverables & Milestone Acceptance</div>
-                <p>The agency agrees to design and deploy solutions conforming strictly to the baseline specifications. Scope changes are billed separately.</p>
-
-                <div class="clause-title">2. Financial Allocation & Non-Refundable Advance</div>
-                <p>The upfront advance secures dedicated developer hours, repository infrastructure, and environment deployment. It is non-refundable once architectural execution commences.</p>
-
-                <div class="clause-title">3. Intellectual Property (IP) & NOC Issuance</div>
-                <p>All production source code, deployment assets, and system control credentials remain the property of the agency until the final balance is fully settled. A formal No Objection Certificate (NOC) and root access credentials will be furnished immediately upon receipt of 100% dues.</p>
-
-                <div class="clause-title">4. Warranty Period</div>
-                <p>The agency warrants the delivered code against reproducible functional discrepancies for 30 calendar days following client handover.</p>
-
-                <div class="signature-row">
-                    <div class="sig-box">
-                        <img src="${data.signatureImage}" class="sig-img" alt="Client Signature"/>
-                        <strong>Authorized Signatory (Client)</strong><br>
-                        ${data.clientName}<br>
-                        Digital Authentication Validated
+                <!-- PAGE 1: TITLE & LEGAL RECITALS -->
+                <div class="pdf-page">
+                    <div class="header-bar">
+                        <h3>Tekkali Digital & Web Solutions Hub</h3>
+                        <span>MSA Ref: ${sanitizeHTML(data.projectId)}</span>
                     </div>
-                    <div class="sig-box" style="text-align: right;">
-                        <div style="font-family: serif; font-size: 16px; margin-top: 10px; font-weight: bold; color: #1e3a8a;">Tekkali Digital Hub</div>
-                        <strong>Authorized Director / Manager</strong><br>
-                        Tekkali Digital & Web Solutions Hub<br>
-                        Official Seal & Ratification
+
+                    <div class="title-box">
+                        <h1>MASTER SERVICES & SOFTWARE DEVELOPMENT AGREEMENT</h1>
+                        <p>CORPORATE ENTERPRISE FRAMEWORK CONTRACT & LEGAL TERMS</p>
+                    </div>
+
+                    <p>This Master Services Agreement ("Agreement", "MSA", "Contract") is entered into and rendered legally effective as of <b>${sanitizeHTML(data.date)}</b> ("Effective Date"), by and between the corporate parties identified below:</p>
+
+                    <div style="margin: 12px 0; border: 1px solid #0f172a; padding: 10px; font-family: sans-serif; font-size: 9pt; background: #f8fafc; line-height: 1.4;">
+                        <b>SERVICE PROVIDER / DEVELOPER:</b><br>
+                        <b>Tekkali Digital & Web Solutions Hub</b>,<br>
+                        Having its registered operating base at Tekkali, Srikakulam District, Andhra Pradesh - 532201.<br>
+                        Represented by Authorized Executive ID: <b>${sanitizeHTML(data.empId)}</b> (hereinafter "Agency", "Provider", or "Tekkali Digital").
+                        <br><br>
+                        <b>AND</b>
+                        <br><br>
+                        <b>CLIENT ENTITY / SUBSCRIBER:</b><br>
+                        <b>${sanitizeHTML(data.companyName)}</b>, Represented by <b>${sanitizeHTML(data.clientName)}</b>,<br>
+                        Having primary place of business at: ${sanitizeHTML(data.address)}.<br>
+                        Official Contact Mobile: +91 ${sanitizeHTML(data.phone)} | Official Email: ${sanitizeHTML(data.email)}<br>
+                        Government Identity / Tax Registration Code: <b>${sanitizeHTML(data.panId)}</b> (hereinafter "Client" or "Subscriber").
+                    </div>
+
+                    <div class="section-title">PREAMBLE & RECITALS</div>
+                    <p><b>WHEREAS</b>, Provider operates as a digital systems architecture and web development entity possessing specialized technical infrastructure, server deployment tools, and programming workflows necessary for constructing custom online interfaces;</p>
+                    <p><b>WHEREAS</b>, Client desires to retain Provider to design, construct, integrate, host, and render functional digital web assets customized for Client's business category: <b>${sanitizeHTML(data.category)}</b>;</p>
+                    <p><b>NOW, THEREFORE</b>, in consideration of the mutual promises, commercial covenants, financial considerations, and explicit SLA warranties contained herein, the receipt and legal sufficiency of which are hereby acknowledged, the Parties agree as follows:</p>
+
+                    <div class="section-title">ARTICLE 1: LEGAL INTERPRETATIONS & DEFINITIONS</div>
+                    <p><b>1.1 "Deliverables"</b> means all source code, graphical elements, design systems, database configurations, API connections, and user interfaces configured by Provider specifically for Client under this Contract scope.</p>
+                    <p><b>1.2 "Intellectual Property Rights"</b> means all statutory patents, registered copyrights, design rights, trademark protections, and underlying framework architectures developed prior to or during contract execution.</p>
+                    <p><b>1.3 "Acceptance Window"</b> means a fixed period of five (5) consecutive calendar days post digital portal deployment during which Client must evaluate functional operations against verified Scope criteria.</p>
+
+                    <div class="footer-bar">
+                        <span>Ref: ${sanitizeHTML(data.projectId)}</span>
+                        <span>Master Service Agreement • Page 1 of 8</span>
+                        <span>Initials: _______ / _______</span>
+                    </div>
+                </div>
+
+                <!-- PAGE 2: SCOPE OF WORK -->
+                <div class="pdf-page">
+                    <div class="header-bar">
+                        <h3>Tekkali Digital & Web Solutions Hub</h3>
+                        <span>MSA Ref: ${sanitizeHTML(data.projectId)}</span>
+                    </div>
+
+                    <div class="section-title">ARTICLE 2: DETAILED SCOPE OF WORK & TECHNICAL DELIVERABLES</div>
+                    <p>Provider agrees to execute technical engineering, layout structuring, and cloud configuration for designated service level: <b>${scope.tierName}</b>. Deliverables strictly encompass the following elements:</p>
+
+                    <div style="border: 1px solid #cbd5e1; padding: 10px; font-family: sans-serif; font-size: 9pt; background: #fff; margin-bottom: 10px;">
+                        <ul style="margin: 0; padding-left: 18px;">
+                            ${scope.features}
+                        </ul>
+                    </div>
+
+                    <div class="subsection-title">2.1 Content & Asset Supply Obligations</div>
+                    <p>Client agrees that Provider's delivery milestones are dependent on prompt delivery of business information, raw media assets, logo files, and text writeups. Client shall transmit all mandatory media within seven (7) calendar days of signing.</p>
+                    <p>Provider assumes no liability for project schedule delays resulting from Client's delay in delivering required digital assets. Delays exceeding fourteen (14) days shall incur an idle system retention fee equal to 10% of total contract value per billing cycle.</p>
+
+                    <div class="subsection-title">2.2 Out-Of-Scope Explicit Exclusions</div>
+                    <p>Any technical module, dynamic payment gateway, database query logic, third-party plugin, or custom portal feature not explicitly enumerated in Article 2 is strictly classified as Out-Of-Scope and requires a separate commercial addendum.</p>
+                    <div style="background: #fff1f2; border: 1px solid #fda4af; padding: 8px; font-size: 9pt; font-family: sans-serif; color: #9f1239; margin-bottom: 8px;">
+                        <b>Scope Limitation Disclaimer:</b> ${scope.exclusion}
+                    </div>
+
+                    <div class="subsection-title">2.3 Third-Party Platform Infrastructure Dependencies</div>
+                    <p>Client acknowledges that online functionality relies upon external services (Google Maps API, WhatsApp Routing Engines, Domain Registrars, Cloud Servers). Provider retains zero financial or operational liability for third-party network outages, API policy alterations, or pricing adjustments enforced independently by external service providers.</p>
+
+                    <div class="footer-bar">
+                        <span>Ref: ${sanitizeHTML(data.projectId)}</span>
+                        <span>Master Service Agreement • Page 2 of 8</span>
+                        <span>Initials: _______ / _______</span>
+                    </div>
+                </div>
+
+                <!-- PAGE 3: FINANCIAL TERMS -->
+                <div class="pdf-page">
+                    <div class="header-bar">
+                        <h3>Tekkali Digital & Web Solutions Hub</h3>
+                        <span>MSA Ref: ${sanitizeHTML(data.projectId)}</span>
+                    </div>
+
+                    <div class="section-title">ARTICLE 3: COMMERCIAL CONSIDERATIONS & REMITTANCE MILESTONES</div>
+                    <p>Client agrees to remit total contract financial considerations strictly in accordance with the structured financial milestones outlined below:</p>
+
+                    <table class="meta-table">
+                        <tr>
+                            <td class="label">Total Approved Contract Valuation</td>
+                            <td><b>₹${Number(data.budget).toLocaleString('en-IN')} INR</b></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Upfront Mobilization Advance (40%)</td>
+                            <td><b style="color: #059669;">₹${Number(data.advance).toLocaleString('en-IN')} INR</b></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Outstanding Final Balance Due</td>
+                            <td><b style="color: #d97706;">₹${Number(data.balance).toLocaleString('en-IN')} INR</b></td>
+                        </tr>
+                    </table>
+
+                    <div class="subsection-title">3.1 Payment Milestones & Trigger Requirements</div>
+                    <p><b>(a) Mobilization Advance Remittance:</b> A non-refundable advance deposit of 40% (₹${Number(data.advance).toLocaleString('en-IN')}) is payable immediately upon execution of this contract prior to technical staging or layout design.</p>
+                    <p><b>(b) Post-Launch Balance Settlement:</b> The remaining balance of ₹${Number(data.balance).toLocaleString('en-IN')} shall become due and payable immediately upon presentation of completed web staging link on Provider's verification URL, prior to DNS live deployment or domain pointing.</p>
+
+                    <div class="subsection-title">3.2 Late Settlement & Interest Default Clauses</div>
+                    <p>Unsettled balances beyond five (5) calendar days from completion notification shall incur late payment interest calculated at 2% per month (compounded monthly). Provider explicitly reserves technical authorization to suspend hosted files, disable live domain routing, or restrict system access until full account clearance.</p>
+
+                    <div class="subsection-title">3.3 Statutory Levies and Transaction Fees</div>
+                    <p>Contract figures are net of statutory GST or government taxes unless explicitly specified. Client remains responsible for all bank charges, payment gateway processing deductions, or wire transfer fees incurred during remittance.</p>
+
+                    <div class="footer-bar">
+                        <span>Ref: ${sanitizeHTML(data.projectId)}</span>
+                        <span>Master Service Agreement • Page 3 of 8</span>
+                        <span>Initials: _______ / _______</span>
+                    </div>
+                </div>
+
+                <!-- PAGE 4: HOSTING & SLA -->
+                <div class="pdf-page">
+                    <div class="header-bar">
+                        <h3>Tekkali Digital & Web Solutions Hub</h3>
+                        <span>MSA Ref: ${sanitizeHTML(data.projectId)}</span>
+                    </div>
+
+                    <div class="section-title">ARTICLE 4: HOSTING, SLA WARRANTY & MAINTENANCE RETAINER</div>
+
+                    <div class="subsection-title">4.1 Technical SLA Bug Warranty</div>
+                    <p>Provider supplies a thirty (30) calendar day technical bug warranty starting on official deployment date. Within this SLA period, Provider shall fix verifiable functional errors or link breakages within original Scope parameters at zero additional fee.</p>
+                    <p>Warranty excludes errors caused by Client code modification, third-party script updates, server parameter edits, lost credentials, or external malicious cyber incidents.</p>
+
+                    <div class="subsection-title">4.2 Hosting Retainer & Renewal Upkeep</div>
+                    <p>Following expiry of the initial 30-day warranty, continued web hosting maintenance, SSL certificate auto-renewals, cloud server bandwidth allocation, and domain upkeep shall be billed at mandatory monthly retainer: <b>${scope.maintFee}</b>.</p>
+                    <p>Non-payment of monthly hosting retainers for two consecutive billing cycles will result in automated system isolation and permanent purging of hosted files from cloud servers without liability.</p>
+
+                    <div class="subsection-title">4.3 Local Logistics Coverage (7km Radius Boundary Rule)</div>
+                    <p>Physical visits, asset collections, or in-person project review sessions within a <b>7 kilometer radius</b> of Tekkali center are provided complimentary. On-site visits requested beyond the 7km boundary shall incur travel reimbursement charges billed at actual conveyance expense + ₹500 engineer visit fee.</p>
+
+                    <div class="subsection-title">4.4 Backup Protocols & Data Retention</div>
+                    <p>Provider maintains weekly cloud snapshot backups for clients under active monthly maintenance contracts. Backup restoration services are unavailable for accounts not under an active upkeep plan.</p>
+
+                    <div class="footer-bar">
+                        <span>Ref: ${sanitizeHTML(data.projectId)}</span>
+                        <span>Master Service Agreement • Page 4 of 8</span>
+                        <span>Initials: _______ / _______</span>
+                    </div>
+                </div>
+
+                <!-- PAGE 5: IP & CONFIDENTIALITY -->
+                <div class="pdf-page">
+                    <div class="header-bar">
+                        <h3>Tekkali Digital & Web Solutions Hub</h3>
+                        <span>MSA Ref: ${sanitizeHTML(data.projectId)}</span>
+                    </div>
+
+                    <div class="section-title">ARTICLE 5: INTELLECTUAL PROPERTY & CONFIDENTIALITY</div>
+
+                    <div class="subsection-title">5.1 Ownership Rights & Background Code Asset Protection</div>
+                    <p>Upon receipt of 100% full cleared final payment, Client owns published web visuals and text content. Provider permanently retains ownership of underlying source frameworks, core code libraries, custom scripts, reusable CSS modules, and proprietary system architecture deployed during construction.</p>
+
+                    <div class="subsection-title">5.2 Non-Disclosure & Data Protection</div>
+                    <p>Both Parties agree to hold in strict confidence all business credentials, server keys, customer details, and proprietary operational workflows shared during project execution. Confidential information shall not be shared with external third parties without prior written consent.</p>
+
+                    <div class="subsection-title">5.3 Portfolio Display License</div>
+                    <p>Client grants Provider a non-exclusive, worldwide, royalty-free license to display finished website screenshots, company logo, and portal URL inside Provider's marketing portfolio, website case studies, and corporate sales proposals.</p>
+
+                    <div class="subsection-title">5.4 Copyright Indemnity Warranty</div>
+                    <p>Client guarantees that all trademarks, images, vector graphic files, and copy provided to Provider do not infringe on third-party copyrights. Client agrees to defend and hold harmless Provider against legal claims or expenses resulting from Client's supply of unauthorized copyrighted media.</p>
+
+                    <div class="footer-bar">
+                        <span>Ref: ${sanitizeHTML(data.projectId)}</span>
+                        <span>Master Service Agreement • Page 5 of 8</span>
+                        <span>Initials: _______ / _______</span>
+                    </div>
+                </div>
+
+                <!-- PAGE 6: LIMITATION OF LIABILITY -->
+                <div class="pdf-page">
+                    <div class="header-bar">
+                        <h3>Tekkali Digital & Web Solutions Hub</h3>
+                        <span>MSA Ref: ${sanitizeHTML(data.projectId)}</span>
+                    </div>
+
+                    <div class="section-title">ARTICLE 6: LIMITATION OF LIABILITY & LEGAL INDEMNITIES</div>
+
+                    <div class="subsection-title">6.1 Financial Liability Ceiling Limit</div>
+                    <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL PROVIDER, ITS OFFICERS, OR ENGINEERS BE LIABLE TO CLIENT FOR INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES (INCLUDING LOSS OF REVENUE, BUSINESS INTERRUPTION, OR DATA LOSS) ARISING OUT OF THIS AGREEMENT.</p>
+                    <p>PROVIDER'S TOTAL CUMULATIVE FINANCIAL LIABILITY UNDER ANY LEGAL CLAIM SHALL NOT EXCEED THE TOTAL FEES ACTUALLY PAID BY CLIENT TO PROVIDER UNDER THIS CONTRACT IN THE THREE (3) MONTHS PRECEDING THE CLAIM.</p>
+
+                    <div class="subsection-title">6.2 Disclaimer of Express or Implied Warranties</div>
+                    <p>EXCEPT FOR EXPRESS WARRANTIES WRITTEN IN ARTICLE 4.1, ALL DELIVERABLES AND HOSTING SERVICES ARE PROVIDED "AS-IS" WITHOUT ANY WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR IMMUNITY FROM THIRD-PARTY CYBER SECURITY ATTACKS.</p>
+
+                    <div class="subsection-title">6.3 Force Majeure Event Exceptions</div>
+                    <p>Neither Party shall be held liable for failure or delay in fulfilling performance obligations if caused by events beyond control, including natural disasters, regional fiber network failures, government internet blackouts, strike actions, pandemics, or major upstream cloud platform outages.</p>
+
+                    <div class="footer-bar">
+                        <span>Ref: ${sanitizeHTML(data.projectId)}</span>
+                        <span>Master Service Agreement • Page 6 of 8</span>
+                        <span>Initials: _______ / _______</span>
+                    </div>
+                </div>
+
+                <!-- PAGE 7: TERMINATION & JURISDICTION -->
+                <div class="pdf-page">
+                    <div class="header-bar">
+                        <h3>Tekkali Digital & Web Solutions Hub</h3>
+                        <span>MSA Ref: ${sanitizeHTML(data.projectId)}</span>
+                    </div>
+
+                    <div class="section-title">ARTICLE 7: TERMINATION & DISPUTE RESOLUTION</div>
+
+                    <div class="subsection-title">7.1 Termination for Default</div>
+                    <p>Either Party may terminate this Contract immediately upon formal written notice if the other Party commits a material breach (including non-payment) and fails to remedy such breach within seven (7) days of receiving written notice.</p>
+
+                    <div class="subsection-title">7.2 Early Cancellation Penalty</div>
+                    <p>In the event of Client cancellation or contract termination for convenience prior to completion, all paid mobilization advance deposits (₹${Number(data.advance).toLocaleString('en-IN')}) shall be forfeited to Provider as liquidated damage for reserved developer resources.</p>
+
+                    <div class="subsection-title">7.3 Governing Law & Territorial Jurisdiction</div>
+                    <p>This Contract shall be governed, interpreted, and enforced in accordance with the laws of the State of Andhra Pradesh and Republic of India. Any legal disputes or litigation arising under this Agreement shall fall strictly under the exclusive jurisdiction of courts located in Srikakulam District, AP.</p>
+
+                    <div class="subsection-title">7.4 Severability & Entirety of Agreement</div>
+                    <p>If any clause of this Agreement is declared invalid or unenforceable by court decree, the remaining sections shall remain in full effect. This Agreement constitutes the complete final understanding between both Parties.</p>
+
+                    <div class="footer-bar">
+                        <span>Ref: ${sanitizeHTML(data.projectId)}</span>
+                        <span>Master Service Agreement • Page 7 of 8</span>
+                        <span>Initials: _______ / _______</span>
+                    </div>
+                </div>
+
+                <!-- PAGE 8: EXECUTION & SIGNATURES -->
+                <div class="pdf-page">
+                    <div class="header-bar">
+                        <h3>Tekkali Digital & Web Solutions Hub</h3>
+                        <span>MSA Ref: ${sanitizeHTML(data.projectId)}</span>
+                    </div>
+
+                    <div class="section-title">ARTICLE 8: FORMAL EXECUTION & ACKNOWLEDGMENT</div>
+                    <p>IN WITNESS WHEREOF, the Parties hereto have caused this Master Services Agreement to be executed by their authorized representatives via legally binding digital signature capture, effective as of the Date recorded below.</p>
+
+                    <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; margin: 15px 0; font-family: sans-serif; font-size: 9pt;">
+                        <b>FINANCIAL & CONTRACT SUMMARY ACKNOWLEDGMENT:</b><br>
+                        • Total Contract Budget: <b>₹${Number(data.budget).toLocaleString('en-IN')} INR</b><br>
+                        • Upfront Advance Paid: <b>₹${Number(data.advance).toLocaleString('en-IN')} INR</b><br>
+                        • Balance Due Post-Launch: <b>₹${Number(data.balance).toLocaleString('en-IN')} INR</b><br>
+                        • Maintenance Retainer: <b>${scope.maintFee}</b>
+                    </div>
+
+                    <div class="sig-container">
+                        <div class="sig-box">
+                            <div style="min-height: 50px; display: flex; align-items: flex-end;">
+                                <img src="${data.signatureImage}" style="max-height: 55px; max-width: 180px;" alt="Client Signature"/>
+                            </div>
+                            <div class="sig-line">
+                                <b>CLIENT AUTHORIZED SIGNATORY</b><br>
+                                Signed By: <b>${sanitizeHTML(data.clientName)}</b><br>
+                                Firm: <b>${sanitizeHTML(data.companyName)}</b><br>
+                                PAN / ID: <b>${sanitizeHTML(data.panId)}</b><br>
+                                Date: ${sanitizeHTML(data.date)}
+                            </div>
+                        </div>
+
+                        <div class="sig-box" style="text-align: right;">
+                            <div style="min-height: 50px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end;">
+                                <div style="font-size: 11pt; font-weight: bold; color: #0f172a;">Tekkali Digital Hub</div>
+                                <small style="color: #059669; font-size: 8.5pt; font-weight: bold;">Authorized Seal Applied</small>
+                            </div>
+                            <div class="sig-line" style="text-align: left;">
+                                <b>AGENCY REPRESENTATIVE</b><br>
+                                Tekkali Digital & Web Solutions Hub<br>
+                                Exec Code: <b>${sanitizeHTML(data.empId)}</b><br>
+                                Ref Tracking: <b>${sanitizeHTML(data.projectId)}</b><br>
+                                Date: ${sanitizeHTML(data.date)}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer-bar" style="margin-top: 25px;">
+                        <span>Ref: ${sanitizeHTML(data.projectId)}</span>
+                        <span>Master Service Agreement • Page 8 of 8 (Execution Completed)</span>
+                        <span>End of Contract Document</span>
                     </div>
                 </div>
             </body>
             </html>
             `;
-            
+
             printWindow.document.write(printableHtml);
             printWindow.document.close();
         }
