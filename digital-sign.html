@@ -88,7 +88,7 @@
                 <p>Staff Governance & Client Master Service Agreements (MSA) Archive</p>
             </div>
 
-            <!-- UPDATE ADMIN PASSWORD FORM (NEW SECTION ADDED) -->
+            <!-- UPDATE ADMIN PASSWORD FORM -->
             <div style="background: #ffffff; padding: 18px 20px; border-radius: 10px; border: 1px solid #cbd5e1; margin-bottom: 20px;">
                 <h3 style="font-size: 0.95rem; margin-bottom: 12px; color: #d97706;"><i class="fa-solid fa-key"></i> Update Admin Password</h3>
                 <form onsubmit="updateAdminPassword(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; align-items: end;">
@@ -264,6 +264,9 @@
     </div>
 
     <script>
+        // RENDER LIVE BACKEND URL SETUP
+        const API_BASE_URL = "https://tekkali-backend.onrender.com";
+
         function sanitizeHTML(str) {
             return String(str).replace(/[&<>"']/g, function (m) {
                 return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
@@ -355,9 +358,9 @@
             const id = document.getElementById('loginId').value.trim().toUpperCase();
             const pass = document.getElementById('loginPass').value.trim();
 
-            // 1. Backend Server call logic
+            // 1. Backend Server call logic using Render Base URL
             try {
-                const response = await fetch('http://localhost:5000/api/login', {
+                const response = await fetch(`${API_BASE_URL}/api/login`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ id, pass })
@@ -405,7 +408,7 @@
             }
         }
 
-        // NEW FUNCTION TO UPDATE ADMIN PASSWORD
+        // UPDATE ADMIN PASSWORD FUNCTION WITH RENDER API CALL
         async function updateAdminPassword(event) {
             event.preventDefault();
             const currentPass = document.getElementById('currAdminPass').value.trim();
@@ -416,9 +419,9 @@
                 return;
             }
 
-            // Backend Call
+            // Backend Call to Render URL
             try {
-                const response = await fetch('http://localhost:5000/api/admin/change-password', {
+                const response = await fetch(`${API_BASE_URL}/api/admin/change-password`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ currentPass, newPass })
@@ -463,9 +466,9 @@
                 return;
             }
 
-            // Backend Server API Save logic
+            // Backend Server API Save logic with Render URL
             try {
-                const response = await fetch('http://localhost:5000/api/staff/save', {
+                const response = await fetch(`${API_BASE_URL}/api/staff/save`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ code: newId, pass: newPass })
