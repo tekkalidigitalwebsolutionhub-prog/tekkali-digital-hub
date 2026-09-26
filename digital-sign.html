@@ -358,7 +358,11 @@
             const id = document.getElementById('loginId').value.trim().toUpperCase();
             const pass = document.getElementById('loginPass').value.trim();
 
-            // 1. Backend Server call logic using Render Base URL
+            let loginSuccessful = false;
+            let userRole = "";
+            let loggedInCode = "";
+
+            // 1. Try Backend Server Login first
             try {
                 const response = await fetch(`${API_BASE_URL}/api/login`, {
                     method: 'POST',
@@ -368,41 +372,44 @@
 
                 const data = await response.json();
 
-                if (data.success) {
-                    if (data.role === "ADMIN") {
-                        document.getElementById('topNavBlock').style.display = 'flex';
-                        switchScreen('adminDashboard');
-                        renderStaffList();
-                        renderAgreementsTable();
-                        return;
-                    } else if (data.role === "STAFF") {
-                        currentLoggedInEmp = data.code || id;
-                        document.getElementById('topNavBlock').style.display = 'none';
-                        document.getElementById('displayEmpId').value = currentLoggedInEmp;
-                        document.getElementById('displayProjectId').value = generateProjectId();
-                        switchScreen('agreementScreen');
-                        return;
-                    }
+                if (response.ok && data.success) {
+                    loginSuccessful = true;
+                    userRole = data.role;
+                    loggedInCode = data.code || id;
                 }
             } catch (error) {
-                console.log("Backend offline or local verification fallback...");
+                console.log("Backend offline, using local fallback...");
             }
 
-            // 2. Local fallback login logic (Local Storage)
-            employeesDB = loadEmployees();
-            const currentAdminPass = getAdminPassword();
+            // 2. If backend failed or offline, use Local Storage Fallback
+            if (!loginSuccessful) {
+                employeesDB = loadEmployees();
+                const currentAdminPass = getAdminPassword();
 
-            if (id === "ADMIN" && pass === currentAdminPass) {
-                document.getElementById('topNavBlock').style.display = 'flex';
-                switchScreen('adminDashboard');
-                renderStaffList();
-                renderAgreementsTable();
-            } else if (employeesDB[id] && employeesDB[id] === pass) {
-                currentLoggedInEmp = id;
-                document.getElementById('topNavBlock').style.display = 'none';
-                document.getElementById('displayEmpId').value = currentLoggedInEmp;
-                document.getElementById('displayProjectId').value = generateProjectId();
-                switchScreen('agreementScreen');
+                if (id === "ADMIN" && pass === currentAdminPass) {
+                    loginSuccessful = true;
+                    userRole = "ADMIN";
+                } else if (employeesDB[id] && employeesDB[id] === pass) {
+                    loginSuccessful = true;
+                    userRole = "STAFF";
+                    loggedInCode = id;
+                }
+            }
+
+            // 3. Process Login Result
+            if (loginSuccessful) {
+                if (userRole === "ADMIN") {
+                    document.getElementById('topNavBlock').style.display = 'flex';
+                    switchScreen('adminDashboard');
+                    renderStaffList();
+                    renderAgreementsTable();
+                } else if (userRole === "STAFF") {
+                    currentLoggedInEmp = loggedInCode;
+                    document.getElementById('topNavBlock').style.display = 'none';
+                    document.getElementById('displayEmpId').value = currentLoggedInEmp;
+                    document.getElementById('displayProjectId').value = generateProjectId();
+                    switchScreen('agreementScreen');
+                }
             } else {
                 alert("Invalid Username or Password");
             }
@@ -441,17 +448,6 @@
                 console.log("Backend offline, falling back to local storage...");
             }
 
-            // Fallback for Local Storage
-            const savedAdminPass = getAdminPassword();
-            if (currentPass === savedAdminPass) {
-                localStorage.setItem('tekkali_admin_pass', newPass);
-                alert("Admin Password updated successfully (Local Storage)!");
-                document.getElementById('currAdminPass').value = '';
-                document.getElementById('newAdminPass').value = '';
-            } else {
-                alert("Current password is wrong!");
-            }
-        }
             // Fallback for Local Storage
             const savedAdminPass = getAdminPassword();
             if (currentPass === savedAdminPass) {
