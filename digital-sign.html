@@ -410,38 +410,37 @@
 
         // UPDATE ADMIN PASSWORD FUNCTION WITH RENDER API CALL
         async function updateAdminPassword(event) {
-            event.preventDefault();
-            const currentPass = document.getElementById('currAdminPass').value.trim();
-            const newPass = document.getElementById('newAdminPass').value.trim();
+    event.preventDefault();
+    const currentPass = document.getElementById('currAdminPass').value.trim();
+    const newPass = document.getElementById('newAdminPass').value.trim();
 
-            if (newPass.length < 6) {
-                alert("New password must be at least 6 characters long.");
-                return;
-            }
+    if (newPass.length < 6) {
+        alert("New password must be at least 6 characters long.");
+        return;
+    }
 
-            // Backend Call to Render URL
-            try {
-                const response = await fetch(`${API_BASE_URL}/api/admin/change-password`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ currentPass, newPass })
-                });
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/admin/change-password`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ currentPass, newPass })
+        });
 
-                const data = await response.json();
+        const data = await response.json();
 
-                if (data.success) {
-                    alert("Admin password updated successfully in Backend!");
-                    localStorage.setItem('tekkali_admin_pass', newPass);
-                    document.getElementById('currAdminPass').value = '';
-                    document.getElementById('newAdminPass').value = '';
-                    return;
-                } else {
-                    alert("Backend Error: " + data.message);
-                }
-            } catch (error) {
-                console.log("Backend offline, updating local storage admin password...");
-            }
-
+        if (response.ok && data.success) {
+            alert("Admin password updated successfully in Backend and Server!");
+            localStorage.setItem('tekkali_admin_pass', newPass);
+            document.getElementById('currAdminPass').value = '';
+            document.getElementById('newAdminPass').value = '';
+        } else {
+            alert("Error: " + (data.message || "Failed to update password"));
+        }
+    } catch (error) {
+        console.error("Network error:", error);
+        alert("Server ki connect avvatledu. Dayachesi backend server running lo undho ledo chudandi.");
+    }
+}
             // Fallback for Local Storage
             const savedAdminPass = getAdminPassword();
             if (currentPass === savedAdminPass) {
