@@ -214,51 +214,71 @@
             font-size: 0.88rem;
         }
 
-        .insights-section {
-            margin-bottom: 3rem;
-        }
-
-        .insights-grid {
+        .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
-        .insight-card {
+        .pricing-card {
             background: white;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 2rem 1.5rem;
             border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .insight-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
+        .pricing-card.featured {
+            border: 2px solid var(--tcs-blue);
+            transform: scale(1.02);
         }
 
-        .insight-body {
-            padding: 1.2rem;
-        }
-
-        .insight-tag {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--tcs-blue);
-            margin-bottom: 0.5rem;
-        }
-
-        .insight-card h3 {
-            font-size: 1.05rem;
+        .pricing-card h3 {
             color: var(--tcs-navy);
+            font-size: 1.25rem;
             margin-bottom: 0.5rem;
         }
 
-        .insight-card p {
+        .price-tag {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--tcs-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .pricing-card ul li {
+            padding: 0.4rem 0;
+            font-size: 0.88rem;
             color: var(--text-gray);
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .btn-buy {
+            background: var(--tcs-navy);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
             font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+
+        .btn-buy:hover {
+            background: var(--tcs-blue);
         }
 
         .inquiry-wrapper {
@@ -380,6 +400,53 @@
             font-size: 0.85rem;
         }
 
+        /* Modal styling for Terms / Policies */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 2rem;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: black;
+        }
+
+        .modal-content h2 {
+            color: var(--tcs-navy);
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p, .modal-content ul {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+        }
+
         footer {
             background: #050d18;
             color: #94a3b8;
@@ -421,6 +488,12 @@
             color: #94a3b8;
             text-decoration: none;
             font-size: 0.88rem;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            text-decoration: underline;
         }
 
         .footer-bottom {
@@ -456,7 +529,7 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
-                <li><a href="#insights">Insights</a></li>
+                <li><a href="#pricing">Budget & Plans</a></li>
                 <li><a href="#portal">Project Portal</a></li>
                 <li><a href="#careers">Careers</a></li>
                 <li><a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="nav-btn">Join Team</a></li>
@@ -469,7 +542,7 @@
         </div>
         <div class="mobile-menu" id="mobileMenu">
             <a href="#services" class="mob-link">Services</a>
-            <a href="#insights" class="mob-link">Insights</a>
+            <a href="#pricing" class="mob-link">Budget & Plans</a>
             <a href="#portal" class="mob-link">Project Portal</a>
             <a href="#careers" class="mob-link">Careers</a>
             <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" style="background: var(--tcs-blue); color: white; padding: 0.6rem; text-align: center; border-radius: 4px; font-weight: 600;">Join Team</a>
@@ -519,32 +592,49 @@
             </div>
         </div>
 
-        <div class="insights-section" id="insights">
-            <h2 class="section-title">Notes from the build floor.</h2>
-            <div class="insights-grid">
-                <div class="insight-card">
-                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Engineering" class="insight-img">
-                    <div class="insight-body">
-                        <div class="insight-tag">Engineering • September 12, 2026</div>
-                        <h3>Why Core Web Vitals Decide Your Search Ranking in 2026</h3>
-                        <p>Google now weights real-user experience metrics heavier than ever. Here is how we get client sites into the green.</p>
+        <!-- Pricing & Budget Ranges (Mandatory for PhonePe Business Verification) -->
+        <div id="pricing">
+            <h2 class="section-title">Transparent Budget Ranges & Service Packages</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div>
+                        <h3>Starter Business Page</h3>
+                        <div class="price-tag">₹5,000 - ₹10,000</div>
+                        <ul>
+                            <li>Single Page Professional Website</li>
+                            <li>Mobile Responsive Layout</li>
+                            <li>WhatsApp Inquiry Integration</li>
+                            <li>Basic SEO Setup</li>
+                        </ul>
                     </div>
+                    <button class="btn-buy" onclick="initiatePayment('Starter Business Page', 5000)">Select & Pay via PhonePe</button>
                 </div>
-                <div class="insight-card">
-                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=600&q=80" alt="Design" class="insight-img">
-                    <div class="insight-body">
-                        <div class="insight-tag">Design • August 28, 2026</div>
-                        <h3>Designing Trust: The Interface Patterns That Convert</h3>
-                        <p>Visitors decide whether to trust your site in under a second. Here are the patterns that tip the decision in your favour.</p>
+                <div class="pricing-card featured">
+                    <div>
+                        <div style="background: var(--tcs-blue); color: white; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-block; margin-bottom: 0.5rem;">MOST POPULAR</div>
+                        <h3>Standard Business Portal</h3>
+                        <div class="price-tag">₹10,000 - ₹25,000</div>
+                        <ul>
+                            <li>Multi-page Business Website</li>
+                            <li>Advanced UI/UX Custom Design</li>
+                            <li>PhonePe Payment Gateway Link</li>
+                            <li>Priority Support & Maintenance</li>
+                        </ul>
                     </div>
+                    <button class="btn-buy" onclick="initiatePayment('Standard Business Portal', 15000)">Select & Pay via PhonePe</button>
                 </div>
-                <div class="insight-card">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Cloud" class="insight-img">
-                    <div class="insight-body">
-                        <div class="insight-tag">Cloud • August 7, 2026</div>
-                        <h3>From Monolith to Edge: A Pragmatic Migration Playbook</h3>
-                        <p>You do not need a rewrite to escape the monolith. A staged migration gets you edge performance without betting the business.</p>
+                <div class="pricing-card">
+                    <div>
+                        <h3>Enterprise & E-Commerce</h3>
+                        <div class="price-tag">₹25,000+</div>
+                        <ul>
+                            <li>Full E-Commerce Store Integration</li>
+                            <li>Inventory & Order Management</li>
+                            <li>Custom Payment Link API Integration</li>
+                            <li>Dedicated Account Manager</li>
+                        </ul>
                     </div>
+                    <button class="btn-buy" onclick="initiatePayment('Enterprise E-Commerce', 25000)">Select & Pay via PhonePe</button>
                 </div>
             </div>
         </div>
@@ -613,12 +703,12 @@
                 <p>A full-service web studio in Tekkali, Andhra Pradesh — building fast, secure, search-ready digital products for ambitious businesses everywhere.</p>
             </div>
             <div class="footer-col">
-                <h3>Explore</h3>
+                <h3>Legal & Compliance</h3>
                 <ul class="footer-links">
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#insights">Insights</a></li>
-                    <li><a href="#portal">Project Portal</a></li>
-                    <li><a href="#careers">Careers</a></li>
+                    <li><a onclick="openModal('termsModal')">Terms & Conditions</a></li>
+                    <li><a onclick="openModal('privacyModal')">Privacy Policy</a></li>
+                    <li><a onclick="openModal('refundModal')">Refund & Cancellation</a></li>
+                    <li><a onclick="openModal('shippingModal')">Shipping & Delivery</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -634,6 +724,47 @@
             &copy; 2026 Tekkali Digital Web Solutions Hub. All Rights Reserved. Tekkali, Andhra Pradesh, India.
         </div>
     </footer>
+
+    <!-- Modals for PhonePe Compliance -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
+            <h2>Terms & Conditions</h2>
+            <p>Welcome to Tekkali Digital Web Solutions Hub. By accessing our website and engaging our services, you agree to comply with and be bound by the following terms and conditions.</p>
+            <p><strong>1. Services:</strong> We provide digital web solutions, custom development, cloud hosting, and e-commerce setups within defined budget slabs (₹5,000 to ₹25,000+).</p>
+            <p><strong>2. Payments:</strong> All payments are processed securely through authorized payment gateway partners like PhonePe. Services commence upon realization of payment confirmation.</p>
+            <p><strong>3. Intellectual Property:</strong> All code, designs, and content created remain property of Tekkali Digital Web Solutions Hub until final project handover.</p>
+        </div>
+    </div>
+
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p>Tekkali Digital Web Solutions Hub values your privacy. This policy outlines how we handle your personal data:</p>
+            <p><strong>Data Collection:</strong> We collect details such as name, phone number, and project scope solely for communication and service delivery.</p>
+            <p><strong>Data Security:</strong> Your transaction data and personal information are encrypted and never shared with third-party marketers.</p>
+        </div>
+    </div>
+
+    <div id="refundModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('refundModal')">&times;</span>
+            <h2>Refund & Cancellation Policy</h2>
+            <p><strong>Cancellation:</strong> Project cancellations must be requested within 24 hours of initial payment before development deployment starts.</p>
+            <p><strong>Refunds:</strong> Eligible refunds are processed back to the original source payment account (PhonePe / Bank Transfer) within 5-7 working days following approval.</p>
+        </div>
+    </div>
+
+    <div id="shippingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('shippingModal')">&times;</span>
+            <h2>Shipping & Delivery Policy</h2>
+            <p>Since Tekkali Digital Web Solutions Hub delivers digital products, web solutions, and software services electronically:</p>
+            <p><strong>Delivery Timeline:</strong> Standard project delivery ranges from 3 to 10 business days depending on the selected budget package and complexity.</p>
+            <p><strong>Mode of Delivery:</strong> All digital assets, source links, and credentials are delivered digitally via email or WhatsApp.</p>
+        </div>
+    </div>
 
     <script>
         const menuToggle = document.getElementById('menuToggle');
@@ -652,6 +783,26 @@
                 mobileMenu.style.display = 'none';
             });
         });
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        function initiatePayment(packageName, amount) {
+            alert(`Redirecting to PhonePe Business Checkout for [ ${packageName} ] amounting to ₹${amount}... (Testing Mode Simulation)`);
+            const upiLink = `upi://pay?pa=9493583804@okbizaxis&pn=TekkaliDigitalWebSolutionsHub&am=${amount}&cu=INR&tn=Payment for ${packageName}`;
+            window.location.href = upiLink;
+        }
 
         document.getElementById('projectInquiryForm').addEventListener('submit', function(e) {
             e.preventDefault();
