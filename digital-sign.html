@@ -264,7 +264,6 @@
     </div>
 
     <script>
-        // RENDER LIVE BACKEND URL SETUP
         const API_BASE_URL = "https://tekkali-backend.onrender.com";
 
         function sanitizeHTML(str) {
@@ -362,7 +361,6 @@
             let userRole = "";
             let loggedInCode = "";
 
-            // 1. Try Backend Server Login first
             try {
                 const response = await fetch(`${API_BASE_URL}/api/login`, {
                     method: 'POST',
@@ -381,7 +379,6 @@
                 console.log("Backend offline, using local fallback...");
             }
 
-            // 2. If backend failed or offline, use Local Storage Fallback
             if (!loginSuccessful) {
                 employeesDB = loadEmployees();
                 const currentAdminPass = getAdminPassword();
@@ -396,7 +393,6 @@
                 }
             }
 
-            // 3. Process Login Result
             if (loginSuccessful) {
                 if (userRole === "ADMIN") {
                     document.getElementById('topNavBlock').style.display = 'flex';
@@ -415,7 +411,6 @@
             }
         }
 
-        // UPDATE ADMIN PASSWORD FUNCTION WITH RENDER API CALL
         async function updateAdminPassword(event) {
             event.preventDefault();
             const currentPass = document.getElementById('currAdminPass').value.trim();
@@ -448,7 +443,6 @@
                 console.log("Backend offline, falling back to local storage...");
             }
 
-            // Fallback for Local Storage
             const savedAdminPass = getAdminPassword();
             if (currentPass === savedAdminPass) {
                 localStorage.setItem('tekkali_admin_pass', newPass);
@@ -472,7 +466,6 @@
                 return;
             }
 
-            // Backend Server API Save logic with Render URL
             try {
                 const response = await fetch(`${API_BASE_URL}/api/staff/save`, {
                     method: 'POST',
@@ -487,7 +480,6 @@
                 console.log("Backend offline, updating local storage...");
             }
 
-            // Sync Local Storage
             employeesDB = loadEmployees();
             employeesDB[newId] = newPass;
             localStorage.setItem('tekkali_employees', JSON.stringify(employeesDB));
