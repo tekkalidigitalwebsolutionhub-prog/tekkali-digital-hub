@@ -173,9 +173,16 @@
             font-size: 1.8rem;
             font-weight: 800;
             color: var(--tcs-navy);
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
             text-align: center;
             letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 2.5rem;
         }
 
         .services-grid {
@@ -218,7 +225,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .pricing-card {
@@ -279,6 +286,19 @@
 
         .btn-buy:hover {
             background: var(--tcs-blue);
+        }
+
+        .budget-note {
+            background: #e0f2fe;
+            border: 1px solid #bae6fd;
+            border-left: 5px solid var(--tcs-blue);
+            padding: 1.2rem;
+            border-radius: 6px;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 0.95rem;
+            color: #0369a1;
+            font-weight: 500;
         }
 
         .inquiry-wrapper {
@@ -513,7 +533,7 @@
             .hero h1 { font-size: 1.75rem; }
             .hero p { font-size: 0.95rem; margin: 0 auto 1.5rem auto; }
             .container { padding: 2rem 1rem; }
-            .section-title { font-size: 1.5rem; margin-bottom: 1.5rem; }
+            .section-title { font-size: 1.5rem; }
             .form-grid { grid-template-columns: 1fr; }
             .form-group.full { grid-column: span 1; }
             .footer-container { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
@@ -561,6 +581,7 @@
     <div class="container">
         
         <h2 id="services" class="section-title">Core Capabilities</h2>
+        <p class="section-subtitle">Comprehensive digital solutions engineered to scale your business.</p>
         <div class="services-grid">
             <div class="service-card">
                 <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Web Development" class="service-img">
@@ -592,50 +613,56 @@
             </div>
         </div>
 
-        <!-- Pricing & Budget Ranges (Mandatory for PhonePe Business Verification) -->
+        <!-- Budget Ranges & Pricing (Enterprise Structured with Flexible Offers) -->
         <div id="pricing">
-            <h2 class="section-title">Transparent Budget Ranges & Service Packages</h2>
+            <h2 class="section-title">Investment Plans & Budget Ranges</h2>
+            <p class="section-subtitle">Transparent pricing structured for optimal delivery over 30 to 40 business days.</p>
+            
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div>
-                        <h3>Starter Business Page</h3>
-                        <div class="price-tag">₹5,000 - ₹10,000</div>
+                        <h3>Basic Business Package</h3>
+                        <div class="price-tag">₹10,000 - ₹15,000</div>
                         <ul>
-                            <li>Single Page Professional Website</li>
-                            <li>Mobile Responsive Layout</li>
+                            <li>Professional Single/Multi-page Website</li>
+                            <li>Mobile Responsive Design</li>
                             <li>WhatsApp Inquiry Integration</li>
-                            <li>Basic SEO Setup</li>
+                            <li>Free Maintenance Support (30-40 Days Delivery)</li>
                         </ul>
                     </div>
-                    <button class="btn-buy" onclick="initiatePayment('Starter Business Page', 5000)">Select & Pay via PhonePe</button>
+                    <button class="btn-buy" onclick="initiatePayment('Basic Business Package', 10000)">Select & Pay via PhonePe</button>
                 </div>
                 <div class="pricing-card featured">
                     <div>
                         <div style="background: var(--tcs-blue); color: white; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-block; margin-bottom: 0.5rem;">MOST POPULAR</div>
-                        <h3>Standard Business Portal</h3>
-                        <div class="price-tag">₹10,000 - ₹25,000</div>
+                        <h3>Medium Business Portal</h3>
+                        <div class="price-tag">₹15,000 - ₹25,000</div>
                         <ul>
-                            <li>Multi-page Business Website</li>
                             <li>Advanced UI/UX Custom Design</li>
-                            <li>PhonePe Payment Gateway Link</li>
-                            <li>Priority Support & Maintenance</li>
+                            <li>PhonePe Payment Gateway Integration</li>
+                            <li>SEO Optimization & Speed Tuning</li>
+                            <li>Extended Maintenance & Support (30-40 Days Delivery)</li>
                         </ul>
                     </div>
-                    <button class="btn-buy" onclick="initiatePayment('Standard Business Portal', 15000)">Select & Pay via PhonePe</button>
+                    <button class="btn-buy" onclick="initiatePayment('Medium Business Portal', 15000)">Select & Pay via PhonePe</button>
                 </div>
                 <div class="pricing-card">
                     <div>
-                        <h3>Enterprise & E-Commerce</h3>
+                        <h3>High Enterprise Solution</h3>
                         <div class="price-tag">₹25,000+</div>
                         <ul>
-                            <li>Full E-Commerce Store Integration</li>
-                            <li>Inventory & Order Management</li>
-                            <li>Custom Payment Link API Integration</li>
+                            <li>Full E-Commerce Store & Inventory Management</li>
+                            <li>Custom API & Payment Links Setup</li>
                             <li>Dedicated Account Manager</li>
+                            <li>Priority Lifetime Maintenance (30-40 Days Delivery)</li>
                         </ul>
                     </div>
-                    <button class="btn-buy" onclick="initiatePayment('Enterprise E-Commerce', 25000)">Select & Pay via PhonePe</button>
+                    <button class="btn-buy" onclick="initiatePayment('High Enterprise Solution', 25000)">Select & Pay via PhonePe</button>
                 </div>
+            </div>
+
+            <div class="budget-note">
+                💡 <strong>Note on Custom Budgets & Maintenance:</strong> Have a specific budget in mind? Connect with us directly! We customize solutions to match your exact financial requirements, offer special price adjustments on discussion, and provide complete ongoing website maintenance.
             </div>
         </div>
 
@@ -670,9 +697,9 @@
                         <div class="form-group">
                             <label for="clientBudget">Expected Budget Range</label>
                             <select id="clientBudget">
-                                <option value="₹5,000 - ₹10,000">₹5,000 - ₹10,000</option>
-                                <option value="₹10,000 - ₹25,000">₹10,000 - ₹25,000</option>
-                                <option value="₹25,000+">₹25,000+</option>
+                                <option value="₹10,000 - ₹15,000 (Basic)">₹10,000 - ₹15,000 (Basic)</option>
+                                <option value="₹15,000 - ₹25,000 (Medium)">₹15,000 - ₹25,000 (Medium)</option>
+                                <option value="₹25,000+ (High / Custom)">₹25,000+ (High / Custom)</option>
                             </select>
                         </div>
                     </div>
@@ -731,9 +758,9 @@
             <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
             <h2>Terms & Conditions</h2>
             <p>Welcome to Tekkali Digital Web Solutions Hub. By accessing our website and engaging our services, you agree to comply with and be bound by the following terms and conditions.</p>
-            <p><strong>1. Services:</strong> We provide digital web solutions, custom development, cloud hosting, and e-commerce setups within defined budget slabs (₹5,000 to ₹25,000+).</p>
-            <p><strong>2. Payments:</strong> All payments are processed securely through authorized payment gateway partners like PhonePe. Services commence upon realization of payment confirmation.</p>
-            <p><strong>3. Intellectual Property:</strong> All code, designs, and content created remain property of Tekkali Digital Web Solutions Hub until final project handover.</p>
+            <p><strong>1. Services & Pricing:</strong> We provide digital solutions within standard brackets (₹10,000 to ₹25,000+). Prices and packages are negotiable based on custom client requirements.</p>
+            <p><strong>2. Maintenance & Support:</strong> All project packages include complimentary technical maintenance and support during and post-deployment.</p>
+            <p><strong>3. Payments:</strong> Payments are processed securely via PhonePe and authorized digital channels.</p>
         </div>
     </div>
 
@@ -761,8 +788,8 @@
             <span class="close-btn" onclick="closeModal('shippingModal')">&times;</span>
             <h2>Shipping & Delivery Policy</h2>
             <p>Since Tekkali Digital Web Solutions Hub delivers digital products, web solutions, and software services electronically:</p>
-            <p><strong>Delivery Timeline:</strong> Standard project delivery ranges from 3 to 10 business days depending on the selected budget package and complexity.</p>
-            <p><strong>Mode of Delivery:</strong> All digital assets, source links, and credentials are delivered digitally via email or WhatsApp.</p>
+            <p><strong>Delivery Timeline:</strong> Standard project execution and delivery ranges from <strong>30 to 40 business days</strong> depending on the selected package and project scope.</p>
+            <p><strong>Mode of Delivery:</strong> All digital assets, source links, and maintenance credentials are delivered digitally via email or WhatsApp.</p>
         </div>
     </div>
 
