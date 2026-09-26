@@ -627,49 +627,49 @@
         </div>
 
         <div id="pricing">
-            <h2 class="section-title">Investment Plans & Locked Budgets</h2>
-            <p class="section-subtitle">Transparent pricing structured with fixed automated budgets for safe payments.</p>
+            <h2 class="section-title">Investment Plans & Budget Ranges</h2>
+            <p class="section-subtitle">Transparent pricing structured for optimal delivery over 30 to 40 business days[cite: 7].</p>
             
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div>
                         <h3>Basic Business Package</h3>
-                        <div class="price-tag">₹10,000</div>
+                        <div class="price-tag">₹10,000 - ₹15,000</div>
                         <ul>
                             <li>Professional Single/Multi-page Website</li>
                             <li>Mobile Responsive Design</li>
                             <li>WhatsApp Inquiry Integration</li>
-                            <li>Fixed Locked Budget Protocol</li>
+                            <li>Free Maintenance Support (30-40 Days Delivery)[cite: 7]</li>
                         </ul>
                     </div>
-                    <button class="btn-buy" onclick="openCheckoutModal('Basic Business Package', 10000)">Pay Fixed ₹10,000 via UPI</button>
+                    <button class="btn-buy" onclick="openCheckoutModal('Basic Business Package (₹13,000)', 13000)">Select & Pay via PhonePe</button>
                 </div>
                 <div class="pricing-card featured">
                     <div>
                         <div style="background: var(--tcs-blue); color: white; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-block; margin-bottom: 0.5rem;">MOST POPULAR</div>
                         <h3>Medium Business Portal</h3>
-                        <div class="price-tag">₹15,000</div>
+                        <div class="price-tag">₹15,000 - ₹25,000</div>
                         <ul>
                             <li>Advanced UI/UX Custom Design</li>
                             <li>PhonePe Payment Gateway Integration</li>
                             <li>SEO Optimization & Speed Tuning</li>
-                            <li>Fixed Locked Budget Protocol</li>
+                            <li>Extended Maintenance & Support (30-40 Days Delivery)[cite: 7]</li>
                         </ul>
                     </div>
-                    <button class="btn-buy" onclick="openCheckoutModal('Medium Business Portal', 15000)">Pay Fixed ₹15,000 via UPI</button>
+                    <button class="btn-buy" onclick="openCheckoutModal('Medium Business Portal (₹22,000)', 22000)">Select & Pay via PhonePe</button>
                 </div>
                 <div class="pricing-card">
                     <div>
                         <h3>High Enterprise Solution</h3>
-                        <div class="price-tag">₹25,000</div>
+                        <div class="price-tag">₹25,000+</div>
                         <ul>
                             <li>Full E-Commerce Store & Inventory Management</li>
                             <li>Custom API & Payment Links Setup</li>
                             <li>Dedicated Account Manager</li>
-                            <li>Fixed Locked Budget Protocol</li>
+                            <li>Priority Lifetime Maintenance (30-40 Days Delivery)[cite: 7]</li>
                         </ul>
                     </div>
-                    <button class="btn-buy" onclick="openCheckoutModal('High Enterprise Solution', 25000)">Pay Fixed ₹25,000 via UPI</button>
+                    <button class="btn-buy" onclick="openCheckoutModal('High Enterprise Solution (₹35,000)', 35000)">Select & Pay via PhonePe</button>
                 </div>
             </div>
 
@@ -709,9 +709,9 @@
                         <div class="form-group">
                             <label for="clientBudget">Expected Budget Range</label>
                             <select id="clientBudget">
-                                <option value="₹10,000 (Basic)">₹10,000 (Basic)</option>
-                                <option value="₹15,000 (Medium)">₹15,000 (Medium)</option>
-                                <option value="₹25,000 (High / Custom)">₹25,000 (High / Custom)</option>
+                                <option value="₹13,000 (Basic)">₹13,000 (Basic)</option>
+                                <option value="₹22,000 (Standard)">₹22,000 (Standard)</option>
+                                <option value="₹35,000 (High / Custom)">₹35,000 (High / Custom)</option>
                             </select>
                         </div>
                     </div>
@@ -743,7 +743,7 @@
             
             <div class="upi-highlight">
                 Official Business UPI: <strong>tekkalihub@naviaxis</strong><br>
-                <em>Amount is permanently locked by system. Manual editing disabled[cite: 5].</em>
+                <em>Amount is permanently locked by system. Manual editing disabled.</em>
             </div>
 
             <form id="phonePePayForm">
@@ -765,7 +765,6 @@
                 </div>
                 <div class="form-group">
                     <label for="payAmount">Locked Final Amount (₹) - [Non-Editable]</label>
-                    <!-- Readonly field ensures client cannot change the fixed amount -->
                     <input type="number" id="payAmount" readonly>
                 </div>
                 <div class="form-group">
@@ -884,7 +883,6 @@
         function openCheckoutModal(packageName, fixedAmount) {
             selectedPackageName = packageName;
             document.getElementById('modalPackageTitle').innerText = `Secure Checkout: ${packageName}`;
-            // Amount is locked dynamically into the readonly field
             document.getElementById('payAmount').value = fixedAmount;
             document.getElementById('checkoutModal').style.display = 'block';
         }
@@ -899,11 +897,9 @@
             const amount = document.getElementById('payAmount').value;
             const refId = document.getElementById('payRefId').value;
 
-            // Triggering payment app link with specified UPI ID tekkalihub@naviaxis and locked amount
             const upiDeepLink = `upi://pay?pa=tekkalihub@naviaxis&pn=Tekkali%20Digital&am=${amount}&cu=INR`;
             window.location.href = upiDeepLink;
 
-            // Construct WhatsApp message containing customer details and UTR Reference Number
             const adminMsg = `*Locked Payment Verification Report*%0A----------------------------------%0A*Package:* ${selectedPackageName}%0A*Client Name:* ${name}%0A*Shop/Business:* ${shop}%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Locked Amount:* ₹${amount}%0A*UPI ID Used:* tekkalihub@naviaxis%0A*UTR Reference ID:* ${refId}`;
             const adminWhatsAppUrl = `https://wa.me/919493583804?text=${adminMsg}`;
 
@@ -919,7 +915,7 @@
             
             const name = document.getElementById('clientName').value;
             const phone = document.getElementById('clientPhone').value;
-            const type = document.getElementById('projectType5').value || document.getElementById('projectType').value;
+            const type = document.getElementById('projectType').value;
             const budget = document.getElementById('clientBudget').value;
             const details = document.getElementById('projectDetails').value;
 
