@@ -371,6 +371,13 @@
             width: 100%;
         }
 
+        .form-group input[readonly] {
+            background-color: #e2e8f0;
+            color: #475569;
+            font-weight: 700;
+            cursor: not-allowed;
+        }
+
         .btn-submit {
             background: var(--tcs-success);
             color: white;
@@ -420,7 +427,7 @@
             font-size: 0.85rem;
         }
 
-        /* Modal styling for Terms / Policies */
+        /* Modal styling */
         .modal {
             display: none;
             position: fixed;
@@ -438,8 +445,8 @@
             margin: 5% auto;
             padding: 2rem;
             border: 1px solid #888;
-            width: 80%;
-            max-width: 800px;
+            width: 90%;
+            max-width: 550px;
             border-radius: 8px;
             position: relative;
         }
@@ -458,13 +465,19 @@
 
         .modal-content h2 {
             color: var(--tcs-navy);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
         }
 
-        .modal-content p, .modal-content ul {
-            font-size: 0.9rem;
-            color: var(--text-gray);
+        .upi-highlight {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #1e40af;
             margin-bottom: 1rem;
+            text-align: center;
         }
 
         footer {
@@ -613,56 +626,55 @@
             </div>
         </div>
 
-        <!-- Budget Ranges & Pricing (Enterprise Structured with Flexible Offers) -->
         <div id="pricing">
-            <h2 class="section-title">Investment Plans & Budget Ranges</h2>
-            <p class="section-subtitle">Transparent pricing structured for optimal delivery over 30 to 40 business days.</p>
+            <h2 class="section-title">Investment Plans & Locked Budgets</h2>
+            <p class="section-subtitle">Transparent pricing structured with fixed automated budgets for safe payments.</p>
             
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div>
                         <h3>Basic Business Package</h3>
-                        <div class="price-tag">₹10,000 - ₹15,000</div>
+                        <div class="price-tag">₹10,000</div>
                         <ul>
                             <li>Professional Single/Multi-page Website</li>
                             <li>Mobile Responsive Design</li>
                             <li>WhatsApp Inquiry Integration</li>
-                            <li>Free Maintenance Support (30-40 Days Delivery)</li>
+                            <li>Fixed Locked Budget Protocol</li>
                         </ul>
                     </div>
-                    <button class="btn-buy" onclick="initiatePayment('Basic Business Package', 10000)">Select & Pay via PhonePe</button>
+                    <button class="btn-buy" onclick="openCheckoutModal('Basic Business Package', 10000)">Pay Fixed ₹10,000 via UPI</button>
                 </div>
                 <div class="pricing-card featured">
                     <div>
                         <div style="background: var(--tcs-blue); color: white; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-block; margin-bottom: 0.5rem;">MOST POPULAR</div>
                         <h3>Medium Business Portal</h3>
-                        <div class="price-tag">₹15,000 - ₹25,000</div>
+                        <div class="price-tag">₹15,000</div>
                         <ul>
                             <li>Advanced UI/UX Custom Design</li>
                             <li>PhonePe Payment Gateway Integration</li>
                             <li>SEO Optimization & Speed Tuning</li>
-                            <li>Extended Maintenance & Support (30-40 Days Delivery)</li>
+                            <li>Fixed Locked Budget Protocol</li>
                         </ul>
                     </div>
-                    <button class="btn-buy" onclick="initiatePayment('Medium Business Portal', 15000)">Select & Pay via PhonePe</button>
+                    <button class="btn-buy" onclick="openCheckoutModal('Medium Business Portal', 15000)">Pay Fixed ₹15,000 via UPI</button>
                 </div>
                 <div class="pricing-card">
                     <div>
                         <h3>High Enterprise Solution</h3>
-                        <div class="price-tag">₹25,000+</div>
+                        <div class="price-tag">₹25,000</div>
                         <ul>
                             <li>Full E-Commerce Store & Inventory Management</li>
                             <li>Custom API & Payment Links Setup</li>
                             <li>Dedicated Account Manager</li>
-                            <li>Priority Lifetime Maintenance (30-40 Days Delivery)</li>
+                            <li>Fixed Locked Budget Protocol</li>
                         </ul>
                     </div>
-                    <button class="btn-buy" onclick="initiatePayment('High Enterprise Solution', 25000)">Select & Pay via PhonePe</button>
+                    <button class="btn-buy" onclick="openCheckoutModal('High Enterprise Solution', 25000)">Pay Fixed ₹25,000 via UPI</button>
                 </div>
             </div>
 
             <div class="budget-note">
-                💡 <strong>Note on Custom Budgets & Maintenance:</strong> Have a specific budget in mind? Connect with us directly! We customize solutions to match your exact financial requirements, offer special price adjustments on discussion, and provide complete ongoing website maintenance.
+                💡 <strong>Note on Custom Budgets & Maintenance:</strong> Have a specific budget in mind? Connect with us directly! We customize solutions to match your exact financial requirements.
             </div>
         </div>
 
@@ -697,9 +709,9 @@
                         <div class="form-group">
                             <label for="clientBudget">Expected Budget Range</label>
                             <select id="clientBudget">
-                                <option value="₹10,000 - ₹15,000 (Basic)">₹10,000 - ₹15,000 (Basic)</option>
-                                <option value="₹15,000 - ₹25,000 (Medium)">₹15,000 - ₹25,000 (Medium)</option>
-                                <option value="₹25,000+ (High / Custom)">₹25,000+ (High / Custom)</option>
+                                <option value="₹10,000 (Basic)">₹10,000 (Basic)</option>
+                                <option value="₹15,000 (Medium)">₹15,000 (Medium)</option>
+                                <option value="₹25,000 (High / Custom)">₹25,000 (High / Custom)</option>
                             </select>
                         </div>
                     </div>
@@ -721,6 +733,89 @@
             <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="btn-apply">Apply Now via Google Form</a>
         </div>
 
+    </div>
+
+    <!-- Secure UPI Payment Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('checkoutModal')">&times;</span>
+            <h2 id="modalPackageTitle">Secure Locked Payment</h2>
+            
+            <div class="upi-highlight">
+                Official Business UPI: <strong>tekkalihub@naviaxis</strong><br>
+                <em>Amount is permanently locked by system. Manual editing disabled[cite: 5].</em>
+            </div>
+
+            <form id="phonePePayForm">
+                <div class="form-group">
+                    <label for="payName">Full Name *</label>
+                    <input type="text" id="payName" required placeholder="e.g., Ramesh Kumar">
+                </div>
+                <div class="form-group">
+                    <label for="payEmail">Email Address *</label>
+                    <input type="email" id="payEmail" required placeholder="e.g., ramesh@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label for="payPhone">Mobile Number (PhonePe/UPI Linked) *</label>
+                    <input type="tel" id="payPhone" required placeholder="e.g., 9876543210">
+                </div>
+                <div class="form-group">
+                    <label for="payShop">Shop / Business Name *</label>
+                    <input type="text" id="payShop" required placeholder="e.g., Sri Sai Electronics">
+                </div>
+                <div class="form-group">
+                    <label for="payAmount">Locked Final Amount (₹) - [Non-Editable]</label>
+                    <!-- Readonly field ensures client cannot change the fixed amount -->
+                    <input type="number" id="payAmount" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="payRefId">Transaction / UTR Reference Number (After Payment) *</label>
+                    <input type="text" id="payRefId" required placeholder="Enter 12-digit UTR from PhonePe app">
+                </div>
+                <button type="submit" class="btn-submit" style="background: var(--tcs-success);">Complete & Notify Admin via WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Legal Modals -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
+            <h2>Terms & Conditions</h2>
+            <p>Welcome to Tekkali Digital Web Solutions Hub. By accessing our website and engaging our services, you agree to comply with and be bound by the following terms and conditions.</p>
+            <p><strong>1. Services & Pricing:</strong> We provide digital solutions within standard brackets. Prices and packages are fixed via automated locking mechanisms to prevent errors.</p>
+            <p><strong>2. Maintenance & Support:</strong> All project packages include complimentary technical maintenance and support during and post-deployment.</p>
+            <p><strong>3. Payments:</strong> Payments are processed securely via authorized UPI channels to <strong>tekkalihub@naviaxis</strong>.</p>
+        </div>
+    </div>
+
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p>Tekkali Digital Web Solutions Hub values your privacy. This policy outlines how we handle your personal data:</p>
+            <p><strong>Data Collection:</strong> We collect details such as name, phone number, and project scope solely for communication and service delivery.</p>
+            <p><strong>Data Security:</strong> Your transaction data and personal information are encrypted and never shared with third-party marketers.</p>
+        </div>
+    </div>
+
+    <div id="refundModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('refundModal')">&times;</span>
+            <h2>Refund & Cancellation Policy</h2>
+            <p><strong>Cancellation:</strong> Project cancellations must be requested within 24 hours of initial payment before development deployment starts.</p>
+            <p><strong>Refunds:</strong> Eligible refunds are processed back to the original source payment account within 5-7 working days following approval.</p>
+        </div>
+    </div>
+
+    <div id="shippingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('shippingModal')">&times;</span>
+            <h2>Shipping & Delivery Policy</h2>
+            <p>Since Tekkali Digital Web Solutions Hub delivers digital products, web solutions, and software services electronically:</p>
+            <p><strong>Delivery Timeline:</strong> Standard project execution and delivery ranges from <strong>30 to 40 business days</strong> depending on the selected package and project scope.</p>
+            <p><strong>Mode of Delivery:</strong> All digital assets, source links, and maintenance credentials are delivered digitally via email or WhatsApp.</p>
+        </div>
     </div>
 
     <footer>
@@ -751,47 +846,6 @@
             &copy; 2026 Tekkali Digital Web Solutions Hub. All Rights Reserved. Tekkali, Andhra Pradesh, India.
         </div>
     </footer>
-
-    <!-- Modals for PhonePe Compliance -->
-    <div id="termsModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
-            <h2>Terms & Conditions</h2>
-            <p>Welcome to Tekkali Digital Web Solutions Hub. By accessing our website and engaging our services, you agree to comply with and be bound by the following terms and conditions.</p>
-            <p><strong>1. Services & Pricing:</strong> We provide digital solutions within standard brackets (₹10,000 to ₹25,000+). Prices and packages are negotiable based on custom client requirements.</p>
-            <p><strong>2. Maintenance & Support:</strong> All project packages include complimentary technical maintenance and support during and post-deployment.</p>
-            <p><strong>3. Payments:</strong> Payments are processed securely via PhonePe and authorized digital channels.</p>
-        </div>
-    </div>
-
-    <div id="privacyModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
-            <h2>Privacy Policy</h2>
-            <p>Tekkali Digital Web Solutions Hub values your privacy. This policy outlines how we handle your personal data:</p>
-            <p><strong>Data Collection:</strong> We collect details such as name, phone number, and project scope solely for communication and service delivery.</p>
-            <p><strong>Data Security:</strong> Your transaction data and personal information are encrypted and never shared with third-party marketers.</p>
-        </div>
-    </div>
-
-    <div id="refundModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('refundModal')">&times;</span>
-            <h2>Refund & Cancellation Policy</h2>
-            <p><strong>Cancellation:</strong> Project cancellations must be requested within 24 hours of initial payment before development deployment starts.</p>
-            <p><strong>Refunds:</strong> Eligible refunds are processed back to the original source payment account (PhonePe / Bank Transfer) within 5-7 working days following approval.</p>
-        </div>
-    </div>
-
-    <div id="shippingModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('shippingModal')">&times;</span>
-            <h2>Shipping & Delivery Policy</h2>
-            <p>Since Tekkali Digital Web Solutions Hub delivers digital products, web solutions, and software services electronically:</p>
-            <p><strong>Delivery Timeline:</strong> Standard project execution and delivery ranges from <strong>30 to 40 business days</strong> depending on the selected package and project scope.</p>
-            <p><strong>Mode of Delivery:</strong> All digital assets, source links, and maintenance credentials are delivered digitally via email or WhatsApp.</p>
-        </div>
-    </div>
 
     <script>
         const menuToggle = document.getElementById('menuToggle');
@@ -825,18 +879,47 @@
             }
         }
 
-        function initiatePayment(packageName, amount) {
-            alert(`Redirecting to PhonePe Business Checkout for [ ${packageName} ] amounting to ₹${amount}... (Testing Mode Simulation)`);
-            const upiLink = `upi://pay?pa=9493583804@okbizaxis&pn=TekkaliDigitalWebSolutionsHub&am=${amount}&cu=INR&tn=Payment for ${packageName}`;
-            window.location.href = upiLink;
+        let selectedPackageName = "";
+
+        function openCheckoutModal(packageName, fixedAmount) {
+            selectedPackageName = packageName;
+            document.getElementById('modalPackageTitle').innerText = `Secure Checkout: ${packageName}`;
+            // Amount is locked dynamically into the readonly field
+            document.getElementById('payAmount').value = fixedAmount;
+            document.getElementById('checkoutModal').style.display = 'block';
         }
+
+        document.getElementById('phonePePayForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('payName').value;
+            const email = document.getElementById('payEmail').value;
+            const phone = document.getElementById('payPhone').value;
+            const shop = document.getElementById('payShop').value;
+            const amount = document.getElementById('payAmount').value;
+            const refId = document.getElementById('payRefId').value;
+
+            // Triggering payment app link with specified UPI ID tekkalihub@naviaxis and locked amount
+            const upiDeepLink = `upi://pay?pa=tekkalihub@naviaxis&pn=Tekkali%20Digital&am=${amount}&cu=INR`;
+            window.location.href = upiDeepLink;
+
+            // Construct WhatsApp message containing customer details and UTR Reference Number
+            const adminMsg = `*Locked Payment Verification Report*%0A----------------------------------%0A*Package:* ${selectedPackageName}%0A*Client Name:* ${name}%0A*Shop/Business:* ${shop}%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Locked Amount:* ₹${amount}%0A*UPI ID Used:* tekkalihub@naviaxis%0A*UTR Reference ID:* ${refId}`;
+            const adminWhatsAppUrl = `https://wa.me/919493583804?text=${adminMsg}`;
+
+            setTimeout(() => {
+                window.open(adminWhatsAppUrl, '_blank');
+                document.getElementById('checkoutModal').style.display = 'none';
+                document.getElementById('phonePePayForm').reset();
+            }, 1000);
+        });
 
         document.getElementById('projectInquiryForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const name = document.getElementById('clientName').value;
             const phone = document.getElementById('clientPhone').value;
-            const type = document.getElementById('projectType').value;
+            const type = document.getElementById('projectType5').value || document.getElementById('projectType').value;
             const budget = document.getElementById('clientBudget').value;
             const details = document.getElementById('projectDetails').value;
 
