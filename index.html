@@ -21,7 +21,6 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
@@ -54,6 +53,7 @@
             font-weight: 800;
             letter-spacing: -0.5px;
             color: #ffffff;
+            cursor: pointer;
         }
 
         .logo-text span {
@@ -73,10 +73,12 @@
             font-size: 0.9rem;
             font-weight: 500;
             transition: color 0.2s;
+            cursor: pointer;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: #ffffff;
+            font-weight: 700;
         }
 
         .nav-btn {
@@ -117,6 +119,17 @@
             color: #cbd5e1;
             font-size: 1rem;
             font-weight: 500;
+            cursor: pointer;
+        }
+
+        /* View Sections Management */
+        .page-view {
+            display: none;
+            min-height: 80vh;
+        }
+
+        .page-view.active-view {
+            display: block;
         }
 
         .hero {
@@ -183,6 +196,26 @@
             color: var(--text-gray);
             font-size: 0.95rem;
             margin-bottom: 2.5rem;
+        }
+
+        .back-home-bar {
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-back {
+            background: var(--tcs-navy);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+
+        .btn-back:hover {
+            background: var(--tcs-blue);
         }
 
         .services-grid {
@@ -307,7 +340,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.06);
             border: 1px solid var(--border-color);
             max-width: 900px;
-            margin: 0 auto 3rem auto;
+            margin: 0 auto;
             overflow: hidden;
         }
 
@@ -371,13 +404,6 @@
             width: 100%;
         }
 
-        .form-group input[readonly] {
-            background-color: #e2e8f0;
-            color: #475569;
-            font-weight: 700;
-            cursor: not-allowed;
-        }
-
         .btn-submit {
             background: var(--tcs-success);
             color: white;
@@ -396,7 +422,7 @@
             border: 1px solid #bbf7d0;
             border-left: 6px solid var(--tcs-success);
             border-radius: 8px;
-            padding: 2rem 1.5rem;
+            padding: 2.5rem 1.5rem;
             max-width: 900px;
             margin: 0 auto;
             text-align: center;
@@ -427,11 +453,36 @@
             font-size: 0.85rem;
         }
 
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 2500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
         /* Modal styling */
         .modal {
             display: none;
             position: fixed;
-            z-index: 2000;
+            z-index: 3000;
             left: 0;
             top: 0;
             width: 100%;
@@ -461,12 +512,6 @@
 
         .close-btn:hover {
             color: black;
-        }
-
-        .modal-content h2 {
-            color: var(--tcs-navy);
-            margin-bottom: 0.5rem;
-            font-size: 1.25rem;
         }
 
         .upi-highlight {
@@ -558,14 +603,14 @@
     <header>
         <div class="nav-container">
             <div class="logo-area">
-                <div class="logo-text">Tekkali Digital Web <span>Solutions Hub</span></div>
+                <div class="logo-text" onclick="switchView('home')">Tekkali Digital Web <span>Solutions Hub</span></div>
             </div>
             <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#pricing">Budget & Plans</a></li>
-                <li><a href="#portal">Project Portal</a></li>
-                <li><a href="#careers">Careers</a></li>
-                <li><a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="nav-btn">Join Team</a></li>
+                <li><a onclick="switchView('services')">Services</a></li>
+                <li><a onclick="switchView('pricing')">Budget & Plans</a></li>
+                <li><a onclick="switchView('portal')">Project Portal</a></li>
+                <li><a onclick="switchView('careers')">Careers</a></li>
+                <li><a onclick="switchView('careers')" class="nav-btn">Join Team</a></li>
             </ul>
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
                 <span></span>
@@ -574,61 +619,104 @@
             </button>
         </div>
         <div class="mobile-menu" id="mobileMenu">
-            <a href="#services" class="mob-link">Services</a>
-            <a href="#pricing" class="mob-link">Budget & Plans</a>
-            <a href="#portal" class="mob-link">Project Portal</a>
-            <a href="#careers" class="mob-link">Careers</a>
-            <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" style="background: var(--tcs-blue); color: white; padding: 0.6rem; text-align: center; border-radius: 4px; font-weight: 600;">Join Team</a>
+            <a onclick="switchView('services')" class="mob-link">Services</a>
+            <a onclick="switchView('pricing')" class="mob-link">Budget & Plans</a>
+            <a onclick="switchView('portal')" class="mob-link">Project Portal</a>
+            <a onclick="switchView('careers')" class="mob-link">Careers</a>
+            <a onclick="switchView('careers')" class="mob-link" style="background: var(--tcs-blue); color: white; padding: 0.6rem; text-align: center; border-radius: 4px; font-weight: 600;">Join Team</a>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hiring-badge">🚀 1000+ Active Roles & Openings Hiring</div>
-            <h1>Let's build what's next.</h1>
-            <p>Engineering digital excellence for local & enterprise businesses in Tekkali with custom web solutions, fast platforms, and professional support.</p>
-            <a href="#portal" class="nav-btn" style="padding: 0.85rem 2rem; display: inline-block; font-size: 1rem;">Start Project Consultation</a>
-        </div>
-    </section>
-
-    <div class="container">
+    <!-- HOME VIEW -->
+    <div id="view-home" class="page-view active-view">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hiring-badge">🚀 1000+ Active Roles & Openings Hiring</div>
+                <h1>Let's build what's next.</h1>
+                <p>Engineering digital excellence for local & enterprise businesses in Tekkali with custom web solutions, fast platforms, and professional support.</p>
+                <button onclick="switchView('portal')" class="nav-btn" style="padding: 0.85rem 2rem; display: inline-block; font-size: 1rem; border:none; cursor:pointer;">Start Project Consultation</button>
+            </div>
+        </section>
         
-        <h2 id="services" class="section-title">Core Capabilities</h2>
-        <p class="section-subtitle">Comprehensive digital solutions engineered to scale your business.</p>
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Web Development" class="service-img">
-                <div class="service-body">
-                    <h3>Web Development</h3>
-                    <p>Custom business websites and digital storefronts engineered for local and enterprise scale.</p>
+        <div class="container">
+            <h2 class="section-title">Welcome to Tekkali Digital Hub</h2>
+            <p class="section-subtitle">Navigate through our services, pricing plans, and project portals above.</p>
+            
+            <div class="services-grid">
+                <div class="service-card" style="cursor: pointer;" onclick="switchView('services')">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Web Development" class="service-img">
+                    <div class="service-body">
+                        <h3>Explore Core Capabilities &rarr;</h3>
+                        <p>View our web development, UI/UX, e-commerce, and cloud hosting solutions.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="UI/UX Design" class="service-img">
-                <div class="service-body">
-                    <h3>UI/UX Design</h3>
-                    <p>Research-led interfaces that feel intuitive and convert visitors into loyal customers.</p>
+                <div class="service-card" style="cursor: pointer;" onclick="switchView('pricing')">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Pricing" class="service-img">
+                    <div class="service-body">
+                        <h3>Investment Plans &rarr;</h3>
+                        <p>Check transparent budget packages ranging from ₹10,000 to enterprise solutions.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="E-Commerce Solutions" class="service-img">
-                <div class="service-body">
-                    <h3>E-Commerce Solutions</h3>
-                    <p>Fast online stores with seamless checkout and inventory management for retail shops.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Cloud & DevOps" class="service-img">
-                <div class="service-body">
-                    <h3>Cloud & Hosting Setup</h3>
-                    <p>Robust cloud infrastructure deployment, domain configuration, and continuous maintenance.</p>
+                <div class="service-card" style="cursor: pointer;" onclick="switchView('portal')">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Portal" class="service-img">
+                    <div class="service-body">
+                        <h3>Project Portal &rarr;</h3>
+                        <p>Submit your custom specifications and requirements directly to our team.</p>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="pricing">
+    <!-- SERVICES VIEW -->
+    <div id="view-services" class="page-view">
+        <div class="container">
+            <div class="back-home-bar">
+                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
+            </div>
+            <h2 class="section-title">Core Capabilities</h2>
+            <p class="section-subtitle">Comprehensive digital solutions engineered to scale your business.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Web Development" class="service-img">
+                    <div class="service-body">
+                        <h3>Web Development</h3>
+                        <p>Custom business websites and digital storefronts engineered for local and enterprise scale.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="UI/UX Design" class="service-img">
+                    <div class="service-body">
+                        <h3>UI/UX Design</h3>
+                        <p>Research-led interfaces that feel intuitive and convert visitors into loyal customers.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="E-Commerce Solutions" class="service-img">
+                    <div class="service-body">
+                        <h3>E-Commerce Solutions</h3>
+                        <p>Fast online stores with seamless checkout and inventory management for retail shops.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Cloud & DevOps" class="service-img">
+                    <div class="service-body">
+                        <h3>Cloud & Hosting Setup</h3>
+                        <p>Robust cloud infrastructure deployment, domain configuration, and continuous maintenance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRICING VIEW -->
+    <div id="view-pricing" class="page-view">
+        <div class="container">
+            <div class="back-home-bar">
+                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
+            </div>
             <h2 class="section-title">Investment Plans & Budget Ranges</h2>
-            <p class="section-subtitle">Transparent pricing structured for optimal delivery over 30 to 40 business days[cite: 7].</p>
+            <p class="section-subtitle">Transparent pricing structured for optimal delivery over 30 to 40 business days.</p>
             
             <div class="pricing-grid">
                 <div class="pricing-card">
@@ -639,7 +727,7 @@
                             <li>Professional Single/Multi-page Website</li>
                             <li>Mobile Responsive Design</li>
                             <li>WhatsApp Inquiry Integration</li>
-                            <li>Free Maintenance Support (30-40 Days Delivery)[cite: 7]</li>
+                            <li>Free Maintenance Support (30-40 Days Delivery)</li>
                         </ul>
                     </div>
                     <button class="btn-buy" onclick="openCheckoutModal('Basic Business Package (₹13,000)', 13000)">Select & Pay via PhonePe</button>
@@ -653,7 +741,7 @@
                             <li>Advanced UI/UX Custom Design</li>
                             <li>PhonePe Payment Gateway Integration</li>
                             <li>SEO Optimization & Speed Tuning</li>
-                            <li>Extended Maintenance & Support (30-40 Days Delivery)[cite: 7]</li>
+                            <li>Extended Maintenance & Support (30-40 Days Delivery)</li>
                         </ul>
                     </div>
                     <button class="btn-buy" onclick="openCheckoutModal('Medium Business Portal (₹22,000)', 22000)">Select & Pay via PhonePe</button>
@@ -666,7 +754,7 @@
                             <li>Full E-Commerce Store & Inventory Management</li>
                             <li>Custom API & Payment Links Setup</li>
                             <li>Dedicated Account Manager</li>
-                            <li>Priority Lifetime Maintenance (30-40 Days Delivery)[cite: 7]</li>
+                            <li>Priority Lifetime Maintenance (30-40 Days Delivery)</li>
                         </ul>
                     </div>
                     <button class="btn-buy" onclick="openCheckoutModal('High Enterprise Solution (₹35,000)', 35000)">Select & Pay via PhonePe</button>
@@ -677,63 +765,83 @@
                 💡 <strong>Note on Custom Budgets & Maintenance:</strong> Have a specific budget in mind? Connect with us directly! We customize solutions to match your exact financial requirements.
             </div>
         </div>
-
-        <div class="inquiry-wrapper" id="portal">
-            <div class="inquiry-header">
-                <h2>Project Requirement Portal</h2>
-                <p>Submit your project specifics to establish direct communication with our enterprise engineering team.</p>
-            </div>
-            <div class="inquiry-body">
-                <form id="projectInquiryForm">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="clientName">Your Name / Business Name *</label>
-                            <input type="text" id="clientName" required placeholder="e.g., Sri Venkateswara Granites / Local Store">
-                        </div>
-                        <div class="form-group">
-                            <label for="clientPhone">WhatsApp / Mobile Number *</label>
-                            <input type="tel" id="clientPhone" required placeholder="e.g., +91 9876543210">
-                        </div>
-                    </div>
-
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="projectType">Project Classification</label>
-                            <select id="projectType">
-                                <option value="Business Website / Landing Page">Business Website / Landing Page</option>
-                                <option value="Studio Portfolio & Booking">Studio Portfolio & Booking</option>
-                                <option value="E-Commerce Store">E-Commerce Store</option>
-                                <option value="Custom Software Solution">Custom Software Solution</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="clientBudget">Expected Budget Range</label>
-                            <select id="clientBudget">
-                                <option value="₹13,000 (Basic)">₹13,000 (Basic)</option>
-                                <option value="₹22,000 (Standard)">₹22,000 (Standard)</option>
-                                <option value="₹35,000 (High / Custom)">₹35,000 (High / Custom)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group full">
-                        <label for="projectDetails">Scope & Detailed Requirements</label>
-                        <textarea id="projectDetails" rows="4" placeholder="Briefly specify functional expectations or requirements..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Submit Project Requirements to WhatsApp</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="hiring-box" id="careers">
-            <h2>Build Your Career With Ultimate Flexibility</h2>
-            <p>Looking for career growth with complete schedule freedom? Join our initiative with zero work pressure and high-earning potential.</p>
-            <div style="color: #dc2626; font-weight: 700; font-size: 0.85rem; margin-bottom: 1.25rem;">Submission Deadline: 9 October 2026</div>
-            <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="btn-apply">Apply Now via Google Form</a>
-        </div>
-
     </div>
+
+    <!-- PROJECT PORTAL VIEW -->
+    <div id="view-portal" class="page-view">
+        <div class="container">
+            <div class="back-home-bar">
+                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
+            </div>
+            <div class="inquiry-wrapper">
+                <div class="inquiry-header">
+                    <h2>Project Requirement Portal</h2>
+                    <p>Submit your project specifics to establish direct communication with our enterprise engineering team.</p>
+                </div>
+                <div class="inquiry-body">
+                    <form id="projectInquiryForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="clientName">Your Name / Business Name *</label>
+                                <input type="text" id="clientName" required placeholder="e.g., Sri Venkateswara Granites / Local Store">
+                            </div>
+                            <div class="form-group">
+                                <label for="clientPhone">WhatsApp / Mobile Number *</label>
+                                <input type="tel" id="clientPhone" required placeholder="e.g., +91 9876543210">
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="projectType">Project Classification</label>
+                                <select id="projectType">
+                                    <option value="Business Website / Landing Page">Business Website / Landing Page</option>
+                                    <option value="Studio Portfolio & Booking">Studio Portfolio & Booking</option>
+                                    <option value="E-Commerce Store">E-Commerce Store</option>
+                                    <option value="Custom Software Solution">Custom Software Solution</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="clientBudget">Expected Budget Range</label>
+                                <select id="clientBudget">
+                                    <option value="₹13,000 (Basic)">₹13,000 (Basic)</option>
+                                    <option value="₹22,000 (Standard)">₹22,000 (Standard)</option>
+                                    <option value="₹35,000 (High / Custom)">₹35,000 (High / Custom)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="projectDetails">Scope & Detailed Requirements</label>
+                            <textarea id="projectDetails" rows="4" placeholder="Briefly specify functional expectations or requirements..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Submit Project Requirements to WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CAREERS VIEW -->
+    <div id="view-careers" class="page-view">
+        <div class="container">
+            <div class="back-home-bar">
+                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
+            </div>
+            <div class="hiring-box">
+                <h2>Build Your Career With Ultimate Flexibility</h2>
+                <p>Looking for career growth with complete schedule freedom? Join our initiative with zero work pressure and high-earning potential.</p>
+                <div style="color: #dc2626; font-weight: 700; font-size: 0.85rem; margin-bottom: 1.25rem;">Submission Deadline: 9 October 2026</div>
+                <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="btn-apply">Apply Now via Google Form</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919493583804?text=Hello%20Tekkali%20Digital%20Web%20Solutions%20Hub,%20I%20would%20like%20to%20inquire%20about%20your%20services." class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        💬
+    </a>
 
     <!-- Secure UPI Payment Modal -->
     <div id="checkoutModal" class="modal">
@@ -858,11 +966,25 @@
             }
         });
 
-        document.querySelectorAll('.mob-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.style.display = 'none';
+        // Single Page Application View Switcher
+        function switchView(viewName) {
+            // Hide all views
+            document.querySelectorAll('.page-view').forEach(view => {
+                view.classList.remove('active-view');
             });
-        });
+
+            // Show selected view
+            const targetView = document.getElementById('view-' + viewName);
+            if (targetView) {
+                targetView.classList.add('active-view');
+            }
+
+            // Close mobile menu if open
+            mobileMenu.style.display = 'none';
+
+            // Scroll to top on view switch
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         function openModal(modalId) {
             document.getElementById(modalId).style.display = 'block';
