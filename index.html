@@ -8,12 +8,13 @@
     <style>
         :root {
             --tcs-navy: #0b1f36;
-            --tcs-blue: #1d4ed8;
-            --tcs-success: #16a34a;
-            --bg-body: #f4f6f9;
-            --text-dark: #0f172a;
-            --text-gray: #64748b;
-            --border-color: #cbd5e1;
+            --tcs-blue: #3b82f6;
+            --tcs-success: #10b981;
+            --bg-body: #090d16;
+            --bg-card: #111827;
+            --text-dark: #f8fafc;
+            --text-gray: #94a3b8;
+            --border-color: #1f2937;
         }
 
         * {
@@ -31,12 +32,13 @@
         }
 
         header {
-            background: var(--tcs-navy);
+            background: #050b14;
             color: white;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .nav-container {
@@ -49,7 +51,7 @@
         }
 
         .logo-text {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 800;
             letter-spacing: -0.5px;
             color: #ffffff;
@@ -69,7 +71,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #cbd5e1;
+            color: #94a3b8;
             font-size: 0.9rem;
             font-weight: 500;
             transition: color 0.2s;
@@ -85,7 +87,7 @@
             background: var(--tcs-blue);
             color: white !important;
             padding: 0.5rem 1.25rem;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: 600;
         }
 
@@ -107,8 +109,8 @@
 
         .mobile-menu {
             display: none;
-            background: var(--tcs-navy);
-            border-top: 1px solid #1e293b;
+            background: #050b14;
+            border-top: 1px solid var(--border-color);
             padding: 1rem;
             flex-direction: column;
             gap: 1rem;
@@ -116,13 +118,12 @@
 
         .mobile-menu a {
             text-decoration: none;
-            color: #cbd5e1;
+            color: #94a3b8;
             font-size: 1rem;
             font-weight: 500;
             cursor: pointer;
         }
 
-        /* View Sections Management */
         .page-view {
             display: none;
             min-height: 80vh;
@@ -133,13 +134,13 @@
         }
 
         .hero {
-            background: linear-gradient(rgba(11, 31, 54, 0.85), rgba(11, 31, 54, 0.92)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80');
+            background: linear-gradient(rgba(5, 11, 20, 0.9), rgba(5, 11, 20, 0.95)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             color: white;
             padding: 5rem 1rem;
             text-align: left;
-            border-bottom: 4px solid var(--tcs-blue);
+            border-bottom: 2px solid var(--border-color);
         }
 
         .hero-content {
@@ -149,20 +150,20 @@
 
         .hiring-badge {
             display: inline-block;
-            background: rgba(37, 99, 235, 0.2);
+            background: rgba(59, 130, 246, 0.15);
             color: #60a5fa;
-            border: 1px solid #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.3);
             padding: 0.4rem 1rem;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-bottom: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .hero h1 {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 800;
             margin-bottom: 1rem;
             line-height: 1.2;
@@ -185,7 +186,7 @@
         .section-title {
             font-size: 1.8rem;
             font-weight: 800;
-            color: var(--tcs-navy);
+            color: #ffffff;
             margin-bottom: 0.5rem;
             text-align: center;
             letter-spacing: -0.5px;
@@ -203,11 +204,11 @@
         }
 
         .btn-back {
-            background: var(--tcs-navy);
+            background: #1e293b;
             color: white;
             border: none;
             padding: 0.5rem 1rem;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
             font-size: 0.85rem;
@@ -226,17 +227,24 @@
         }
 
         .service-card {
-            background: white;
-            border-radius: 8px;
+            background: var(--bg-card);
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             border: 1px solid var(--border-color);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-3px);
+            border-color: #3b82f6;
         }
 
         .service-img {
             width: 100%;
             height: 180px;
             object-fit: cover;
+            opacity: 0.85;
         }
 
         .service-body {
@@ -245,7 +253,7 @@
 
         .service-card h3 {
             font-size: 1.1rem;
-            color: var(--tcs-navy);
+            color: #ffffff;
             margin-bottom: 0.5rem;
         }
 
@@ -262,11 +270,11 @@
         }
 
         .pricing-card {
-            background: white;
-            border-radius: 8px;
+            background: var(--bg-card);
+            border-radius: 10px;
             padding: 2rem 1.5rem;
             border: 1px solid var(--border-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -276,10 +284,11 @@
         .pricing-card.featured {
             border: 2px solid var(--tcs-blue);
             transform: scale(1.02);
+            background: #0e1726;
         }
 
         .pricing-card h3 {
-            color: var(--tcs-navy);
+            color: #ffffff;
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
         }
@@ -287,7 +296,7 @@
         .price-tag {
             font-size: 1.8rem;
             font-weight: 800;
-            color: var(--tcs-blue);
+            color: #60a5fa;
             margin-bottom: 1.5rem;
         }
 
@@ -301,15 +310,15 @@
             padding: 0.4rem 0;
             font-size: 0.88rem;
             color: var(--text-gray);
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .btn-buy {
-            background: var(--tcs-navy);
+            background: #1e293b;
             color: white;
             border: none;
             padding: 0.8rem;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: 700;
             cursor: pointer;
             text-transform: uppercase;
@@ -322,22 +331,22 @@
         }
 
         .budget-note {
-            background: #e0f2fe;
-            border: 1px solid #bae6fd;
+            background: rgba(14, 116, 144, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             border-left: 5px solid var(--tcs-blue);
             padding: 1.2rem;
-            border-radius: 6px;
+            border-radius: 8px;
             text-align: center;
             margin-bottom: 3rem;
             font-size: 0.95rem;
-            color: #0369a1;
+            color: #38bdf8;
             font-weight: 500;
         }
 
         .inquiry-wrapper {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            background: var(--bg-card);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
             border: 1px solid var(--border-color);
             max-width: 900px;
             margin: 0 auto;
@@ -345,10 +354,11 @@
         }
 
         .inquiry-header {
-            background: var(--tcs-navy);
+            background: #050b14;
             color: white;
             padding: 1.5rem;
             text-align: center;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .inquiry-header h2 {
@@ -358,7 +368,7 @@
         }
 
         .inquiry-header p {
-            color: #94a3b8;
+            color: var(--text-gray);
             font-size: 0.85rem;
         }
 
@@ -386,7 +396,7 @@
         .form-group label {
             font-size: 0.78rem;
             font-weight: 700;
-            color: var(--tcs-navy);
+            color: #94a3b8;
             margin-bottom: 0.3rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -397,11 +407,16 @@
         .form-group textarea {
             padding: 0.8rem;
             border: 1px solid var(--border-color);
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 0.9rem;
-            background: #fafafa;
-            color: var(--text-dark);
+            background: #050b14;
+            color: #ffffff;
             width: 100%;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--tcs-blue);
         }
 
         .btn-submit {
@@ -412,16 +427,16 @@
             padding: 0.9rem;
             font-size: 0.9rem;
             font-weight: 700;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             text-transform: uppercase;
         }
 
         .hiring-box {
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-            border: 1px solid #bbf7d0;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 11, 20, 0.8) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.3);
             border-left: 6px solid var(--tcs-success);
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 2.5rem 1.5rem;
             max-width: 900px;
             margin: 0 auto;
@@ -430,12 +445,12 @@
 
         .hiring-box h2 {
             font-size: 1.4rem;
-            color: var(--tcs-navy);
+            color: #ffffff;
             margin-bottom: 0.5rem;
         }
 
         .hiring-box p {
-            color: #334155;
+            color: var(--text-gray);
             max-width: 650px;
             margin: 0 auto 1rem auto;
             font-size: 0.9rem;
@@ -445,7 +460,7 @@
             background: var(--tcs-success);
             color: white;
             padding: 0.8rem 2rem;
-            border-radius: 4px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 700;
             display: inline-block;
@@ -453,7 +468,6 @@
             font-size: 0.85rem;
         }
 
-        /* Floating WhatsApp Button */
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -465,7 +479,7 @@
             border-radius: 50px;
             text-align: center;
             font-size: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             z-index: 2500;
             display: flex;
             align-items: center;
@@ -478,7 +492,6 @@
             transform: scale(1.1);
         }
 
-        /* Modal styling */
         .modal {
             display: none;
             position: fixed;
@@ -488,22 +501,24 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.7);
         }
 
         .modal-content {
-            background-color: #fefefe;
+            background-color: var(--bg-card);
+            color: var(--text-dark);
             margin: 5% auto;
             padding: 2rem;
-            border: 1px solid #888;
+            border: 1px solid var(--border-color);
             width: 90%;
             max-width: 550px;
-            border-radius: 8px;
+            border-radius: 10px;
             position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .close-btn {
-            color: #aaa;
+            color: #94a3b8;
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -511,26 +526,26 @@
         }
 
         .close-btn:hover {
-            color: black;
+            color: #ffffff;
         }
 
         .upi-highlight {
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
             padding: 10px;
             border-radius: 6px;
             font-size: 0.85rem;
-            color: #1e40af;
+            color: #60a5fa;
             margin-bottom: 1rem;
             text-align: center;
         }
 
         footer {
-            background: #050d18;
-            color: #94a3b8;
+            background: #030712;
+            color: var(--text-gray);
             padding: 3rem 1rem 1.5rem 1rem;
             margin-top: 3rem;
-            border-top: 1px solid #1e293b;
+            border-top: 1px solid var(--border-color);
         }
 
         .footer-container {
@@ -551,7 +566,7 @@
         .footer-col p {
             font-size: 0.88rem;
             margin-bottom: 0.8rem;
-            color: #94a3b8;
+            color: var(--text-gray);
         }
 
         .footer-links {
@@ -563,7 +578,7 @@
         }
 
         .footer-links a {
-            color: #94a3b8;
+            color: var(--text-gray);
             text-decoration: none;
             font-size: 0.88rem;
             cursor: pointer;
@@ -578,7 +593,7 @@
             max-width: 1280px;
             margin: 0 auto;
             padding-top: 1.5rem;
-            border-top: 1px solid #1e293b;
+            border-top: 1px solid var(--border-color);
             text-align: center;
             font-size: 0.8rem;
             color: #64748b;
@@ -623,7 +638,7 @@
             <a onclick="switchView('pricing')" class="mob-link">Budget & Plans</a>
             <a onclick="switchView('portal')" class="mob-link">Project Portal</a>
             <a onclick="switchView('careers')" class="mob-link">Careers</a>
-            <a onclick="switchView('careers')" class="mob-link" style="background: var(--tcs-blue); color: white; padding: 0.6rem; text-align: center; border-radius: 4px; font-weight: 600;">Join Team</a>
+            <a onclick="switchView('careers')" class="mob-link" style="background: var(--tcs-blue); color: white; padding: 0.6rem; text-align: center; border-radius: 6px; font-weight: 600;">Join Team</a>
         </div>
     </header>
 
@@ -832,7 +847,7 @@
             <div class="hiring-box">
                 <h2>Build Your Career With Ultimate Flexibility</h2>
                 <p>Looking for career growth with complete schedule freedom? Join our initiative with zero work pressure and high-earning potential.</p>
-                <div style="color: #dc2626; font-weight: 700; font-size: 0.85rem; margin-bottom: 1.25rem;">Submission Deadline: 9 October 2026</div>
+                <div style="color: #f87171; font-weight: 700; font-size: 0.85rem; margin-bottom: 1.25rem;">Submission Deadline: 9 October 2026</div>
                 <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="btn-apply">Apply Now via Google Form</a>
             </div>
         </div>
@@ -966,23 +981,17 @@
             }
         });
 
-        // Single Page Application View Switcher
         function switchView(viewName) {
-            // Hide all views
             document.querySelectorAll('.page-view').forEach(view => {
                 view.classList.remove('active-view');
             });
 
-            // Show selected view
             const targetView = document.getElementById('view-' + viewName);
             if (targetView) {
                 targetView.classList.add('active-view');
             }
 
-            // Close mobile menu if open
             mobileMenu.style.display = 'none';
-
-            // Scroll to top on view switch
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
