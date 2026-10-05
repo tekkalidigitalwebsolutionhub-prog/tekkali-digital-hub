@@ -621,11 +621,16 @@
                 <div class="logo-text" onclick="switchView('home')">Tekkali Digital Web <span>Solutions Hub</span></div>
             </div>
             <ul class="nav-links">
-                <li><a onclick="switchView('services')">Services</a></li>
-                <li><a onclick="switchView('pricing')">Budget & Plans</a></li>
-                <li><a onclick="switchView('portal')">Project Portal</a></li>
+                <li><a onclick="switchView('home')">Home</a></li>
+                <li><a onclick="switchView('services')">Our Services</a></li>
+                <li><a onclick="switchView('pricing')">Pricing</a></li>
+                <li><a onclick="switchView('work')">Our Work</a></li>
+                <li><a onclick="switchView('clients')">Our Clients</a></li>
+                <li><a onclick="switchView('blog')">Blog</a></li>
+                <li><a onclick="switchView('about')">About</a></li>
                 <li><a onclick="switchView('careers')">Careers</a></li>
-                <li><a onclick="switchView('careers')" class="nav-btn">Join Team</a></li>
+                <li><a onclick="switchView('contact')">Contact Us</a></li>
+                <li><a onclick="switchView('portal')" class="nav-btn">Get Proposal</a></li>
             </ul>
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
                 <span></span>
@@ -634,11 +639,16 @@
             </button>
         </div>
         <div class="mobile-menu" id="mobileMenu">
-            <a onclick="switchView('services')" class="mob-link">Services</a>
-            <a onclick="switchView('pricing')" class="mob-link">Budget & Plans</a>
-            <a onclick="switchView('portal')" class="mob-link">Project Portal</a>
+            <a onclick="switchView('home')" class="mob-link">Home</a>
+            <a onclick="switchView('services')" class="mob-link">Our Services</a>
+            <a onclick="switchView('pricing')" class="mob-link">Pricing & Packages</a>
+            <a onclick="switchView('work')" class="mob-link">Our Work</a>
+            <a onclick="switchView('clients')" class="mob-link">Our Clients</a>
+            <a onclick="switchView('blog')" class="mob-link">Blog</a>
+            <a onclick="switchView('about')" class="mob-link">About</a>
             <a onclick="switchView('careers')" class="mob-link">Careers</a>
-            <a onclick="switchView('careers')" class="mob-link" style="background: var(--tcs-blue); color: white; padding: 0.6rem; text-align: center; border-radius: 6px; font-weight: 600;">Join Team</a>
+            <a onclick="switchView('contact')" class="mob-link">Contact Us</a>
+            <a onclick="switchView('portal')" class="mob-link" style="background: var(--tcs-blue); color: white; padding: 0.6rem; text-align: center; border-radius: 6px; font-weight: 600;">Get Proposal</a>
         </div>
     </header>
 
@@ -648,35 +658,38 @@
             <div class="hero-content">
                 <div class="hiring-badge">🚀 1000+ Active Roles & Openings Hiring</div>
                 <h1>Let's build what's next.</h1>
-                <p>Engineering digital excellence for local & enterprise businesses in Tekkali with custom web solutions, fast platforms, and professional support.</p>
-                <button onclick="switchView('portal')" class="nav-btn" style="padding: 0.85rem 2rem; display: inline-block; font-size: 1rem; border:none; cursor:pointer;">Start Project Consultation</button>
+                <p>Engineering digital excellence for local & enterprise businesses in Tekkali with custom web solutions, fast platforms, and professional support[cite: 5].</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button onclick="switchView('portal')" class="nav-btn" style="padding: 0.85rem 2rem; display: inline-block; font-size: 1rem; border:none; cursor:pointer;">Get Proposal</button>
+                    <button onclick="switchView('pricing')" class="nav-btn" style="background: var(--tcs-success); padding: 0.85rem 2rem; display: inline-block; font-size: 1rem; border:none; cursor:pointer;">View Pricing & Packages</button>
+                </div>
             </div>
         </section>
         
         <div class="container">
             <h2 class="section-title">Welcome to Tekkali Digital Hub</h2>
-            <p class="section-subtitle">Navigate through our services, pricing plans, and project portals above.</p>
+            <p class="section-subtitle">Navigate through our services, pricing plans, tech stack, and methodologies below[cite: 5].</p>
             
             <div class="services-grid">
                 <div class="service-card" style="cursor: pointer;" onclick="switchView('services')">
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Web Development" class="service-img">
                     <div class="service-body">
-                        <h3>Explore Core Capabilities &rarr;</h3>
-                        <p>View our web development, UI/UX, e-commerce, and cloud hosting solutions.</p>
+                        <h3>Core Services & Tech Stack &rarr;</h3>
+                        <p>Explore Web Development, Digital Marketing, Next.js, React, Node.js, and our comprehensive digital capabilities[cite: 5].</p>
                     </div>
                 </div>
                 <div class="service-card" style="cursor: pointer;" onclick="switchView('pricing')">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Pricing" class="service-img">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Pricing" class="service-img">
                     <div class="service-body">
-                        <h3>Investment Plans &rarr;</h3>
-                        <p>Check transparent budget packages ranging from ₹10,000 to enterprise solutions.</p>
+                        <h3>Pricing & Packages &rarr;</h3>
+                        <p>Check transparent project tiers starting from Basic, Standard to Enterprise Custom solutions[cite: 5].</p>
                     </div>
                 </div>
-                <div class="service-card" style="cursor: pointer;" onclick="switchView('portal')">
-                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Portal" class="service-img">
+                <div class="service-card" style="cursor: pointer;" onclick="switchView('work')">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Our Work" class="service-img">
                     <div class="service-body">
-                        <h3>Project Portal &rarr;</h3>
-                        <p>Submit your custom specifications and requirements directly to our team.</p>
+                        <h3>Our Work & Industries &rarr;</h3>
+                        <p>Discover tailored solutions across Real Estate, Healthcare, E-Commerce, IT, Legal, and 15+ more sectors[cite: 5].</p>
                     </div>
                 </div>
             </div>
@@ -689,35 +702,77 @@
             <div class="back-home-bar">
                 <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
             </div>
-            <h2 class="section-title">Core Capabilities</h2>
-            <p class="section-subtitle">Comprehensive digital solutions engineered to scale your business.</p>
+            <h2 class="section-title">Core Services & Tech Stack</h2>
+            <p class="section-subtitle">Modern technology solutions built with Web Development, Digital Marketing, Next.js, React, Node.js, WordPress, Shopify, MongoDB, and Tailwind[cite: 5].</p>
+            
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card" style="cursor: pointer;" onclick="switchView('contact')">
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Web Development" class="service-img">
                     <div class="service-body">
                         <h3>Web Development</h3>
-                        <p>Custom business websites and digital storefronts engineered for local and enterprise scale.</p>
+                        <p>Scalable web applications engineered using Next.js, React, and Node.js for high performance[cite: 5].</p>
+                    </div>
+                </div>
+                <div class="service-card" style="cursor: pointer;" onclick="switchView('contact')">
+                    <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80" alt="Digital Marketing" class="service-img">
+                    <div class="service-body">
+                        <h3>Digital Marketing</h3>
+                        <p>Result-oriented SEO, social media growth, and conversion funnel optimization for regional and global businesses[cite: 5].</p>
                     </div>
                 </div>
                 <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="UI/UX Design" class="service-img">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Web Design" class="service-img">
                     <div class="service-body">
-                        <h3>UI/UX Design</h3>
-                        <p>Research-led interfaces that feel intuitive and convert visitors into loyal customers.</p>
+                        <h3>Web Design</h3>
+                        <p>Tailwind CSS based modern, responsive UI/UX designs optimized for seamless user engagement[cite: 5].</p>
                     </div>
                 </div>
                 <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="E-Commerce Solutions" class="service-img">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="E-commerce Development" class="service-img">
                     <div class="service-body">
-                        <h3>E-Commerce Solutions</h3>
-                        <p>Fast online stores with seamless checkout and inventory management for retail shops.</p>
+                        <h3>E-commerce Development</h3>
+                        <p>Robust online stores built on Shopify, WordPress, and custom MongoDB backends[cite: 5].</p>
                     </div>
                 </div>
                 <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Cloud & DevOps" class="service-img">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Website Maintenance" class="service-img">
                     <div class="service-body">
-                        <h3>Cloud & Hosting Setup</h3>
-                        <p>Robust cloud infrastructure deployment, domain configuration, and continuous maintenance.</p>
+                        <h3>Website Maintenance</h3>
+                        <p>Regular updates, security patches, and backup management to keep systems flawless[cite: 5].</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="Website Security" class="service-img">
+                    <div class="service-body">
+                        <h3>Website Security</h3>
+                        <p>Advanced security protocols, firewall setups, and SSL implementation[cite: 5].</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5-Step Methodology -->
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 2rem; margin-top: 3rem;">
+                <h3 style="text-align: center; color: white; font-size: 1.4rem; margin-bottom: 1.5rem;">Our 5-Step Proven Methodology</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; text-align: center;">
+                    <div style="background: #050b14; padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+                        <strong style="color: #60a5fa; display: block; margin-bottom: 0.5rem;">Step 1</strong>
+                        <span>Discovery</span>
+                    </div>
+                    <div style="background: #050b14; padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+                        <strong style="color: #60a5fa; display: block; margin-bottom: 0.5rem;">Step 2</strong>
+                        <span>Strategy</span>
+                    </div>
+                    <div style="background: #050b14; padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+                        <strong style="color: #60a5fa; display: block; margin-bottom: 0.5rem;">Step 3</strong>
+                        <span>Execution</span>
+                    </div>
+                    <div style="background: #050b14; padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+                        <strong style="color: #60a5fa; display: block; margin-bottom: 0.5rem;">Step 4</strong>
+                        <span>Optimization</span>
+                    </div>
+                    <div style="background: #050b14; padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+                        <strong style="color: #60a5fa; display: block; margin-bottom: 0.5rem;">Step 5</strong>
+                        <span>Maintenance</span>
                     </div>
                 </div>
             </div>
@@ -730,70 +785,193 @@
             <div class="back-home-bar">
                 <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
             </div>
-            <h2 class="section-title">Investment Plans & Budget Ranges</h2>
-            <p class="section-subtitle">Transparent pricing structured for optimal delivery over 30 to 40 business days.</p>
-            
+            <h2 class="section-title">Transparent Pricing & Packages</h2>
+            <p class="section-subtitle">Choose a package tailored for your business scale with secure locked payment options[cite: 5].</p>
+
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div>
-                        <h3>Basic Business Package</h3>
-                        <div class="price-tag">₹10,000 - ₹15,000</div>
+                        <h3>Basic Starter Plan</h3>
+                        <div class="price-tag">₹13,000</div>
                         <ul>
-                            <li>Professional Single/Multi-page Website</li>
-                            <li>Mobile Responsive Design</li>
-                            <li>WhatsApp Inquiry Integration</li>
-                            <li>Free Maintenance Support (30-40 Days Delivery)</li>
+                            <li>Single / Multi-page Business Website</li>
+                            <li>Responsive Mobile-Friendly Layout</li>
+                            <li>Basic SEO Setup & Contact Form</li>
+                            <li>1 Year Hosting & SSL Support</li>
                         </ul>
                     </div>
-                    <button class="btn-buy" onclick="openCheckoutModal('Basic Business Package (₹13,000)', 13000)">Select & Pay via PhonePe</button>
+                    <button class="btn-buy" onclick="openCheckoutModal('Basic Starter Plan', 13000)">Proceed via Razorpay (₹13,000)</button>
                 </div>
+
                 <div class="pricing-card featured">
                     <div>
-                        <div style="background: var(--tcs-blue); color: white; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-block; margin-bottom: 0.5rem;">MOST POPULAR</div>
-                        <h3>Medium Business Portal</h3>
-                        <div class="price-tag">₹15,000 - ₹25,000</div>
+                        <div style="background: var(--tcs-blue); color: white; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px; text-transform: uppercase;">Most Popular</div>
+                        <h3>Standard Business Package</h3>
+                        <div class="price-tag">₹22,000</div>
                         <ul>
-                            <li>Advanced UI/UX Custom Design</li>
-                            <li>PhonePe Payment Gateway Integration</li>
-                            <li>SEO Optimization & Speed Tuning</li>
-                            <li>Extended Maintenance & Support (30-40 Days Delivery)</li>
+                            <li>Advanced Custom Web Application</li>
+                            <li>WhatsApp Chat Integration & Widgets</li>
+                            <li>Advanced Local SEO & Speed Boost</li>
+                            <li>Priority Support & Maintenance</li>
                         </ul>
                     </div>
-                    <button class="btn-buy" onclick="openCheckoutModal('Medium Business Portal (₹22,000)', 22000)">Select & Pay via PhonePe</button>
+                    <button class="btn-buy" style="background: var(--tcs-blue);" onclick="openCheckoutModal('Standard Business Package', 22000)">Proceed via Razorpay (₹22,000)</button>
                 </div>
+
                 <div class="pricing-card">
                     <div>
-                        <h3>High Enterprise Solution</h3>
-                        <div class="price-tag">₹25,000+</div>
+                        <h3>Enterprise & Custom Solution</h3>
+                        <div class="price-tag">₹35,000</div>
                         <ul>
-                            <li>Full E-Commerce Store & Inventory Management</li>
-                            <li>Custom API & Payment Links Setup</li>
-                            <li>Dedicated Account Manager</li>
-                            <li>Priority Lifetime Maintenance (30-40 Days Delivery)</li>
+                            <li>Full-Stack Custom Architecture</li>
+                            <li>Database & Cloud Synchronization</li>
+                            <li>Payment Gateway & UTR Automation</li>
+                            <li>Dedicated 24/7 Technical Support</li>
                         </ul>
                     </div>
-                    <button class="btn-buy" onclick="openCheckoutModal('High Enterprise Solution (₹35,000)', 35000)">Select & Pay via PhonePe</button>
+                    <button class="btn-buy" onclick="openCheckoutModal('Enterprise Custom Solution', 35000)">Proceed via Razorpay (₹35,000)</button>
                 </div>
             </div>
 
             <div class="budget-note">
-                💡 <strong>Note on Custom Budgets & Maintenance:</strong> Have a specific budget in mind? Connect with us directly! We customize solutions to match your exact financial requirements.
+                🔒 <strong>Secure Razorpay Gateway Guarantee:</strong> All transactions are routed through official payment channels (<a href="https://razorpay.me/@tekkalidigitalandwebsolutions" target="_blank" style="color: #60a5fa; text-decoration: underline;">Razorpay Portal</a>) with locked price protection[cite: 5].
             </div>
         </div>
     </div>
 
-    <!-- PROJECT PORTAL VIEW -->
-    <div id="view-portal" class="page-view">
+    <!-- OUR WORK VIEW -->
+    <div id="view-work" class="page-view">
+        <div class="container">
+            <div class="back-home-bar">
+                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
+            </div>
+            <h2 class="section-title">Our Work & Industries Served</h2>
+            <p class="section-subtitle">Customized digital solutions delivered across diverse domain expertise sectors[cite: 5].</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 3rem;">
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Real Estate</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">E-Commerce</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Healthcare</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Education</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Travel & Tourism</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Food & Dining</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Corporate</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Logistics</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Finance</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Immigration</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">IT</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Legal</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">NGO</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Agriculture</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Fashion</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Recruitment</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Business</h3></div>
+                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Edtech</h3></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OUR CLIENTS VIEW -->
+    <div id="view-clients" class="page-view">
+        <div class="container">
+            <div class="back-home-bar">
+                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
+            </div>
+            <h2 class="section-title">Our Clients & Achievements</h2>
+            <p class="section-subtitle">Trusted by ambitious businesses globally with proven metric excellence[cite: 5].</p>
+            
+            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: center; margin-bottom: 3rem;">
+                <div class="service-card" style="padding: 1.5rem;">
+                    <h3 style="font-size: 2rem; color: #60a5fa;">98%</h3>
+                    <p>Client Satisfaction</p>
+                </div>
+                <div class="service-card" style="padding: 1.5rem;">
+                    <h3 style="font-size: 2rem; color: #60a5fa;">50+</h3>
+                    <p>Happy Clients</p>
+                </div>
+                <div class="service-card" style="padding: 1.5rem;">
+                    <h3 style="font-size: 2rem; color: #60a5fa;">100+</h3>
+                    <p>Projects Delivered</p>
+                </div>
+                <div class="service-card" style="padding: 1.5rem;">
+                    <h3 style="font-size: 2rem; color: #60a5fa;">5+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="service-card" style="padding: 1.5rem;">
+                    <h3 style="font-size: 2rem; color: #60a5fa;">10+</h3>
+                    <p>Global Certifications</p>
+                </div>
+                <div class="service-card" style="padding: 1.5rem;">
+                    <h3 style="font-size: 2rem; color: #60a5fa;">24/7</h3>
+                    <p>Support Team</p>
+                </div>
+            </div>
+
+            <div class="budget-note">
+                💼 <strong>Project Milestone Note:</strong> "Our journey began with a vision to empower local businesses with premium digital solutions. From our very first deployment to handling complex enterprise infrastructures, every rupee is transparently invested in robust hosting, advanced security, and dedicated engineering talent[cite: 5]."
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOG VIEW -->
+    <div id="view-blog" class="page-view">
+        <div class="container">
+            <div class="back-home-bar">
+                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
+            </div>
+            <h2 class="section-title">Blog & Insights</h2>
+            <p class="section-subtitle">Informative articles on web development, digital marketing, SEO, and social media[cite: 5].</p>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap;">
+                <button class="btn-back blog-filter-btn active-filter" onclick="filterBlog('all', this)" style="background: var(--tcs-blue);">All Categories</button>
+                <button class="btn-back blog-filter-btn" onclick="filterBlog('webdev', this)">Web Development</button>
+                <button class="btn-back blog-filter-btn" onclick="filterBlog('digital', this)">Digital Marketing</button>
+                <button class="btn-back blog-filter-btn" onclick="filterBlog('seo', this)">SEO</button>
+                <button class="btn-back blog-filter-btn" onclick="filterBlog('social', this)">Social Media</button>
+            </div>
+
+            <div class="services-grid" id="blogContainer">
+                <!-- Dynamically Rendered via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT VIEW -->
+    <div id="view-about" class="page-view">
+        <div class="container">
+            <div class="back-home-bar">
+                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
+            </div>
+            <h2 class="section-title">About Us & Leadership</h2>
+            <p class="section-subtitle">Building professional credibility through expert engineering and dedicated leadership[cite: 5].</p>
+            
+            <div style="max-width: 800px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 2.5rem; text-align: center;">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Sivaji" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--tcs-blue);">
+                <h3 style="font-size: 1.4rem; color: white; margin-bottom: 0.2rem;">Sivaji</h3>
+                <p style="color: #60a5fa; font-weight: 600; font-size: 0.9rem; margin-bottom: 1.5rem;">Founder & Lead Engineering Head</p>
+                <p style="color: var(--text-gray); font-size: 0.95rem; line-height: 1.7;">
+                    Leading Tekkali Digital Web Solutions Hub with over 5 years of domain experience. Sivaji drives technical excellence, ensuring every project—from local business setups to enterprise cloud infrastructures—meets world-class standards with 98% client satisfaction and robust 24/7 support[cite: 5].
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT US / PORTAL VIEW -->
+    <div id="view-contact" class="page-view">
         <div class="container">
             <div class="back-home-bar">
                 <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
             </div>
             <div class="inquiry-wrapper">
                 <div class="inquiry-header">
-                    <h2>Project Requirement Portal</h2>
-                    <p>Submit your project specifics to establish direct communication with our enterprise engineering team.</p>
+                    <h2>Contact Us & Project Portal</h2>
+                    <p>Get in touch via phone, email, or fill out the form below to connect instantly[cite: 5].</p>
                 </div>
                 <div class="inquiry-body">
+                    <div style="text-align: center; margin-bottom: 2rem; color: var(--text-gray);">
+                        <p style="margin-bottom: 0.5rem;">📞 Phone Numbers: <strong style="color: white;">+91 9493583804</strong></p>
+                        <p>✉️ Email: <strong style="color: white;">tekkalidigitalwebsolutionhub@gmail.com</strong></p>
+                    </div>
                     <form id="projectInquiryForm">
                         <div class="form-grid">
                             <div class="form-group">
@@ -811,6 +989,8 @@
                                 <label for="projectType">Project Classification</label>
                                 <select id="projectType">
                                     <option value="Business Website / Landing Page">Business Website / Landing Page</option>
+                                    <option value="Web Development Service">Web Development Service</option>
+                                    <option value="Digital Marketing Campaign">Digital Marketing Campaign</option>
                                     <option value="Studio Portfolio & Booking">Studio Portfolio & Booking</option>
                                     <option value="E-Commerce Store">E-Commerce Store</option>
                                     <option value="Custom Software Solution">Custom Software Solution</option>
@@ -838,6 +1018,64 @@
         </div>
     </div>
 
+    <!-- PROJECT PORTAL VIEW -->
+    <div id="view-portal" class="page-view">
+        <div class="container">
+            <div class="back-home-bar">
+                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
+            </div>
+            <div class="inquiry-wrapper">
+                <div class="inquiry-header">
+                    <h2>Project Requirement Portal</h2>
+                    <p>Submit your project specifics to establish direct communication with our enterprise engineering team[cite: 5].</p>
+                </div>
+                <div class="inquiry-body">
+                    <form id="projectInquiryFormPortal">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="portalClientName">Your Name / Business Name *</label>
+                                <input type="text" id="portalClientName" required placeholder="e.g., Sri Venkateswara Granites / Local Store">
+                            </div>
+                            <div class="form-group">
+                                <label for="portalClientPhone">WhatsApp / Mobile Number *</label>
+                                <input type="tel" id="portalClientPhone" required placeholder="e.g., +91 9876543210">
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="portalProjectType">Project Classification</label>
+                                <select id="portalProjectType">
+                                    <option value="Business Website / Landing Page">Business Website / Landing Page</option>
+                                    <option value="Web Development Service">Web Development Service</option>
+                                    <option value="Digital Marketing Campaign">Digital Marketing Campaign</option>
+                                    <option value="Studio Portfolio & Booking">Studio Portfolio & Booking</option>
+                                    <option value="E-Commerce Store">E-Commerce Store</option>
+                                    <option value="Custom Software Solution">Custom Software Solution</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="portalClientBudget">Expected Budget Range</label>
+                                <select id="portalClientBudget">
+                                    <option value="₹13,000 (Basic)">₹13,000 (Basic)</option>
+                                    <option value="₹22,000 (Standard)">₹22,000 (Standard)</option>
+                                    <option value="₹35,000 (High / Custom)">₹35,000 (High / Custom)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="portalProjectDetails">Scope & Detailed Requirements</label>
+                            <textarea id="portalProjectDetails" rows="4" placeholder="Briefly specify functional expectations or requirements..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Submit Project Requirements to WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- CAREERS VIEW -->
     <div id="view-careers" class="page-view">
         <div class="container">
@@ -846,7 +1084,7 @@
             </div>
             <div class="hiring-box">
                 <h2>Build Your Career With Ultimate Flexibility</h2>
-                <p>Looking for career growth with complete schedule freedom? Join our initiative with zero work pressure and high-earning potential.</p>
+                <p>Looking for career growth with complete schedule freedom? Join our initiative with zero work pressure and high-earning potential[cite: 5].</p>
                 <div style="color: #f87171; font-weight: 700; font-size: 0.85rem; margin-bottom: 1.25rem;">Submission Deadline: 9 October 2026</div>
                 <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="btn-apply">Apply Now via Google Form</a>
             </div>
@@ -858,15 +1096,15 @@
         💬
     </a>
 
-    <!-- Secure UPI Payment Modal -->
+    <!-- Secure Razorpay Payment Modal (UPI backup removed) -->
     <div id="checkoutModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('checkoutModal')">&times;</span>
             <h2 id="modalPackageTitle">Secure Locked Payment</h2>
             
             <div class="upi-highlight">
-                Official Business UPI: <strong>tekkalihub@naviaxis</strong><br>
-                <em>Amount is permanently locked by system. Manual editing disabled.</em>
+                Razorpay Secure Portal Link: <a href="https://razorpay.me/@tekkalidigitalandwebsolutions" target="_blank" style="color: #60a5fa; text-decoration: underline;">Open Razorpay Link</a><br>
+                <em>Amount is permanently locked by system[cite: 5].</em>
             </div>
 
             <form id="phonePePayForm">
@@ -879,7 +1117,7 @@
                     <input type="email" id="payEmail" required placeholder="e.g., ramesh@gmail.com">
                 </div>
                 <div class="form-group">
-                    <label for="payPhone">Mobile Number (PhonePe/UPI Linked) *</label>
+                    <label for="payPhone">Mobile Number *</label>
                     <input type="tel" id="payPhone" required placeholder="e.g., 9876543210">
                 </div>
                 <div class="form-group">
@@ -890,11 +1128,8 @@
                     <label for="payAmount">Locked Final Amount (₹) - [Non-Editable]</label>
                     <input type="number" id="payAmount" readonly>
                 </div>
-                <div class="form-group">
-                    <label for="payRefId">Transaction / UTR Reference Number (After Payment) *</label>
-                    <input type="text" id="payRefId" required placeholder="Enter 12-digit UTR from PhonePe app">
-                </div>
-                <button type="submit" class="btn-submit" style="background: var(--tcs-success);">Complete & Notify Admin via WhatsApp</button>
+                <!-- Only Razorpay Action Button -->
+                <button type="submit" class="btn-submit" style="background: #2b80ff; margin-top: 10px;">PROCEED VIA RAZORPAY</button>
             </form>
         </div>
     </div>
@@ -904,10 +1139,10 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
             <h2>Terms & Conditions</h2>
-            <p>Welcome to Tekkali Digital Web Solutions Hub. By accessing our website and engaging our services, you agree to comply with and be bound by the following terms and conditions.</p>
-            <p><strong>1. Services & Pricing:</strong> We provide digital solutions within standard brackets. Prices and packages are fixed via automated locking mechanisms to prevent errors.</p>
-            <p><strong>2. Maintenance & Support:</strong> All project packages include complimentary technical maintenance and support during and post-deployment.</p>
-            <p><strong>3. Payments:</strong> Payments are processed securely via authorized UPI channels to <strong>tekkalihub@naviaxis</strong>.</p>
+            <p>Welcome to Tekkali Digital Web Solutions Hub. By accessing our website and engaging our services, you agree to comply with and be bound by the following terms and conditions[cite: 5].</p>
+            <p><strong>1. Services & Pricing:</strong> We provide digital solutions within standard brackets. Prices and packages are fixed via automated locking mechanisms[cite: 5].</p>
+            <p><strong>2. Maintenance & Support:</strong> All project packages include complimentary technical maintenance and support during and post-deployment[cite: 5].</p>
+            <p><strong>3. Payments:</strong> Payments are processed securely via authorized Razorpay channels (<strong>https://razorpay.me/@tekkalidigitalandwebsolutions</strong>)[cite: 5].</p>
         </div>
     </div>
 
@@ -915,9 +1150,9 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
             <h2>Privacy Policy</h2>
-            <p>Tekkali Digital Web Solutions Hub values your privacy. This policy outlines how we handle your personal data:</p>
-            <p><strong>Data Collection:</strong> We collect details such as name, phone number, and project scope solely for communication and service delivery.</p>
-            <p><strong>Data Security:</strong> Your transaction data and personal information are encrypted and never shared with third-party marketers.</p>
+            <p>Tekkali Digital Web Solutions Hub values your privacy. This policy outlines how we handle your personal data[cite: 5]:</p>
+            <p><strong>Data Collection:</strong> We collect details such as name, phone number, and project scope solely for communication and service delivery[cite: 5].</p>
+            <p><strong>Data Security:</strong> Your transaction data and personal information are encrypted and never shared with third-party marketers[cite: 5].</p>
         </div>
     </div>
 
@@ -925,8 +1160,8 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('refundModal')">&times;</span>
             <h2>Refund & Cancellation Policy</h2>
-            <p><strong>Cancellation:</strong> Project cancellations must be requested within 24 hours of initial payment before development deployment starts.</p>
-            <p><strong>Refunds:</strong> Eligible refunds are processed back to the original source payment account within 5-7 working days following approval.</p>
+            <p><strong>Cancellation:</strong> Project cancellations must be requested within 24 hours of initial payment before development deployment starts[cite: 5].</p>
+            <p><strong>Refunds:</strong> Eligible refunds are processed back to the original source payment account within 5-7 working days following approval[cite: 5].</p>
         </div>
     </div>
 
@@ -934,9 +1169,9 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('shippingModal')">&times;</span>
             <h2>Shipping & Delivery Policy</h2>
-            <p>Since Tekkali Digital Web Solutions Hub delivers digital products, web solutions, and software services electronically:</p>
-            <p><strong>Delivery Timeline:</strong> Standard project execution and delivery ranges from <strong>30 to 40 business days</strong> depending on the selected package and project scope.</p>
-            <p><strong>Mode of Delivery:</strong> All digital assets, source links, and maintenance credentials are delivered digitally via email or WhatsApp.</p>
+            <p>Since Tekkali Digital Web Solutions Hub delivers digital products, web solutions, and software services electronically[cite: 5]:</p>
+            <p><strong>Delivery Timeline:</strong> Standard project execution and delivery ranges from <strong>30 to 40 business days</strong> depending on the selected package and project scope[cite: 5].</p>
+            <p><strong>Mode of Delivery:</strong> All digital assets, source links, and maintenance credentials are delivered digitally via email or WhatsApp[cite: 5].</p>
         </div>
     </div>
 
@@ -944,7 +1179,7 @@
         <div class="footer-container">
             <div class="footer-col">
                 <h3>Tekkali Digital Web Solutions Hub</h3>
-                <p>A full-service web studio in Tekkali, Andhra Pradesh — building fast, secure, search-ready digital products for ambitious businesses everywhere.</p>
+                <p>A full-service web studio in Tekkali, Andhra Pradesh — building fast, secure, search-ready digital products for ambitious businesses everywhere[cite: 5].</p>
             </div>
             <div class="footer-col">
                 <h3>Legal & Compliance</h3>
@@ -965,7 +1200,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2026 Tekkali Digital Web Solutions Hub. All Rights Reserved. Tekkali, Andhra Pradesh, India.
+            &copy; 2026 Tekkali Digital Web Solutions Hub. All Rights Reserved. Tekkali, Andhra Pradesh, India[cite: 5].
         </div>
     </footer>
 
@@ -1026,12 +1261,11 @@
             const phone = document.getElementById('payPhone').value;
             const shop = document.getElementById('payShop').value;
             const amount = document.getElementById('payAmount').value;
-            const refId = document.getElementById('payRefId').value;
 
-            const upiDeepLink = `upi://pay?pa=tekkalihub@naviaxis&pn=Tekkali%20Digital&am=${amount}&cu=INR`;
-            window.location.href = upiDeepLink;
+            // Direct Razorpay Payment Page redirection
+            window.open('https://razorpay.me/@tekkalidigitalandwebsolutions', '_blank');
 
-            const adminMsg = `*Locked Payment Verification Report*%0A----------------------------------%0A*Package:* ${selectedPackageName}%0A*Client Name:* ${name}%0A*Shop/Business:* ${shop}%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Locked Amount:* ₹${amount}%0A*UPI ID Used:* tekkalihub@naviaxis%0A*UTR Reference ID:* ${refId}`;
+            const adminMsg = `*Locked Payment Verification Report*%0A----------------------------------%0A*Package:* ${selectedPackageName}%0A*Client Name:* ${name}%0A*Shop/Business:* ${shop}%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Locked Amount:* ₹${amount}%0A*Razorpay Link Used:* https://razorpay.me/@tekkalidigitalandwebsolutions`;
             const adminWhatsAppUrl = `https://wa.me/919493583804?text=${adminMsg}`;
 
             setTimeout(() => {
@@ -1041,24 +1275,106 @@
             }, 1000);
         });
 
-        document.getElementById('projectInquiryForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('clientName').value;
-            const phone = document.getElementById('clientPhone').value;
-            const type = document.getElementById('projectType').value;
-            const budget = document.getElementById('clientBudget').value;
-            const details = document.getElementById('projectDetails').value;
+        // Blog Data Structure with different Unsplash images for categories
+        const blogData = {
+            all: [
+                { cat: 'SEO & MARKETING', title: 'Maximizing Local Business Reach in Tekkali through Advanced SEO', desc: 'Learn how strategic keyword optimization drives high organic traffic to regional storefronts.', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'WEB DEVELOPMENT', title: 'Why Next.js and React are Dominating Modern Enterprise Web Architecture', desc: 'An in-depth look at server-side rendering benefits and lightning-fast web performance.', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'SOCIAL MEDIA', title: 'Leveraging Social Media Funnels for E-Commerce Growth', desc: 'Convert casual scrollers into loyal customers with targeted engagement loops.', img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80' }
+            ],
+            webdev: [
+                { cat: 'WEB DEVELOPMENT', title: 'Building Scalable Full-Stack Web Apps with Node.js & MongoDB', desc: 'Best practices for structuring backend APIs and connecting cloud database clusters securely.', img: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'WEB DEVELOPMENT', title: 'Why Next.js and React are Dominating Modern Enterprise Web Architecture', desc: 'An in-depth look at server-side rendering benefits and lightning-fast web performance.', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'WEB DEVELOPMENT', title: 'Optimizing Frontend Component Performance with Tailwind CSS', desc: 'Streamlining styling workflows and reducing bundle sizes for enterprise portals.', img: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'WEB DEVELOPMENT', title: 'Secure Authentication Strategies using JWT and Session Cookies', desc: 'Protecting user data and safeguarding endpoints against common web vulnerabilities.', img: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'WEB DEVELOPMENT', title: 'Automating Cloud Deployments and CI/CD Pipelines on Render', desc: 'Seamlessly synchronizing Git repositories with production servers for uninterrupted uptime.', img: 'https://images.unsplash.com/photo-1618401471353-b98aedd04e11?auto=format&fit=crop&w=600&q=80' }
+            ],
+            digital: [
+                { cat: 'DIGITAL MARKETING', title: 'High-Converting Funnel Strategies for Regional Storefronts', desc: 'Turning offline foot traffic into engaged digital brand advocates.', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'DIGITAL MARKETING', title: 'Maximizing ROI with Targeted WhatsApp & SMS Broadcast Campaigns', desc: 'Direct messaging techniques that boost customer retention and order conversions.', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'DIGITAL MARKETING', title: 'Building Trust and Brand Credibility Through Professional Web Design', desc: 'How visual hierarchy influences purchasing decisions in competitive markets.', img: 'https://images.unsplash.com/photo-1533750349033-62f96955736a?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'DIGITAL MARKETING', title: 'The Power of Omnichannel Marketing for Small & Medium Enterprises', desc: 'Synchronizing web presence, social ads, and local listings for maximum reach.', img: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'DIGITAL MARKETING', title: 'Analyzing Customer Behavior Metrics to Scale Business Revenue', desc: 'Using data-driven insights to refine marketing budgets and campaign targeting.', img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80' }
+            ],
+            seo: [
+                { cat: 'SEO', title: 'Maximizing Local Business Reach in Tekkali through Advanced SEO', desc: 'Learn how strategic keyword optimization drives high organic traffic to regional storefronts.', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'SEO', title: 'Mastering Google Business Profile Optimization for Local Dominance', desc: 'Step-by-step tactics to rank higher on local map packs and search queries.', img: 'https://images.unsplash.com/photo-1572177812156-58036aae439c?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'SEO', title: 'Technical SEO Audits: Fixing Core Web Vitals and Page Speed', desc: 'Improving load times and search engine crawlability for better indexation.', img: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'SEO', title: 'Keyword Research Strategies for Niche Service Sectors', desc: 'Finding high-intent search terms that convert browsers into paying clients.', img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'SEO', title: 'Building High-Authority Backlinks Safely in 2026', desc: 'White-hat link building techniques that safeguard your site against algorithm penalties.', img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80' }
+            ],
+            social: [
+                { cat: 'SOCIAL MEDIA', title: 'Leveraging Social Media Funnels for E-Commerce Growth', desc: 'Convert casual scrollers into loyal customers with targeted engagement loops.', img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'SOCIAL MEDIA', title: 'Creating High-Engagement Short-Form Video Content for Brands', desc: 'Capturing audience attention quickly across Reels, Shorts, and TikTok platforms.', img: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'SOCIAL MEDIA', title: 'Community Building: Turning Followers into Brand Ambassadors', desc: 'Fostering active interactions and long-term customer loyalty on social channels.', img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'SOCIAL MEDIA', title: 'Paid Social Advertising vs Organic Growth: Finding the Right Balance', desc: 'Allocating resources effectively to maximize reach and conversion metrics.', img: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80' },
+                { cat: 'SOCIAL MEDIA', title: 'Analyzing Social Media Analytics to Refine Content Strategy', desc: 'Tracking engagement rates, click-throughs, and audience demographics like a pro.', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80' }
+            ]
+        };
 
-            const msg = `*New Enterprise Project Inquiry*%0A----------------------------------%0A*Name/Business:* ${name}%0A*Client Phone:* ${phone}%0A*Project Type:* ${type}%0A*Budget Range:* ${budget}%0A*Details:* ${details}`;
+        const defaultImg = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80';
+
+        function renderBlogCards(categoryKey) {
+            const container = document.getElementById('blogContainer');
+            if (!container) return;
             
-            const whatsappUrl = `https://wa.me/919493583804?text=${msg}`;
-            
-            alert("Redirecting to WhatsApp with your project details...");
-            window.open(whatsappUrl, '_blank');
-            
-            document.getElementById('projectInquiryForm').reset();
-        });
+            const items = blogData[categoryKey] || blogData['all'];
+            container.innerHTML = '';
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                card.innerHTML = `
+                    <img src="${item.img || defaultImg}" alt="${item.title}" class="service-img">
+                    <div class="service-body">
+                        <span style="font-size: 0.75rem; color: #60a5fa; font-weight: 700; text-transform: uppercase;">${item.cat}</span>
+                        <h3 style="margin-top: 0.3rem;">${item.title}</h3>
+                        <p>${item.desc}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterBlog(categoryKey, btnElement) {
+            document.querySelectorAll('.blog-filter-btn').forEach(btn => {
+                btn.style.background = '#1e293b';
+                btn.classList.remove('active-filter');
+            });
+            btnElement.style.background = 'var(--tcs-blue)';
+            btnElement.classList.add('active-filter');
+
+            renderBlogCards(categoryKey);
+        }
+
+        renderBlogCards('all');
+
+        const handleInquirySubmit = (formId) => {
+            const formEl = document.getElementById(formId);
+            if (formEl) {
+                formEl.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = formEl.querySelector('input[type="text"]').value;
+                    const phone = formEl.querySelector('input[type="tel"]').value;
+                    const type = formEl.querySelector('select').value;
+                    const budget = formEl.querySelectorAll('select')[1] ? formEl.querySelectorAll('select')[1].value : 'Standard';
+                    const details = formEl.querySelector('textarea').value;
+
+                    const msg = `*New Enterprise Project Inquiry*%0A----------------------------------%0A*Name/Business:* ${name}%0A*Client Phone:* ${phone}%0A*Project Type:* ${type}%0A*Budget Range:* ${budget}%0A*Details:* ${details}`;
+                    
+                    const whatsappUrl = `https://wa.me/919493583804?text=${msg}`;
+                    
+                    alert("Redirecting to WhatsApp with your project details...");
+                    window.open(whatsappUrl, '_blank');
+                    
+                    formEl.reset();
+                });
+            }
+        };
+
+        handleInquirySubmit('projectInquiryForm');
+        handleInquirySubmit('projectInquiryFormPortal');
     </script>
 </body>
 </html>
