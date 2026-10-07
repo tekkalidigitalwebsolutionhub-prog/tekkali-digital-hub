@@ -693,6 +693,30 @@
                     </div>
                 </div>
             </div>
+
+            <!-- WHY CHOOSE US SECTION ADDED -->
+            <div style="margin-top: 4rem; margin-bottom: 2rem;">
+                <h2 class="section-title">Why Choose Us</h2>
+                <p class="section-subtitle">What sets our digital solutions apart in quality, trust, and execution.</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.8rem; text-align: left;">
+                        <div style="font-size: 1.8rem; margin-bottom: 0.8rem;">🚀</div>
+                        <h3 style="color: white; font-size: 1.15rem; margin-bottom: 0.5rem;">Professional Excellence</h3>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Committed to delivering high-quality digital solutions with precise execution and industry-standard practices.</p>
+                    </div>
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.8rem; text-align: left;">
+                        <div style="font-size: 1.8rem; margin-bottom: 0.8rem;">💡</div>
+                        <h3 style="color: white; font-size: 1.15rem; margin-bottom: 0.5rem;">Transparent & Flexible</h3>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Clear communication, flexible collaboration models, and result-oriented approaches for all our clients and partners.</p>
+                    </div>
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.8rem; text-align: left;">
+                        <div style="font-size: 1.8rem; margin-bottom: 0.8rem;">🌟</div>
+                        <h3 style="color: white; font-size: 1.15rem; margin-bottom: 0.5rem;">Community Growth</h3>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Empowering local talent by building career pathways, part-time earning opportunities, and skill-based growth.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -936,7 +960,7 @@
         </div>
     </div>
 
-    <!-- ABOUT VIEW -->
+    <!-- ABOUT VIEW (UPDATED WITH Sivaji Image.jpeg) -->
     <div id="view-about" class="page-view">
         <div class="container">
             <div class="back-home-bar">
@@ -946,7 +970,7 @@
             <p class="section-subtitle">Building professional credibility through expert engineering and dedicated leadership[cite: 5].</p>
             
             <div style="max-width: 800px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 2.5rem; text-align: center;">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Sivaji" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--tcs-blue);">
+                <img src="Sivaji Image.jpeg" alt="Sivaji" style="width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--tcs-blue);">
                 <h3 style="font-size: 1.4rem; color: white; margin-bottom: 0.2rem;">Sivaji</h3>
                 <p style="color: #60a5fa; font-weight: 600; font-size: 0.9rem; margin-bottom: 1.5rem;">Founder & Lead Engineering Head</p>
                 <p style="color: var(--text-gray); font-size: 0.95rem; line-height: 1.7;">
@@ -1096,7 +1120,7 @@
         💬
     </a>
 
-    <!-- Secure Razorpay Payment Modal (UPI backup removed) -->
+    <!-- Secure Razorpay Payment Modal -->
     <div id="checkoutModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('checkoutModal')">&times;</span>
@@ -1128,7 +1152,6 @@
                     <label for="payAmount">Locked Final Amount (₹) - [Non-Editable]</label>
                     <input type="number" id="payAmount" readonly>
                 </div>
-                <!-- Only Razorpay Action Button -->
                 <button type="submit" class="btn-submit" style="background: #2b80ff; margin-top: 10px;">PROCEED VIA RAZORPAY</button>
             </form>
         </div>
@@ -1262,7 +1285,6 @@
             const shop = document.getElementById('payShop').value;
             const amount = document.getElementById('payAmount').value;
 
-            // Direct Razorpay Payment Page redirection
             window.open('https://razorpay.me/@tekkalidigitalandwebsolutions', '_blank');
 
             const adminMsg = `*Locked Payment Verification Report*%0A----------------------------------%0A*Package:* ${selectedPackageName}%0A*Client Name:* ${name}%0A*Shop/Business:* ${shop}%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Locked Amount:* ₹${amount}%0A*Razorpay Link Used:* https://razorpay.me/@tekkalidigitalandwebsolutions`;
@@ -1275,7 +1297,6 @@
             }, 1000);
         });
 
-        // Blog Data Structure with different Unsplash images for categories
         const blogData = {
             all: [
                 { cat: 'SEO & MARKETING', title: 'Maximizing Local Business Reach in Tekkali through Advanced SEO', desc: 'Learn how strategic keyword optimization drives high organic traffic to regional storefronts.', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80' },
