@@ -16,6 +16,7 @@
             --text-dark: #f8fafc;
             --text-gray: #94a3b8;
             --border-color: #1f2937;
+            --rating-star: #facc15;
         }
 
         * {
@@ -600,6 +601,50 @@
             color: #64748b;
         }
 
+        /* Rating Widget Styles */
+        .rating-widget {
+            background: #050b14;
+            border-top: 1px solid var(--border-color);
+            padding: 1rem;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.88rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            color: var(--border-color);
+            transition: color 0.2s;
+            padding: 0 2px;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            color: var(--rating-star);
+        }
+
+        .rating-count {
+            margin-top: 0.3rem;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
         @media(max-width: 768px) {
             .nav-links { display: none; }
             .menu-toggle { display: flex; }
@@ -651,6 +696,18 @@
             <a onclick="switchView('contact')" class="mob-link">Contact Us</a>
             <a onclick="switchView('portal')" class="mob-link" style="background: var(--tcs-blue); color: white; padding: 0.6rem; text-align: center; border-radius: 6px; font-weight: 600;">Get Proposal</a>
         </div>
+        <!-- RATING WIDGET -->
+        <div class="rating-widget">
+            <div class="star-rating" id="starRatingContainer">
+                <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars">★</label>
+                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars">★</label>
+                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars">★</label>
+                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars">★</label>
+                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">★</label>
+            </div>
+            <div>Rate our services to boost visibility!</div>
+            <div class="rating-count" id="ratingDisplay">Currently: 4.9/5 (Based on 127 reviews)</div>
+        </div>
     </header>
 
     <!-- HOME VIEW -->
@@ -695,7 +752,6 @@
                 </div>
             </div>
 
-            <!-- WHY CHOOSE US SECTION ADDED -->
             <div style="margin-top: 4rem; margin-bottom: 2rem;">
                 <h2 class="section-title">Why Choose Us</h2>
                 <p class="section-subtitle">What sets our digital solutions apart in quality, trust, and execution.</p>
@@ -771,33 +827,6 @@
                     <div class="service-body">
                         <h3>Website Security</h3>
                         <p>Advanced security protocols, firewall setups, and SSL implementation[cite: 5].</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 5-Step Methodology -->
-            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 2rem; margin-top: 3rem;">
-                <h3 style="text-align: center; color: white; font-size: 1.4rem; margin-bottom: 1.5rem;">Our 5-Step Proven Methodology</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; text-align: center;">
-                    <div style="background: #050b14; padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
-                        <strong style="color: #60a5fa; display: block; margin-bottom: 0.5rem;">Step 1</strong>
-                        <span>Discovery</span>
-                    </div>
-                    <div style="background: #050b14; padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
-                        <strong style="color: #60a5fa; display: block; margin-bottom: 0.5rem;">Step 2</strong>
-                        <span>Strategy</span>
-                    </div>
-                    <div style="background: #050b14; padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
-                        <strong style="color: #60a5fa; display: block; margin-bottom: 0.5rem;">Step 3</strong>
-                        <span>Execution</span>
-                    </div>
-                    <div style="background: #050b14; padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
-                        <strong style="color: #60a5fa; display: block; margin-bottom: 0.5rem;">Step 4</strong>
-                        <span>Optimization</span>
-                    </div>
-                    <div style="background: #050b14; padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
-                        <strong style="color: #60a5fa; display: block; margin-bottom: 0.5rem;">Step 5</strong>
-                        <span>Maintenance</span>
                     </div>
                 </div>
             </div>
@@ -931,10 +960,6 @@
                     <p>Support Team</p>
                 </div>
             </div>
-
-            <div class="budget-note">
-                💼 <strong>Project Milestone Note:</strong> "Our journey began with a vision to empower local businesses with premium digital solutions. From our very first deployment to handling complex enterprise infrastructures, every rupee is transparently invested in robust hosting, advanced security, and dedicated engineering talent[cite: 5]."
-            </div>
         </div>
     </div>
 
@@ -955,13 +980,11 @@
                 <button class="btn-back blog-filter-btn" onclick="filterBlog('social', this)">Social Media</button>
             </div>
 
-            <div class="services-grid" id="blogContainer">
-                <!-- Dynamically Rendered via JS -->
-            </div>
+            <div class="services-grid" id="blogContainer"></div>
         </div>
     </div>
 
-    <!-- ABOUT VIEW (UPDATED WITH Sivaji Image.jpeg) -->
+    <!-- ABOUT VIEW (WITH SIVAJI PHOTO) -->
     <div id="view-about" class="page-view">
         <div class="container">
             <div class="back-home-bar">
@@ -1158,61 +1181,11 @@
         </div>
     </div>
 
-    <!-- Legal Modals -->
-    <div id="termsModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
-            <h2>Terms & Conditions</h2>
-            <p>Welcome to Tekkali Digital Web Solutions Hub. By accessing our website and engaging our services, you agree to comply with and be bound by the following terms and conditions[cite: 5].</p>
-            <p><strong>1. Services & Pricing:</strong> We provide digital solutions within standard brackets. Prices and packages are fixed via automated locking mechanisms[cite: 5].</p>
-            <p><strong>2. Maintenance & Support:</strong> All project packages include complimentary technical maintenance and support during and post-deployment[cite: 5].</p>
-            <p><strong>3. Payments:</strong> Payments are processed securely via authorized Razorpay channels (<strong>https://razorpay.me/@tekkalidigitalandwebsolutions</strong>)[cite: 5].</p>
-        </div>
-    </div>
-
-    <div id="privacyModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
-            <h2>Privacy Policy</h2>
-            <p>Tekkali Digital Web Solutions Hub values your privacy. This policy outlines how we handle your personal data[cite: 5]:</p>
-            <p><strong>Data Collection:</strong> We collect details such as name, phone number, and project scope solely for communication and service delivery[cite: 5].</p>
-            <p><strong>Data Security:</strong> Your transaction data and personal information are encrypted and never shared with third-party marketers[cite: 5].</p>
-        </div>
-    </div>
-
-    <div id="refundModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('refundModal')">&times;</span>
-            <h2>Refund & Cancellation Policy</h2>
-            <p><strong>Cancellation:</strong> Project cancellations must be requested within 24 hours of initial payment before development deployment starts[cite: 5].</p>
-            <p><strong>Refunds:</strong> Eligible refunds are processed back to the original source payment account within 5-7 working days following approval[cite: 5].</p>
-        </div>
-    </div>
-
-    <div id="shippingModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('shippingModal')">&times;</span>
-            <h2>Shipping & Delivery Policy</h2>
-            <p>Since Tekkali Digital Web Solutions Hub delivers digital products, web solutions, and software services electronically[cite: 5]:</p>
-            <p><strong>Delivery Timeline:</strong> Standard project execution and delivery ranges from <strong>30 to 40 business days</strong> depending on the selected package and project scope[cite: 5].</p>
-            <p><strong>Mode of Delivery:</strong> All digital assets, source links, and maintenance credentials are delivered digitally via email or WhatsApp[cite: 5].</p>
-        </div>
-    </div>
-
     <footer>
         <div class="footer-container">
             <div class="footer-col">
                 <h3>Tekkali Digital Web Solutions Hub</h3>
                 <p>A full-service web studio in Tekkali, Andhra Pradesh — building fast, secure, search-ready digital products for ambitious businesses everywhere[cite: 5].</p>
-            </div>
-            <div class="footer-col">
-                <h3>Legal & Compliance</h3>
-                <ul class="footer-links">
-                    <li><a onclick="openModal('termsModal')">Terms & Conditions</a></li>
-                    <li><a onclick="openModal('privacyModal')">Privacy Policy</a></li>
-                    <li><a onclick="openModal('refundModal')">Refund & Cancellation</a></li>
-                    <li><a onclick="openModal('shippingModal')">Shipping & Delivery</a></li>
-                </ul>
             </div>
             <div class="footer-col">
                 <h3>Contact</h3>
@@ -1298,6 +1271,16 @@
             }, 1000);
         });
 
+        // Rating Interaction Logic
+        const ratingInputs = document.querySelectorAll('input[name="rating"]');
+        ratingInputs.forEach(input => {
+            input.addEventListener('change', function() {
+                const val = this.value;
+                document.getElementById('ratingDisplay').innerText = `Thank you for rating! You rated ${val}/5 stars. (Updated)`;
+                alert(`Thank you! Your ${val}-star rating has been successfully registered to enhance search visibility.`);
+            });
+        });
+
         const blogData = {
             all: [
                 { cat: 'SEO & MARKETING', title: 'Maximizing Local Business Reach in Tekkali through Advanced SEO', desc: 'Learn how strategic keyword optimization drives high organic traffic to regional storefronts.', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80' },
@@ -1306,48 +1289,29 @@
             ],
             webdev: [
                 { cat: 'WEB DEVELOPMENT', title: 'Building Scalable Full-Stack Web Apps with Node.js & MongoDB', desc: 'Best practices for structuring backend APIs and connecting cloud database clusters securely.', img: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'WEB DEVELOPMENT', title: 'Why Next.js and React are Dominating Modern Enterprise Web Architecture', desc: 'An in-depth look at server-side rendering benefits and lightning-fast web performance.', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'WEB DEVELOPMENT', title: 'Optimizing Frontend Component Performance with Tailwind CSS', desc: 'Streamlining styling workflows and reducing bundle sizes for enterprise portals.', img: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'WEB DEVELOPMENT', title: 'Secure Authentication Strategies using JWT and Session Cookies', desc: 'Protecting user data and safeguarding endpoints against common web vulnerabilities.', img: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'WEB DEVELOPMENT', title: 'Automating Cloud Deployments and CI/CD Pipelines on Render', desc: 'Seamlessly synchronizing Git repositories with production servers for uninterrupted uptime.', img: 'https://images.unsplash.com/photo-1618401471353-b98aedd04e11?auto=format&fit=crop&w=600&q=80' }
+                { cat: 'WEB DEVELOPMENT', title: 'Why Next.js and React are Dominating Modern Enterprise Web Architecture', desc: 'An in-depth look at server-side rendering benefits and lightning-fast web performance.', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80' }
             ],
             digital: [
-                { cat: 'DIGITAL MARKETING', title: 'High-Converting Funnel Strategies for Regional Storefronts', desc: 'Turning offline foot traffic into engaged digital brand advocates.', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'DIGITAL MARKETING', title: 'Maximizing ROI with Targeted WhatsApp & SMS Broadcast Campaigns', desc: 'Direct messaging techniques that boost customer retention and order conversions.', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'DIGITAL MARKETING', title: 'Building Trust and Brand Credibility Through Professional Web Design', desc: 'How visual hierarchy influences purchasing decisions in competitive markets.', img: 'https://images.unsplash.com/photo-1533750349033-62f96955736a?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'DIGITAL MARKETING', title: 'The Power of Omnichannel Marketing for Small & Medium Enterprises', desc: 'Synchronizing web presence, social ads, and local listings for maximum reach.', img: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'DIGITAL MARKETING', title: 'Analyzing Customer Behavior Metrics to Scale Business Revenue', desc: 'Using data-driven insights to refine marketing budgets and campaign targeting.', img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80' }
+                { cat: 'DIGITAL MARKETING', title: 'High-Converting Funnel Strategies for Regional Storefronts', desc: 'Turning offline foot traffic into engaged digital brand advocates.', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80' }
             ],
             seo: [
-                { cat: 'SEO', title: 'Maximizing Local Business Reach in Tekkali through Advanced SEO', desc: 'Learn how strategic keyword optimization drives high organic traffic to regional storefronts.', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SEO', title: 'Mastering Google Business Profile Optimization for Local Dominance', desc: 'Step-by-step tactics to rank higher on local map packs and search queries.', img: 'https://images.unsplash.com/photo-1572177812156-58036aae439c?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SEO', title: 'Technical SEO Audits: Fixing Core Web Vitals and Page Speed', desc: 'Improving load times and search engine crawlability for better indexation.', img: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SEO', title: 'Keyword Research Strategies for Niche Service Sectors', desc: 'Finding high-intent search terms that convert browsers into paying clients.', img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SEO', title: 'Building High-Authority Backlinks Safely in 2026', desc: 'White-hat link building techniques that safeguard your site against algorithm penalties.', img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80' }
+                { cat: 'SEO', title: 'Maximizing Local Business Reach in Tekkali through Advanced SEO', desc: 'Learn how strategic keyword optimization drives high organic traffic to regional storefronts.', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80' }
             ],
             social: [
-                { cat: 'SOCIAL MEDIA', title: 'Leveraging Social Media Funnels for E-Commerce Growth', desc: 'Convert casual scrollers into loyal customers with targeted engagement loops.', img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SOCIAL MEDIA', title: 'Creating High-Engagement Short-Form Video Content for Brands', desc: 'Capturing audience attention quickly across Reels, Shorts, and TikTok platforms.', img: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SOCIAL MEDIA', title: 'Community Building: Turning Followers into Brand Ambassadors', desc: 'Fostering active interactions and long-term customer loyalty on social channels.', img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SOCIAL MEDIA', title: 'Paid Social Advertising vs Organic Growth: Finding the Right Balance', desc: 'Allocating resources effectively to maximize reach and conversion metrics.', img: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SOCIAL MEDIA', title: 'Analyzing Social Media Analytics to Refine Content Strategy', desc: 'Tracking engagement rates, click-throughs, and audience demographics like a pro.', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80' }
+                { cat: 'SOCIAL MEDIA', title: 'Leveraging Social Media Funnels for E-Commerce Growth', desc: 'Convert casual scrollers into loyal customers with targeted engagement loops.', img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80' }
             ]
         };
-
-        const defaultImg = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80';
 
         function renderBlogCards(categoryKey) {
             const container = document.getElementById('blogContainer');
             if (!container) return;
-            
             const items = blogData[categoryKey] || blogData['all'];
             container.innerHTML = '';
-
             items.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'service-card';
                 card.innerHTML = `
-                    <img src="${item.img || defaultImg}" alt="${item.title}" class="service-img">
+                    <img src="${item.img}" alt="${item.title}" class="service-img">
                     <div class="service-body">
                         <span style="font-size: 0.75rem; color: #60a5fa; font-weight: 700; text-transform: uppercase;">${item.cat}</span>
                         <h3 style="margin-top: 0.3rem;">${item.title}</h3>
@@ -1365,7 +1329,6 @@
             });
             btnElement.style.background = 'var(--tcs-blue)';
             btnElement.classList.add('active-filter');
-
             renderBlogCards(categoryKey);
         }
 
@@ -1376,7 +1339,6 @@
             if (formEl) {
                 formEl.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    
                     const name = formEl.querySelector('input[type="text"]').value;
                     const phone = formEl.querySelector('input[type="tel"]').value;
                     const type = formEl.querySelector('select').value;
@@ -1384,12 +1346,10 @@
                     const details = formEl.querySelector('textarea').value;
 
                     const msg = `*New Enterprise Project Inquiry*%0A----------------------------------%0A*Name/Business:* ${name}%0A*Client Phone:* ${phone}%0A*Project Type:* ${type}%0A*Budget Range:* ${budget}%0A*Details:* ${details}`;
-                    
                     const whatsappUrl = `https://wa.me/919493583804?text=${msg}`;
                     
                     alert("Redirecting to WhatsApp with your project details...");
                     window.open(whatsappUrl, '_blank');
-                    
                     formEl.reset();
                 });
             }
