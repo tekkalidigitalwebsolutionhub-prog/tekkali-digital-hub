@@ -1236,11 +1236,61 @@
         </div>
     </div>
 
+    <!-- Legal Modals (Terms, Privacy, Refund, Shipping) -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
+            <h2>Terms & Conditions</h2>
+            <p>Welcome to Tekkali Digital Web Solutions Hub. By accessing our website and engaging our services, you agree to comply with and be bound by the following terms and conditions[cite: 5].</p>
+            <p><strong>1. Services & Pricing:</strong> We provide digital solutions within standard brackets. Prices and packages are fixed via automated locking mechanisms[cite: 5].</p>
+            <p><strong>2. Maintenance & Support:</strong> All project packages include complimentary technical maintenance and support during and post-deployment[cite: 5].</p>
+            <p><strong>3. Payments:</strong> Payments are processed securely via authorized Razorpay channels (<strong>https://razorpay.me/@tekkalidigitalandwebsolutions</strong>)[cite: 5].</p>
+        </div>
+    </div>
+
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p>Tekkali Digital Web Solutions Hub values your privacy. This policy outlines how we handle your personal data[cite: 5]:</p>
+            <p><strong>Data Collection:</strong> We collect details such as name, phone number, and project scope solely for communication and service delivery[cite: 5].</p>
+            <p><strong>Data Security:</strong> Your transaction data and personal information are encrypted and never shared with third-party marketers[cite: 5].</p>
+        </div>
+    </div>
+
+    <div id="refundModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('refundModal')">&times;</span>
+            <h2>Refund & Cancellation Policy</h2>
+            <p><strong>Cancellation:</strong> Project cancellations must be requested within 24 hours of initial payment before development deployment starts[cite: 5].</p>
+            <p><strong>Refunds:</strong> Eligible refunds are processed back to the original source payment account within 5-7 working days following approval[cite: 5].</p>
+        </div>
+    </div>
+
+    <div id="shippingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('shippingModal')">&times;</span>
+            <h2>Shipping & Delivery Policy</h2>
+            <p>Since Tekkali Digital Web Solutions Hub delivers digital products, web solutions, and software services electronically[cite: 5]:</p>
+            <p><strong>Delivery Timeline:</strong> Standard project execution and delivery ranges from <strong>30 to 40 business days</strong> depending on the selected package and project scope[cite: 5].</p>
+            <p><strong>Mode of Delivery:</strong> All digital assets, source links, and maintenance credentials are delivered digitally via email or WhatsApp[cite: 5].</p>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-container">
             <div class="footer-col">
                 <h3>Tekkali Digital Web Solutions Hub</h3>
                 <p>A full-service web studio in Tekkali, Andhra Pradesh — building fast, secure, search-ready digital products for ambitious businesses everywhere[cite: 5].</p>
+            </div>
+            <div class="footer-col">
+                <h3>Legal & Compliance</h3>
+                <ul class="footer-links">
+                    <li><a onclick="openModal('termsModal')">Terms & Conditions</a></li>
+                    <li><a onclick="openModal('privacyModal')">Privacy Policy</a></li>
+                    <li><a onclick="openModal('refundModal')">Refund & Cancellation</a></li>
+                    <li><a onclick="openModal('shippingModal')">Shipping & Delivery</a></li>
+                </ul>
             </div>
             <div class="footer-col">
                 <h3>Contact</h3>
