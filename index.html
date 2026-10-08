@@ -601,48 +601,67 @@
             color: #64748b;
         }
 
-        /* Rating Widget Styles */
-        .rating-widget {
-            background: #050b14;
-            border-top: 1px solid var(--border-color);
-            padding: 1rem;
-            text-align: center;
-            color: #94a3b8;
-            font-size: 0.88rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
+        /* Ratings Section Styles */
+        .ratings-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 900px;
         }
 
-        .star-rating {
+        .ratings-summary {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .ratings-summary h3 {
+            font-size: 1.6rem;
+            color: white;
+            margin-bottom: 0.3rem;
+        }
+
+        .star-rating-box {
             display: flex;
             flex-direction: row-reverse;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 2rem;
             cursor: pointer;
+            margin: 1rem 0;
         }
 
-        .star-rating input {
+        .star-rating-box input {
             display: none;
         }
 
-        .star-rating label {
+        .star-rating-box label {
             color: var(--border-color);
             transition: color 0.2s;
-            padding: 0 2px;
+            padding: 0 4px;
         }
 
-        .star-rating label:hover,
-        .star-rating label:hover ~ label,
-        .star-rating input:checked ~ label {
+        .star-rating-box label:hover,
+        .star-rating-box label:hover ~ label,
+        .star-rating-box input:checked ~ label {
             color: var(--rating-star);
         }
 
-        .rating-count {
-            margin-top: 0.3rem;
-            font-size: 0.8rem;
-            color: var(--text-gray);
+        .review-list {
+            margin-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+        }
+
+        .review-item {
+            background: #050b14;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         @media(max-width: 768px) {
@@ -676,6 +695,7 @@
                 <li><a onclick="switchView('about')">About</a></li>
                 <li><a onclick="switchView('careers')">Careers</a></li>
                 <li><a onclick="switchView('contact')">Contact Us</a></li>
+                <li><a onclick="switchView('ratingsView')">Ratings & Reviews</a></li>
                 <li><a onclick="switchView('portal')" class="nav-btn">Get Proposal</a></li>
             </ul>
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
@@ -694,19 +714,8 @@
             <a onclick="switchView('about')" class="mob-link">About</a>
             <a onclick="switchView('careers')" class="mob-link">Careers</a>
             <a onclick="switchView('contact')" class="mob-link">Contact Us</a>
+            <a onclick="switchView('ratingsView')" class="mob-link">Ratings & Reviews</a>
             <a onclick="switchView('portal')" class="mob-link" style="background: var(--tcs-blue); color: white; padding: 0.6rem; text-align: center; border-radius: 6px; font-weight: 600;">Get Proposal</a>
-        </div>
-        <!-- RATING WIDGET -->
-        <div class="rating-widget">
-            <div class="star-rating" id="starRatingContainer">
-                <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars">★</label>
-                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars">★</label>
-                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars">★</label>
-                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars">★</label>
-                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">★</label>
-            </div>
-            <div>Rate our services to boost visibility!</div>
-            <div class="rating-count" id="ratingDisplay">Currently: 4.9/5 (Based on 127 reviews)</div>
         </div>
     </header>
 
@@ -743,11 +752,11 @@
                         <p>Check transparent project tiers starting from Basic, Standard to Enterprise Custom solutions[cite: 5].</p>
                     </div>
                 </div>
-                <div class="service-card" style="cursor: pointer;" onclick="switchView('work')">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Our Work" class="service-img">
+                <div class="service-card" style="cursor: pointer;" onclick="switchView('ratingsView')">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Ratings" class="service-img">
                     <div class="service-body">
-                        <h3>Our Work & Industries &rarr;</h3>
-                        <p>Discover tailored solutions across Real Estate, Healthcare, E-Commerce, IT, Legal, and 15+ more sectors[cite: 5].</p>
+                        <h3>Rate Our Services &rarr;</h3>
+                        <p>Share your feedback via email and check total community ratings and reviews.</p>
                     </div>
                 </div>
             </div>
@@ -773,7 +782,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -1004,7 +1012,54 @@
         </div>
     </div>
 
-    <!-- CONTACT US / PORTAL VIEW -->
+    <!-- RATINGS & REVIEWS VIEW -->
+    <div id="view-ratingsView" class="page-view">
+        <div class="container">
+            <div class="back-home-bar">
+                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
+            </div>
+            <div class="ratings-section">
+                <div class="ratings-summary">
+                    <h3>Customer Ratings & Reviews</h3>
+                    <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: 0.3rem;">Submit your rating with your email and see what others say!</p>
+                    <div style="font-size: 1.8rem; font-weight: 800; color: #60a5fa; margin-top: 0.8rem;" id="averageRatingDisplay">4.9 / 5.0</div>
+                    <div style="color: var(--text-gray); font-size: 0.85rem;" id="totalReviewsCountDisplay">Total Ratings: 127</div>
+                </div>
+
+                <!-- Rating Submission Form -->
+                <form id="ratingForm" style="background: #050b14; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <h4 style="color: white; margin-bottom: 0.8rem; font-size: 1rem;">Give Your Rating</h4>
+                    <div class="form-group">
+                        <label for="raterEmail">Your Email Address *</label>
+                        <input type="email" id="raterEmail" required placeholder="e.g., user@gmail.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Select Rating Stars *</label>
+                        <div class="star-rating-box">
+                            <input type="radio" id="r5" name="userStar" value="5" required /><label for="r5" title="5 stars">★</label>
+                            <input type="radio" id="r4" name="userStar" value="4" /><label for="r4" title="4 stars">★</label>
+                            <input type="radio" id="r3" name="userStar" value="3" /><label for="r3" title="3 stars">★</label>
+                            <input type="radio" id="r2" name="userStar" value="2" /><label for="r2" title="2 stars">★</label>
+                            <input type="radio" id="r1" name="userStar" value="1" /><label for="r1" title="1 star">★</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="raterComment">Your Feedback / Review (Optional)</label>
+                        <textarea id="raterComment" rows="2" placeholder="Write a short review..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Rating & Review</button>
+                </form>
+
+                <!-- Reviews List Container -->
+                <div class="review-list">
+                    <h4 style="color: white; margin-bottom: 1rem; font-size: 1rem;">Recent Community Reviews</h4>
+                    <div id="dynamicReviewsContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT US VIEW -->
     <div id="view-contact" class="page-view">
         <div class="container">
             <div class="back-home-bar">
@@ -1271,16 +1326,65 @@
             }, 1000);
         });
 
-        // Rating Interaction Logic
-        const ratingInputs = document.querySelectorAll('input[name="rating"]');
-        ratingInputs.forEach(input => {
-            input.addEventListener('change', function() {
-                const val = this.value;
-                document.getElementById('ratingDisplay').innerText = `Thank you for rating! You rated ${val}/5 stars. (Updated)`;
-                alert(`Thank you! Your ${val}-star rating has been successfully registered to enhance search visibility.`);
+        // Ratings Logic (LocalStorage based with Email requirement)
+        let defaultReviews = [
+            { email: "ramesh****@gmail.com", stars: 5, comment: "Excellent service and fast website delivery!" },
+            { email: "suresh****@gmail.com", stars: 5, comment: "Very professional web development team in Tekkali." }
+        ];
+
+        function getStoredReviews() {
+            let stored = localStorage.getItem('tekkali_user_reviews');
+            return stored ? JSON.parse(stored) : defaultReviews;
+        }
+
+        function renderReviews() {
+            let reviews = getStoredReviews();
+            let container = document.getElementById('dynamicReviewsContainer');
+            if(!container) return;
+
+            container.innerHTML = '';
+            let totalStars = 0;
+
+            reviews.forEach(rev => {
+                totalStars += Number(rev.stars);
+                let item = document.createElement('div');
+                item.className = 'review-item';
+                item.innerHTML = `
+                    <div>
+                        <strong style="color: #60a5fa; font-size: 0.9rem;">${rev.email}</strong>
+                        <p style="color: var(--text-gray); font-size: 0.85rem; margin-top: 2px;">${rev.comment || 'No comment provided.'}</p>
+                    </div>
+                    <div style="color: var(--rating-star); font-size: 1.1rem;">
+                        ${'★'.repeat(rev.stars)}${'☆'.repeat(5 - rev.stars)}
+                    </div>
+                `;
+                container.appendChild(item);
             });
+
+            let avg = (totalStars / reviews.length).toFixed(1);
+            document.getElementById('averageRatingDisplay').innerText = `${avg} / 5.0`;
+            document.getElementById('totalReviewsCountDisplay').innerText = `Total Ratings: ${reviews.length}`;
+        }
+
+        document.getElementById('ratingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let emailInput = document.getElementById('raterEmail').value;
+            let starInput = document.querySelector('input[name="userStar"]:checked').value;
+            let commentInput = document.getElementById('raterComment').value;
+
+            let maskedEmail = emailInput.substring(0, 3) + '****@' + emailInput.split('@')[1];
+
+            let reviews = getStoredReviews();
+            reviews.unshift({ email: maskedEmail, stars: Number(starInput), comment: commentInput });
+            localStorage.setItem('tekkali_user_reviews', JSON.stringify(reviews));
+
+            alert("Thank you! Your rating and email review have been successfully recorded.");
+            document.getElementById('ratingForm').reset();
+            renderReviews();
+            switchView('ratingsView');
         });
 
+        // Full Blog Data
         const blogData = {
             all: [
                 { cat: 'SEO & MARKETING', title: 'Maximizing Local Business Reach in Tekkali through Advanced SEO', desc: 'Learn how strategic keyword optimization drives high organic traffic to regional storefronts.', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80' },
@@ -1333,6 +1437,7 @@
         }
 
         renderBlogCards('all');
+        renderReviews();
 
         const handleInquirySubmit = (formId) => {
             const formEl = document.getElementById(formId);
