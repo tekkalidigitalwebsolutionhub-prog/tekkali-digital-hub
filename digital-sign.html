@@ -305,21 +305,6 @@
             }
         }
 
-        // Fetch Admin password from backend/storage sync
-        async function getAdminPassword() {
-            try {
-                const res = await fetch(`${API_BASE_URL}/api/admin/password`);
-                const data = await res.json();
-                if(data.success && data.password) {
-                    localStorage.setItem('tekkali_admin_pass', data.password);
-                    return data.password;
-                }
-            } catch(e) {
-                console.log("Cloud password fetch failed, using local storage fallback.");
-            }
-            return localStorage.getItem('tekkali_admin_pass') || "ADMIN123";
-        }
-
         let employeesDB = loadEmployees();
         let currentLoggedInEmp = "";
         let showPasswords = false;
@@ -401,21 +386,7 @@
                     loggedInCode = data.code || id;
                 }
             } catch (error) {
-                console.log("Backend login offline, checking local sync fallback...");
-            }
-
-            if (!loginSuccessful) {
-                employeesDB = loadEmployees();
-                const currentAdminPass = await getAdminPassword();
-
-                if (id === "ADMIN" && pass === currentAdminPass) {
-                    loginSuccessful = true;
-                    userRole = "ADMIN";
-                } else if (employeesDB[id] && employeesDB[id] === pass) {
-                    loginSuccessful = true;
-                    userRole = "STAFF";
-                    loggedInCode = id;
-                }
+                console.log("Backend login connection error.");
             }
 
             if (loginSuccessful) {
@@ -437,6 +408,7 @@
             }
         }
 
+        // Updated Admin Password function strictly connected to Backend Database Cloud Sync
         async function updateAdminPassword(event) {
             event.preventDefault();
             const currentPass = document.getElementById('currAdminPass').value.trim();
@@ -446,8 +418,6 @@
                 alert("New password must be at least 6 characters long.");
                 return;
             }
-
-            let backendUpdated = false;
 
             try {
                 const response = await fetch(`${API_BASE_URL}/api/admin/change-password`, {
@@ -459,29 +429,15 @@
                 const data = await response.json();
 
                 if (response.ok && data.success) {
-                    backendUpdated = true;
-                    localStorage.setItem('tekkali_admin_pass', newPass);
-                    alert("Admin password updated successfully across all devices via Cloud DB!");
+                    alert("Admin password updated successfully in Database across all devices!");
                     document.getElementById('currAdminPass').value = '';
                     document.getElementById('newAdminPass').value = '';
-                    return;
                 } else {
                     alert("Error: " + (data.message || "Failed to update password on cloud"));
                 }
             } catch (error) {
-                console.log("Backend offline, checking local storage verification...");
-            }
-
-            if (!backendUpdated) {
-                const savedAdminPass = await getAdminPassword();
-                if (currentPass === savedAdminPass) {
-                    localStorage.setItem('tekkali_admin_pass', newPass);
-                    alert("Admin Password updated successfully (Local Storage mode)!");
-                    document.getElementById('currAdminPass').value = '';
-                    document.getElementById('newAdminPass').value = '';
-                } else {
-                    alert("Current password is incorrect!");
-                }
+                console.error("Backend error:", error);
+                alert("Server connection failed! Please check if backend server is online.");
             }
         }
 
