@@ -479,13 +479,28 @@
             renderStaffList();
         }
 
-        function deleteEmployee(empId) {
-            if (confirm(`Remove staff [${empId}]?`)) {
-                fetch(`${API_BASE_URL}/api/staff/delete/${empId}`, { method: 'DELETE' }).catch(() => {});
-                employeesDB = loadEmployees();
-                delete employeesDB[empId];
-                localStorage.setItem('tekkali_employees', JSON.stringify(employeesDB));
-                renderStaffList();
+        // Fixed Delete Employee function to properly sync and remove from Cloud/Backend Database[cite: 1]
+        async function deleteEmployee(empId) {
+            if (confirm(`Remove staff [${empId}] from server and local database?`)) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/staff/delete/${empId}`, { 
+                        method: 'DELETE' 
+                    });
+                    const data = await response.json();
+                    
+                    if (response.ok && data.success) {
+                        employeesDB = loadEmployees();
+                        delete employeesDB[empId];
+                        localStorage.setItem('tekkali_employees', JSON.stringify(employeesDB));
+                        renderStaffList();
+                        alert(`Staff [${empId}] successfully deleted from server!`);
+                    } else {
+                        alert("Failed to delete staff from server database.");
+                    }
+                } catch (error) {
+                    console.error("Delete error:", error);
+                    alert("Server connection failed! Could not delete staff from cloud.");
+                }
             }
         }
 
