@@ -8,55 +8,82 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
         body { 
-            background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(30, 27, 75, 0.92)), 
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%), 
                         url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+            background-blend-mode: overlay;
             background-size: cover; color: #1e293b; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; 
         }
         .portal-card {
-            background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(20px);
-            width: 100%; max-width: 1080px; padding: 35px; border-radius: 20px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(25px);
+            width: 100%; max-width: 1100px; padding: 40px; border-radius: 24px; 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.3);
+            animation: fadeIn 0.4s ease-in-out;
         }
-        .portal-header { text-align: center; margin-bottom: 25px; border-bottom: 2px solid #e2e8f0; padding-bottom: 18px; }
-        .portal-header h1 { color: #0f172a; font-size: 1.6rem; display: flex; align-items: center; justify-content: center; gap: 12px; font-weight: 700; }
-        .portal-header p { color: #64748b; font-size: 0.88rem; margin-top: 6px; font-weight: 500; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .portal-header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px; }
+        .portal-header h1 { color: #0f172a; font-size: 1.8rem; display: flex; align-items: center; justify-content: center; gap: 12px; font-weight: 800; letter-spacing: -0.5px; }
+        .portal-header p { color: #64748b; font-size: 0.9rem; margin-top: 8px; font-weight: 500; }
+        
         .screen { display: none; }
         .screen.active { display: block; }
-        .top-nav { display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 15px; }
-        .nav-btn { background: #e2e8f0; border: none; padding: 8px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
-        .box-container { background: #ffffff; padding: 30px; border-radius: 14px; border: 1px solid #e2e8f0; max-width: 420px; margin: 10px auto; }
-        .form-group { margin-bottom: 18px; display: flex; flex-direction: column; gap: 6px; }
-        .form-group label { font-size: 0.82rem; font-weight: 600; color: #475569; }
-        .form-group input, .form-group select { padding: 11px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.9rem; outline: none; background: #f8fafc; }
+        
+        .top-nav { display: flex; justify-content: flex-end; gap: 12px; margin-bottom: 20px; }
+        .nav-btn { background: linear-gradient(135deg, #f1f5f9, #e2e8f0); color: #334155; border: 1px solid #cbd5e1; padding: 10px 18px; border-radius: 10px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .nav-btn:hover { background: linear-gradient(135deg, #e2e8f0, #cbd5e1); transform: translateY(-1px); color: #0f172a; }
+        
+        .box-container { background: linear-gradient(145deg, #ffffff, #f8fafc); padding: 35px; border-radius: 18px; border: 1px solid #e2e8f0; max-width: 440px; margin: 20px auto; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+        
+        .form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
+        .form-group label { font-size: 0.85rem; font-weight: 700; color: #334155; }
+        .form-group input, .form-group select { padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 0.95rem; outline: none; background: #ffffff; transition: all 0.2s; }
+        .form-group input:focus, .form-group select:focus { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+        
         .btn {
-            background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; border: none; padding: 12px 18px; border-radius: 8px;
-            width: 100%; font-size: 0.92rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: white; border: none; padding: 14px 20px; border-radius: 10px;
+            width: 100%; font-size: 0.95rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); transition: all 0.2s;
         }
-        .btn:hover { opacity: 0.95; transform: translateY(-1px); }
-        .input-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px; }
-        @media (max-width: 640px) { .input-grid { grid-template-columns: 1fr; } .input-box.full-width { grid-column: span 1 !important; } }
-        .input-box { display: flex; flex-direction: column; gap: 5px; }
+        .btn:hover { background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4); }
+        
+        .input-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 20px; }
+        @media (max-width: 768px) { .input-grid { grid-template-columns: 1fr; } .input-box.full-width { grid-column: span 1 !important; } }
+        
+        .input-box { display: flex; flex-direction: column; gap: 6px; }
         .input-box.full-width { grid-column: span 2; }
-        .input-box label { font-size: 0.8rem; font-weight: 600; color: #475569; }
-        .input-box input, .input-box select { padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.88rem; outline: none; background: #fff; }
-        .payment-summary-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 16px; margin-bottom: 20px; }
-        .canvas-container { border: 2px dashed #94a3b8; border-radius: 8px; background: #fff; position: relative; height: 120px; margin-bottom: 20px; }
+        .input-box label { font-size: 0.85rem; font-weight: 700; color: #334155; }
+        .input-box input, .input-box select { padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 0.9rem; outline: none; background: #fff; transition: all 0.2s; }
+        .input-box input:focus, .input-box select:focus { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+        
+        .payment-summary-card { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 1px solid #bbf7d0; border-radius: 14px; padding: 20px; margin-bottom: 22px; box-shadow: 0 4px 12px rgba(22, 101, 52, 0.05); }
+        
+        .canvas-container { border: 2px dashed #cbd5e1; border-radius: 12px; background: #fff; position: relative; height: 130px; margin-bottom: 22px; transition: border-color 0.2s; }
+        .canvas-container:hover { border-color: #2563eb; }
         .canvas-container canvas { width: 100%; height: 100%; cursor: crosshair; }
-        .clear-btn { position: absolute; right: 10px; bottom: 8px; background: #ef4444; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; cursor: pointer; }
-        .records-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.83rem; }
-        .records-table th, .records-table td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: left; }
-        .records-table th { background: #eff6ff; color: #1e3a8a; font-weight: 600; }
-        .action-link { color: #2563eb; text-decoration: none; font-weight: 600; cursor: pointer; }
-        .action-link:hover { text-decoration: underline; }
-        .delete-btn { color: #ef4444; cursor: pointer; margin-left: 8px; border: none; background: none; }
-        #successPopup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.65); justify-content: center; align-items: center; z-index: 999; }
-        .popup-box { background: white; padding: 30px; border-radius: 14px; text-align: center; max-width: 400px; }
+        .clear-btn { position: absolute; right: 12px; bottom: 10px; background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3); transition: background 0.2s; }
+        .clear-btn:hover { background: #dc2626; }
+        
+        .records-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 12px; font-size: 0.88rem; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+        .records-table th, .records-table td { padding: 14px 16px; text-align: left; }
+        .records-table th { background: linear-gradient(135deg, #eff6ff, #dbeafe); color: #1e3a8a; font-weight: 700; border-bottom: 2px solid #cbd5e1; }
+        .records-table tr:not(:last-child) td { border-bottom: 1px solid #f1f5f9; }
+        .records-table tr:hover { background: #f8fafc; }
+        
+        .action-link { color: #2563eb; text-decoration: none; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s; }
+        .action-link:hover { color: #1d4ed8; text-decoration: underline; }
+        .delete-btn { color: #ef4444; cursor: pointer; margin-left: 12px; border: none; background: rgba(239, 68, 68, 0.1); padding: 8px; border-radius: 8px; transition: all 0.2s; }
+        .delete-btn:hover { background: #ef4444; color: white; }
+        
+        #successPopup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(8px); justify-content: center; align-items: center; z-index: 999; }
+        .popup-box { background: white; padding: 40px; border-radius: 20px; text-align: center; max-width: 420px; box-shadow: 0 25px 50px rgba(0,0,0,0.3); animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @keyframes scaleUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     </style>
 </head>
 <body>
 
     <div class="portal-card">
         <div class="top-nav" id="topNavBlock" style="display: none;">
-            <button class="nav-btn" id="adminTabBtn" onclick="switchScreen('adminDashboard')">Dashboard Panel</button>
+            <button class="nav-btn" id="adminTabBtn" onclick="switchScreen('adminDashboard')"><i class="fa-solid fa-chart-pie"></i> Dashboard Panel</button>
         </div>
 
         <!-- LOGIN SCREEN -->
@@ -89,24 +116,24 @@
             </div>
 
             <!-- UPDATE ADMIN PASSWORD FORM -->
-            <div style="background: #ffffff; padding: 18px 20px; border-radius: 10px; border: 1px solid #cbd5e1; margin-bottom: 20px;">
-                <h3 style="font-size: 0.95rem; margin-bottom: 12px; color: #d97706;"><i class="fa-solid fa-key"></i> Update Admin Password (Cloud Synced)</h3>
-                <form onsubmit="updateAdminPassword(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; align-items: end;">
+            <div style="background: linear-gradient(135deg, #fffbeb, #fef3c7); padding: 22px; border-radius: 14px; border: 1px solid #fde68a; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.05);">
+                <h3 style="font-size: 1rem; margin-bottom: 14px; color: #b45309; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-key"></i> Update Admin Password (Cloud Synced)</h3>
+                <form onsubmit="updateAdminPassword(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; align-items: end;">
                     <div class="form-group" style="margin-bottom: 0;">
                         <label>Current Password</label>
-                        <input type="password" id="currAdminPass" placeholder="Enter current admin pass" required style="padding: 8px 12px;">
+                        <input type="password" id="currAdminPass" placeholder="Enter current admin pass" required style="padding: 10px 14px; background: #fff;">
                     </div>
                     <div class="form-group" style="margin-bottom: 0;">
                         <label>New Password</label>
-                        <input type="password" id="newAdminPass" placeholder="Enter new password (min 6 chars)" required style="padding: 8px 12px;">
+                        <input type="password" id="newAdminPass" placeholder="Enter new password (min 6 chars)" required style="padding: 10px 14px; background: #fff;">
                     </div>
-                    <button type="submit" class="btn" style="background: linear-gradient(135deg, #d97706, #b45309); padding: 10px;">Update Admin Password</button>
+                    <button type="submit" class="btn" style="background: linear-gradient(135deg, #d97706, #b45309); padding: 12px; box-shadow: 0 4px 12px rgba(217,119,6,0.3);">Update Password</button>
                 </form>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                <div style="background: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #cbd5e1;">
-                    <h3 style="font-size: 0.95rem; margin-bottom: 12px; color: #1e3a8a;"><i class="fa-solid fa-user-plus"></i> Register Executive Credentials</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+                <div style="background: #ffffff; padding: 24px; border-radius: 14px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                    <h3 style="font-size: 1rem; margin-bottom: 16px; color: #1e3a8a; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-user-plus"></i> Register Executive Credentials</h3>
                     <form onsubmit="createEmployee(event)">
                         <div class="form-group">
                             <label>Employee Code</label>
@@ -116,22 +143,22 @@
                             <label>Assigned Password</label>
                             <input type="text" id="newEmpPass" placeholder="Assign password" required>
                         </div>
-                        <button type="submit" class="btn" style="background: linear-gradient(135deg, #059669, #047857);">Save Executive</button>
+                        <button type="submit" class="btn" style="background: linear-gradient(135deg, #059669, #047857); box-shadow: 0 4px 12px rgba(5,150,105,0.3);">Save Executive</button>
                     </form>
                 </div>
 
-                <div style="background: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #cbd5e1;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <h3 style="font-size: 0.95rem; color: #1e293b;"><i class="fa-solid fa-users-gear"></i> Active Executive Roster</h3>
-                        <button type="button" class="nav-btn" style="padding: 4px 8px; font-size: 0.75rem;" onclick="togglePasswordVisibility()">Toggle Visibility</button>
+                <div style="background: #ffffff; padding: 24px; border-radius: 14px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                        <h3 style="font-size: 1rem; color: #1e293b; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-users-gear"></i> Active Executive Roster</h3>
+                        <button type="button" class="nav-btn" style="padding: 6px 12px; font-size: 0.8rem;" onclick="togglePasswordVisibility()"><i class="fa-solid fa-eye"></i> Toggle</button>
                     </div>
-                    <div id="staffListContainer" style="font-size: 0.85rem; max-height: 180px; overflow-y: auto; background: #f8fafc; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px;"></div>
+                    <div id="staffListContainer" style="font-size: 0.88rem; max-height: 200px; overflow-y: auto; background: #f8fafc; padding: 14px; border: 1px solid #e2e8f0; border-radius: 10px;"></div>
                 </div>
             </div>
 
-            <div style="margin-top: 25px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                    <h3 style="font-size: 1rem; color: #1e293b;"><i class="fa-solid fa-file-contract" style="color: #2563eb;"></i> Master Agreement Legal Repository (Cloud Synced)</h3>
+            <div style="margin-top: 30px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                    <h3 style="font-size: 1.05rem; color: #1e293b; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-file-contract" style="color: #2563eb;"></i> Master Agreement Legal Repository (Cloud Synced)</h3>
                     <button type="button" class="nav-btn" onclick="renderAgreementsTable()"><i class="fa-solid fa-rotate"></i> Refresh Cloud Data</button>
                 </div>
                 <div style="overflow-x: auto;">
@@ -150,7 +177,7 @@
                 </div>
             </div>
             
-            <button class="btn" style="margin-top: 20px; background: #64748b; width: 180px;" onclick="logoutAdmin()"><i class="fa-solid fa-power-off"></i> Exit Dashboard</button>
+            <button class="btn" style="margin-top: 25px; background: linear-gradient(135deg, #64748b, #475569); width: 190px; box-shadow: 0 4px 12px rgba(100,116,139,0.3);" onclick="logoutAdmin()"><i class="fa-solid fa-power-off"></i> Exit Dashboard</button>
         </div>
 
         <!-- AGREEMENT FORM -->
@@ -199,11 +226,11 @@
                     </div>
                     <div class="input-box">
                         <label>Assigned Executive ID</label>
-                        <input type="text" id="displayEmpId" readonly style="background: #f1f5f9; font-weight: 600; color: #1e293b;">
+                        <input type="text" id="displayEmpId" readonly style="background: #f1f5f9; font-weight: 700; color: #1e293b;">
                     </div>
                     <div class="input-box">
                         <label>Project Tracking Code</label>
-                        <input type="text" id="displayProjectId" readonly style="background: #f1f5f9; color: #1e293b; font-weight: 600;">
+                        <input type="text" id="displayProjectId" readonly style="background: #f1f5f9; color: #1e293b; font-weight: 700;">
                     </div>
                     <div class="input-box full-width">
                         <label>Registered Office Address / Shop Location</label>
@@ -212,7 +239,7 @@
                 </div>
 
                 <div class="payment-summary-card">
-                    <h4 style="color: #166534; font-size: 0.85rem; margin-bottom: 10px;">
+                    <h4 style="color: #166534; font-size: 0.9rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
                         <i class="fa-solid fa-file-invoice-dollar"></i> Commercial Structure (Budget Auto-adjusts Agreement Type)
                     </h4>
                     <div class="input-grid" style="margin-bottom: 0;">
@@ -222,7 +249,7 @@
                         </div>
                         <div class="input-box">
                             <label>Advance Payment Paid (₹) [Min 40%]</label>
-                            <input type="number" id="projAdvance" value="8000" min="0" oninput="calculateBalance()" required style="font-weight: 600; color: #059669;">
+                            <input type="number" id="projAdvance" value="8000" min="0" oninput="calculateBalance()" required style="font-weight: 700; color: #059669;">
                         </div>
                         <div class="input-box full-width">
                             <label>Balance Amount Due Post-Delivery (₹)</label>
@@ -231,28 +258,28 @@
                     </div>
                 </div>
 
-                <div style="margin-bottom: 15px;">
-                    <label style="font-size: 0.82rem; font-weight: 600; color: #475569; display: block; margin-bottom: 5px;">
+                <div style="margin-bottom: 18px;">
+                    <label style="font-size: 0.85rem; font-weight: 700; color: #334155; display: block; margin-bottom: 8px;">
                         Authorized Digital Signature (Sign inside canvas frame)
                     </label>
                     <div class="canvas-container">
                         <canvas id="sig-canvas"></canvas>
-                        <button type="button" class="clear-btn" onclick="clearCanvas()">Clear Signature</button>
+                        <button type="button" class="clear-btn" onclick="clearCanvas()"><i class="fa-solid fa-eraser"></i> Clear</button>
                     </div>
                 </div>
 
-                <div style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.82rem; margin-bottom: 20px; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                    <input type="checkbox" id="legal-check" required style="width: 18px; height: 18px; margin-top: 2px;">
-                    <label for="legal-check" style="cursor: pointer; color: #334155; line-height: 1.4;">
+                <div style="display: flex; align-items: flex-start; gap: 12px; font-size: 0.85rem; margin-bottom: 24px; background: #f8fafc; padding: 14px; border-radius: 10px; border: 1px solid #e2e8f0;">
+                    <input type="checkbox" id="legal-check" required style="width: 20px; height: 20px; margin-top: 2px; accent-color: #2563eb; cursor: pointer;">
+                    <label for="legal-check" style="cursor: pointer; color: #334155; line-height: 1.4; font-weight: 500;">
                         I agree to the terms, 40% advance payment, 7km complimentary local visit limit, 30-day technical warranty, and maintenance schedule.
                     </label>
                 </div>
 
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                    <button type="submit" class="btn" style="flex: 1; min-width: 240px; background: linear-gradient(135deg, #059669, #047857);">
+                    <button type="submit" class="btn" style="flex: 1; min-width: 240px; background: linear-gradient(135deg, #059669, #047857); box-shadow: 0 4px 12px rgba(5,150,105,0.3);">
                         <i class="fa-solid fa-file-shield"></i> Save & Generate Agreement Document
                     </button>
-                    <button type="button" class="btn" style="background: #64748b; width: 140px;" onclick="logoutAdmin()">Logout</button>
+                    <button type="button" class="btn" style="background: linear-gradient(135deg, #64748b, #475569); width: 140px; box-shadow: 0 4px 12px rgba(100,116,139,0.3);" onclick="logoutAdmin()">Logout</button>
                 </div>
             </form>
         </div>
@@ -262,9 +289,9 @@
     <!-- Success Modal -->
     <div id="successPopup">
         <div class="popup-box">
-            <i class="fa-solid fa-circle-check" style="font-size: 3rem; color: #059669; margin-bottom: 12px;"></i>
-            <h3 style="color: #1e293b; margin-bottom: 8px;">Agreement Stored Successfully!</h3>
-            <p style="font-size: 0.85rem; color: #64748b;">The Service Level Agreement has been securely recorded on Tekkali Digital Cloud. Generating digital document....<br>Redirecting...</p>
+            <i class="fa-solid fa-circle-check" style="font-size: 3.5rem; color: #059669; margin-bottom: 16px;"></i>
+            <h3 style="color: #1e293b; margin-bottom: 10px; font-size: 1.3rem;">Agreement Stored Successfully!</h3>
+            <p style="font-size: 0.9rem; color: #64748b; line-height: 1.5;">The Service Level Agreement has been securely recorded on Tekkali Digital Cloud. Generating digital document....<br>Redirecting...</p>
         </div>
     </div>
 
@@ -322,7 +349,7 @@
             canvas.width = rect.width;
             canvas.height = rect.height;
             
-            ctx.lineWidth = 2;
+            ctx.lineWidth = 2.5;
             ctx.lineCap = 'round';
             ctx.strokeStyle = '#1e3a8a';
 
@@ -410,7 +437,6 @@
             }
         }
 
-        // Updated Admin Password function strictly connected to Backend Database Cloud Sync
         async function updateAdminPassword(event) {
             event.preventDefault();
             const currentPass = document.getElementById('currAdminPass').value.trim();
@@ -479,7 +505,6 @@
             renderStaffList();
         }
 
-        // Fixed Delete Employee function to properly sync and remove from Cloud/Backend Database[cite: 1]
         async function deleteEmployee(empId) {
             if (confirm(`Remove staff [${empId}] from server and local database?`)) {
                 try {
@@ -511,10 +536,10 @@
             for (let emp in employeesDB) {
                 const passDisplay = showPasswords ? sanitizeHTML(employeesDB[emp]) : '••••••••';
                 container.innerHTML += `
-                    <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 6px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 4px;">
-                        <span><i class="fa-solid fa-user" style="color:#059669;"></i> <b>${sanitizeHTML(emp)}</b></span>
-                        <div>
-                            <span style="font-family:monospace; color:#475569; margin-right: 10px;">${passDisplay}</span>
+                    <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 6px;">
+                        <span><i class="fa-solid fa-user-shield" style="color:#059669; margin-right:6px;"></i> <b>${sanitizeHTML(emp)}</b></span>
+                        <div style="display:flex; align-items:center;">
+                            <span style="font-family:monospace; color:#475569; margin-right: 12px; background:#f1f5f9; padding:2px 6px; border-radius:4px;">${passDisplay}</span>
                             <button class="delete-btn" onclick="deleteEmployee('${sanitizeHTML(emp)}')"><i class="fa-solid fa-trash-can"></i></button>
                         </div>
                     </div>`;
@@ -602,7 +627,7 @@
             await fetchAgreementsFromCloud();
             const tbody = document.getElementById('agreementRecordsBody');
             if (!agreementsList || agreementsList.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color: #64748b; padding: 20px;">No registered agreements found in cloud database.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color: #64748b; padding: 25px;">No registered agreements found in cloud database.</td></tr>`;
                 return;
             }
             tbody.innerHTML = '';
@@ -612,11 +637,11 @@
                     <tr>
                         <td><b>${sanitizeHTML(item.projectId)}</b><br><small style="color:#64748b;">${sanitizeHTML(item.date)}</small></td>
                         <td>
-                            <b>${sanitizeHTML(item.clientName)}</b> <span style="font-size:0.75rem; background:#dbeafe; color:#1e40af; padding:2px 6px; border-radius:4px;">${tierLabel}</span><br>
+                            <b>${sanitizeHTML(item.clientName)}</b> <span style="font-size:0.75rem; background:#dbeafe; color:#1e40af; padding:3px 8px; border-radius:6px; font-weight:700;">${tierLabel}</span><br>
                             <small style="color:#475569;">${sanitizeHTML(item.companyName)} (PAN: ${sanitizeHTML(item.panId)})</small>
                         </td>
-                        <td><span style="background: #e0e7ff; color: #3730a3; padding: 2px 6px; border-radius: 4px; font-weight: 600;">${sanitizeHTML(item.empId)}</span></td>
-                        <td>Total: ₹${Number(item.budget).toLocaleString('en-IN')}<br><small style="color:#059669; font-weight:600;">Advance: ₹${Number(item.advance).toLocaleString('en-IN')}</small></td>
+                        <td><span style="background: #e0e7ff; color: #3730a3; padding: 3px 8px; border-radius: 6px; font-weight: 700;">${sanitizeHTML(item.empId)}</span></td>
+                        <td>Total: ₹${Number(item.budget).toLocaleString('en-IN')}<br><small style="color:#059669; font-weight:700;">Advance: ₹${Number(item.advance).toLocaleString('en-IN')}</small></td>
                         <td>
                             <a class="action-link" onclick="printAgreementDocument('${sanitizeHTML(item.projectId)}')"><i class="fa-solid fa-print"></i> Generate PDF Agreement</a>
                             <button class="delete-btn" onclick="deleteAgreement('${sanitizeHTML(item.projectId)}')"><i class="fa-solid fa-trash-can"></i></button>
