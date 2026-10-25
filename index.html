@@ -1545,75 +1545,7 @@
             });
         }
     </script>
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        menuToggle.addEventListener('click', function() {
-            if (mobileMenu.style.display === 'flex') {
-                mobileMenu.style.display = 'none';
-            } else {
-                mobileMenu.style.display = 'flex';
-            }
-        });
-
-        function switchView(viewName) {
-            document.querySelectorAll('.page-view').forEach(view => {
-                view.classList.remove('active-view');
-            });
-
-            const targetView = document.getElementById('view-' + viewName);
-            if (targetView) {
-                targetView.classList.add('active-view');
-            }
-
-            mobileMenu.style.display = 'none';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-            }
-        }
-
-        let selectedPackageName = "";
-
-        function openCheckoutModal(packageName, fixedAmount) {
-            selectedPackageName = packageName;
-            document.getElementById('modalPackageTitle').innerText = `Secure Checkout: ${packageName}`;
-            document.getElementById('payAmount').value = fixedAmount;
-            document.getElementById('checkoutModal').style.display = 'block';
-        }
-
-        document.getElementById('phonePePayForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('payName').value;
-            const email = document.getElementById('payEmail').value;
-            const phone = document.getElementById('payPhone').value;
-            const shop = document.getElementById('payShop').value;
-            const amount = document.getElementById('payAmount').value;
-
-            window.open('https://razorpay.me/@tekkalidigitalandwebsolutions', '_blank');
-
-            const adminMsg = `*Locked Payment Verification Report*%0A----------------------------------%0A*Package:* ${selectedPackageName}%0A*Client Name:* ${name}%0A*Shop/Business:* ${shop}%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Locked Amount:* ₹${amount}%0A*Razorpay Link Used:* https://razorpay.me/@tekkalidigitalandwebsolutions`;
-            const adminWhatsAppUrl = `https://wa.me/919493583804?text=${adminMsg}`;
-
-            setTimeout(() => {
-                window.open(adminWhatsAppUrl, '_blank');
-                document.getElementById('checkoutModal').style.display = 'none';
-                document.getElementById('phonePePayForm').reset();
-            }, 1000);
-        });
-
+       
         // Ratings Logic (LocalStorage based with Email requirement)
         let defaultReviews = [
             { email: "ramesh****@gmail.com", stars: 5, comment: "Excellent service and fast website delivery!" },
