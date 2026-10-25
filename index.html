@@ -1014,52 +1014,112 @@
     </div>
 
     <!-- RATINGS & REVIEWS VIEW -->
-    <div id="view-ratingsView" class="page-view">
-        <div class="container">
-            <div class="back-home-bar">
-                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
-            </div>
-            <div class="ratings-section">
-                <div class="ratings-summary">
-                    <h3>Customer Ratings & Reviews</h3>
-                    <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: 0.3rem;">Submit your rating with your email and see what others say!</p>
-                    <div style="font-size: 1.8rem; font-weight: 800; color: #60a5fa; margin-top: 0.8rem;" id="averageRatingDisplay">4.9 / 5.0</div>
-                    <div style="color: var(--text-gray); font-size: 0.85rem;" id="totalReviewsCountDisplay">Total Ratings: 127</div>
-                </div>
-
-                <!-- Rating Submission Form -->
-                <form id="ratingForm" style="background: #050b14; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                    <h4 style="color: white; margin-bottom: 0.8rem; font-size: 1rem;">Give Your Rating</h4>
-                    <div class="form-group">
-                        <label for="raterEmail">Your Email Address *</label>
-                        <input type="email" id="raterEmail" required placeholder="e.g., user@gmail.com">
-                    </div>
-                    <div class="form-group">
-                        <label>Select Rating Stars *</label>
-                        <div class="star-rating-box">
-                            <input type="radio" id="r5" name="userStar" value="5" required /><label for="r5" title="5 stars">★</label>
-                            <input type="radio" id="r4" name="userStar" value="4" /><label for="r4" title="4 stars">★</label>
-                            <input type="radio" id="r3" name="userStar" value="3" /><label for="r3" title="3 stars">★</label>
-                            <input type="radio" id="r2" name="userStar" value="2" /><label for="r2" title="2 stars">★</label>
-                            <input type="radio" id="r1" name="userStar" value="1" /><label for="r1" title="1 star">★</label>
+<div id="view-ratingsView" class="page-view">
+    <div class="container">
+        <div class="back-home-bar">
+            <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
+        </div>
+        
+        <div class="ratings-section">
+            <!-- Top Summary Card (Big Companies Style) -->
+            <div class="ratings-summary-card">
+                <div class="summary-left">
+                    <h2 class="section-title">Customer Reviews & Ratings</h2>
+                    <div class="big-score-box">
+                        <span class="big-score" id="averageRatingDisplay">4.9</span>
+                        <div class="score-meta">
+                            <div class="stars-outer-display">★★★★★</div>
+                            <span class="total-reviews-count" id="totalReviewsCountDisplay">Based on 127 verified reviews</span>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="raterComment">Your Feedback / Review (Optional)</label>
-                        <textarea id="raterComment" rows="2" placeholder="Write a short review..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">Submit Rating & Review</button>
-                </form>
+                </div>
 
-                <!-- Reviews List Container -->
-                <div class="review-list">
-                    <h4 style="color: white; margin-bottom: 1rem; font-size: 1rem;">Recent Community Reviews</h4>
-                    <div id="dynamicReviewsContainer"></div>
+                <!-- Breakdown Progress Bars -->
+                <div class="summary-right">
+                    <div class="rating-bar-item">
+                        <span>5 ★</span>
+                        <div class="progress-bg"><div class="progress-fill" style="width: 85%;"></div></div>
+                        <span class="bar-count">108</span>
+                    </div>
+                    <div class="rating-bar-item">
+                        <span>4 ★</span>
+                        <div class="progress-bg"><div class="progress-fill" style="width: 10%;"></div></div>
+                        <span class="bar-count">13</span>
+                    </div>
+                    <div class="rating-bar-item">
+                        <span>3 ★</span>
+                        <div class="progress-bg"><div class="progress-fill" style="width: 3%;"></div></div>
+                        <span class="bar-count">4</span>
+                    </div>
+                    <div class="rating-bar-item">
+                        <span>2 ★</span>
+                        <div class="progress-bg"><div class="progress-fill" style="width: 1%;"></div></div>
+                        <span class="bar-count">1</span>
+                    </div>
+                    <div class="rating-bar-item">
+                        <span>1 ★</span>
+                        <div class="progress-bg"><div class="progress-fill" style="width: 1%;"></div></div>
+                        <span class="bar-count">1</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Interactive Content Grid -->
+            <div class="ratings-grid">
+                <!-- Left: Submission Form -->
+                <div class="rating-form-card">
+                    <h3>Write a Review</h3>
+                    <p class="form-subtext">Share your honest feedback to help others</p>
+                    
+                    <form id="ratingForm">
+                        <div class="form-group">
+                            <label for="raterEmail">Email Address <span class="req">*</span></label>
+                            <input type="email" id="raterEmail" required placeholder="name@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Overall Rating <span class="req">*</span></label>
+                            <div class="star-rating-box">
+                                <input type="radio" id="r5" name="userStar" value="5" required /><label for="r5" title="5 stars">★</label>
+                                <input type="radio" id="r4" name="userStar" value="4" /><label for="r4" title="4 stars">★</label>
+                                <input type="radio" id="r3" name="userStar" value="3" /><label for="r3" title="3 stars">★</label>
+                                <input type="radio" id="r2" name="userStar" value="2" /><label for="r2" title="2 stars">★</label>
+                                <input type="radio" id="r1" name="userStar" value="1" /><label for="r1" title="1 star">★</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="raterComment">Your Review</label>
+                            <textarea id="raterComment" rows="4" placeholder="What did you like or dislike? What was your experience like?"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            <span>Submit Review</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Right: Reviews Feed & Filter -->
+                <div class="reviews-feed-card">
+                    <div class="feed-header">
+                        <h4>Community Feedback</h4>
+                        <div class="filter-chips">
+                            <button class="chip active">All</button>
+                            <button class="chip">5 ★</button>
+                            <button class="chip">4 ★</button>
+                            <button class="chip">With Comments</button>
+                        </div>
+                    </div>
+                    
+                    <div id="dynamicReviewsContainer" class="reviews-list">
+                        <!-- Dynamic review items rendered via JS -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
     <!-- CONTACT US VIEW -->
     <div id="view-contact" class="page-view">
         <div class="container">
