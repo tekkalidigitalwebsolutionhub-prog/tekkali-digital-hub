@@ -993,25 +993,83 @@
         </div>
     </div>
 
-    <!-- ABOUT VIEW (WITH SIVAJI PHOTO) -->
-    <div id="view-about" class="page-view">
-        <div class="container">
-            <div class="back-home-bar">
-                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
+   <!-- ABOUT VIEW (ENTERPRISE STANDARD) -->
+<div id="view-about" class="page-view">
+    <div class="container">
+        <div class="back-home-bar">
+            <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
+        </div>
+
+        <!-- Corporate Hero Section -->
+        <div class="about-hero-header">
+            <span class="company-badge">Enterprise Profile & Leadership</span>
+            <h2 class="section-title">Engineering Digital Excellence from Tekkali to the World</h2>
+            <p class="section-subtitle">Tekkali Digital Web Solutions Hub is a full-service software engineering and digital infrastructure studio dedicated to scaling ambitious businesses with robust, high-performance web products.</p>
+        </div>
+
+        <!-- Key Metrics Bar -->
+        <div class="about-metrics-grid">
+            <div class="metric-card">
+                <span class="metric-num">5+</span>
+                <span class="metric-label">Years of Engineering Excellence</span>
             </div>
-            <h2 class="section-title">About Us & Leadership</h2>
-            <p class="section-subtitle">Building professional credibility through expert engineering and dedicated leadership.</p>
-            
-            <div style="max-width: 800px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 2.5rem; text-align: center;">
-                <img src="Sivaji Image.jpeg" alt="Sivaji" style="width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--tcs-blue);">
-                <h3 style="font-size: 1.4rem; color: white; margin-bottom: 0.2rem;">Sivaji</h3>
-                <p style="color: #60a5fa; font-weight: 600; font-size: 0.9rem; margin-bottom: 1.5rem;">Founder & Lead Engineering Head</p>
-                <p style="color: var(--text-gray); font-size: 0.95rem; line-height: 1.7;">
-                    Leading Tekkali Digital Web Solutions Hub with over 5 years of domain experience. Sivaji drives technical excellence, ensuring every project—from local business setups to enterprise cloud infrastructures—meets world-class standards with 98% client satisfaction and robust 24/7 support[cite: 5].
-                </p>
+            <div class="metric-card">
+                <span class="metric-num">100+</span>
+                <span class="metric-label">Digital Products Deployed</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-num">98%</span>
+                <span class="metric-label">Client Satisfaction Rating</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-num">24/7</span>
+                <span class="metric-label">Dedicated Technical Support</span>
+            </div>
+        </div>
+
+        <!-- Leadership Spotlight Section -->
+        <div class="leadership-container">
+            <div class="leadership-card-enterprise">
+                <div class="leader-avatar-wrapper">
+                    <img src="Sivaji Image.jpeg" alt="Yanda Sivaji" class="leader-img">
+                    <div class="leader-badge-icon">✓</div>
+                </div>
+                <div class="leader-info-content">
+                    <div class="leader-meta-top">
+                        <h3 class="leader-name">Yanda Sivaji</h3>
+                        <span class="leader-title">Founder & Lead Engineering Head</span>
+                    </div>
+                    <p class="leader-bio">
+                        As the driving force behind Tekkali Digital Web Solutions Hub, Sivaji brings extensive expertise in full-stack architecture, backend routing, cloud deployments, and secure transaction workflows. Operating out of Srikakulam District, AP, his vision bridges local enterprise empowerment with global software engineering standards—ensuring every client application is built for speed, scalability, and absolute security.
+                    </p>
+                    <div class="leader-credentials">
+                        <span><strong style="color: #60a5fa;">Udyam Registered:</strong> UDYAM-AP-09-0075539</span>
+                        <span><strong style="color: #60a5fa;">Core Stack:</strong> Full-Stack JS, Cloud Systems, Secure APIs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Core Pillars Section -->
+        <div class="company-pillars-grid">
+            <div class="pillar-box">
+                <div class="pillar-icon">⚡</div>
+                <h4>Performance-First Architecture</h4>
+                <p>We build lightning-fast web applications optimized for search visibility, low latency, and seamless user experiences across all devices.</p>
+            </div>
+            <div class="pillar-box">
+                <div class="pillar-icon">🔒</div>
+                <h4>Enterprise Security Standards</h4>
+                <p>From encrypted Razorpay checkout flows to secure server database schemas, data integrity and user trust remain our highest priority.</p>
+            </div>
+            <div class="pillar-box">
+                <div class="pillar-icon">🤝</div>
+                <h4>Transparent SOW & SLAs</h4>
+                <p>No hidden clauses. Every partnership is governed by clear Scope of Work guidelines, automated pricing locks, and structured post-launch support.</p>
             </div>
         </div>
     </div>
+</div>
 
     <!-- RATINGS & REVIEWS VIEW -->
 <div id="view-ratingsView" class="page-view">
@@ -1297,76 +1355,130 @@
         </div>
     </div>
 
-    <!-- Legal Modals (Terms, Privacy, Refund, Shipping) -->
-    <div id="termsModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
+   <!-- Legal Modals (Enterprise Standard) -->
+<div id="termsModal" class="modal">
+    <div class="modal-content legal-modal-box">
+        <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
+        <div class="legal-header">
             <h2>Terms & Conditions</h2>
-            <p>Welcome to Tekkali Digital Web Solutions Hub. By accessing our website and engaging our services, you agree to comply with and be bound by the following terms and conditions[cite: 5].</p>
-            <p><strong>1. Services & Pricing:</strong> We provide digital solutions within standard brackets. Prices and packages are fixed via automated locking mechanisms[cite: 5].</p>
-            <p><strong>2. Maintenance & Support:</strong> All project packages include complimentary technical maintenance and support during and post-deployment[cite: 5].</p>
-            <p><strong>3. Payments:</strong> Payments are processed securely via authorized Razorpay channels (<strong>https://razorpay.me/@tekkalidigitalandwebsolutions</strong>)[cite: 5].</p>
+            <p class="last-updated">Last Updated: January 2026</p>
+        </div>
+        <div class="legal-body">
+            <h3>1. Introduction & Acceptance of Agreement</h3>
+            <p>Welcome to <strong>Tekkali Digital Web Solutions Hub</strong> ("Company", "we", "our", "us"). By accessing our website (<strong>tekkalidigitalhub.in</strong>), registering our services, or engaging our software engineering and digital design solutions, you ("Client", "User", "Customer") explicitly agree to comply with and be legally bound by these Terms and Conditions. If you do not agree with any part of these terms, you must discontinue use of our services immediately.</p>
+
+            <h3>2. Scope of Services & Automated Locking Mechanisms</h3>
+            <p>We provide enterprise-grade web development, full-stack application engineering, UI/UX design, cloud deployment, and digital asset integration. Project scopes, deliverables, and financial quotes are locked via formal agreements or automated pricing mechanisms on our platform. Any custom requests outside the defined Scope of Work (SOW) will be billed separately as Change Requests (CR).</p>
+
+            <h3>3. Intellectual Property Rights & Licensing</h3>
+            <p>Upon final settlement of all project invoices and dues:
+                <ul>
+                    <li>The Client receives full operational ownership of the deployed frontend code, custom assets, and media files explicitly built for their business.</li>
+                    <li>Tekkali Digital Web Solutions Hub retains the right to showcase the completed project in our professional portfolio and case studies, unless a formal Non-Disclosure Agreement (NDA) is executed prior to commencement.</li>
+                    <li>Proprietary frameworks, boilerplate code libraries, and internal development tools utilized during creation remain the intellectual property of our studio.</li>
+                </ul>
+            </p>
+
+            <h3>4. Client Responsibilities & Data Cooperation</h3>
+            <p>The Client agrees to provide timely access to necessary content, brand assets, copywriting, credentials, and API keys required for project execution. Delays in providing critical inputs will automatically extend delivery timelines, and Tekkali Digital Web Solutions Hub shall not be held liable for milestones missed due to client-side latency.</p>
+
+            <h3>5. Maintenance, Support & Post-Deployment SLAs</h3>
+            <p>All structured packages include complimentary technical maintenance and post-deployment monitoring for a defined period. This covers bug fixes, security patch updates, and minor text/image adjustments. It does not cover complete structural redesigns or addition of major new feature modules.</p>
+
+            <h3>6. Payment Terms & Gateway Authorization</h3>
+            <p>All financial transactions, milestone advances, and full payments must be routed through our authorized payment channels, including our official Razorpay merchant gateway (<strong>https://razorpay.me/@tekkalidigitalandwebsolutions</strong>) or direct institutional wire transfers to our registered business accounts. Work commences only upon realization of the mandatory advance payment.</p>
+
+            <h3>7. Limitation of Liability</h3>
+            <p>Tekkali Digital Web Solutions Hub shall not be liable for any indirect, incidental, special, or consequential damages, including loss of profits, data corruption, server downtime caused by third-party hosting providers (e.g., Render, Hostinger), or cyber incidents beyond our reasonable control.</p>
+
+            <h3>8. Governing Law & Jurisdiction</h3>
+            <p>These terms shall be governed by and construed in accordance with the laws of India. Any legal disputes, claims, or arbitration arising out of or in connection with these services shall be subject to the exclusive jurisdiction of the courts located in Srikakulam District, Andhra Pradesh.</p>
         </div>
     </div>
+</div>
 
-    <div id="privacyModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
+<div id="privacyModal" class="modal">
+    <div class="modal-content legal-modal-box">
+        <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
+        <div class="legal-header">
             <h2>Privacy Policy</h2>
-            <p>Tekkali Digital Web Solutions Hub values your privacy. This policy outlines how we handle your personal data:</p>
-            <p><strong>Data Collection:</strong> We collect details such as name, phone number, and project scope solely for communication and service delivery[cite: 5].</p>
-            <p><strong>Data Security:</strong> Your transaction data and personal information are encrypted and never shared with third-party marketers[cite: 5].</p>
+            <p class="last-updated">Last Updated: January 2026</p>
+        </div>
+        <div class="legal-body">
+            <h3>1. Commitment to Data Privacy</h3>
+            <p>Tekkali Digital Web Solutions Hub respects your right to privacy. This Privacy Policy outlines how we collect, store, utilize, and protect your personally identifiable information (PII) when you interact with our digital platforms and enterprise solutions.</p>
+
+            <h3>2. Information We Collect</h3>
+            <p>We collect information necessary to execute contracts and deliver superior services, including:
+                <ul>
+                    <li><strong>Contact Identifiers:</strong> Full name, official email address, phone number, and physical billing address.</li>
+                    <li><strong>Business Data:</strong> Company name, brand assets, project requirements, and technical access credentials.</li>
+                    <li><strong>Transaction Records:</strong> Payment confirmations and billing logs processed securely via Razorpay. We do not store sensitive credit card or net banking passwords on our servers.</li>
+                </ul>
+            </p>
+
+            <h3>3. Purpose of Data Utilization</h3>
+            <p>Your data is utilized strictly for:
+                <ul>
+                    <li>Executing service agreements, project communication, and milestone updates.</li>
+                    <li>Issuing tax invoices, Udyam-compliant receipts, and service notices.</li>
+                    <li>Improving our web infrastructure, security protocols, and client user experience.</li>
+                </ul>
+            </p>
+
+            <h3>4. Data Security & Confidentiality</h3>
+            <p>We implement rigorous encryption standards (SSL/TLS), secure database schemas, and access controls to prevent unauthorized access, alteration, or disclosure of client data. We never sell, rent, or trade your personal or business data to third-party marketing entities.</p>
+
+            <h3>5. Policy Updates</h3>
+            <p>We reserve the right to modify this Privacy Policy at any time. Continued engagement with our services following updates constitutes your formal acceptance of the revised policy terms.</p>
         </div>
     </div>
+</div>
 
-    <div id="refundModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('refundModal')">&times;</span>
+<div id="refundModal" class="modal">
+    <div class="modal-content legal-modal-box">
+        <span class="close-btn" onclick="closeModal('refundModal')">&times;</span>
+        <div class="legal-header">
             <h2>Refund & Cancellation Policy</h2>
-            <p><strong>Cancellation:</strong> Project cancellations must be requested within 24 hours of initial payment before development deployment starts[cite: 5].</p>
-            <p><strong>Refunds:</strong> Eligible refunds are processed back to the original source payment account within 5-7 working days following approval[cite: 5].</p>
+            <p class="last-updated">Last Updated: January 2026</p>
+        </div>
+        <div class="legal-body">
+            <h3>1. Project Cancellation Window</h3>
+            <p>Clients may request a project cancellation within <strong>24 hours</strong> of initial payment, provided that active software development, wireframing, or server deployment has not yet commenced. Cancellation requests must be formally submitted in writing via email to our support desk.</p>
+
+<h3>2. Non-Refundable Components</h3>
+<p>Due to the immediate allocation of engineering hours, resource reservation, and third-party commitments (such as domain registrations via Hostinger/NIXI and SSL certificates), advance milestone payments become non-refundable once development deployment is initiated.</p>
+
+            <h3>3. Refund Processing & Timelines</h3>
+            <p>If a refund request is approved under eligible circumstances:
+                <ul>
+                    <li>The refund will be processed back to the original source payment account (Razorpay / Bank Account).</li>
+                    <li>Funds typically reflect in the client's account within <strong>5 to 7 working days</strong> depending on banking clearance cycles.</li>
+                </ul>
+            </p>
         </div>
     </div>
+</div>
 
-    <div id="shippingModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('shippingModal')">&times;</span>
+<div id="shippingModal" class="modal">
+    <div class="modal-content legal-modal-box">
+        <span class="close-btn" onclick="closeModal('shippingModal')">&times;</span>
+        <div class="legal-header">
             <h2>Shipping & Delivery Policy</h2>
-            <p>Since Tekkali Digital Web Solutions Hub delivers digital products, web solutions, and software services electronically:</p>
-            <p><strong>Delivery Timeline:</strong> Standard project execution and delivery ranges from <strong>30 to 40 business days</strong> depending on the selected package and project scope[cite: 5].</p>
-            <p><strong>Mode of Delivery:</strong> All digital assets, source links, and maintenance credentials are delivered digitally via email or WhatsApp.</p>
+            <p class="last-updated">Last Updated: January 2026</p>
+        </div>
+        <div class="legal-body">
+            <h3>1. Nature of Digital Delivery</h3>
+            <p>Since Tekkali Digital Web Solutions Hub operates as a full-service digital software studio, all deliverables—including web applications, source code repositories, databases, design prototypes, and cloud configurations—are transmitted electronically. No physical shipping of goods applies.</p>
+
+            <h3>2. Execution & Delivery Timelines</h3>
+            <p>Standard project execution and deployment timelines range from <strong>30 to 40 business days</strong>, depending on the complexity of the selected package, scope specifications, and prompt receipt of client feedback.</p>
+
+            <h3>3. Mode of Digital Handover</h3>
+            <p>Upon successful final QA testing and payment clearance, all digital assets, admin dashboard keys, hosting repository links, and maintenance documentation are delivered securely via official email or encrypted communication channels (WhatsApp / Client Portal).</p>
         </div>
     </div>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-col">
-                <h3>Tekkali Digital Web Solutions Hub</h3>
-                <p>A full-service web studio in Tekkali, Andhra Pradesh — building fast, secure, search-ready digital products for ambitious businesses everywhere[cite: 5].</p>
-            </div>
-            <div class="footer-col">
-                <h3>Legal & Compliance</h3>
-                <ul class="footer-links">
-                    <li><a onclick="openModal('termsModal')">Terms & Conditions</a></li>
-                    <li><a onclick="openModal('privacyModal')">Privacy Policy</a></li>
-                    <li><a onclick="openModal('refundModal')">Refund & Cancellation</a></li>
-                    <li><a onclick="openModal('shippingModal')">Shipping & Delivery</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Contact</h3>
-                <ul class="footer-links">
-                    <li><a href="mailto:tekkalidigitalwebsolutionhub@gmail.com">tekkalidigitalwebsolutionhub@gmail.com</a></li>
-                    <li><a href="https://wa.me/919493583804" target="_blank">+91 9493583804</a></li>
-                    <li>Main Road, Tekkali, Srikakulam dist., AP 532201</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2026 Tekkali Digital Web Solutions Hub. All Rights Reserved. Tekkali, Andhra Pradesh, India.
-        </div>
-    </footer>
-
+</div>
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
