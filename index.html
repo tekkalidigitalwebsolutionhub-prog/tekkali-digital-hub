@@ -109,7 +109,6 @@
             box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
         }
 
-        /* Theme Toggle Button */
         .theme-toggle-btn {
             background: var(--border-color);
             border: 1px solid var(--border-color);
@@ -257,7 +256,6 @@
             color: white;
         }
 
-        /* Glassmorphism Cards & Containers */
         .glass-card {
             background: var(--bg-card);
             backdrop-filter: blur(12px);
@@ -266,7 +264,6 @@
             box-shadow: var(--card-shadow);
         }
 
-        /* Tech Marquee */
         .tech-marquee {
             background: var(--bg-card);
             border-top: 1px solid var(--border-color);
@@ -300,7 +297,6 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Services & Grid */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -345,7 +341,6 @@
             font-size: 0.88rem;
         }
 
-        /* Pricing Grid */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -416,10 +411,9 @@
             color: white;
         }
 
-        /* FAQ Accordion Styles */
         .faq-container {
             max-width: 850px;
-            margin: 3 auto;
+            margin: 0 auto;
         }
 
         .faq-item {
@@ -453,7 +447,6 @@
             display: block;
         }
 
-        /* Forms & Inputs */
         .inquiry-wrapper {
             background: var(--bg-card);
             backdrop-filter: blur(12px);
@@ -528,7 +521,6 @@
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
         }
 
-        /* Floating Action Dock */
         .floating-dock {
             position: fixed;
             bottom: 30px;
@@ -692,7 +684,6 @@
         </div>
     </header>
 
-    <!-- TECH STACK TICKER MARQUEE -->
     <div class="tech-marquee">
         <div class="marquee-track">
             <div class="marquee-item"><span>⚡</span> Next.js & React</div>
@@ -706,7 +697,6 @@
         </div>
     </div>
 
-    <!-- HOME VIEW -->
     <div id="view-home" class="page-view active-view">
         <section class="hero">
             <div class="hero-content">
@@ -750,7 +740,6 @@
         </div>
     </div>
 
-    <!-- INTERACTIVE COST ESTIMATOR VIEW -->
     <div id="view-estimator" class="page-view">
         <div class="container">
             <div class="back-home-bar">
@@ -809,7 +798,6 @@
         </div>
     </div>
 
-    <!-- SERVICES VIEW -->
     <div id="view-services" class="page-view">
         <div class="container">
             <div class="back-home-bar">
@@ -844,7 +832,6 @@
         </div>
     </div>
 
-    <!-- PRICING VIEW -->
     <div id="view-pricing" class="page-view">
         <div class="container">
             <div class="back-home-bar">
@@ -900,7 +887,6 @@
         </div>
     </div>
 
-    <!-- FAQ ACCORDION VIEW -->
     <div id="view-faq" class="page-view">
         <div class="container">
             <div class="back-home-bar">
@@ -930,7 +916,6 @@
         </div>
     </div>
 
-    <!-- ABOUT VIEW -->
     <div id="view-about" class="page-view">
        <div class="container" style="max-width: 900px;">
             <div class="back-home-bar">
@@ -954,7 +939,6 @@
         </div>
     </div>
 
-    <!-- CONTACT US VIEW -->
     <div id="view-contact" class="page-view">
         <div class="container">
             <div class="back-home-bar">
@@ -1015,7 +999,6 @@
         </div>
     </div>
 
-    <!-- PROJECT PORTAL VIEW -->
     <div id="view-portal" class="page-view">
         <div class="container">
             <div class="back-home-bar">
@@ -1072,7 +1055,6 @@
         </div>
     </div>
 
-    <!-- CAREERS VIEW -->
     <div id="view-careers" class="page-view">
         <div class="container">
             <div class="back-home-bar">
@@ -1087,14 +1069,12 @@
         </div>
     </div>
 
-    <!-- Floating Action Dock -->
     <div class="floating-dock">
         <a href="https://wa.me/919493583804?text=Hello%20Tekkali%20Digital%20Web%20Solutions%20Hub,%20I%20would%20like%20to%20inquire%20about%20your%20services." class="dock-btn" target="_blank" title="Chat on WhatsApp">
             💬
         </a>
     </div>
 
-    <!-- Secure Razorpay Payment Modal -->
     <div id="checkoutModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('checkoutModal')">&times;</span>
@@ -1131,7 +1111,6 @@
         </div>
     </div>
 
-    <!-- FOOTER SECTION -->
     <footer>
         <div class="footer-container">
             <div class="footer-col">
@@ -1198,7 +1177,6 @@
             }
         }
 
-        // Load saved theme preference
         window.addEventListener('DOMContentLoaded', () => {
             let savedTheme = localStorage.getItem('tekkali_theme') || 'dark';
             document.documentElement.setAttribute('data-theme', savedTheme);
@@ -1231,7 +1209,6 @@
             }
         }
 
-        // FAQ Toggle Logic
         function toggleFaq(element) {
             const parent = element.parentElement;
             parent.classList.toggle('active');
@@ -1239,7 +1216,6 @@
             span.innerText = parent.classList.contains('active') ? '-' : '+';
         }
 
-        // Cost Estimator Calculation Logic
         function calculateEstimate() {
             let typeVal = Number(document.getElementById('estType').value);
             let pagesVal = Number(document.getElementById('estPages').value);
