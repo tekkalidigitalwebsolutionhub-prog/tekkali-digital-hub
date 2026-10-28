@@ -460,7 +460,7 @@
         }
 
         .btn-apply {
-            background: var(--tcs-success);
+            background: #64748b;
             color: white;
             padding: 0.8rem 2rem;
             border-radius: 6px;
@@ -469,6 +469,8 @@
             display: inline-block;
             text-transform: uppercase;
             font-size: 0.85rem;
+            cursor: not-allowed;
+            opacity: 0.8;
         }
 
         .whatsapp-float {
@@ -724,7 +726,7 @@
     <div id="view-home" class="page-view active-view">
         <section class="hero">
             <div class="hero-content">
-                <div class="hiring-badge">🚀 1000+ Active Roles & Openings Hiring</div>
+                <div class="hiring-badge">🚀 Program Completed & Applications Closed</div>
                 <h1>Let's build what's next.</h1>
                 <p>Engineering digital excellence for local & enterprise businesses in Tekkali with custom web solutions, fast platforms, and professional support.</p>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
@@ -897,7 +899,7 @@
             </div>
 
             <div class="budget-note">
-                🔒 <strong>Secure Razorpay Gateway Guarantee:</strong> All transactions are routed through official payment channels (<a href="https://razorpay.me/@tekkalidigitalandwebsolutions" target="_blank" style="color: #60a5fa; text-decoration: underline;">Razorpay Portal</a>) with locked price protection[cite: 5].
+                🔒 <strong>Secure Razorpay Gateway Guarantee:</strong> All transactions are routed through official payment channels (<a href="https://razorpay.me/@tekkalidigitalandwebsolutions" target="_blank" style="color: #60a5fa; text-decoration: underline;">Razorpay Portal</a>) with locked price protection.
             </div>
         </div>
     </div>
@@ -995,175 +997,80 @@
 
    <!-- ABOUT VIEW (MODERN ENTERPRISE) -->
     <div id="view-about" class="page-view">
-       <div class="about-wrapper">
-        
-        <!-- Back Button Bar -->
-        <div class="about-nav-bar">
-            <button class="btn-back-modern" onclick="switchView('home')">
-                <span>&larr;</span> Back to Home
-            </button>
-        </div>
-
-        <!-- Hero Header -->
-        <div class="about-hero">
-            <div class="badge-pill">Tekkali Digital & Web Solutions Hub</div>
-            <h1 class="about-main-title">Engineering Digital Excellence from Tekkali to the World</h1>
-            <p class="about-lead-text">
-                We bridge local enterprise empowerment with advanced software engineering—delivering high-performance web products, custom POS billing systems, and scalable digital infrastructure.
-            </p>
-        </div>
-
-        <!-- Founder Profile Section (Clean & Responsive) -->
-        <div class="founder-card-modern">
-            <div class="founder-img-container">
-                <img src="Sivaji Image.jpeg" alt="Yanda Sivaji" class="founder-photo">
-                <div class="founder-verify-badge">✓</div>
+       <div class="container" style="max-width: 900px;">
+            <div class="back-home-bar">
+                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
             </div>
-            <div class="founder-details">
-                <div class="founder-header-meta">
-                    <h2>Yanda Sivaji</h2>
-                    <span class="founder-role">Founder & Lead Full-Stack Architect</span>
-                </div>
-                <p class="founder-description">
-                    Driving the technological vision behind Tekkali Digital Web Solutions, Sivaji specializes in full-stack web architectures, secure database management, and robust enterprise integrations. Committed to transforming local businesses through seamless digital platforms, every solution is engineered for absolute speed, reliability, and security.
+            <div class="hiring-box" style="text-align: left; background: var(--bg-card); border: 1px solid var(--border-color); border-left: 6px solid var(--tcs-blue);">
+                <div class="hiring-badge">Tekkali Digital & Web Solutions Hub</div>
+                <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: white;">Engineering Digital Excellence from Tekkali to the World</h2>
+                <p style="color: var(--text-gray); font-size: 1rem; margin-bottom: 2rem; max-width: 100%;">
+                    We bridge local enterprise empowerment with advanced software engineering—delivering high-performance web products, custom POS billing systems, and scalable digital infrastructure.
                 </p>
-                <div class="founder-tech-stack">
-                    <span><strong>Core Tech:</strong> JavaScript, React, Node.js, Python, Cloud Systems</span>
+                <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; background: #050b14; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <img src="Sivaji Image.jpeg" alt="Yanda Sivaji" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--tcs-blue);">
+                    <div>
+                        <h3 style="color: white; font-size: 1.2rem;">Yanda Sivaji</h3>
+                        <p style="color: #60a5fa; font-size: 0.85rem; font-weight: 600;">Founder & Lead Full-Stack Architect</p>
+                        <p style="color: var(--text-gray); font-size: 0.85rem; margin-top: 0.3rem;">Specializing in full-stack web architectures, secure database management, and robust enterprise integrations.</p>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Core Capabilities Grid -->
-        <div class="capabilities-grid">
-            <div class="capability-card">
-                <div class="cap-icon">🚀</div>
-                <h3>Lightning Fast Performance</h3>
-                <p>Optimized code architecture ensuring ultra-low latency and smooth responsiveness across all devices.</p>
-            </div>
-            <div class="capability-card">
-                <div class="cap-icon">🛡️</div>
-                <h3>Secure & Scalable</h3>
-                <p>Built with enterprise-grade data security, safe backend routing, and scalable database schemas.</p>
-            </div>
-            <div class="capability-card">
-                <div class="cap-icon">💼</div>
-                <h3>Custom Local Solutions</h3>
-                <p>Tailored web applications and POS billing systems designed specifically for commercial growth.</p>
-            </div>
-        </div>
-
     </div>
-</div>
 
-</body>
-</html>
     <!-- RATINGS & REVIEWS VIEW -->
-<div id="view-ratingsView" class="page-view">
-    <div class="container">
-        <div class="back-home-bar">
-            <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
-        </div>
-        
-        <div class="ratings-section">
-            <!-- Top Summary Card (Big Companies Style) -->
-            <div class="ratings-summary-card">
-                <div class="summary-left">
-                    <h2 class="section-title">Customer Reviews & Ratings</h2>
-                    <div class="big-score-box">
-                        <span class="big-score" id="averageRatingDisplay">4.9</span>
-                        <div class="score-meta">
-                            <div class="stars-outer-display">★★★★★</div>
-                            <span class="total-reviews-count" id="totalReviewsCountDisplay">Based on 127 verified reviews</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Breakdown Progress Bars -->
-                <div class="summary-right">
-                    <div class="rating-bar-item">
-                        <span>5 ★</span>
-                        <div class="progress-bg"><div class="progress-fill" style="width: 85%;"></div></div>
-                        <span class="bar-count">108</span>
-                    </div>
-                    <div class="rating-bar-item">
-                        <span>4 ★</span>
-                        <div class="progress-bg"><div class="progress-fill" style="width: 10%;"></div></div>
-                        <span class="bar-count">13</span>
-                    </div>
-                    <div class="rating-bar-item">
-                        <span>3 ★</span>
-                        <div class="progress-bg"><div class="progress-fill" style="width: 3%;"></div></div>
-                        <span class="bar-count">4</span>
-                    </div>
-                    <div class="rating-bar-item">
-                        <span>2 ★</span>
-                        <div class="progress-bg"><div class="progress-fill" style="width: 1%;"></div></div>
-                        <span class="bar-count">1</span>
-                    </div>
-                    <div class="rating-bar-item">
-                        <span>1 ★</span>
-                        <div class="progress-bg"><div class="progress-fill" style="width: 1%;"></div></div>
-                        <span class="bar-count">1</span>
-                    </div>
-                </div>
+    <div id="view-ratingsView" class="page-view">
+        <div class="container">
+            <div class="back-home-bar">
+                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
             </div>
-
-            <!-- Main Interactive Content Grid -->
-            <div class="ratings-grid">
-                <!-- Left: Submission Form -->
-                <div class="rating-form-card">
-                    <h3>Write a Review</h3>
-                    <p class="form-subtext">Share your honest feedback to help others</p>
-                    
-                    <form id="ratingForm">
-                        <div class="form-group">
-                            <label for="raterEmail">Email Address <span class="req">*</span></label>
-                            <input type="email" id="raterEmail" required placeholder="name@example.com">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Overall Rating <span class="req">*</span></label>
-                            <div class="star-rating-box">
-                                <input type="radio" id="r5" name="userStar" value="5" required /><label for="r5" title="5 stars">★</label>
-                                <input type="radio" id="r4" name="userStar" value="4" /><label for="r4" title="4 stars">★</label>
-                                <input type="radio" id="r3" name="userStar" value="3" /><label for="r3" title="3 stars">★</label>
-                                <input type="radio" id="r2" name="userStar" value="2" /><label for="r2" title="2 stars">★</label>
-                                <input type="radio" id="r1" name="userStar" value="1" /><label for="r1" title="1 star">★</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="raterComment">Your Review</label>
-                            <textarea id="raterComment" rows="4" placeholder="What did you like or dislike? What was your experience like?"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn-submit">
-                            <span>Submit Review</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </button>
-                    </form>
+            
+            <div class="ratings-section">
+                <div class="ratings-summary">
+                    <h3>Customer Reviews & Ratings</h3>
+                    <div style="font-size: 2.2rem; font-weight: 800; color: #60a5fa; margin: 0.5rem 0;" id="averageRatingDisplay">4.9 / 5.0</div>
+                    <p style="color: var(--text-gray);" id="totalReviewsCountDisplay">Total Ratings: 127</p>
                 </div>
 
-                <!-- Right: Reviews Feed & Filter -->
-                <div class="reviews-feed-card">
-                    <div class="feed-header">
-                        <h4>Community Feedback</h4>
-                        <div class="filter-chips">
-                            <button class="chip active">All</button>
-                            <button class="chip">5 ★</button>
-                            <button class="chip">4 ★</button>
-                            <button class="chip">With Comments</button>
-                        </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;" class="form-grid">
+                    <div style="background: #050b14; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h3 style="color: white; margin-bottom: 1rem; font-size: 1.1rem;">Write a Review</h3>
+                        <form id="ratingForm">
+                            <div class="form-group">
+                                <label for="raterEmail">Email Address *</label>
+                                <input type="email" id="raterEmail" required placeholder="name@example.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Overall Rating *</label>
+                                <div class="star-rating-box">
+                                    <input type="radio" id="r5" name="userStar" value="5" required /><label for="r5" title="5 stars">★</label>
+                                    <input type="radio" id="r4" name="userStar" value="4" /><label for="r4" title="4 stars">★</label>
+                                    <input type="radio" id="r3" name="userStar" value="3" /><label for="r3" title="3 stars">★</label>
+                                    <input type="radio" id="r2" name="userStar" value="2" /><label for="r2" title="2 stars">★</label>
+                                    <input type="radio" id="r1" name="userStar" value="1" /><label for="r1" title="1 star">★</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="raterComment">Your Review</label>
+                                <textarea id="raterComment" rows="3" placeholder="What was your experience like?"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-submit">Submit Review</button>
+                        </form>
                     </div>
-                    
-                    <div id="dynamicReviewsContainer" class="reviews-list">
-                        <!-- Dynamic review items rendered via JS -->
+
+                    <div>
+                        <h3 style="color: white; margin-bottom: 1rem; font-size: 1.1rem;">Community Feedback</h3>
+                        <div id="dynamicReviewsContainer" class="review-list" style="max-height: 350px; overflow-y: auto;"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
     <!-- CONTACT US VIEW -->
     <div id="view-contact" class="page-view">
         <div class="container">
@@ -1284,17 +1191,17 @@
         </div>
     </div>
 
-    <!-- CAREERS VIEW -->
+    <!-- CAREERS VIEW (UPDATED TO COMPLETED) -->
     <div id="view-careers" class="page-view">
         <div class="container">
             <div class="back-home-bar">
                 <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
             </div>
             <div class="hiring-box">
-                <h2>Build Your Career With Ultimate Flexibility</h2>
-                <p>Looking for career growth with complete schedule freedom? Join our initiative with zero work pressure and high-earning potential.</p>
-                <div style="color: #f87171; font-weight: 700; font-size: 0.85rem; margin-bottom: 1.25rem;">Submission Deadline: 9 October 2026</div>
-                <a href="https://forms.gle/DqDzHMU1mVAfQURG6" target="_blank" class="btn-apply">Apply Now via Google Form</a>
+                <h2>Careers & Hiring Program Completed</h2>
+                <p>The recruitment drive and submission window for our flexible earning program concluded successfully on 9 October 2026. Thank you to all applicants!</p>
+                <div style="color: #34d399; font-weight: 700; font-size: 0.85rem; margin-bottom: 1.25rem;">Status: Applications Closed / Program Successfully Completed</div>
+                <button class="btn-apply" disabled>Applications Closed</button>
             </div>
         </div>
     </div>
@@ -1341,7 +1248,7 @@
         </div>
     </div>
 
-   <!-- Legal Modals (Enterprise Standard) -->
+    <!-- Legal Modals -->
     <div id="termsModal" class="modal">
         <div class="modal-content legal-modal-box">
             <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
@@ -1351,13 +1258,7 @@
             </div>
             <div class="legal-body">
                 <h3>1. Introduction & Acceptance of Agreement</h3>
-                <p>Welcome to <strong>Tekkali Digital Web Solutions Hub</strong> ("Company", "we", "our", "us"). By accessing our website (<strong>tekkalidigitalhub.in</strong>), registering our services, or engaging our software engineering solutions, you agree to comply with and be legally bound by these Terms and Conditions.</p>
-
-                <h3>2. Scope of Services & Automated Locking Mechanisms</h3>
-                <p>We provide enterprise-grade web development and digital asset integration. Project scopes, deliverables, and financial quotes are locked via formal agreements or automated pricing mechanisms.</p>
-
-                <h3>3. Payment Terms & Gateway Authorization</h3>
-                <p>All financial transactions must be routed through our authorized payment channels, including our official Razorpay merchant gateway (<strong>https://razorpay.me/@tekkalidigitalandwebsolutions</strong>).</p>
+                <p>Welcome to <strong>Tekkali Digital Web Solutions Hub</strong>. By accessing our website, you agree to comply with and be legally bound by these Terms and Conditions.</p>
             </div>
         </div>
     </div>
@@ -1372,9 +1273,6 @@
             <div class="legal-body">
                 <h3>1. Commitment to Data Privacy</h3>
                 <p>Tekkali Digital Web Solutions Hub respects your right to privacy and protects your personally identifiable information (PII).</p>
-
-                <h3>2. Information We Collect</h3>
-                <p>We collect information necessary to execute contracts and deliver superior services, including full name, official email address, phone number, and physical billing address.</p>
             </div>
         </div>
     </div>
@@ -1388,10 +1286,7 @@
             </div>
             <div class="legal-body">
                 <h3>1. Project Cancellation Window</h3>
-                <p>Clients may request a project cancellation within <strong>24 hours</strong> of initial payment, provided that active software development has not yet commenced.</p>
-
-                <h3>2. Refund Processing & Timelines</h3>
-                <p>Eligible refunds are processed back to the original source payment account within <strong>5 to 7 working days</strong>.</p>
+                <p>Clients may request a project cancellation within <strong>24 hours</strong> of initial payment, provided active development has not started.</p>
             </div>
         </div>
     </div>
@@ -1405,10 +1300,7 @@
             </div>
             <div class="legal-body">
                 <h3>1. Nature of Digital Delivery</h3>
-                <p>Since Tekkali Digital Web Solutions Hub operates as a full-service digital software studio, all deliverables—including web applications and source code—are transmitted electronically. No physical shipping applies.</p>
-
-                <h3>2. Execution & Delivery Timelines</h3>
-                <p>Standard project execution and deployment timelines range from <strong>30 to 40 business days</strong>.</p>
+                <p>All deliverables are transmitted electronically. Standard execution and delivery timelines range from <strong>30 to 40 business days</strong>.</p>
             </div>
         </div>
     </div>
@@ -1531,9 +1423,8 @@
                 }, 1000);
             });
         }
-    </script>
-    <script>
-        // Ratings Logic (LocalStorage based with Email requirement)
+
+        // Ratings Logic
         let defaultReviews = [
             { email: "ramesh****@gmail.com", stars: 5, comment: "Excellent service and fast website delivery!" },
             { email: "suresh****@gmail.com", stars: 5, comment: "Very professional web development team in Tekkali." }
@@ -1569,29 +1460,34 @@
             });
 
             let avg = (totalStars / reviews.length).toFixed(1);
-            document.getElementById('averageRatingDisplay').innerText = `${avg} / 5.0`;
-            document.getElementById('totalReviewsCountDisplay').innerText = `Total Ratings: ${reviews.length}`;
+            const avgDisplay = document.getElementById('averageRatingDisplay');
+            const totalDisplay = document.getElementById('totalReviewsCountDisplay');
+            if(avgDisplay) avgDisplay.innerText = `${avg} / 5.0`;
+            if(totalDisplay) totalDisplay.innerText = `Total Ratings: ${reviews.length}`;
         }
 
-        document.getElementById('ratingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            let emailInput = document.getElementById('raterEmail').value;
-            let starInput = document.querySelector('input[name="userStar"]:checked').value;
-            let commentInput = document.getElementById('raterComment').value;
+        const ratingForm = document.getElementById('ratingForm');
+        if(ratingForm) {
+            ratingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let emailInput = document.getElementById('raterEmail').value;
+                let starInput = document.querySelector('input[name="userStar"]:checked').value;
+                let commentInput = document.getElementById('raterComment').value;
 
-            let maskedEmail = emailInput.substring(0, 3) + '****@' + emailInput.split('@')[1];
+                let maskedEmail = emailInput.substring(0, 3) + '****@' + emailInput.split('@')[1];
 
-            let reviews = getStoredReviews();
-            reviews.unshift({ email: maskedEmail, stars: Number(starInput), comment: commentInput });
-            localStorage.setItem('tekkali_user_reviews', JSON.stringify(reviews));
+                let reviews = getStoredReviews();
+                reviews.unshift({ email: maskedEmail, stars: Number(starInput), comment: commentInput });
+                localStorage.setItem('tekkali_user_reviews', JSON.stringify(reviews));
 
-            alert("Thank you! Your rating and email review have been successfully recorded.");
-            document.getElementById('ratingForm').reset();
-            renderReviews();
-            switchView('ratingsView');
-        });
+                alert("Thank you! Your rating and email review have been successfully recorded.");
+                ratingForm.reset();
+                renderReviews();
+                switchView('ratingsView');
+            });
+        }
 
-        // Full Blog Data Restored
+        // Blog Data
         const blogData = {
             all: [
                 { cat: 'SEO & MARKETING', title: 'Maximizing Local Business Reach in Tekkali through Advanced SEO', desc: 'Learn how strategic keyword optimization drives high organic traffic to regional storefronts.', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80' },
@@ -1600,31 +1496,16 @@
             ],
             webdev: [
                 { cat: 'WEB DEVELOPMENT', title: 'Building Scalable Full-Stack Web Apps with Node.js & MongoDB', desc: 'Best practices for structuring backend APIs and connecting cloud database clusters securely.', img: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'WEB DEVELOPMENT', title: 'Why Next.js and React are Dominating Modern Enterprise Web Architecture', desc: 'An in-depth look at server-side rendering benefits and lightning-fast web performance.', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'WEB DEVELOPMENT', title: 'Optimizing Frontend Component Performance with Tailwind CSS', desc: 'Streamlining styling workflows and reducing bundle sizes for enterprise portals.', img: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'WEB DEVELOPMENT', title: 'Secure Authentication Strategies using JWT and Session Cookies', desc: 'Protecting user data and safeguarding endpoints against common web vulnerabilities.', img: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'WEB DEVELOPMENT', title: 'Automating Cloud Deployments and CI/CD Pipelines on Render', desc: 'Seamlessly synchronizing Git repositories with production servers for uninterrupted uptime.', img: 'https://images.unsplash.com/photo-1618401471353-b98aedd04e11?auto=format&fit=crop&w=600&q=80' }
+                { cat: 'WEB DEVELOPMENT', title: 'Why Next.js and React are Dominating Modern Enterprise Web Architecture', desc: 'An in-depth look at server-side rendering benefits and lightning-fast web performance.', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80' }
             ],
             digital: [
-                { cat: 'DIGITAL MARKETING', title: 'High-Converting Funnel Strategies for Regional Storefronts', desc: 'Turning offline foot traffic into engaged digital brand advocates.', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'DIGITAL MARKETING', title: 'Maximizing ROI with Targeted WhatsApp & SMS Broadcast Campaigns', desc: 'Direct messaging techniques that boost customer retention and order conversions.', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'DIGITAL MARKETING', title: 'Building Trust and Brand Credibility Through Professional Web Design', desc: 'How visual hierarchy influences purchasing decisions in competitive markets.', img: 'https://images.unsplash.com/photo-1533750349033-62f96955736a?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'DIGITAL MARKETING', title: 'The Power of Omnichannel Marketing for Small & Medium Enterprises', desc: 'Synchronizing web presence, social ads, and local listings for maximum reach.', img: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'DIGITAL MARKETING', title: 'Analyzing Customer Behavior Metrics to Scale Business Revenue', desc: 'Using data-driven insights to refine marketing budgets and campaign targeting.', img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80' }
+                { cat: 'DIGITAL MARKETING', title: 'High-Converting Funnel Strategies for Regional Storefronts', desc: 'Turning offline foot traffic into engaged digital brand advocates.', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80' }
             ],
             seo: [
-                { cat: 'SEO', title: 'Maximizing Local Business Reach in Tekkali through Advanced SEO', desc: 'Learn how strategic keyword optimization drives high organic traffic to regional storefronts.', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SEO', title: 'Mastering Google Business Profile Optimization for Local Dominance', desc: 'Step-by-step tactics to rank higher on local map packs and search queries.', img: 'https://images.unsplash.com/photo-1572177812156-58036aae439c?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SEO', title: 'Technical SEO Audits: Fixing Core Web Vitals and Page Speed', desc: 'Improving load times and search engine crawlability for better indexation.', img: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SEO', title: 'Keyword Research Strategies for Niche Service Sectors', desc: 'Finding high-intent search terms that convert browsers into paying clients.', img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SEO', title: 'Building High-Authority Backlinks Safely in 2026', desc: 'White-hat link building techniques that safeguard your site against algorithm penalties.', img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80' }
+                { cat: 'SEO', title: 'Maximizing Local Business Reach in Tekkali through Advanced SEO', desc: 'Learn how strategic keyword optimization drives high organic traffic to regional storefronts.', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80' }
             ],
             social: [
-                { cat: 'SOCIAL MEDIA', title: 'Leveraging Social Media Funnels for E-Commerce Growth', desc: 'Convert casual scrollers into loyal customers with targeted engagement loops.', img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SOCIAL MEDIA', title: 'Creating High-Engagement Short-Form Video Content for Brands', desc: 'Capturing audience attention quickly across Reels, Shorts, and TikTok platforms.', img: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SOCIAL MEDIA', title: 'Community Building: Turning Followers into Brand Ambassadors', desc: 'Fostering active interactions and long-term customer loyalty on social channels.', img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SOCIAL MEDIA', title: 'Paid Social Advertising vs Organic Growth: Finding the Right Balance', desc: 'Allocating resources effectively to maximize reach and conversion metrics.', img: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SOCIAL MEDIA', title: 'Analyzing Social Media Analytics to Refine Content Strategy', desc: 'Tracking engagement rates, click-throughs, and audience demographics like a pro.', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80' }
+                { cat: 'SOCIAL MEDIA', title: 'Leveraging Social Media Funnels for E-Commerce Growth', desc: 'Convert casual scrollers into loyal customers with targeted engagement loops.', img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80' }
             ]
         };
 
