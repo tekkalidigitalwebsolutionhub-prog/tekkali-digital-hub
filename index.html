@@ -35,8 +35,8 @@
         }
 
         header {
-            background: #050b14;
-            color: white;
+            background: rgba(5, 11, 20, 0.95);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -92,6 +92,13 @@
             padding: 0.5rem 1.25rem;
             border-radius: 6px;
             font-weight: 600;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
         }
 
         .menu-toggle {
@@ -137,7 +144,7 @@
         }
 
         .hero {
-            background: linear-gradient(rgba(5, 11, 20, 0.9), rgba(5, 11, 20, 0.95)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80');
+            background: linear-gradient(rgba(5, 11, 20, 0.85), rgba(5, 11, 20, 0.95)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -166,7 +173,7 @@
         }
 
         .hero h1 {
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             font-weight: 800;
             margin-bottom: 1rem;
             line-height: 1.2;
@@ -174,7 +181,7 @@
         }
 
         .hero p {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: #94a3b8;
             max-width: 650px;
             margin-bottom: 2rem;
@@ -222,6 +229,74 @@
             background: var(--tcs-blue);
         }
 
+        /* Tech Stack Marquee Animation */
+        .tech-marquee {
+            background: #050b14;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .marquee-track {
+            display: inline-block;
+            animation: scrollMarquee 25s linear infinite;
+        }
+
+        .marquee-item {
+            display: inline-block;
+            padding: 0 2rem;
+            font-weight: 700;
+            color: #94a3b8;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .marquee-item span {
+            color: var(--tcs-blue);
+        }
+
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Cost Estimator Styles */
+        .estimator-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            max-width: 900px;
+            margin: 3rem auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .estimator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .estimator-result {
+            background: #050b14;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .estimator-result h3 {
+            color: #60a5fa;
+            font-size: 2rem;
+            margin: 0.5rem 0;
+        }
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -235,12 +310,13 @@
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             border: 1px solid var(--border-color);
-            transition: transform 0.2s, border-color 0.2s;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
         }
 
         .service-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
             border-color: #3b82f6;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
         }
 
         .service-img {
@@ -288,6 +364,7 @@
             border: 2px solid var(--tcs-blue);
             transform: scale(1.02);
             background: #0e1726;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
         }
 
         .pricing-card h3 {
@@ -433,6 +510,12 @@
             border-radius: 6px;
             cursor: pointer;
             text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+            transition: box-shadow 0.2s;
+        }
+
+        .btn-submit:hover {
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.6);
         }
 
         .hiring-box {
@@ -444,33 +527,6 @@
             max-width: 900px;
             margin: 0 auto;
             text-align: center;
-        }
-
-        .hiring-box h2 {
-            font-size: 1.4rem;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-        }
-
-        .hiring-box p {
-            color: var(--text-gray);
-            max-width: 650px;
-            margin: 0 auto 1rem auto;
-            font-size: 0.9rem;
-        }
-
-        .btn-apply {
-            background: #64748b;
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-block;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            cursor: not-allowed;
-            opacity: 0.8;
         }
 
         .whatsapp-float {
@@ -604,27 +660,6 @@
             color: #64748b;
         }
 
-        /* Ratings Section Styles */
-        .ratings-section {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 2rem;
-            margin: 3rem auto;
-            max-width: 900px;
-        }
-
-        .ratings-summary {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .ratings-summary h3 {
-            font-size: 1.6rem;
-            color: white;
-            margin-bottom: 0.3rem;
-        }
-
         .star-rating-box {
             display: flex;
             flex-direction: row-reverse;
@@ -650,12 +685,6 @@
             color: var(--rating-star);
         }
 
-        .review-list {
-            margin-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            padding-top: 1.5rem;
-        }
-
         .review-item {
             background: #050b14;
             padding: 1rem;
@@ -671,13 +700,9 @@
             .nav-links { display: none; }
             .menu-toggle { display: flex; }
             .hero { padding: 4rem 1rem; text-align: center; }
-            .hero h1 { font-size: 1.75rem; }
-            .hero p { font-size: 0.95rem; margin: 0 auto 1.5rem auto; }
-            .container { padding: 2rem 1rem; }
-            .section-title { font-size: 1.5rem; }
-            .form-grid { grid-template-columns: 1fr; }
-            .form-group.full { grid-column: span 1; }
-            .footer-container { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+            .hero h1 { font-size: 1.85rem; }
+            .estimator-grid { grid-template-columns: 1fr; }
+            .footer-container { grid-template-columns: 1fr; text-align: center; }
         }
     </style>
 </head>
@@ -692,13 +717,14 @@
                 <li><a onclick="switchView('home')">Home</a></li>
                 <li><a onclick="switchView('services')">Our Services</a></li>
                 <li><a onclick="switchView('pricing')">Pricing</a></li>
+                <li><a onclick="switchView('estimator')">Cost Estimator</a></li>
                 <li><a onclick="switchView('work')">Our Work</a></li>
                 <li><a onclick="switchView('clients')">Our Clients</a></li>
                 <li><a onclick="switchView('blog')">Blog</a></li>
                 <li><a onclick="switchView('about')">About</a></li>
                 <li><a onclick="switchView('careers')">Careers</a></li>
                 <li><a onclick="switchView('contact')">Contact Us</a></li>
-                <li><a onclick="switchView('ratingsView')">Ratings & Reviews</a></li>
+                <li><a onclick="switchView('ratingsView')">Ratings</a></li>
                 <li><a onclick="switchView('portal')" class="nav-btn">Get Proposal</a></li>
             </ul>
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
@@ -711,6 +737,7 @@
             <a onclick="switchView('home')" class="mob-link">Home</a>
             <a onclick="switchView('services')" class="mob-link">Our Services</a>
             <a onclick="switchView('pricing')" class="mob-link">Pricing & Packages</a>
+            <a onclick="switchView('estimator')" class="mob-link">Cost Estimator</a>
             <a onclick="switchView('work')" class="mob-link">Our Work</a>
             <a onclick="switchView('clients')" class="mob-link">Our Clients</a>
             <a onclick="switchView('blog')" class="mob-link">Blog</a>
@@ -722,6 +749,22 @@
         </div>
     </header>
 
+    <!-- TECH STACK ANIMATED TICKER -->
+    <div class="tech-marquee">
+        <div class="marquee-track">
+            <div class="marquee-item"><span>⚡</span> Next.js & React</div>
+            <div class="marquee-item"><span>🚀</span> Node.js & Express</div>
+            <div class="marquee-item"><span>💡</span> Full-Stack Web Apps</div>
+            <div class="marquee-item"><span>🛡️</span> MongoDB & Cloud Security</div>
+            <div class="marquee-item"><span>📈</span> Advanced Local SEO</div>
+            <div class="marquee-item"><span>🎨</span> Tailwind CSS UI/UX</div>
+            <div class="marquee-item"><span>⚡</span> Next.js & React</div>
+            <div class="marquee-item"><span>🚀</span> Node.js & Express</div>
+            <div class="marquee-item"><span>💡</span> Full-Stack Web Apps</div>
+            <div class="marquee-item"><span>🛡️</span> MongoDB & Cloud Security</div>
+        </div>
+    </div>
+
     <!-- HOME VIEW -->
     <div id="view-home" class="page-view active-view">
         <section class="hero">
@@ -731,14 +774,14 @@
                 <p>Engineering digital excellence for local & enterprise businesses in Tekkali with custom web solutions, fast platforms, and professional support.</p>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <button onclick="switchView('portal')" class="nav-btn" style="padding: 0.85rem 2rem; display: inline-block; font-size: 1rem; border:none; cursor:pointer;">Get Proposal</button>
-                    <button onclick="switchView('pricing')" class="nav-btn" style="background: var(--tcs-success); padding: 0.85rem 2rem; display: inline-block; font-size: 1rem; border:none; cursor:pointer;">View Pricing & Packages</button>
+                    <button onclick="switchView('estimator')" class="nav-btn" style="background: var(--tcs-success); padding: 0.85rem 2rem; display: inline-block; font-size: 1rem; border:none; cursor:pointer;">Calculate Project Cost</button>
                 </div>
             </div>
         </section>
         
         <div class="container">
             <h2 class="section-title">Welcome to Tekkali Digital Hub</h2>
-            <p class="section-subtitle">Navigate through our services, pricing plans, tech stack, and methodologies below.</p>
+            <p class="section-subtitle">Navigate through our services, pricing plans, tech stack, and interactive tools below.</p>
             
             <div class="services-grid">
                 <div class="service-card" style="cursor: pointer;" onclick="switchView('services')">
@@ -748,11 +791,11 @@
                         <p>Explore Web Development, Digital Marketing, Next.js, React, Node.js, and our comprehensive digital capabilities.</p>
                     </div>
                 </div>
-                <div class="service-card" style="cursor: pointer;" onclick="switchView('pricing')">
-                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Pricing" class="service-img">
+                <div class="service-card" style="cursor: pointer;" onclick="switchView('estimator')">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Cost Estimator" class="service-img">
                     <div class="service-body">
-                        <h3>Pricing & Packages &rarr;</h3>
-                        <p>Check transparent project tiers starting from Basic, Standard to Enterprise Custom solutions.</p>
+                        <h3>Interactive Cost Estimator &rarr;</h3>
+                        <p>Customize your requirements and instantly calculate your estimated project cost and timeline.</p>
                     </div>
                 </div>
                 <div class="service-card" style="cursor: pointer;" onclick="switchView('ratingsView')">
@@ -763,26 +806,63 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div style="margin-top: 4rem; margin-bottom: 2rem;">
-                <h2 class="section-title">Why Choose Us</h2>
-                <p class="section-subtitle">What sets our digital solutions apart in quality, trust, and execution.</p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.8rem; text-align: left;">
-                        <div style="font-size: 1.8rem; margin-bottom: 0.8rem;">🚀</div>
-                        <h3 style="color: white; font-size: 1.15rem; margin-bottom: 0.5rem;">Professional Excellence</h3>
-                        <p style="color: var(--text-gray); font-size: 0.9rem;">Committed to delivering high-quality digital solutions with precise execution and industry-standard practices.</p>
+    <!-- INTERACTIVE COST ESTIMATOR VIEW -->
+    <div id="view-estimator" class="page-view">
+        <div class="container">
+            <div class="back-home-bar">
+                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
+            </div>
+            <h2 class="section-title">Interactive Project Cost Estimator</h2>
+            <p class="section-subtitle">Select your project features to get an instant price estimation.</p>
+
+            <div class="estimator-box">
+                <div class="estimator-grid">
+                    <div class="form-group">
+                        <label for="estType">Project Type</label>
+                        <select id="estType" onchange="calculateEstimate()">
+                            <option value="12000">Business Landing Page (₹12,000)</option>
+                            <option value="20000">Standard Business Website (₹20,000)</option>
+                            <option value="32000">Advanced E-Commerce Store (₹32,000)</option>
+                            <option value="45000">Custom Full-Stack Web App (₹45,000)</option>
+                        </select>
                     </div>
-                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.8rem; text-align: left;">
-                        <div style="font-size: 1.8rem; margin-bottom: 0.8rem;">💡</div>
-                        <h3 style="color: white; font-size: 1.15rem; margin-bottom: 0.5rem;">Transparent & Flexible</h3>
-                        <p style="color: var(--text-gray); font-size: 0.9rem;">Clear communication, flexible collaboration models, and result-oriented approaches for all our clients and partners.</p>
+
+                    <div class="form-group">
+                        <label for="estPages">Number of Pages / Sections</label>
+                        <select id="estPages" onchange="calculateEstimate()">
+                            <option value="0">1-5 Pages (Standard)</option>
+                            <option value="5000">6-10 Pages (+₹5,000)</option>
+                            <option value="12000">10+ Pages / Dynamic (+₹12,000)</option>
+                        </select>
                     </div>
-                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.8rem; text-align: left;">
-                        <div style="font-size: 1.8rem; margin-bottom: 0.8rem;">🌟</div>
-                        <h3 style="color: white; font-size: 1.15rem; margin-bottom: 0.5rem;">Community Growth</h3>
-                        <p style="color: var(--text-gray); font-size: 0.9rem;">Empowering local talent by building career pathways, part-time earning opportunities, and skill-based growth.</p>
+
+                    <div class="form-group">
+                        <label for="estAddons">Additional Features</label>
+                        <select id="estAddons" onchange="calculateEstimate()">
+                            <option value="0">None</option>
+                            <option value="4000">WhatsApp Chat & Quick Buttons (+₹4,000)</option>
+                            <option value="8000">Payment Gateway Integration (+₹8,000)</option>
+                            <option value="12000">Advanced Local SEO & Speed Boost (+₹12,000)</option>
+                        </select>
                     </div>
+
+                    <div class="form-group">
+                        <label for="estSupport">Maintenance Support</label>
+                        <select id="estSupport" onchange="calculateEstimate()">
+                            <option value="0">1 Year Standard Support (Free)</option>
+                            <option value="5000">Priority 24/7 Support (+₹5,000)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="estimator-result">
+                    <p style="color: var(--text-gray); text-transform: uppercase; font-size: 0.85rem; font-weight: 700;">Estimated Total Investment</p>
+                    <h3 id="estTotalDisplay">₹12,000</h3>
+                    <p style="color: var(--text-gray); font-size: 0.85rem;" id="estTimeline">Estimated Delivery: 7-10 Business Days</p>
+                    <button onclick="transferEstimatorToPortal()" class="btn-submit" style="margin-top: 1.5rem; max-width: 300px; display: inline-block;">Proceed with this Estimate</button>
                 </div>
             </div>
         </div>
@@ -798,14 +878,14 @@
             <p class="section-subtitle">Modern technology solutions built with Web Development, Digital Marketing, Next.js, React, Node.js, WordPress, Shopify, MongoDB, and Tailwind.</p>
             
             <div class="services-grid">
-                <div class="service-card" style="cursor: pointer;" onclick="switchView('contact')">
+                <div class="service-card">
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Web Development" class="service-img">
                     <div class="service-body">
                         <h3>Web Development</h3>
                         <p>Scalable web applications engineered using Next.js, React, and Node.js for high performance.</p>
                     </div>
                 </div>
-                <div class="service-card" style="cursor: pointer;" onclick="switchView('contact')">
+                <div class="service-card">
                     <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80" alt="Digital Marketing" class="service-img">
                     <div class="service-body">
                         <h3>Digital Marketing</h3>
@@ -817,27 +897,6 @@
                     <div class="service-body">
                         <h3>Web Design</h3>
                         <p>Tailwind CSS based modern, responsive UI/UX designs optimized for seamless user engagement.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="E-commerce Development" class="service-img">
-                    <div class="service-body">
-                        <h3>E-commerce Development</h3>
-                        <p>Robust online stores built on Shopify, WordPress, and custom MongoDB backends.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Website Maintenance" class="service-img">
-                    <div class="service-body">
-                        <h3>Website Maintenance</h3>
-                        <p>Regular updates, security patches, and backup management to keep systems flawless.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="Website Security" class="service-img">
-                    <div class="service-body">
-                        <h3>Website Security</h3>
-                        <p>Advanced security protocols, firewall setups, and SSL implementation.</p>
                     </div>
                 </div>
             </div>
@@ -897,10 +956,6 @@
                     <button class="btn-buy" onclick="openCheckoutModal('Enterprise Custom Solution', 35000)">Proceed via Razorpay (₹35,000)</button>
                 </div>
             </div>
-
-            <div class="budget-note">
-                🔒 <strong>Secure Razorpay Gateway Guarantee:</strong> All transactions are routed through official payment channels (<a href="https://razorpay.me/@tekkalidigitalandwebsolutions" target="_blank" style="color: #60a5fa; text-decoration: underline;">Razorpay Portal</a>) with locked price protection.
-            </div>
         </div>
     </div>
 
@@ -919,19 +974,7 @@
                 <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Healthcare</h3></div>
                 <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Education</h3></div>
                 <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Travel & Tourism</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Food & Dining</h3></div>
                 <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Corporate</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Logistics</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Finance</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Immigration</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">IT</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Legal</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">NGO</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Agriculture</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Fashion</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Recruitment</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Business</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Edtech</h3></div>
             </div>
         </div>
     </div>
@@ -958,18 +1001,6 @@
                     <h3 style="font-size: 2rem; color: #60a5fa;">100+</h3>
                     <p>Projects Delivered</p>
                 </div>
-                <div class="service-card" style="padding: 1.5rem;">
-                    <h3 style="font-size: 2rem; color: #60a5fa;">5+</h3>
-                    <p>Years Experience</p>
-                </div>
-                <div class="service-card" style="padding: 1.5rem;">
-                    <h3 style="font-size: 2rem; color: #60a5fa;">10+</h3>
-                    <p>Global Certifications</p>
-                </div>
-                <div class="service-card" style="padding: 1.5rem;">
-                    <h3 style="font-size: 2rem; color: #60a5fa;">24/7</h3>
-                    <p>Support Team</p>
-                </div>
             </div>
         </div>
     </div>
@@ -983,19 +1014,11 @@
             <h2 class="section-title">Blog & Insights</h2>
             <p class="section-subtitle">Informative articles on web development, digital marketing, SEO, and social media.</p>
             
-            <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap;">
-                <button class="btn-back blog-filter-btn active-filter" onclick="filterBlog('all', this)" style="background: var(--tcs-blue);">All Categories</button>
-                <button class="btn-back blog-filter-btn" onclick="filterBlog('webdev', this)">Web Development</button>
-                <button class="btn-back blog-filter-btn" onclick="filterBlog('digital', this)">Digital Marketing</button>
-                <button class="btn-back blog-filter-btn" onclick="filterBlog('seo', this)">SEO</button>
-                <button class="btn-back blog-filter-btn" onclick="filterBlog('social', this)">Social Media</button>
-            </div>
-
             <div class="services-grid" id="blogContainer"></div>
         </div>
     </div>
 
-   <!-- ABOUT VIEW (MODERN ENTERPRISE) -->
+    <!-- ABOUT VIEW -->
     <div id="view-about" class="page-view">
        <div class="container" style="max-width: 900px;">
             <div class="back-home-bar">
@@ -1026,14 +1049,14 @@
                 <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
             </div>
             
-            <div class="ratings-section">
-                <div class="ratings-summary">
+            <div class="estimator-box">
+                <div style="text-align: center; margin-bottom: 2rem;">
                     <h3>Customer Reviews & Ratings</h3>
                     <div style="font-size: 2.2rem; font-weight: 800; color: #60a5fa; margin: 0.5rem 0;" id="averageRatingDisplay">4.9 / 5.0</div>
                     <p style="color: var(--text-gray);" id="totalReviewsCountDisplay">Total Ratings: 127</p>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;" class="form-grid">
+                <div class="estimator-grid">
                     <div style="background: #050b14; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
                         <h3 style="color: white; margin-bottom: 1rem; font-size: 1.1rem;">Write a Review</h3>
                         <form id="ratingForm">
@@ -1091,7 +1114,7 @@
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="clientName">Your Name / Business Name *</label>
-                                <input type="text" id="clientName" required placeholder="e.g., Sri Venkateswara Granites / Local Store">
+                                <input type="text" id="clientName" required placeholder="e.g., Sri Venkateswara Granites">
                             </div>
                             <div class="form-group">
                                 <label for="clientPhone">WhatsApp / Mobile Number *</label>
@@ -1106,7 +1129,6 @@
                                     <option value="Business Website / Landing Page">Business Website / Landing Page</option>
                                     <option value="Web Development Service">Web Development Service</option>
                                     <option value="Digital Marketing Campaign">Digital Marketing Campaign</option>
-                                    <option value="Studio Portfolio & Booking">Studio Portfolio & Booking</option>
                                     <option value="E-Commerce Store">E-Commerce Store</option>
                                     <option value="Custom Software Solution">Custom Software Solution</option>
                                 </select>
@@ -1149,7 +1171,7 @@
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="portalClientName">Your Name / Business Name *</label>
-                                <input type="text" id="portalClientName" required placeholder="e.g., Sri Venkateswara Granites / Local Store">
+                                <input type="text" id="portalClientName" required placeholder="e.g., Sri Venkateswara Granites">
                             </div>
                             <div class="form-group">
                                 <label for="portalClientPhone">WhatsApp / Mobile Number *</label>
@@ -1164,7 +1186,6 @@
                                     <option value="Business Website / Landing Page">Business Website / Landing Page</option>
                                     <option value="Web Development Service">Web Development Service</option>
                                     <option value="Digital Marketing Campaign">Digital Marketing Campaign</option>
-                                    <option value="Studio Portfolio & Booking">Studio Portfolio & Booking</option>
                                     <option value="E-Commerce Store">E-Commerce Store</option>
                                     <option value="Custom Software Solution">Custom Software Solution</option>
                                 </select>
@@ -1191,7 +1212,7 @@
         </div>
     </div>
 
-    <!-- CAREERS VIEW (UPDATED TO COMPLETED) -->
+    <!-- CAREERS VIEW -->
     <div id="view-careers" class="page-view">
         <div class="container">
             <div class="back-home-bar">
@@ -1201,7 +1222,7 @@
                 <h2>Careers & Hiring Program Completed</h2>
                 <p>The recruitment drive and submission window for our flexible earning program concluded successfully on 9 October 2026. Thank you to all applicants!</p>
                 <div style="color: #34d399; font-weight: 700; font-size: 0.85rem; margin-bottom: 1.25rem;">Status: Applications Closed / Program Successfully Completed</div>
-                <button class="btn-apply" disabled>Applications Closed</button>
+                <button class="btn-buy" disabled style="opacity: 0.7; cursor: not-allowed;">Applications Closed</button>
             </div>
         </div>
     </div>
@@ -1248,63 +1269,6 @@
         </div>
     </div>
 
-    <!-- Legal Modals -->
-    <div id="termsModal" class="modal">
-        <div class="modal-content legal-modal-box">
-            <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
-            <div class="legal-header">
-                <h2>Terms & Conditions</h2>
-                <p class="last-updated">Last Updated: January 2026</p>
-            </div>
-            <div class="legal-body">
-                <h3>1. Introduction & Acceptance of Agreement</h3>
-                <p>Welcome to <strong>Tekkali Digital Web Solutions Hub</strong>. By accessing our website, you agree to comply with and be legally bound by these Terms and Conditions.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="privacyModal" class="modal">
-        <div class="modal-content legal-modal-box">
-            <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
-            <div class="legal-header">
-                <h2>Privacy Policy</h2>
-                <p class="last-updated">Last Updated: January 2026</p>
-            </div>
-            <div class="legal-body">
-                <h3>1. Commitment to Data Privacy</h3>
-                <p>Tekkali Digital Web Solutions Hub respects your right to privacy and protects your personally identifiable information (PII).</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="refundModal" class="modal">
-        <div class="modal-content legal-modal-box">
-            <span class="close-btn" onclick="closeModal('refundModal')">&times;</span>
-            <div class="legal-header">
-                <h2>Refund & Cancellation Policy</h2>
-                <p class="last-updated">Last Updated: January 2026</p>
-            </div>
-            <div class="legal-body">
-                <h3>1. Project Cancellation Window</h3>
-                <p>Clients may request a project cancellation within <strong>24 hours</strong> of initial payment, provided active development has not started.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="shippingModal" class="modal">
-        <div class="modal-content legal-modal-box">
-            <span class="close-btn" onclick="closeModal('shippingModal')">&times;</span>
-            <div class="legal-header">
-                <h2>Shipping & Delivery Policy</h2>
-                <p class="last-updated">Last Updated: January 2026</p>
-            </div>
-            <div class="legal-body">
-                <h3>1. Nature of Digital Delivery</h3>
-                <p>All deliverables are transmitted electronically. Standard execution and delivery timelines range from <strong>30 to 40 business days</strong>.</p>
-            </div>
-        </div>
-    </div>
-
     <!-- ENTERPRISE FOOTER SECTION -->
     <footer>
         <div class="footer-container">
@@ -1313,12 +1277,12 @@
                 <p>A full-service digital software studio based in Tekkali, Srikakulam District, AP — building high-performance web products for ambitious enterprises worldwide.</p>
             </div>
             <div class="footer-col">
-                <h3>Legal & Compliance</h3>
+                <h3>Quick Navigation</h3>
                 <ul class="footer-links">
-                    <li><a onclick="openModal('termsModal')">Terms & Conditions</a></li>
-                    <li><a onclick="openModal('privacyModal')">Privacy Policy</a></li>
-                    <li><a onclick="openModal('refundModal')">Refund & Cancellation</a></li>
-                    <li><a onclick="openModal('shippingModal')">Shipping & Delivery</a></li>
+                    <li><a onclick="switchView('services')">Our Services</a></li>
+                    <li><a onclick="switchView('estimator')">Cost Estimator</a></li>
+                    <li><a onclick="switchView('pricing')">Pricing Packages</a></li>
+                    <li><a onclick="switchView('contact')">Contact Us</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1382,6 +1346,34 @@
             }
         }
 
+        // Cost Estimator Calculation Logic
+        function calculateEstimate() {
+            let typeVal = Number(document.getElementById('estType').value);
+            let pagesVal = Number(document.getElementById('estPages').value);
+            let addonsVal = Number(document.getElementById('estAddons').value);
+            let supportVal = Number(document.getElementById('estSupport').value);
+
+            let total = typeVal + pagesVal + addonsVal + supportVal;
+            document.getElementById('estTotalDisplay').innerText = `₹${total.toLocaleString('en-IN')}`;
+
+            let timeline = "7-10 Business Days";
+            if (total > 30000) timeline = "15-25 Business Days";
+            if (total > 45000) timeline = "30-40 Business Days";
+            document.getElementById('estTimeline').innerText = `Estimated Delivery: ${timeline}`;
+        }
+
+        function transferEstimatorToPortal() {
+            let total = document.getElementById('estTotalDisplay').innerText;
+            let type = document.getElementById('estType').options[document.getElementById('estType').selectedIndex].text;
+            switchView('portal');
+            setTimeout(() => {
+                let detailsBox = document.getElementById('portalProjectDetails');
+                if(detailsBox) {
+                    detailsBox.value = `Estimated via Cost Calculator: ${type} | Estimated Total: ${total}`;
+                }
+            }, 200);
+        }
+
         let selectedPackageName = "";
 
         function openCheckoutModal(packageName, fixedAmount) {
@@ -1402,7 +1394,6 @@
         if (payForm) {
             payForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                
                 const name = document.getElementById('payName')?.value || '';
                 const email = document.getElementById('payEmail')?.value || '';
                 const phone = document.getElementById('payPhone')?.value || '';
@@ -1493,26 +1484,13 @@
                 { cat: 'SEO & MARKETING', title: 'Maximizing Local Business Reach in Tekkali through Advanced SEO', desc: 'Learn how strategic keyword optimization drives high organic traffic to regional storefronts.', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80' },
                 { cat: 'WEB DEVELOPMENT', title: 'Why Next.js and React are Dominating Modern Enterprise Web Architecture', desc: 'An in-depth look at server-side rendering benefits and lightning-fast web performance.', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80' },
                 { cat: 'SOCIAL MEDIA', title: 'Leveraging Social Media Funnels for E-Commerce Growth', desc: 'Convert casual scrollers into loyal customers with targeted engagement loops.', img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80' }
-            ],
-            webdev: [
-                { cat: 'WEB DEVELOPMENT', title: 'Building Scalable Full-Stack Web Apps with Node.js & MongoDB', desc: 'Best practices for structuring backend APIs and connecting cloud database clusters securely.', img: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'WEB DEVELOPMENT', title: 'Why Next.js and React are Dominating Modern Enterprise Web Architecture', desc: 'An in-depth look at server-side rendering benefits and lightning-fast web performance.', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80' }
-            ],
-            digital: [
-                { cat: 'DIGITAL MARKETING', title: 'High-Converting Funnel Strategies for Regional Storefronts', desc: 'Turning offline foot traffic into engaged digital brand advocates.', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80' }
-            ],
-            seo: [
-                { cat: 'SEO', title: 'Maximizing Local Business Reach in Tekkali through Advanced SEO', desc: 'Learn how strategic keyword optimization drives high organic traffic to regional storefronts.', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80' }
-            ],
-            social: [
-                { cat: 'SOCIAL MEDIA', title: 'Leveraging Social Media Funnels for E-Commerce Growth', desc: 'Convert casual scrollers into loyal customers with targeted engagement loops.', img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80' }
             ]
         };
 
-        function renderBlogCards(categoryKey) {
+        function renderBlogCards() {
             const container = document.getElementById('blogContainer');
             if (!container) return;
-            const items = blogData[categoryKey] || blogData['all'];
+            const items = blogData['all'];
             container.innerHTML = '';
             items.forEach(item => {
                 const card = document.createElement('div');
@@ -1529,17 +1507,7 @@
             });
         }
 
-        function filterBlog(categoryKey, btnElement) {
-            document.querySelectorAll('.blog-filter-btn').forEach(btn => {
-                btn.style.background = '#1e293b';
-                btn.classList.remove('active-filter');
-            });
-            btnElement.style.background = 'var(--tcs-blue)';
-            btnElement.classList.add('active-filter');
-            renderBlogCards(categoryKey);
-        }
-
-        renderBlogCards('all');
+        renderBlogCards();
         renderReviews();
 
         const handleInquirySubmit = (formId) => {
