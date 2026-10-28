@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +8,29 @@
     <meta name="google-site-verification" content="dRetG1PB_kxUCrcvS12b3MwLcEEAsa8Ldv3B7YfU-HY" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --tcs-navy: #0b1f36;
-            --tcs-blue: #3b82f6;
-            --tcs-success: #10b981;
+        /* Theme Variables */
+        :root[data-theme="dark"] {
             --bg-body: #090d16;
-            --bg-card: #111827;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --bg-header: rgba(5, 11, 20, 0.85);
             --text-dark: #f8fafc;
             --text-gray: #94a3b8;
-            --border-color: #1f2937;
-            --rating-star: #facc15;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --tcs-blue: #3b82f6;
+            --tcs-success: #10b981;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        :root[data-theme="light"] {
+            --bg-body: #f1f5f9;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --bg-header: rgba(255, 255, 255, 0.9);
+            --text-dark: #0f172a;
+            --text-gray: #475569;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --tcs-blue: #2563eb;
+            --tcs-success: #059669;
+            --card-shadow: 0 10px 25px rgba(0,0,0,0.08);
         }
 
         * {
@@ -25,6 +38,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
@@ -35,12 +49,12 @@
         }
 
         header {
-            background: rgba(5, 11, 20, 0.95);
-            backdrop-filter: blur(10px);
+            background: var(--bg-header);
+            backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -57,48 +71,62 @@
             font-size: 1.1rem;
             font-weight: 800;
             letter-spacing: -0.5px;
-            color: #ffffff;
+            color: var(--text-dark);
             cursor: pointer;
         }
 
         .logo-text span {
-            color: #60a5fa;
+            color: var(--tcs-blue);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 1.5rem;
+            gap: 1.2rem;
             align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #94a3b8;
-            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-size: 0.88rem;
             font-weight: 500;
             transition: color 0.2s;
             cursor: pointer;
         }
 
         .nav-links a:hover, .nav-links a.active {
-            color: #ffffff;
+            color: var(--text-dark);
             font-weight: 700;
         }
 
         .nav-btn {
             background: var(--tcs-blue);
             color: white !important;
-            padding: 0.5rem 1.25rem;
+            padding: 0.5rem 1.2rem;
             border-radius: 6px;
             font-weight: 600;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
         }
 
-        .nav-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
+        /* Theme Toggle Button */
+        .theme-toggle-btn {
+            background: var(--border-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.1);
         }
 
         .menu-toggle {
@@ -113,13 +141,13 @@
         .menu-toggle span {
             width: 25px;
             height: 3px;
-            background: white;
+            background: var(--text-dark);
             border-radius: 3px;
         }
 
         .mobile-menu {
             display: none;
-            background: #050b14;
+            background: var(--bg-header);
             border-top: 1px solid var(--border-color);
             padding: 1rem;
             flex-direction: column;
@@ -128,7 +156,7 @@
 
         .mobile-menu a {
             text-decoration: none;
-            color: #94a3b8;
+            color: var(--text-gray);
             font-size: 1rem;
             font-weight: 500;
             cursor: pointer;
@@ -144,7 +172,7 @@
         }
 
         .hero {
-            background: linear-gradient(rgba(5, 11, 20, 0.85), rgba(5, 11, 20, 0.95)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80');
+            background: linear-gradient(rgba(5, 11, 20, 0.8), rgba(5, 11, 20, 0.9)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -182,7 +210,7 @@
 
         .hero p {
             font-size: 1.05rem;
-            color: #94a3b8;
+            color: #cbd5e1;
             max-width: 650px;
             margin-bottom: 2rem;
         }
@@ -196,7 +224,7 @@
         .section-title {
             font-size: 1.8rem;
             font-weight: 800;
-            color: #ffffff;
+            color: var(--text-dark);
             margin-bottom: 0.5rem;
             text-align: center;
             letter-spacing: -0.5px;
@@ -214,31 +242,39 @@
         }
 
         .btn-back {
-            background: #1e293b;
-            color: white;
-            border: none;
+            background: var(--bg-card);
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
             padding: 0.5rem 1rem;
             border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
             font-size: 0.85rem;
-            transition: background 0.2s;
         }
 
         .btn-back:hover {
             background: var(--tcs-blue);
+            color: white;
         }
 
-        /* Tech Stack Marquee Animation */
+        /* Glassmorphism Cards & Containers */
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        /* Tech Marquee */
         .tech-marquee {
-            background: #050b14;
+            background: var(--bg-card);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
-            padding: 1.5rem 0;
+            padding: 1.2rem 0;
             overflow: hidden;
             white-space: nowrap;
-            position: relative;
-            margin: 3rem 0;
+            margin: 2rem 0;
         }
 
         .marquee-track {
@@ -250,10 +286,9 @@
             display: inline-block;
             padding: 0 2rem;
             font-weight: 700;
-            color: #94a3b8;
-            font-size: 1.1rem;
+            color: var(--text-gray);
+            font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .marquee-item span {
@@ -265,38 +300,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Cost Estimator Styles */
-        .estimator-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2.5rem;
-            max-width: 900px;
-            margin: 3rem auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        }
-
-        .estimator-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .estimator-result {
-            background: #050b14;
-            border: 1px solid rgba(59, 130, 246, 0.4);
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .estimator-result h3 {
-            color: #60a5fa;
-            font-size: 2rem;
-            margin: 0.5rem 0;
-        }
-
+        /* Services & Grid */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -306,24 +310,24 @@
 
         .service-card {
             background: var(--bg-card);
+            backdrop-filter: blur(10px);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: var(--card-shadow);
             border: 1px solid var(--border-color);
-            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, border-color 0.2s;
         }
 
         .service-card:hover {
             transform: translateY(-4px);
-            border-color: #3b82f6;
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+            border-color: var(--tcs-blue);
         }
 
         .service-img {
             width: 100%;
             height: 180px;
             object-fit: cover;
-            opacity: 0.85;
+            opacity: 0.9;
         }
 
         .service-body {
@@ -332,7 +336,7 @@
 
         .service-card h3 {
             font-size: 1.1rem;
-            color: #ffffff;
+            color: var(--text-dark);
             margin-bottom: 0.5rem;
         }
 
@@ -341,6 +345,7 @@
             font-size: 0.88rem;
         }
 
+        /* Pricing Grid */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -350,10 +355,11 @@
 
         .pricing-card {
             background: var(--bg-card);
+            backdrop-filter: blur(10px);
             border-radius: 10px;
             padding: 2rem 1.5rem;
             border: 1px solid var(--border-color);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: var(--card-shadow);
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -363,12 +369,11 @@
         .pricing-card.featured {
             border: 2px solid var(--tcs-blue);
             transform: scale(1.02);
-            background: #0e1726;
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.25);
         }
 
         .pricing-card h3 {
-            color: #ffffff;
+            color: var(--text-dark);
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
         }
@@ -376,7 +381,7 @@
         .price-tag {
             font-size: 1.8rem;
             font-weight: 800;
-            color: #60a5fa;
+            color: var(--tcs-blue);
             margin-bottom: 1.5rem;
         }
 
@@ -394,8 +399,8 @@
         }
 
         .btn-buy {
-            background: #1e293b;
-            color: white;
+            background: var(--border-color);
+            color: var(--text-dark);
             border: none;
             padding: 0.8rem;
             border-radius: 6px;
@@ -403,30 +408,57 @@
             cursor: pointer;
             text-transform: uppercase;
             font-size: 0.85rem;
-            transition: background 0.2s;
+            transition: background 0.2s, color 0.2s;
         }
 
         .btn-buy:hover {
             background: var(--tcs-blue);
+            color: white;
         }
 
-        .budget-note {
-            background: rgba(14, 116, 144, 0.15);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-left: 5px solid var(--tcs-blue);
-            padding: 1.2rem;
+        /* FAQ Accordion Styles */
+        .faq-container {
+            max-width: 850px;
+            margin: 3 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 0.95rem;
-            color: #38bdf8;
-            font-weight: 500;
+            margin-bottom: 1rem;
+            overflow: hidden;
         }
 
+        .faq-question {
+            padding: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 1.2rem 1.2rem 1.2rem;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            display: none;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Forms & Inputs */
         .inquiry-wrapper {
             background: var(--bg-card);
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            backdrop-filter: blur(12px);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
             border: 1px solid var(--border-color);
             max-width: 900px;
             margin: 0 auto;
@@ -434,22 +466,11 @@
         }
 
         .inquiry-header {
-            background: #050b14;
-            color: white;
+            background: var(--bg-body);
+            color: var(--text-dark);
             padding: 1.5rem;
             text-align: center;
             border-bottom: 1px solid var(--border-color);
-        }
-
-        .inquiry-header h2 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-        }
-
-        .inquiry-header p {
-            color: var(--text-gray);
-            font-size: 0.85rem;
         }
 
         .inquiry-body {
@@ -476,10 +497,9 @@
         .form-group label {
             font-size: 0.78rem;
             font-weight: 700;
-            color: #94a3b8;
+            color: var(--text-gray);
             margin-bottom: 0.3rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .form-group input, 
@@ -489,14 +509,9 @@
             border: 1px solid var(--border-color);
             border-radius: 6px;
             font-size: 0.9rem;
-            background: #050b14;
-            color: #ffffff;
+            background: var(--bg-body);
+            color: var(--text-dark);
             width: 100%;
-        }
-
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--tcs-blue);
         }
 
         .btn-submit {
@@ -511,45 +526,36 @@
             cursor: pointer;
             text-transform: uppercase;
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
-            transition: box-shadow 0.2s;
         }
 
-        .btn-submit:hover {
-            box-shadow: 0 0 25px rgba(16, 185, 129, 0.6);
-        }
-
-        .hiring-box {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 11, 20, 0.8) 100%);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-left: 6px solid var(--tcs-success);
-            border-radius: 10px;
-            padding: 2.5rem 1.5rem;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .whatsapp-float {
+        /* Floating Action Dock */
+        .floating-dock {
             position: fixed;
-            width: 60px;
-            height: 60px;
             bottom: 30px;
             right: 30px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             z-index: 2500;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .dock-btn {
+            background: #25d366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 26px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             text-decoration: none;
-            transition: transform 0.3s ease;
+            transition: transform 0.2s;
         }
 
-        .whatsapp-float:hover {
+        .dock-btn:hover {
             transform: scale(1.1);
         }
 
@@ -562,7 +568,8 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.7);
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
         }
 
         .modal-content {
@@ -573,36 +580,20 @@
             border: 1px solid var(--border-color);
             width: 90%;
             max-width: 550px;
-            border-radius: 10px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
         }
 
         .close-btn {
-            color: #94a3b8;
+            color: var(--text-gray);
             float: right;
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
         }
 
-        .close-btn:hover {
-            color: #ffffff;
-        }
-
-        .upi-highlight {
-            background: rgba(59, 130, 246, 0.15);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            padding: 10px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            color: #60a5fa;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
         footer {
-            background: #030712;
+            background: var(--bg-body);
             color: var(--text-gray);
             padding: 3rem 1rem 1.5rem 1rem;
             margin-top: 3rem;
@@ -619,15 +610,9 @@
         }
 
         .footer-col h3 {
-            color: white;
+            color: var(--text-dark);
             font-size: 1.05rem;
             margin-bottom: 0.8rem;
-        }
-
-        .footer-col p {
-            font-size: 0.88rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-gray);
         }
 
         .footer-links {
@@ -646,8 +631,7 @@
         }
 
         .footer-links a:hover {
-            color: #ffffff;
-            text-decoration: underline;
+            color: var(--text-dark);
         }
 
         .footer-bottom {
@@ -657,43 +641,6 @@
             border-top: 1px solid var(--border-color);
             text-align: center;
             font-size: 0.8rem;
-            color: #64748b;
-        }
-
-        .star-rating-box {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: center;
-            font-size: 2rem;
-            cursor: pointer;
-            margin: 1rem 0;
-        }
-
-        .star-rating-box input {
-            display: none;
-        }
-
-        .star-rating-box label {
-            color: var(--border-color);
-            transition: color 0.2s;
-            padding: 0 4px;
-        }
-
-        .star-rating-box label:hover,
-        .star-rating-box label:hover ~ label,
-        .star-rating-box input:checked ~ label {
-            color: var(--rating-star);
-        }
-
-        .review-item {
-            background: #050b14;
-            padding: 1rem;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         @media(max-width: 768px) {
@@ -701,7 +648,7 @@
             .menu-toggle { display: flex; }
             .hero { padding: 4rem 1rem; text-align: center; }
             .hero h1 { font-size: 1.85rem; }
-            .estimator-grid { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
             .footer-container { grid-template-columns: 1fr; text-align: center; }
         }
     </style>
@@ -715,16 +662,14 @@
             </div>
             <ul class="nav-links">
                 <li><a onclick="switchView('home')">Home</a></li>
-                <li><a onclick="switchView('services')">Our Services</a></li>
+                <li><a onclick="switchView('services')">Services</a></li>
                 <li><a onclick="switchView('pricing')">Pricing</a></li>
                 <li><a onclick="switchView('estimator')">Cost Estimator</a></li>
-                <li><a onclick="switchView('work')">Our Work</a></li>
-                <li><a onclick="switchView('clients')">Our Clients</a></li>
-                <li><a onclick="switchView('blog')">Blog</a></li>
+                <li><a onclick="switchView('faq')">FAQ</a></li>
                 <li><a onclick="switchView('about')">About</a></li>
                 <li><a onclick="switchView('careers')">Careers</a></li>
-                <li><a onclick="switchView('contact')">Contact Us</a></li>
-                <li><a onclick="switchView('ratingsView')">Ratings</a></li>
+                <li><a onclick="switchView('contact')">Contact</a></li>
+                <li><button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Switch Light/Dark Mode">🌙</button></li>
                 <li><a onclick="switchView('portal')" class="nav-btn">Get Proposal</a></li>
             </ul>
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
@@ -736,20 +681,18 @@
         <div class="mobile-menu" id="mobileMenu">
             <a onclick="switchView('home')" class="mob-link">Home</a>
             <a onclick="switchView('services')" class="mob-link">Our Services</a>
-            <a onclick="switchView('pricing')" class="mob-link">Pricing & Packages</a>
+            <a onclick="switchView('pricing')" class="mob-link">Pricing Packages</a>
             <a onclick="switchView('estimator')" class="mob-link">Cost Estimator</a>
-            <a onclick="switchView('work')" class="mob-link">Our Work</a>
-            <a onclick="switchView('clients')" class="mob-link">Our Clients</a>
-            <a onclick="switchView('blog')" class="mob-link">Blog</a>
-            <a onclick="switchView('about')" class="mob-link">About</a>
-            <a onclick="switchView('careers')" class="mob-link">Careers</a>
+            <a onclick="switchView('faq')" class="mob-link">FAQ Guide</a>
+            <a onclick="switchView('about')" class="mob-link">About Founder</a>
+            <a onclick="switchView('careers')" class="mob-link">Careers Status</a>
             <a onclick="switchView('contact')" class="mob-link">Contact Us</a>
-            <a onclick="switchView('ratingsView')" class="mob-link">Ratings & Reviews</a>
+            <a onclick="toggleTheme()" class="mob-link">🌓 Toggle Theme Mode</a>
             <a onclick="switchView('portal')" class="mob-link" style="background: var(--tcs-blue); color: white; padding: 0.6rem; text-align: center; border-radius: 6px; font-weight: 600;">Get Proposal</a>
         </div>
     </header>
 
-    <!-- TECH STACK ANIMATED TICKER -->
+    <!-- TECH STACK TICKER MARQUEE -->
     <div class="tech-marquee">
         <div class="marquee-track">
             <div class="marquee-item"><span>⚡</span> Next.js & React</div>
@@ -760,8 +703,6 @@
             <div class="marquee-item"><span>🎨</span> Tailwind CSS UI/UX</div>
             <div class="marquee-item"><span>⚡</span> Next.js & React</div>
             <div class="marquee-item"><span>🚀</span> Node.js & Express</div>
-            <div class="marquee-item"><span>💡</span> Full-Stack Web Apps</div>
-            <div class="marquee-item"><span>🛡️</span> MongoDB & Cloud Security</div>
         </div>
     </div>
 
@@ -781,28 +722,28 @@
         
         <div class="container">
             <h2 class="section-title">Welcome to Tekkali Digital Hub</h2>
-            <p class="section-subtitle">Navigate through our services, pricing plans, tech stack, and interactive tools below.</p>
+            <p class="section-subtitle">Navigate through our services, pricing plans, interactive tools, and guides below.</p>
             
             <div class="services-grid">
                 <div class="service-card" style="cursor: pointer;" onclick="switchView('services')">
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Web Development" class="service-img">
                     <div class="service-body">
-                        <h3>Core Services & Tech Stack &rarr;</h3>
-                        <p>Explore Web Development, Digital Marketing, Next.js, React, Node.js, and our comprehensive digital capabilities.</p>
+                        <h3>Core Services &rarr;</h3>
+                        <p>Explore Web Development, Digital Marketing, Next.js, React, Node.js, and our digital capabilities.</p>
                     </div>
                 </div>
                 <div class="service-card" style="cursor: pointer;" onclick="switchView('estimator')">
                     <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Cost Estimator" class="service-img">
                     <div class="service-body">
-                        <h3>Interactive Cost Estimator &rarr;</h3>
-                        <p>Customize your requirements and instantly calculate your estimated project cost and timeline.</p>
+                        <h3>Interactive Cost Calculator &rarr;</h3>
+                        <p>Customize requirements and instantly calculate your estimated project cost and delivery timeline.</p>
                     </div>
                 </div>
-                <div class="service-card" style="cursor: pointer;" onclick="switchView('ratingsView')">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Ratings" class="service-img">
+                <div class="service-card" style="cursor: pointer;" onclick="switchView('faq')">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="FAQ Guide" class="service-img">
                     <div class="service-body">
-                        <h3>Rate Our Services &rarr;</h3>
-                        <p>Share your feedback via email and check total community ratings and reviews.</p>
+                        <h3>Client FAQ & Support &rarr;</h3>
+                        <p>Find clear answers regarding pricing, secure payments, and project timelines.</p>
                     </div>
                 </div>
             </div>
@@ -818,8 +759,8 @@
             <h2 class="section-title">Interactive Project Cost Estimator</h2>
             <p class="section-subtitle">Select your project features to get an instant price estimation.</p>
 
-            <div class="estimator-box">
-                <div class="estimator-grid">
+            <div class="glass-card" style="padding: 2.5rem; max-width: 900px; margin: 0 auto;">
+                <div class="form-grid">
                     <div class="form-group">
                         <label for="estType">Project Type</label>
                         <select id="estType" onchange="calculateEstimate()">
@@ -858,9 +799,9 @@
                     </div>
                 </div>
 
-                <div class="estimator-result">
+                <div style="background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; text-align: center; margin-top: 1.5rem;">
                     <p style="color: var(--text-gray); text-transform: uppercase; font-size: 0.85rem; font-weight: 700;">Estimated Total Investment</p>
-                    <h3 id="estTotalDisplay">₹12,000</h3>
+                    <h3 id="estTotalDisplay" style="color: var(--tcs-blue); font-size: 2.2rem; margin: 0.5rem 0;">₹12,000</h3>
                     <p style="color: var(--text-gray); font-size: 0.85rem;" id="estTimeline">Estimated Delivery: 7-10 Business Days</p>
                     <button onclick="transferEstimatorToPortal()" class="btn-submit" style="margin-top: 1.5rem; max-width: 300px; display: inline-block;">Proceed with this Estimate</button>
                 </div>
@@ -875,7 +816,7 @@
                 <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
             </div>
             <h2 class="section-title">Core Services & Tech Stack</h2>
-            <p class="section-subtitle">Modern technology solutions built with Web Development, Digital Marketing, Next.js, React, Node.js, WordPress, Shopify, MongoDB, and Tailwind.</p>
+            <p class="section-subtitle">Modern technology solutions built with Next.js, React, Node.js, MongoDB, and Tailwind CSS.</p>
             
             <div class="services-grid">
                 <div class="service-card">
@@ -889,7 +830,7 @@
                     <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80" alt="Digital Marketing" class="service-img">
                     <div class="service-body">
                         <h3>Digital Marketing</h3>
-                        <p>Result-oriented SEO, social media growth, and conversion funnel optimization for regional and global businesses.</p>
+                        <p>Result-oriented SEO, social media growth, and conversion funnel optimization for regional businesses.</p>
                     </div>
                 </div>
                 <div class="service-card">
@@ -939,7 +880,7 @@
                             <li>Priority Support & Maintenance</li>
                         </ul>
                     </div>
-                    <button class="btn-buy" style="background: var(--tcs-blue);" onclick="openCheckoutModal('Standard Business Package', 22000)">Proceed via Razorpay (₹22,000)</button>
+                    <button class="btn-buy" style="background: var(--tcs-blue); color: white;" onclick="openCheckoutModal('Standard Business Package', 22000)">Proceed via Razorpay (₹22,000)</button>
                 </div>
 
                 <div class="pricing-card">
@@ -959,62 +900,33 @@
         </div>
     </div>
 
-    <!-- OUR WORK VIEW -->
-    <div id="view-work" class="page-view">
+    <!-- FAQ ACCORDION VIEW -->
+    <div id="view-faq" class="page-view">
         <div class="container">
             <div class="back-home-bar">
                 <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
             </div>
-            <h2 class="section-title">Our Work & Industries Served</h2>
-            <p class="section-subtitle">Customized digital solutions delivered across diverse domain expertise sectors.</p>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 3rem;">
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Real Estate</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">E-Commerce</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Healthcare</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Education</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Travel & Tourism</h3></div>
-                <div class="service-card" style="padding: 1.2rem; text-align: center;"><h3 style="color: #60a5fa; font-size: 1rem;">Corporate</h3></div>
-            </div>
-        </div>
-    </div>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Got questions? We have answers regarding our services, billing, and support.</p>
 
-    <!-- OUR CLIENTS VIEW -->
-    <div id="view-clients" class="page-view">
-        <div class="container">
-            <div class="back-home-bar">
-                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
-            </div>
-            <h2 class="section-title">Our Clients & Achievements</h2>
-            <p class="section-subtitle">Trusted by ambitious businesses globally with proven metric excellence.</p>
-            
-            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: center; margin-bottom: 3rem;">
-                <div class="service-card" style="padding: 1.5rem;">
-                    <h3 style="font-size: 2rem; color: #60a5fa;">98%</h3>
-                    <p>Client Satisfaction</p>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">How long does it take to build a website? <span>+</span></div>
+                    <div class="faq-answer">Standard business websites and landing pages are delivered within 7 to 10 business days. Complex custom applications or e-commerce stores take around 15 to 30 days.</div>
                 </div>
-                <div class="service-card" style="padding: 1.5rem;">
-                    <h3 style="font-size: 2rem; color: #60a5fa;">50+</h3>
-                    <p>Happy Clients</p>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Are payments secure? <span>+</span></div>
+                    <div class="faq-answer">Yes, all transactions are processed securely through official merchant gateways including our verified Razorpay portal with fixed price protection.</div>
                 </div>
-                <div class="service-card" style="padding: 1.5rem;">
-                    <h3 style="font-size: 2rem; color: #60a5fa;">100+</h3>
-                    <p>Projects Delivered</p>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Do you provide domain and hosting support? <span>+</span></div>
+                    <div class="faq-answer">Yes, all our packages include 1 year of high-speed hosting setup, SSL certificate implementation, and DNS configuration.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Can I request updates after the website is launched? <span>+</span></div>
+                    <div class="faq-answer">Absolutely! We provide ongoing maintenance support and allow minor routine content updates as part of our client service commitment.</div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- BLOG VIEW -->
-    <div id="view-blog" class="page-view">
-        <div class="container">
-            <div class="back-home-bar">
-                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
-            </div>
-            <h2 class="section-title">Blog & Insights</h2>
-            <p class="section-subtitle">Informative articles on web development, digital marketing, SEO, and social media.</p>
-            
-            <div class="services-grid" id="blogContainer"></div>
         </div>
     </div>
 
@@ -1024,70 +936,18 @@
             <div class="back-home-bar">
                 <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
             </div>
-            <div class="hiring-box" style="text-align: left; background: var(--bg-card); border: 1px solid var(--border-color); border-left: 6px solid var(--tcs-blue);">
+            <div class="glass-card" style="padding: 2.5rem; border-left: 6px solid var(--tcs-blue);">
                 <div class="hiring-badge">Tekkali Digital & Web Solutions Hub</div>
-                <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: white;">Engineering Digital Excellence from Tekkali to the World</h2>
-                <p style="color: var(--text-gray); font-size: 1rem; margin-bottom: 2rem; max-width: 100%;">
+                <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-dark);">Engineering Digital Excellence from Tekkali to the World</h2>
+                <p style="color: var(--text-gray); font-size: 1rem; margin-bottom: 2rem;">
                     We bridge local enterprise empowerment with advanced software engineering—delivering high-performance web products, custom POS billing systems, and scalable digital infrastructure.
                 </p>
-                <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; background: #050b14; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; background: var(--bg-body); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
                     <img src="Sivaji Image.jpeg" alt="Yanda Sivaji" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--tcs-blue);">
                     <div>
-                        <h3 style="color: white; font-size: 1.2rem;">Yanda Sivaji</h3>
-                        <p style="color: #60a5fa; font-size: 0.85rem; font-weight: 600;">Founder & Lead Full-Stack Architect</p>
+                        <h3 style="color: var(--text-dark); font-size: 1.2rem;">Yanda Sivaji</h3>
+                        <p style="color: var(--tcs-blue); font-size: 0.85rem; font-weight: 600;">Founder & Lead Full-Stack Architect</p>
                         <p style="color: var(--text-gray); font-size: 0.85rem; margin-top: 0.3rem;">Specializing in full-stack web architectures, secure database management, and robust enterprise integrations.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- RATINGS & REVIEWS VIEW -->
-    <div id="view-ratingsView" class="page-view">
-        <div class="container">
-            <div class="back-home-bar">
-                <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
-            </div>
-            
-            <div class="estimator-box">
-                <div style="text-align: center; margin-bottom: 2rem;">
-                    <h3>Customer Reviews & Ratings</h3>
-                    <div style="font-size: 2.2rem; font-weight: 800; color: #60a5fa; margin: 0.5rem 0;" id="averageRatingDisplay">4.9 / 5.0</div>
-                    <p style="color: var(--text-gray);" id="totalReviewsCountDisplay">Total Ratings: 127</p>
-                </div>
-
-                <div class="estimator-grid">
-                    <div style="background: #050b14; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                        <h3 style="color: white; margin-bottom: 1rem; font-size: 1.1rem;">Write a Review</h3>
-                        <form id="ratingForm">
-                            <div class="form-group">
-                                <label for="raterEmail">Email Address *</label>
-                                <input type="email" id="raterEmail" required placeholder="name@example.com">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Overall Rating *</label>
-                                <div class="star-rating-box">
-                                    <input type="radio" id="r5" name="userStar" value="5" required /><label for="r5" title="5 stars">★</label>
-                                    <input type="radio" id="r4" name="userStar" value="4" /><label for="r4" title="4 stars">★</label>
-                                    <input type="radio" id="r3" name="userStar" value="3" /><label for="r3" title="3 stars">★</label>
-                                    <input type="radio" id="r2" name="userStar" value="2" /><label for="r2" title="2 stars">★</label>
-                                    <input type="radio" id="r1" name="userStar" value="1" /><label for="r1" title="1 star">★</label>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="raterComment">Your Review</label>
-                                <textarea id="raterComment" rows="3" placeholder="What was your experience like?"></textarea>
-                            </div>
-
-                            <button type="submit" class="btn-submit">Submit Review</button>
-                        </form>
-                    </div>
-
-                    <div>
-                        <h3 style="color: white; margin-bottom: 1rem; font-size: 1.1rem;">Community Feedback</h3>
-                        <div id="dynamicReviewsContainer" class="review-list" style="max-height: 350px; overflow-y: auto;"></div>
                     </div>
                 </div>
             </div>
@@ -1107,8 +967,8 @@
                 </div>
                 <div class="inquiry-body">
                     <div style="text-align: center; margin-bottom: 2rem; color: var(--text-gray);">
-                        <p style="margin-bottom: 0.5rem;">📞 Phone Numbers: <strong style="color: white;">+91 9493583804</strong></p>
-                        <p>✉️ Email: <strong style="color: white;">tekkalidigitalwebsolutionhub@gmail.com</strong></p>
+                        <p style="margin-bottom: 0.5rem;">📞 Phone Numbers: <strong style="color: var(--text-dark);">+91 9493583804</strong></p>
+                        <p>✉️ Email: <strong style="color: var(--text-dark);">tekkalidigitalwebsolutionhub@gmail.com</strong></p>
                     </div>
                     <form id="projectInquiryForm">
                         <div class="form-grid">
@@ -1218,19 +1078,21 @@
             <div class="back-home-bar">
                 <button class="btn-back" onclick="switchView('home')">&larr; Back to Home</button>
             </div>
-            <div class="hiring-box">
-                <h2>Careers & Hiring Program Completed</h2>
-                <p>The recruitment drive and submission window for our flexible earning program concluded successfully on 9 October 2026. Thank you to all applicants!</p>
-                <div style="color: #34d399; font-weight: 700; font-size: 0.85rem; margin-bottom: 1.25rem;">Status: Applications Closed / Program Successfully Completed</div>
+            <div class="glass-card" style="padding: 2.5rem; text-align: center; border-left: 6px solid var(--tcs-success);">
+                <h2 style="font-size: 1.4rem; color: var(--text-dark); margin-bottom: 0.5rem;">Careers & Hiring Program Completed</h2>
+                <p style="color: var(--text-gray); max-width: 650px; margin: 0 auto 1rem auto; font-size: 0.9rem;">The recruitment drive and submission window for our flexible earning program concluded successfully on 9 October 2026. Thank you to all applicants!</p>
+                <div style="color: var(--tcs-success); font-weight: 700; font-size: 0.85rem; margin-bottom: 1.25rem;">Status: Applications Closed / Program Successfully Completed</div>
                 <button class="btn-buy" disabled style="opacity: 0.7; cursor: not-allowed;">Applications Closed</button>
             </div>
         </div>
     </div>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919493583804?text=Hello%20Tekkali%20Digital%20Web%20Solutions%20Hub,%20I%20would%20like%20to%20inquire%20about%20your%20services." class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
-        💬
-    </a>
+    <!-- Floating Action Dock -->
+    <div class="floating-dock">
+        <a href="https://wa.me/919493583804?text=Hello%20Tekkali%20Digital%20Web%20Solutions%20Hub,%20I%20would%20like%20to%20inquire%20about%20your%20services." class="dock-btn" target="_blank" title="Chat on WhatsApp">
+            💬
+        </a>
+    </div>
 
     <!-- Secure Razorpay Payment Modal -->
     <div id="checkoutModal" class="modal">
@@ -1238,8 +1100,8 @@
             <span class="close-btn" onclick="closeModal('checkoutModal')">&times;</span>
             <h2 id="modalPackageTitle">Secure Locked Payment</h2>
             
-            <div class="upi-highlight">
-                Razorpay Secure Portal Link: <a href="https://razorpay.me/@tekkalidigitalandwebsolutions" target="_blank" style="color: #60a5fa; text-decoration: underline;">Open Razorpay Link</a><br>
+            <div style="background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); padding: 10px; border-radius: 6px; font-size: 0.85rem; color: var(--tcs-blue); margin-bottom: 1rem; text-align: center;">
+                Razorpay Secure Portal Link: <a href="https://razorpay.me/@tekkalidigitalandwebsolutions" target="_blank" style="color: inherit; text-decoration: underline;">Open Razorpay Link</a><br>
                 <em>Amount is permanently locked by system.</em>
             </div>
 
@@ -1269,7 +1131,7 @@
         </div>
     </div>
 
-    <!-- ENTERPRISE FOOTER SECTION -->
+    <!-- FOOTER SECTION -->
     <footer>
         <div class="footer-container">
             <div class="footer-col">
@@ -1323,6 +1185,29 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        function toggleTheme() {
+            const htmlTag = document.documentElement;
+            const themeToggleBtn = document.getElementById('themeToggleBtn');
+            let currentTheme = htmlTag.getAttribute('data-theme');
+            let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            htmlTag.setAttribute('data-theme', newTheme);
+            localStorage.setItem('tekkali_theme', newTheme);
+            if (themeToggleBtn) {
+                themeToggleBtn.innerText = newTheme === 'dark' ? '🌙' : '☀️';
+            }
+        }
+
+        // Load saved theme preference
+        window.addEventListener('DOMContentLoaded', () => {
+            let savedTheme = localStorage.getItem('tekkali_theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const themeToggleBtn = document.getElementById('themeToggleBtn');
+            if (themeToggleBtn) {
+                themeToggleBtn.innerText = savedTheme === 'dark' ? '🌙' : '☀️';
+            }
+        });
+
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) {
@@ -1344,6 +1229,14 @@
                 event.target.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
+        }
+
+        // FAQ Toggle Logic
+        function toggleFaq(element) {
+            const parent = element.parentElement;
+            parent.classList.toggle('active');
+            let span = element.querySelector('span');
+            span.innerText = parent.classList.contains('active') ? '-' : '+';
         }
 
         // Cost Estimator Calculation Logic
@@ -1414,101 +1307,6 @@
                 }, 1000);
             });
         }
-
-        // Ratings Logic
-        let defaultReviews = [
-            { email: "ramesh****@gmail.com", stars: 5, comment: "Excellent service and fast website delivery!" },
-            { email: "suresh****@gmail.com", stars: 5, comment: "Very professional web development team in Tekkali." }
-        ];
-
-        function getStoredReviews() {
-            let stored = localStorage.getItem('tekkali_user_reviews');
-            return stored ? JSON.parse(stored) : defaultReviews;
-        }
-
-        function renderReviews() {
-            let reviews = getStoredReviews();
-            let container = document.getElementById('dynamicReviewsContainer');
-            if(!container) return;
-
-            container.innerHTML = '';
-            let totalStars = 0;
-
-            reviews.forEach(rev => {
-                totalStars += Number(rev.stars);
-                let item = document.createElement('div');
-                item.className = 'review-item';
-                item.innerHTML = `
-                    <div>
-                        <strong style="color: #60a5fa; font-size: 0.9rem;">${rev.email}</strong>
-                        <p style="color: var(--text-gray); font-size: 0.85rem; margin-top: 2px;">${rev.comment || 'No comment provided.'}</p>
-                    </div>
-                    <div style="color: var(--rating-star); font-size: 1.1rem;">
-                        ${'★'.repeat(rev.stars)}${'☆'.repeat(5 - rev.stars)}
-                    </div>
-                `;
-                container.appendChild(item);
-            });
-
-            let avg = (totalStars / reviews.length).toFixed(1);
-            const avgDisplay = document.getElementById('averageRatingDisplay');
-            const totalDisplay = document.getElementById('totalReviewsCountDisplay');
-            if(avgDisplay) avgDisplay.innerText = `${avg} / 5.0`;
-            if(totalDisplay) totalDisplay.innerText = `Total Ratings: ${reviews.length}`;
-        }
-
-        const ratingForm = document.getElementById('ratingForm');
-        if(ratingForm) {
-            ratingForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                let emailInput = document.getElementById('raterEmail').value;
-                let starInput = document.querySelector('input[name="userStar"]:checked').value;
-                let commentInput = document.getElementById('raterComment').value;
-
-                let maskedEmail = emailInput.substring(0, 3) + '****@' + emailInput.split('@')[1];
-
-                let reviews = getStoredReviews();
-                reviews.unshift({ email: maskedEmail, stars: Number(starInput), comment: commentInput });
-                localStorage.setItem('tekkali_user_reviews', JSON.stringify(reviews));
-
-                alert("Thank you! Your rating and email review have been successfully recorded.");
-                ratingForm.reset();
-                renderReviews();
-                switchView('ratingsView');
-            });
-        }
-
-        // Blog Data
-        const blogData = {
-            all: [
-                { cat: 'SEO & MARKETING', title: 'Maximizing Local Business Reach in Tekkali through Advanced SEO', desc: 'Learn how strategic keyword optimization drives high organic traffic to regional storefronts.', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'WEB DEVELOPMENT', title: 'Why Next.js and React are Dominating Modern Enterprise Web Architecture', desc: 'An in-depth look at server-side rendering benefits and lightning-fast web performance.', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80' },
-                { cat: 'SOCIAL MEDIA', title: 'Leveraging Social Media Funnels for E-Commerce Growth', desc: 'Convert casual scrollers into loyal customers with targeted engagement loops.', img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80' }
-            ]
-        };
-
-        function renderBlogCards() {
-            const container = document.getElementById('blogContainer');
-            if (!container) return;
-            const items = blogData['all'];
-            container.innerHTML = '';
-            items.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'service-card';
-                card.innerHTML = `
-                    <img src="${item.img}" alt="${item.title}" class="service-img">
-                    <div class="service-body">
-                        <span style="font-size: 0.75rem; color: #60a5fa; font-weight: 700; text-transform: uppercase;">${item.cat}</span>
-                        <h3 style="margin-top: 0.3rem;">${item.title}</h3>
-                        <p>${item.desc}</p>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        renderBlogCards();
-        renderReviews();
 
         const handleInquirySubmit = (formId) => {
             const formEl = document.getElementById(formId);
